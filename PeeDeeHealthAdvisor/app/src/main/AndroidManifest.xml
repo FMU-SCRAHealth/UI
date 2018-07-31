@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pmarl.peedeehealthadvisor">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        //DECLARING THE ENTRENCE OF THE APP
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        //DECLARING THE ENTER BLOOD PRESSURE DATA ACTIVITY
+        <activity
+            android:name=".EnterBloodPressureDataActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        //DECLARING THE ENTER BLOOD SUGAR DATA ACTIVITY
+        <activity
+            android:name=".EnterBloodSugarDataActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        //DECLARING THE ENTER CHOLESTEROL DATA ACTIVITY
+        <activity
+            android:name=".EnterCholesterolDataActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        //DECLARING THE ENTER VACCINATION DATA ACTIVITY
+        <activity
+            android:name=".EnterVaccinationDataActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        //DECLARING THE GRAPH ACTIVITY
+        <activity
+            android:name=".GraphActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        //DECLARING THE MY HEALTH DATA ACTIVITY
+        <activity
+            android:name=".MyHealthDataActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        //DECLARING THE SEARCH LOCATION ACTIVITY
+        <activity
+            android:name=".SearchLocationActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        //DECLARING THE SEARCH SERVICE ACTIVITY
+        <activity
+            android:name=".SearchServiceActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        //DECLARING THE SELECT DATA ACTIVITY
+        <activity
+            android:name=".SelectDataActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+    </application>
+
+</manifest>

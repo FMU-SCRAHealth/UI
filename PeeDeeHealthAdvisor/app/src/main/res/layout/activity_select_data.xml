@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author: Patrick Marlowe
+    Email Address: pmarlowe782@gmail.com
+    Written: June 22, 2018
+    Last Updated: July 9, 2018
+
+    Compilation:
+    Execution:
+
+    Description of Execution:
+-->
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/SelectDataEnterScreen"
+        android:layout_width="209dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="413dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="16dp"
+        android:text="Select Data To Enter"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/AppLogo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/EnterBloodPressure"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="72dp"
+        android:text="Enter Blood Pressure"
+        app:layout_constraintBottom_toTopOf="@+id/EnterCholesterol"
+        app:layout_constraintEnd_toStartOf="@+id/EnterBloodSugar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SelectDataEnterScreen" />
+
+    <Button
+        android:id="@+id/EnterBloodSugar"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginTop="72dp"
+        android:text="Enter Blood Sugar"
+        app:layout_constraintBottom_toTopOf="@+id/EnterVaccinationData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/EnterBloodPressure"
+        app:layout_constraintTop_toBottomOf="@+id/SelectDataEnterScreen" />
+
+    <Button
+        android:id="@+id/EnterCholesterol"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="141dp"
+        android:layout_marginStart="66dp"
+        android:text="Enter Cholesterol"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/EnterVaccinationData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EnterBloodPressure" />
+
+    <Button
+        android:id="@+id/EnterVaccinationData"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="141dp"
+        android:layout_marginEnd="54dp"
+        android:text="Enter Vaccination Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/EnterCholesterol"
+        app:layout_constraintTop_toBottomOf="@+id/EnterBloodSugar" />
+
+    <ImageButton
+        android:id="@+id/Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_previous" />
+
+    <ImageButton
+        android:id="@+id/BackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_media_rew" />
+</android.support.constraint.ConstraintLayout>

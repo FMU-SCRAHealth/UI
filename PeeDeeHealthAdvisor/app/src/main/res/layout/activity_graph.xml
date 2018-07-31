@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author: Patrick Marlowe
+    Email Address: pmarlowe782@gmail.com
+    Written: June 22, 2018
+    Last Updated: July 9, 2018
+
+    Compilation:
+    Execution:
+
+    Description of Execution:
+-->
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/MyHealthGraph"
+        android:layout_width="209dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="413dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="16dp"
+        android:text="My Health Graph"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/BloodSugarCheckBox"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="240dp"
+        android:text="Blood Sugar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyHealthGraph" />
+
+    <CheckBox
+        android:id="@+id/FluShotCheckBox"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="Flu Shot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BloodSugarCheckBox" />
+
+    <CheckBox
+        android:id="@+id/BloodPressureCheckBox"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:text="Blood Pressure"
+        app:layout_constraintStart_toEndOf="@+id/BloodSugarCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/MyHealthGraph" />
+
+    <CheckBox
+        android:id="@+id/VaccinationCheckBox"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Vaccinations"
+        app:layout_constraintStart_toEndOf="@+id/FluShotCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/BloodPressureCheckBox" />
+
+    <ImageButton
+        android:id="@+id/Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_previous" />
+
+    <ImageButton
+        android:id="@+id/BackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_media_rew" />
+</android.support.constraint.ConstraintLayout>
