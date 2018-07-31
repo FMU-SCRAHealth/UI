@@ -22,7 +22,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+//I really need to start adding comments
 public class SearchLocationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     private ImageButton home;
