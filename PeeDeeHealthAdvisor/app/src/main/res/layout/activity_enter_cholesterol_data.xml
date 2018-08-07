@@ -21,20 +21,20 @@
         android:id="@+id/clearData2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="45dp"
         android:text="Clear Data"
         app:layout_constraintStart_toEndOf="@+id/enterData2"
-        app:layout_constraintTop_toBottomOf="@+id/TCInput" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <Button
         android:id="@+id/enterData2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="45dp"
         android:text="Enter Data"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TCInput" />
+        app:layout_constraintStart_toEndOf="@+id/BackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <TextView
         android:id="@+id/EnterCholesterolScreen"
@@ -118,8 +118,8 @@
         android:id="@+id/HDLtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="86dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="12dp"
         android:text="High Density Lipoprotein"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterCholesterolScreen" />
@@ -143,5 +143,22 @@
         android:text="Total Cholesterol"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LDLInput" />
+
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Select Date"
+        android:inputType="date"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TCInput"
+        android:longClickable="false"/>
 
 </android.support.constraint.ConstraintLayout>
