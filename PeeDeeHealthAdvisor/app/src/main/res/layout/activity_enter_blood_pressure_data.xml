@@ -41,9 +41,10 @@
         android:layout_height="24dp"
         android:layout_marginEnd="77dp"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="24dp"
         android:text="Blood Pressure (Systolic)"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterBloodPressureScreen" />
 
@@ -96,21 +97,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="53dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="21dp"
         android:text="Enter Data"
         app:layout_constraintEnd_toStartOf="@+id/ClearData"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DiastolicInput" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <Button
         android:id="@+id/ClearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginTop="21dp"
         android:text="Clear Data"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DiastolicInput" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <ImageButton
         android:id="@+id/Home"
@@ -131,5 +133,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_media_rew" />
+
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Select Date"
+        android:inputType="date"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DiastolicInput"
+        android:longClickable="false"/>
 
 </android.support.constraint.ConstraintLayout>

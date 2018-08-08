@@ -21,20 +21,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="19dp"
         android:text="Enter Data"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bloodSugarInput" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <Button
         android:id="@+id/clearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="19dp"
         android:text="Clear Data"
         app:layout_constraintStart_toEndOf="@+id/enterData"
-        app:layout_constraintTop_toBottomOf="@+id/bloodSugarInput" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <TextView
         android:id="@+id/EnterBloodSugarScreen"
@@ -91,9 +91,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="40dp"
         android:text="Blood Sugar Level"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterBloodSugarScreen" />
+
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="230dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="16dp"
+        android:longClickable="false"
+
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Select Date"
+        android:inputType="date"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bloodSugarInput" />
+
 
 </android.support.constraint.ConstraintLayout>
