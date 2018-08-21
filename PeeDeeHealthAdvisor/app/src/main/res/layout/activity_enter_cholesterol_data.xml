@@ -10,8 +10,7 @@
 
     Description of Execution:
 -->
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="35dp"
         android:text="Clear Data"
         app:layout_constraintStart_toEndOf="@+id/enterData2"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
@@ -31,7 +30,7 @@
         android:id="@+id/enterData2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="35dp"
         android:text="Enter Data"
         app:layout_constraintStart_toEndOf="@+id/BackBtn"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
@@ -40,8 +39,6 @@
         android:id="@+id/EnterCholesterolScreen"
         android:layout_width="209dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
         android:text="Enter Cholesterol"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -53,8 +50,6 @@
         android:id="@+id/Home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_media_previous" />
@@ -73,8 +68,9 @@
         android:id="@+id/HDLInput"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HDLtext">
 
@@ -88,8 +84,9 @@
         android:id="@+id/LDLInput"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LDLtext">
 
@@ -103,8 +100,9 @@
         android:id="@+id/TCInput"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TCtext">
 
@@ -118,9 +116,10 @@
         android:id="@+id/HDLtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
         android:layout_marginTop="12dp"
         android:text="High Density Lipoprotein"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterCholesterolScreen" />
 
@@ -128,9 +127,10 @@
         android:id="@+id/LDLtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="86dp"
         android:layout_marginTop="17dp"
         android:text="Low Density Lipoprotein"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HDLInput" />
 
@@ -138,9 +138,10 @@
         android:id="@+id/TCtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
         android:layout_marginTop="12dp"
         android:text="Total Cholesterol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LDLInput" />
 
@@ -148,17 +149,26 @@
         android:id="@+id/editDate"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="13dp"
         android:ems="10"
         android:focusable="false"
         android:hint="Select Date"
         android:inputType="date"
+        android:longClickable="false"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TCInput"
-        android:longClickable="false"/>
+        app:layout_constraintTop_toBottomOf="@+id/selectDateBelow" />
+
+    <TextView
+        android:id="@+id/selectDateBelow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="Select Date Below"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TCInput" />
 
 </android.support.constraint.ConstraintLayout>
