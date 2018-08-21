@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="16dp"
         android:text="Enter Data"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="16dp"
         android:text="Clear Data"
         app:layout_constraintStart_toEndOf="@+id/enterData"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
@@ -41,8 +41,8 @@
         android:layout_width="209dp"
         android:layout_height="80dp"
         android:layout_marginBottom="413dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
         android:text="Enter Blood Sugar"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -56,8 +56,8 @@
         android:id="@+id/Home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_media_previous" />
@@ -66,8 +66,8 @@
         android:id="@+id/BackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_media_rew" />
@@ -76,7 +76,10 @@
         android:id="@+id/bloodSugarInput"
         android:layout_width="230dp"
         android:layout_height="55dp"
-        android:layout_marginStart="44dp"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BloodSugarLevel">
 
@@ -90,9 +93,10 @@
         android:id="@+id/BloodSugarLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
         android:layout_marginTop="40dp"
         android:text="Blood Sugar Level"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EnterBloodSugarScreen" />
 
@@ -100,17 +104,26 @@
         android:id="@+id/editDate"
         android:layout_width="230dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="16dp"
-        android:longClickable="false"
 
         android:ems="10"
         android:focusable="false"
         android:hint="Select Date"
         android:inputType="date"
+        android:longClickable="false"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectDateBelow" />
+
+    <TextView
+        android:id="@+id/selectDateBelow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Select Date Below"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bloodSugarInput" />
 

@@ -10,8 +10,7 @@
 
     Description of Execution:
 -->
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,26 +21,20 @@
         android:id="@+id/MyHeaalthDataScreen"
         android:layout_width="209dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="413dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
         android:text="My Health Data"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ViewData"
         android:layout_width="143dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginStart="116dp"
         android:layout_marginTop="58dp"
         android:text="View Data"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyHeaalthDataScreen" />
 
@@ -49,13 +42,10 @@
         android:id="@+id/EnterData"
         android:layout_width="143dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="199dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginStart="116dp"
         android:layout_marginTop="60dp"
         android:text="Enter Data"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ViewData" />
 
@@ -63,8 +53,6 @@
         android:id="@+id/Home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_media_previous" />
@@ -73,8 +61,6 @@
         android:id="@+id/BackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_media_rew" />
