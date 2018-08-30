@@ -45,12 +45,12 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 
         editDate = (EditText) findViewById(R.id.editDate);
 
-// init - set date to current date
+        // init - set date to current date
         long currentdate = System.currentTimeMillis();
         String dateString = sdf.format(currentdate);
         editDate.setText(dateString);
 
-// set calendar date and update editDate
+        // set calendar date and update editDate
         date = new DatePickerDialog.OnDateSetListener()
         {
 
@@ -67,7 +67,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 
         };
 
-// onclick - popup datepicker
+        // onclick - popup datepicker
         editDate.setOnClickListener(new View.OnClickListener()
         {
 
