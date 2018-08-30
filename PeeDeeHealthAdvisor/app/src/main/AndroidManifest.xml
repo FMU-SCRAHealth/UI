@@ -80,6 +80,11 @@
 
         </activity>
 
+        //DECLARING THE FIRST TIME LOGIN ACTIVITY
+        <activity android:name=".FirstTimeLogin"
+            android:label="@string/app_name"></activity>
+
+
     </application>
 
 </manifest>

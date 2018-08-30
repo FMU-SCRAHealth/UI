@@ -1,31 +1,33 @@
 /**
-    Author: Patrick Marlowe
-    Email Address: pmarlowe782@gmail.com
-    Written: June 22, 2018
-    Last Updated: June 25, 2018
+Author: Patrick Marlowe
+Email Address: pmarlowe782@gmail.com
+Written: June 22, 2018
+Last Updated: June 25, 2018
 
-    Compilation: MainActivity.kt
-    Execution: activity_main.xml
+Compilation: MainActivity.kt
+Execution: activity_main.xml
 
-    Description of Execution:
-    This Class brings up the Home Screen in the App
+Description of Execution:
+This Class brings up the Home Screen in the App
  */
 package com.example.pmarl.peedeehealthadvisor
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 
-class MainActivity : AppCompatActivity()
-{
+class MainActivity : AppCompatActivity() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    private var firstStart: Boolean = true
+    override fun onCreate(savedInstanceState: Bundle?) {
         // Instantiates the main activity on open
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /*Start of the code for the first time launch*/
+
 
         // get reference to button
         val myHealthData = findViewById(R.id.MyHealthData) as Button
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity()
         val healthResources = findViewById(R.id.HealthResources) as Button
 
         // Set on-click listener
-        healthResources.setOnClickListener{
+        healthResources.setOnClickListener {
             val intent = Intent(this, SearchServiceActivity::class.java)
             startActivity(intent)
         }
