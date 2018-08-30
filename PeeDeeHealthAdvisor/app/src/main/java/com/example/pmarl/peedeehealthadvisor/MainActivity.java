@@ -13,23 +13,54 @@
 package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
     private Button MyHealthData;
     private Button  MyHealthResources;
-
+    private boolean firstStart;
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*First time open code*/
+        SharedPreferences app_preferences = getApplicationContext()
+                .getSharedPreferences("MyPref",0);
+        SharedPreferences.Editor editor = app_preferences.edit();
+
+        firstStart = app_preferences.getBoolean("first_time_start",true);
+
+        /*If statement to see if the app has been open before or not*/
+        if(firstStart)
+        {
+
+            /*If the app hasn't been opened before, it runs the following code
+            * and sets firstStart to false*/
+            editor.putBoolean("first_time_start",false);
+            editor.commit();
+
+            //do your one time code here
+            Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
+
+        }
+        else
+        {
+            //app open directly
+        }
+
+
+
 
         this.MyHealthData = (Button) findViewById(R.id.MyHealthData);
 
