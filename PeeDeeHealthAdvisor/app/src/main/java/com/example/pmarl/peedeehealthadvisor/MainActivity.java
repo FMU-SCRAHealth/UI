@@ -51,12 +51,14 @@ public class MainActivity extends AppCompatActivity
             editor.commit();
 
             //do your one time code here
-            Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
+            launchFirstTimeLogIn();
+            //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
 
         }
         else
         {
             //app open directly
+            Toast.makeText(this, "Welcome!!!", Toast.LENGTH_LONG).show();
         }
 
 
@@ -101,5 +103,13 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
         finish();
 
+    }
+
+    private void launchFirstTimeLogIn()
+    {
+        Intent intent = new Intent(this, FirstTimeLogin.class);
+        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }
