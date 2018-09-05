@@ -29,8 +29,8 @@
 
     <TextView
         android:id="@+id/SearchLocationScreen"
-        android:layout_width="245dp"
-        android:layout_height="78dp"
+        android:layout_width="209dp"
+        android:layout_height="80dp"
         android:text="Search Location"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -121,7 +121,6 @@
             android:id="@+id/inputedCity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:singleLine="true"
             android:hint="City Name"
             android:visibility="visible" />
     </android.support.design.widget.TextInputLayout>
@@ -138,8 +137,6 @@
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/inputedZIP"
-            android:singleLine="true"
-            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="ZIP Code"

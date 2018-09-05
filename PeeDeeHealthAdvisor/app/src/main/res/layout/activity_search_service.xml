@@ -18,8 +18,8 @@
 
     <TextView
         android:id="@+id/SearchServiceScreen"
-        android:layout_width="243dp"
-        android:layout_height="75dp"
+        android:layout_width="209dp"
+        android:layout_height="80dp"
         android:text="Search Services"
         android:textSize="30sp"
         android:textStyle="bold"

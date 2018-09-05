@@ -19,8 +19,8 @@
 
     <TextView
         android:id="@+id/MyHealthGraph"
-        android:layout_width="248dp"
-        android:layout_height="73dp"
+        android:layout_width="209dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="413dp"
         android:text="My Health Graph"
         android:textSize="30sp"
