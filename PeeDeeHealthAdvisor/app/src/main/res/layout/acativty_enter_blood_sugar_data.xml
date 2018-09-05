@@ -3,7 +3,7 @@
     Author: Patrick Marlowe
     Email Address: pmarlowe782@gmail.com
     Written: June 22, 2018
-    Last Updated: July 9, 2018
+    Last Updated: September 4th, 2018 By Matt Harrington
 
     Compilation:
     Execution:
@@ -20,7 +20,7 @@
         android:id="@+id/enterData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
         android:text="Enter Data"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:id="@+id/clearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:text="Clear Data"
         app:layout_constraintStart_toEndOf="@+id/enterData"
@@ -38,11 +38,9 @@
 
     <TextView
         android:id="@+id/EnterBloodSugarScreen"
-        android:layout_width="209dp"
-        android:layout_height="80dp"
+        android:layout_width="258dp"
+        android:layout_height="82dp"
         android:layout_marginBottom="413dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="0dp"
         android:text="Enter Blood Sugar"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -76,14 +74,14 @@
         android:id="@+id/bloodSugarInput"
         android:layout_width="230dp"
         android:layout_height="55dp"
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BloodSugarLevel">
 
         <android.support.design.widget.TextInputEditText
+            android:inputType="number"
+            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="mg/dL" />

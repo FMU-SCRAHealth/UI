@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/SelectDataEnterScreen"
-        android:layout_width="209dp"
+        android:layout_width="292dp"
         android:layout_height="80dp"
         android:text="Select Data To Enter"
         android:textSize="30sp"

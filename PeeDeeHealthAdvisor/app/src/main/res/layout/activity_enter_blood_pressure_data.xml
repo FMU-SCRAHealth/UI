@@ -18,8 +18,8 @@
 
     <TextView
         android:id="@+id/EnterBloodPressureScreen"
-        android:layout_width="209dp"
-        android:layout_height="80dp"
+        android:layout_width="299dp"
+        android:layout_height="67dp"
         android:layout_marginBottom="413dp"
         android:text="Enter Blood Pressure"
         android:textSize="30sp"
@@ -64,6 +64,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="Top Value" />
     </android.support.design.widget.TextInputLayout>
 
@@ -79,6 +80,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="Bottom Value" />
     </android.support.design.widget.TextInputLayout>
 
@@ -86,8 +88,8 @@
         android:id="@+id/EnterData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
         android:text="Enter Data"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
@@ -97,9 +99,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="Clear Data"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.679"
         app:layout_constraintStart_toEndOf="@+id/EnterData"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
