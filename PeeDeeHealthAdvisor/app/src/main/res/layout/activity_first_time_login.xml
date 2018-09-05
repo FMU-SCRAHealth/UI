@@ -52,6 +52,8 @@
             android:id="@+id/firstNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             android:hint="First Name" />
     </android.support.design.widget.TextInputLayout>
 
@@ -61,9 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstName">
 
@@ -71,6 +72,8 @@
             android:id="@+id/lastNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             android:hint="Last Name" />
     </android.support.design.widget.TextInputLayout>
 
@@ -88,22 +91,23 @@
 
     <CheckBox
         android:id="@+id/maleCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="67dp"
+        android:layout_height="37dp"
         android:layout_marginEnd="6dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
         android:text="Male"
         app:layout_constraintEnd_toStartOf="@+id/femaleCheckBox"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LastName" />
 
     <CheckBox
         android:id="@+id/femaleCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="86dp"
-        android:layout_marginTop="61dp"
+        android:layout_width="83dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="60dp"
         android:text="Female"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LastName" />
@@ -126,6 +130,7 @@
         android:layout_marginTop="28dp"
         android:text="Clear Data"
         app:layout_constraintEnd_toStartOf="@+id/enterData"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
