@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/MyHealthGraph"
-        android:layout_width="248dp"
+        android:layout_width="241dp"
         android:layout_height="73dp"
         android:layout_marginBottom="413dp"
         android:layout_marginTop="2dp"

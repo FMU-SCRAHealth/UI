@@ -18,15 +18,16 @@
 
     <TextView
         android:id="@+id/EnterBloodPressureScreen"
-        android:layout_width="299dp"
+        android:layout_width="298dp"
         android:layout_height="67dp"
         android:layout_marginBottom="413dp"
+        android:layout_marginTop="2dp"
         android:text="Enter Blood Pressure"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -45,7 +46,7 @@
         android:id="@+id/BP_Diastolic"
         android:layout_width="171dp"
         android:layout_height="24dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="20dp"
         android:text="Blood Pressure (Diastolic)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -88,20 +89,26 @@
         android:id="@+id/EnterData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
         android:text="Enter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ClearData"
-        app:layout_constraintTop_toBottomOf="@+id/editDate" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/ClearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
         android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate"
-        tools:layout_editor_absoluteX="92dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/Home"

@@ -20,31 +20,35 @@
         android:id="@+id/enterData"
         android:layout_width="88dp"
         android:layout_height="48dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="32dp"
         android:text="Enter"
-        app:layout_constraintTop_toBottomOf="@+id/editDate"
-        tools:layout_editor_absoluteX="207dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/clearData"
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <Button
         android:id="@+id/clearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:text="Clear"
-        app:layout_constraintTop_toBottomOf="@+id/editDate"
-        tools:layout_editor_absoluteX="89dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <TextView
         android:id="@+id/EnterBloodSugarScreen"
-        android:layout_width="258dp"
+        android:layout_width="256dp"
         android:layout_height="82dp"
         android:layout_marginBottom="413dp"
+        android:layout_marginTop="2dp"
         android:text="Enter Blood Sugar"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
