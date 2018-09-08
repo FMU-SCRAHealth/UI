@@ -88,16 +88,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_media_rew" />
 
-    <Spinner
-        android:id="@+id/milesSpinner"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
-
     <CheckBox
         android:id="@+id/nearByCheckBox"
         android:layout_width="150dp"
@@ -119,14 +109,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CityCheckBox">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/inputedCity"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:singleLine="true"
-            android:hint="City Name"
-            android:visibility="visible" />
-
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -138,15 +120,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ZIPcheckBox">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/inputedZIP"
-            android:singleLine="true"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="ZIP Code"
-            android:visibility="visible" />
 
     </android.support.design.widget.TextInputLayout>
 

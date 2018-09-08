@@ -20,22 +20,36 @@
         android:id="@+id/enterData"
         android:layout_width="88dp"
         android:layout_height="48dp"
+<<<<<<< HEAD
         android:layout_marginStart="1dp"
         android:layout_marginTop="32dp"
         android:text="Enter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/clearData"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
+=======
+        android:layout_marginTop="32dp"
+        android:text="Enter"
+        app:layout_constraintTop_toBottomOf="@+id/editDate"
+        tools:layout_editor_absoluteX="207dp" />
+>>>>>>> working on changing Enter and Clear Buttons amongst other fixes
 
     <Button
         android:id="@+id/clearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:text="Clear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
+=======
+        android:layout_marginTop="32dp"
+        android:text="Clear"
+        app:layout_constraintTop_toBottomOf="@+id/editDate"
+        tools:layout_editor_absoluteX="89dp" />
+>>>>>>> working on changing Enter and Clear Buttons amongst other fixes
 
     <TextView
         android:id="@+id/EnterBloodSugarScreen"

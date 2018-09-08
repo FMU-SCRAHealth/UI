@@ -89,26 +89,21 @@
         android:id="@+id/EnterData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="Enter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ClearData"
-        app:layout_constraintTop_toBottomOf="@+id/editDate"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     <Button
         android:id="@+id/ClearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="Clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteX="92dp" />
+
 
     <ImageButton
         android:id="@+id/Home"
