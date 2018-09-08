@@ -20,33 +20,20 @@
         android:id="@+id/clearData2"
         android:layout_width="110dp"
         android:layout_height="47dp"
-<<<<<<< HEAD
         android:layout_marginStart="63dp"
         android:layout_marginTop="44dp"
         android:text="Clear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
-=======
-        android:layout_marginTop="44dp"
-        android:text="Clear"
-        app:layout_constraintTop_toBottomOf="@+id/editDate"
-        tools:layout_editor_absoluteX="56dp" />
->>>>>>> working on changing Enter and Clear Buttons amongst other fixes
 
     <Button
         android:id="@+id/enterData2"
         android:layout_width="110dp"
         android:layout_height="47dp"
-<<<<<<< HEAD
         android:layout_marginStart="9dp"
         android:layout_marginTop="44dp"
         android:text="Enter"
         app:layout_constraintEnd_toEndOf="parent"
-=======
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="44dp"
-        android:text="Enter"
->>>>>>> working on changing Enter and Clear Buttons amongst other fixes
         app:layout_constraintStart_toEndOf="@+id/clearData2"
         app:layout_constraintTop_toBottomOf="@+id/editDate" />
 

@@ -88,6 +88,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_media_rew" />
 
+    <Spinner
+        android:id="@+id/milesSpinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
+
     <CheckBox
         android:id="@+id/nearByCheckBox"
         android:layout_width="150dp"

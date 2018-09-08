@@ -20,20 +20,26 @@
         android:id="@+id/clearData3"
         android:layout_width="109dp"
         android:layout_height="48dp"
+        android:layout_marginStart="54dp"
         android:layout_marginTop="32dp"
         android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editDate"
-        tools:layout_editor_absoluteX="57dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/enterData3"
         android:layout_width="109dp"
         android:layout_height="48dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         android:text="Enter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/clearData3"
-        app:layout_constraintTop_toBottomOf="@+id/editDate" />
+        app:layout_constraintTop_toBottomOf="@+id/editDate"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/EnterVaccinationScreen"
