@@ -18,23 +18,21 @@
 
     <Button
         android:id="@+id/enterData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
-        android:text="Enter Data"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDate" />
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:text="Enter"
+        app:layout_constraintTop_toBottomOf="@+id/editDate"
+        tools:layout_editor_absoluteX="207dp" />
 
     <Button
         android:id="@+id/clearData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:text="Clear Data"
-        app:layout_constraintStart_toEndOf="@+id/enterData"
-        app:layout_constraintTop_toBottomOf="@+id/editDate" />
+        android:layout_marginTop="32dp"
+        android:text="Clear"
+        app:layout_constraintTop_toBottomOf="@+id/editDate"
+        tools:layout_editor_absoluteX="89dp" />
 
     <TextView
         android:id="@+id/EnterBloodSugarScreen"
@@ -80,11 +78,11 @@
         app:layout_constraintTop_toBottomOf="@+id/BloodSugarLevel">
 
         <android.support.design.widget.TextInputEditText
-            android:inputType="number"
-            android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="mg/dL" />
+            android:hint="mg/dL"
+            android:inputType="number"
+            android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView
