@@ -19,15 +19,16 @@
 
     <TextView
         android:id="@+id/MyHealthGraph"
-        android:layout_width="248dp"
+        android:layout_width="241dp"
         android:layout_height="73dp"
         android:layout_marginBottom="413dp"
+        android:layout_marginTop="2dp"
         android:text="My Health Graph"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -35,8 +36,8 @@
         android:id="@+id/BloodSugarCheckBox"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="140dp"
         android:text="Blood Sugar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyHealthGraph" />
@@ -45,7 +46,8 @@
         android:id="@+id/FluShotCheckBox"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="20dp"
         android:text="Flu Shot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BloodSugarCheckBox" />
@@ -54,17 +56,20 @@
         android:id="@+id/BloodPressureCheckBox"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="20dp"
         android:text="Blood Pressure"
-        app:layout_constraintStart_toEndOf="@+id/BloodSugarCheckBox"
-        app:layout_constraintTop_toBottomOf="@+id/MyHealthGraph" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FluShotCheckBox" />
 
     <CheckBox
         android:id="@+id/VaccinationCheckBox"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="20dp"
         android:text="Vaccinations"
-        app:layout_constraintStart_toEndOf="@+id/FluShotCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BloodPressureCheckBox" />
 
     <ImageButton

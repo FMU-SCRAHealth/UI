@@ -21,9 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Search by..."
+        android:text="Search by:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SearchLocationScreen" />
 
@@ -31,39 +31,41 @@
         android:id="@+id/SearchLocationScreen"
         android:layout_width="245dp"
         android:layout_height="78dp"
+        android:layout_marginTop="2dp"
         android:text="Search Location"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/CityCheckBox"
         android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:text="City"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/milesSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
 
     <CheckBox
         android:id="@+id/ZIPcheckBox"
         android:layout_width="150dp"
         android:layout_height="30dp"
+        android:layout_marginTop="20dp"
         android:text="ZIP Code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CityInput" />
+        app:layout_constraintTop_toTopOf="@+id/CityInput" />
 
     <Button
         android:id="@+id/GoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="150dp"
         android:text="Go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -124,6 +126,7 @@
             android:singleLine="true"
             android:hint="City Name"
             android:visibility="visible" />
+
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -144,6 +147,7 @@
             android:layout_height="match_parent"
             android:hint="ZIP Code"
             android:visibility="visible" />
+
     </android.support.design.widget.TextInputLayout>
 
 </android.support.constraint.ConstraintLayout>
