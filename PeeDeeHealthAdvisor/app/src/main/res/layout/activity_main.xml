@@ -33,6 +33,8 @@
 
             >
 
+            <!-- josh -->
+
             <ImageView
                 android:id="@+id/AppLogo"
                 android:layout_width="50dp"
