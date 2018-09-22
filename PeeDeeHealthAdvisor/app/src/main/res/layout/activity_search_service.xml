@@ -60,7 +60,7 @@
                 android:id="@+id/SearchForThese"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30dp"
+                android:textSize="24sp"
                 android:text="Search for These Services:"
                 app:layout_constraintTop_toBottomOf="@+id/SearchServiceScreen" />
 
@@ -126,6 +126,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:textSize="15dp"
                 android:text="Search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
