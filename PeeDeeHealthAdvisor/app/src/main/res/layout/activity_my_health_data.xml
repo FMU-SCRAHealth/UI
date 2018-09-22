@@ -33,59 +33,49 @@
 
             <TextView
                 android:id="@+id/MyHeaalthDataScreen"
-                android:layout_width="223dp"
-                android:layout_height="78dp"
-                android:layout_marginTop="2dp"
+                android:layout_width="220dp"
+                android:layout_height="80dp"
                 android:text="My Health Data"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="3dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_alignParentRight="true"/>
 
             <ImageButton
                 android:id="@+id/Home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_alignParentLeft="true"
                 app:srcCompat="@android:drawable/ic_media_previous" />
 
         </RelativeLayout>
 
-
-
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_marginTop="75dp">
 
-        <Button
-            android:id="@+id/ViewData"
-            android:layout_width="143dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="58dp"
-            android:text="View Data"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/MyHeaalthDataScreen" />
+            <Button
+                android:id="@+id/ViewData"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:textSize="20sp"
+                android:text="View Data"
+                app:layout_constraintTop_toBottomOf="@+id/MyHeaalthDataScreen" />
 
-        <Button
-            android:id="@+id/EnterData"
-            android:layout_width="143dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="60dp"
-            android:text="Enter Data"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ViewData" />
+            <Button
+                android:id="@+id/EnterData"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:text="Enter Data"
+                app:layout_constraintTop_toBottomOf="@+id/ViewData" />
 
-    </LinearLayout> <!--End of bottom LinearLayout-->
+        </LinearLayout> <!--End of bottom LinearLayout-->
 
     </LinearLayout> <!--End of larger LinearLayout-->
 

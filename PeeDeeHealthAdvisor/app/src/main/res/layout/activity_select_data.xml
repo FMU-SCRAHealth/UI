@@ -15,79 +15,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".SelectDataActivity">
 
-    <TextView
-        android:id="@+id/SelectDataEnterScreen"
-        android:layout_width="285dp"
-        android:layout_height="80dp"
-        android:text="Select Data To Enter"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-    <Button
-        android:id="@+id/EnterBloodPressure"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="72dp"
-        android:text="Enter Blood Pressure"
-        app:layout_constraintBottom_toTopOf="@+id/EnterCholesterol"
-        app:layout_constraintEnd_toStartOf="@+id/EnterBloodSugar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SelectDataEnterScreen" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+        >
 
-    <Button
-        android:id="@+id/EnterBloodSugar"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginTop="72dp"
-        android:text="Enter Blood Sugar"
-        app:layout_constraintBottom_toTopOf="@+id/EnterVaccinationData"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/EnterBloodPressure"
-        app:layout_constraintTop_toBottomOf="@+id/SelectDataEnterScreen" />
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                app:srcCompat="@android:drawable/ic_media_previous" />
 
-    <Button
-        android:id="@+id/EnterCholesterol"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="141dp"
-        android:layout_marginStart="66dp"
-        android:text="Enter Cholesterol"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/EnterVaccinationData"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EnterBloodPressure" />
+            <TextView
+                android:id="@+id/SelectDataEnterScreen"
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="5dp"
+                android:text="Health Entry"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"/>
 
-    <Button
-        android:id="@+id/EnterVaccinationData"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="141dp"
-        android:layout_marginEnd="54dp"
-        android:text="Enter Vaccination Data"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/EnterCholesterol"
-        app:layout_constraintTop_toBottomOf="@+id/EnterBloodSugar" />
+        </RelativeLayout>
 
-    <ImageButton
-        android:id="@+id/Home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_media_previous" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="75dp">
 
-    <ImageButton
-        android:id="@+id/BackBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_media_rew" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    >
+                    <Button
+                        android:id="@+id/EnterBloodPressure"
+                        android:layout_width="130dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="66dp"
+                        android:layout_marginTop="72dp"
+                        android:layout_alignParentLeft="true"
+                        android:text="Enter Blood Pressure"/>
+
+                    <Button
+                        android:id="@+id/EnterBloodSugar"
+                        android:layout_width="130dp"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="54dp"
+                        android:layout_marginTop="72dp"
+                        android:layout_alignParentRight="true"
+                        android:text="Enter Blood Sugar Levels"/>
+
+                    <Button
+                        android:id="@+id/EnterCholesterol"
+                        android:layout_width="130dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="141dp"
+                        android:layout_marginStart="66dp"
+                        android:layout_marginEnd="54dp"
+                        android:layout_marginTop="175dp"
+                        android:layout_alignParentLeft="true"
+                        android:text="Enter Cholesterol Levels"/>
+
+                    <Button
+                        android:id="@+id/EnterVaccinationData"
+                        android:layout_width="130dp"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="141dp"
+                        android:layout_marginEnd="54dp"
+                        android:layout_marginTop="175dp"
+                        android:layout_alignParentRight="true"
+                        android:text="Enter Vaccination Records" />
+                </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/BackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:srcCompat="@android:drawable/ic_media_rew" />
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
