@@ -52,53 +52,63 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:layout_marginTop="75dp">
+            android:layout_marginTop="75dp"
+            >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:orientation="vertical"
+                    android:layout_weight="1"
                     >
                     <Button
                         android:id="@+id/EnterBloodPressure"
                         android:layout_width="130dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="66dp"
                         android:layout_marginTop="72dp"
-                        android:layout_alignParentLeft="true"
+                        android:layout_marginEnd="10dp"
+                        android:layout_alignParentEnd="true"
                         android:text="Enter Blood Pressure"/>
-
-                    <Button
-                        android:id="@+id/EnterBloodSugar"
-                        android:layout_width="130dp"
-                        android:layout_height="100dp"
-                        android:layout_marginEnd="54dp"
-                        android:layout_marginTop="72dp"
-                        android:layout_alignParentRight="true"
-                        android:text="Enter Blood Sugar Levels"/>
 
                     <Button
                         android:id="@+id/EnterCholesterol"
                         android:layout_width="130dp"
                         android:layout_height="100dp"
-                        android:layout_marginBottom="141dp"
-                        android:layout_marginStart="66dp"
-                        android:layout_marginEnd="54dp"
-                        android:layout_marginTop="175dp"
-                        android:layout_alignParentLeft="true"
-                        android:text="Enter Cholesterol Levels"/>
+                        android:layout_marginEnd="10dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="180dp"
+                        android:text="Enter Cholesterol Levels" />
+
+                </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                    <Button
+                        android:id="@+id/EnterBloodSugar"
+                        android:layout_width="130dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="72dp"
+                        android:layout_alignParentStart="true"
+                        android:text="Enter Blood Sugar Levels"/>
 
                     <Button
                         android:id="@+id/EnterVaccinationData"
                         android:layout_width="130dp"
                         android:layout_height="100dp"
                         android:layout_marginBottom="141dp"
-                        android:layout_marginEnd="54dp"
-                        android:layout_marginTop="175dp"
-                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="180dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_alignParentStart="true"
                         android:text="Enter Vaccination Records" />
                 </RelativeLayout>
 
@@ -110,7 +120,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        >
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ImageButton
             android:id="@+id/BackBtn"

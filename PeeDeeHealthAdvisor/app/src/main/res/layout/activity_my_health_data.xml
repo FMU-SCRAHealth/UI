@@ -37,10 +37,10 @@
                 android:layout_height="80dp"
                 android:text="My Health Data"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginEnd="5dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentEnd="true"/>
 
             <ImageButton
                 android:id="@+id/Home"
