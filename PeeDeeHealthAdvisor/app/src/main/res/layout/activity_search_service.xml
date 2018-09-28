@@ -124,8 +124,8 @@
 
             <Button
                 android:id="@+id/Search"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="125dp"
+                android:layout_height="62dp"
                 android:layout_marginTop="20dp"
                 android:textSize="15dp"
                 android:text="Search"
