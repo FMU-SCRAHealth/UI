@@ -3,7 +3,7 @@
     Author: Patrick Marlowe
     Email Address: pmarlowe782@gmail.com
     Written: June 22, 2018
-    Last Updated: July 9, 2018
+    Last Updated: September 29th, 2018 by Matt Harrington
 
     Compilation:
     Execution:
@@ -17,74 +17,109 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/MyHealthGraph"
-        android:layout_width="241dp"
-        android:layout_height="73dp"
-        android:layout_marginBottom="413dp"
-        android:layout_marginTop="2dp"
-        android:text="My Health Graph"
-        android:textSize="30sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <CheckBox
-        android:id="@+id/BloodSugarCheckBox"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="140dp"
-        android:text="Blood Sugar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MyHealthGraph" />
-
-    <CheckBox
-        android:id="@+id/FluShotCheckBox"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="20dp"
-        android:text="Flu Shot"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BloodSugarCheckBox" />
-
-    <CheckBox
-        android:id="@+id/BloodPressureCheckBox"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="20dp"
-        android:text="Blood Pressure"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FluShotCheckBox" />
-
-    <CheckBox
-        android:id="@+id/VaccinationCheckBox"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="20dp"
-        android:text="Vaccinations"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BloodPressureCheckBox" />
-
-    <ImageButton
-        android:id="@+id/Home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_media_previous" />
+        >
 
-    <ImageButton
-        android:id="@+id/BackBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_media_rew" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_media_previous" />
+
+            <TextView
+                android:id="@+id/MyHealthGraph"
+                android:layout_width="92dp"
+                android:layout_height="75dp"
+                android:text="Graph"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="5dp"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/barGraph">
+
+            </com.github.mikephil.charting.charts.BarChart>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1">
+
+            <CheckBox
+                android:id="@+id/BloodSugarCheckBox"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Blood Sugar" />
+
+            <CheckBox
+                android:id="@+id/FluShotCheckBox"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Flu Shot"/>
+
+            <CheckBox
+                android:id="@+id/BloodPressureCheckBox"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Blood Pressure"/>
+
+            <CheckBox
+                android:id="@+id/VaccinationCheckBox"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Vaccinations"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/BackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentBottom="true"
+            app:srcCompat="@android:drawable/ic_media_rew" />
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
