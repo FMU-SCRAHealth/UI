@@ -53,6 +53,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/firstName"
                 android:layout_width="304dp"
+                android:layout_marginTop="15dp"
                 android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
@@ -130,6 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:layout_marginTop="15dp"
                 android:text="Select Birth Date Below" />
 
             <EditText
@@ -146,6 +148,7 @@
 
                 <LinearLayout
                     android:paddingLeft="4.0dip"
+                    android:layout_marginTop="15dp"
                     android:paddingTop="5.0dip"
                     android:paddingRight="4.0dip"
                     android:paddingBottom="1.0dip"
