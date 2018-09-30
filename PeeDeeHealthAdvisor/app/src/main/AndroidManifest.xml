@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        //DECLARING THE ENTRENCE OF THE APP
-        <activity android:name=".MainActivity">
+        // DECLARING THE ENTRANCE OF THE APP
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,71 +20,73 @@
             </intent-filter>
         </activity>
 
-        //DECLARING THE ENTER BLOOD PRESSURE DATA ACTIVITY
+        // DECLARING THE ENTER BLOOD PRESSURE DATA ACTIVITY
         <activity
             android:name=".EnterBloodPressureDataActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE ENTER BLOOD SUGAR DATA ACTIVITY
+        // DECLARING THE ENTER BLOOD SUGAR DATA ACTIVITY
         <activity
             android:name=".EnterBloodSugarDataActivity"
-            android:label="@string/app_name">
-
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE ENTER CHOLESTEROL DATA ACTIVITY
+        // DECLARING THE ENTER CHOLESTEROL DATA ACTIVITY
         <activity
             android:name=".EnterCholesterolDataActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE ENTER VACCINATION DATA ACTIVITY
+        // DECLARING THE ENTER VACCINATION DATA ACTIVITY
         <activity
             android:name=".EnterVaccinationDataActivity"
-            android:label="@string/app_name">
-
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE GRAPH ACTIVITY
+        // DECLARING THE GRAPH ACTIVITY
         <activity
             android:name=".GraphActivity"
             android:label="@string/app_name">
-
         </activity>
 
-        //DECLARING THE MY HEALTH DATA ACTIVITY
+        // DECLARING THE MY HEALTH DATA ACTIVITY
         <activity
             android:name=".MyHealthDataActivity"
-            android:label="@string/app_name">
-
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE SEARCH LOCATION ACTIVITY
+        // DECLARING THE SEARCH LOCATION ACTIVITY
         <activity
             android:name=".SearchLocationActivity"
-            android:label="@string/app_name">
-
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE SEARCH SERVICE ACTIVITY
+        // DECLARING THE SEARCH SERVICE ACTIVITY
         <activity
             android:name=".SearchServiceActivity"
-            android:label="@string/app_name">
-
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE SELECT DATA ACTIVITY
+        // DECLARING THE SELECT DATA ACTIVITY
         <activity
             android:name=".SelectDataActivity"
-            android:label="@string/app_name">
-
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
 
-        //DECLARING THE FIRST TIME LOGIN ACTIVITY
+        // DECLARING THE FIRST TIME LOGIN ACTIVITY
         <activity android:name=".FirstTimeLogin"
-            android:label="@string/app_name"></activity>
-
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 
