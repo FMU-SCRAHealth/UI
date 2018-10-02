@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         else
         {
             //app open directly
-            Toast.makeText(this, "Welcome!!!", Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Welcome!!!", Toast.LENGTH_LONG).show();
         }
 
 

@@ -3,7 +3,7 @@
     Author: Patrick Marlowe
     Email Address: pmarlowe782@gmail.com
     Written: June 22, 2018
-    Last Updated: July 9, 2018
+    Last Updated: September 27th, 2018 by Matt Harrington
 
     Compilation:
     Execution:
@@ -16,163 +16,199 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/clearData2"
-        android:layout_width="110dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="44dp"
-        android:text="Clear"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDate" />
-
-    <Button
-        android:id="@+id/enterData2"
-        android:layout_width="110dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="44dp"
-        android:text="Enter"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/clearData2"
-        app:layout_constraintTop_toBottomOf="@+id/editDate" />
-
-    <TextView
-        android:id="@+id/EnterCholesterolScreen"
-        android:layout_width="246dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="2dp"
-        android:text="Enter Cholesterol"
-        android:textSize="30sp"
-        android:textStyle="bold"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/Home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_media_previous" />
+    >
 
-    <ImageButton
-        android:id="@+id/BackBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_media_rew" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/HDLInput"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HDLtext">
-
-        <android.support.design.widget.TextInputEditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="HDL-Top Value" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="50dp"
+            android:orientation="horizontal">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/LDLInput"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LDLtext">
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_media_previous" />
 
-        <android.support.design.widget.TextInputEditText
+            <TextView
+                android:id="@+id/EnterCholesterolScreen"
+                android:layout_width="246dp"
+                android:layout_height="75dp"
+                android:text="Enter Cholesterol"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="45dp">
+
+            <TextView
+                android:id="@+id/HDLtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:textSize="20sp"
+                android:text="High Density Lipoprotein"/>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/HDLInput"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"
+                    android:hint="HDL-Top Value"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/LDLtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                android:text="Low Density Lipoprotein"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/LDLInput"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                android:hint="LDL-Bottom Value" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/TCtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                android:text="Total Cholesterol" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/TCInput"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                android:hint="TC" />
+        </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/selectDateBelow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="20sp"
+                android:text="Select Date Below"/>
+
+            <EditText
+                android:id="@+id/editDate"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:textSize="16sp"
+                android:hint="Select Date"
+                android:inputType="date"
+                android:longClickable="false"
+                android:textAlignment="center"/>
+
+            <LinearLayout
+                android:paddingLeft="4.0dip"
+                android:paddingTop="5.0dip"
+                android:paddingRight="4.0dip"
+                android:paddingBottom="1.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/clearData2"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Clear"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/enterData2"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Enter"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/BackBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="LDL-Bottom Value" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_alignParentBottom="true"
+            app:srcCompat="@android:drawable/ic_media_rew"/>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/TCInput"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TCtext">
+    </RelativeLayout>
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="TC" />
-    </android.support.design.widget.TextInputLayout>
-
-    <TextView
-        android:id="@+id/HDLtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="High Density Lipoprotein"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EnterCholesterolScreen" />
-
-    <TextView
-        android:id="@+id/LDLtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:text="Low Density Lipoprotein"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HDLInput" />
-
-    <TextView
-        android:id="@+id/TCtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Total Cholesterol"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LDLInput" />
-
-    <EditText
-        android:id="@+id/editDate"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="Select Date"
-        android:inputType="date"
-        android:longClickable="false"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectDateBelow" />
-
-    <TextView
-        android:id="@+id/selectDateBelow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:text="Select Date Below"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TCInput" />
 
 </android.support.constraint.ConstraintLayout>

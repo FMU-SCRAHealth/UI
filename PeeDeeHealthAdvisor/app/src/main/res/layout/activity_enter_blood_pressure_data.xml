@@ -16,140 +16,177 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/EnterBloodPressureScreen"
-        android:layout_width="298dp"
-        android:layout_height="67dp"
-        android:layout_marginBottom="413dp"
-        android:layout_marginTop="2dp"
-        android:text="Enter Blood Pressure"
-        android:textSize="30sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/BP_Systolic"
-        android:layout_width="171dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Blood Pressure (Systolic)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EnterBloodPressureScreen" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/BP_Diastolic"
-        android:layout_width="171dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Blood Pressure (Diastolic)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SystolicInput" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/SystolicInput"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BP_Systolic">
-
-        <android.support.design.widget.TextInputEditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Top Value" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_height="50dp"
+            android:orientation="horizontal">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/DiastolicInput"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BP_Diastolic">
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_media_previous" />
 
-        <android.support.design.widget.TextInputEditText
+            <TextView
+                android:id="@+id/EnterBloodPressureScreen"
+                android:layout_width="298dp"
+                android:layout_height="67dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Enter Blood Pressure"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="45dp">
+
+            <TextView
+                android:id="@+id/BP_Systolic"
+                android:layout_width="78dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="25dp"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                android:text="Systolic"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/SystolicInput"
+                android:layout_width="200dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    android:hint="Top Value" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/BP_Diastolic"
+                android:layout_width="80dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:text="Diastolic"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/DiastolicInput"
+                android:layout_width="200dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    android:hint="Bottom Value" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/selectDateBelow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:textSize="20sp"
+                android:text="Select Date Below"/>
+
+            <EditText
+                android:id="@+id/editDate"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:textSize="16sp"
+                android:gravity="center_horizontal"
+                android:hint="Select Date"
+                android:inputType="date"
+                android:longClickable="false"
+                android:textAlignment="center"/>
+
+            <LinearLayout
+                android:paddingLeft="4.0dip"
+                android:paddingTop="5.0dip"
+                android:paddingRight="4.0dip"
+                android:paddingBottom="1.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/ClearData"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Clear"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/EnterData"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Enter"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/BackBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Bottom Value" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_alignParentBottom="true"
+            app:srcCompat="@android:drawable/ic_media_rew" />
 
-    <Button
-        android:id="@+id/EnterData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:text="Enter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ClearData"
-        app:layout_constraintTop_toBottomOf="@+id/editDate"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/ClearData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
-        android:text="Clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDate"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/Home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_media_previous" />
-
-    <ImageButton
-        android:id="@+id/BackBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_media_rew" />
-
-    <EditText
-        android:id="@+id/editDate"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="Select Date"
-        android:inputType="date"
-        android:longClickable="false"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectDateBelow" />
-
-    <TextView
-        android:id="@+id/selectDateBelow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:text="Select Date Below"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DiastolicInput" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
