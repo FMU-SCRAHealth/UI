@@ -24,6 +24,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
+    DatabaseHelper myDB;
+
     private Button MyHealthData;
     private Button  MyHealthResources;
     private boolean firstStart;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
+
+        myDB = new DatabaseHelper(this);
 
         /*First time open code*/
         SharedPreferences app_preferences = getApplicationContext()
