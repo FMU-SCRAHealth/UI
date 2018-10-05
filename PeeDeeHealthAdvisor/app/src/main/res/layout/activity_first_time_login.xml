@@ -34,10 +34,11 @@
                 android:layout_height="75dp"
                 android:layout_marginStart="75dp"
                 android:layout_marginTop="3dp"
+                android:fontFamily="@font/catamaran_bold"
                 android:text="Welcome to Health Advisor"
                 android:textAlignment="center"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"

@@ -46,7 +46,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Enter Vaccination"
+                android:text="@string/enterVaccination"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -122,7 +122,11 @@
                         android:layout_marginTop="10dp"
                         android:layout_width="125dp"
                         android:layout_height="62dp"
-                        android:text="Clear" />
+                        android:background="@drawable/mybutton"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:textColor="@color/white"
+                        android:text="@string/clear" />
 
                     <View
                         android:layout_width="0dp"
@@ -134,7 +138,11 @@
                         android:layout_marginTop="10dp"
                         android:layout_width="125dp"
                         android:layout_height="62dp"
-                        android:text="Enter" />
+                        android:background="@drawable/mybutton"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:textColor="@color/white"
+                        android:text="@string/enter" />
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"

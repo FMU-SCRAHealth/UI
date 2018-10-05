@@ -35,7 +35,7 @@
                 android:id="@+id/MyHeaalthDataScreen"
                 android:layout_width="220dp"
                 android:layout_height="80dp"
-                android:text="My Health Data"
+                android:text="@string/myHealthData"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:textSize="30sp"

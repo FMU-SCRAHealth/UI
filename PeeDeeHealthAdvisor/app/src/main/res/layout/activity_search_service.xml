@@ -33,7 +33,7 @@
                 android:layout_width="215dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="5dp"
-                android:text="Service Search"
+                android:text="@string/serviceSearch"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="5dp"
@@ -55,7 +55,7 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="65dp">
+            android:layout_marginTop="45dp">
 
             <TextView
                 android:id="@+id/SearchForThese"
@@ -67,60 +67,63 @@
 
             <CheckBox
                 android:id="@+id/BloodSugarCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
-                android:text="Blood Sugar"
+                android:text="@string/bloodSugar"
                 app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />
 
             <CheckBox
                 android:id="@+id/BloodPressureCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
-                android:text="Blood Pressure"
+                android:text="@string/bloodPressure"
                 app:layout_constraintTop_toBottomOf="@+id/BloodSugarCheckBox" />
 
             <CheckBox
                 android:id="@+id/CholesterolCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="Cholesterol"
                 app:layout_constraintTop_toBottomOf="@+id/BloodPressureCheckBox" />
 
             <CheckBox
                 android:id="@+id/FlueShotCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="Flu Shot"
                 app:layout_constraintTop_toBottomOf="@+id/CholesterolCheckBox" />
 
             <CheckBox
                 android:id="@+id/ShinglesVaccinationCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="Shingles Vaccination"
                 app:layout_constraintTop_toBottomOf="@+id/FlueShotCheckBox" />
 
             <CheckBox
                 android:id="@+id/PneumoniaVaccinationCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
                 android:textSize="20dp"
                 android:text="Pneumonia Vaccination"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.594"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ShinglesVaccinationCheckBox" />
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginStart="10dp"/>
 
             <Button
                 android:id="@+id/Search"
@@ -129,9 +132,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="15dp"
                 android:text="Search"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/PneumoniaVaccinationCheckBox" />
+                android:layout_marginStart="10dp" />
 
         </LinearLayout>
 
