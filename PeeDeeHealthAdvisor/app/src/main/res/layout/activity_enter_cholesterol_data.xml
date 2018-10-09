@@ -36,13 +36,13 @@
                 android:id="@+id/Home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
             <TextView
                 android:id="@+id/EnterCholesterolScreen"
                 android:layout_width="246dp"
                 android:layout_height="75dp"
-                android:text="Enter Cholesterol"
+                android:text="@string/enterCholesterol"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
@@ -195,20 +195,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/BackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@android:drawable/ic_media_rew"/>
-
-    </RelativeLayout>
-
 
 </android.support.constraint.ConstraintLayout>

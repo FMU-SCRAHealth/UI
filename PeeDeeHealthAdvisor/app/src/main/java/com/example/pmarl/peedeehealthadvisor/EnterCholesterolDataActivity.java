@@ -29,8 +29,6 @@ import java.util.Locale;
 public class EnterCholesterolDataActivity extends AppCompatActivity
 {
     private ImageButton home;
-    private ImageButton backBtn;
-
     private Context context = this;
     private EditText editDate;
     private Calendar myCalendar = Calendar.getInstance();
@@ -98,19 +96,16 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
             }
         });
 
-        backBtn = (ImageButton) findViewById(R.id.BackBtn);
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchprevActivity();
-            }
-        });
     }
 
     private void updateDate()
     {
         editDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    @Override
+    public void onBackPressed() {
+        launchPrevActivity();
     }
 
     private void launchMainActivity()
@@ -122,7 +117,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
     }
 
-    private void launchprevActivity()
+    private void launchPrevActivity()
     {
         Intent intent = new Intent (this, SelectDataActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);

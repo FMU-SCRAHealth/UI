@@ -28,7 +28,6 @@ import java.util.Locale;
 public class EnterBloodPressureDataActivity extends AppCompatActivity //github test
 {
     private ImageButton home;
-    private ImageButton backBtn;
 
     Context context = this;
     EditText editDate;
@@ -90,21 +89,16 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             }
         });
 
-        backBtn = (ImageButton) findViewById(R.id.BackBtn);
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchprevActivity();
-            }
-        });
-
-
     }
 
     private void updateDate()
     {
         editDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    @Override
+    public void onBackPressed() {
+        launchPrevActivity();
     }
 
     private void launchMainActivity()
@@ -116,7 +110,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 
     }
 
-    private void launchprevActivity()
+    private void launchPrevActivity()
     {
         Intent intent = new Intent (this, SelectDataActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);

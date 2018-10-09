@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light">
 
         // DECLARING THE ENTRANCE OF THE APP
         <activity android:name=".MainActivity"
@@ -59,6 +59,7 @@
             android:name=".MyHealthDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
+
         </activity>
 
         // DECLARING THE SEARCH LOCATION ACTIVITY
@@ -87,6 +88,9 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
     </application>
 

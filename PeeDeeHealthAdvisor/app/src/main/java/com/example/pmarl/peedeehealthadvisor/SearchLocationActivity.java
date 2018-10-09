@@ -30,7 +30,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 {
     //List of the instantiated attribuites
     private ImageButton home;               //Home Button
-    private ImageButton backBtn;            //Back Button
     private Spinner Spinner;                //Spinner for the distance radius
     private CheckBox nearBy;                //Near By check box
     private CheckBox city;                  //City Check box
@@ -155,21 +154,16 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         });
 
 
-        this.backBtn = (ImageButton) findViewById(R.id.BackBtn);
-        this.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchPrevActivity();
-            }
-        });
-
-
-
         Spinner =  findViewById(R.id.milesSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.distances,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner.setAdapter(adapter);
         Spinner.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        launchPrevActivity();
     }
 
     private void launchMainActivity()

@@ -21,7 +21,6 @@ import android.widget.ImageButton;
 public class MyHealthDataActivity extends AppCompatActivity
 {
     private ImageButton home;
-    private ImageButton backBtn;
     private Button graph;
     private Button enterData;
 
@@ -32,8 +31,6 @@ public class MyHealthDataActivity extends AppCompatActivity
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_my_health_data);
 
-
-
         this.home = (ImageButton) findViewById(R.id.Home);
 
         this.home.setOnClickListener(new View.OnClickListener() {
@@ -43,17 +40,6 @@ public class MyHealthDataActivity extends AppCompatActivity
             }
         });
 
-
-        this.backBtn = (ImageButton) findViewById(R.id.BackBtn);
-
-        this.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchMainActivity();
-            }
-        });
-
-
         this.graph = (Button) findViewById(R.id.ViewData);
 
         this.graph.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +48,6 @@ public class MyHealthDataActivity extends AppCompatActivity
                 launchGraphActivity();
             }
         });
-
 
         this.enterData = (Button) findViewById(R.id.EnterData);
 
@@ -74,9 +59,22 @@ public class MyHealthDataActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        launchPrevActivity();
+    }
 
 
     private void launchMainActivity()
+    {
+        Intent intent = new Intent (this, MainActivity.class);
+        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+
+    }
+
+    private void launchPrevActivity()
     {
         Intent intent = new Intent (this, MainActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);

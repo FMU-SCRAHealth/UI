@@ -1,5 +1,25 @@
 <resources>
     <string name="app_name">Pee Dee Health Advisor</string>
+    <string name="healthAdvisor">Health Advisor</string>
+    <string name="myHealthData">My Health Data</string>
+    <string name="serviceSearch">Service Search</string>
+    <string name="healthEntry">Health Entry</string>
+    <string name="enterBloodPressure">Enter Blood Pressure</string>
+    <string name="enterBloodSugar">Enter Blood Sugar</string>
+    <string name="enterCholesterol">Enter Cholesterol</string>
+    <string name="enterVaccination">Enter Vaccination</string>
+    <string name="graph">Graph</string>
+    <string name="nearLocation">Near Your Location</string>
+    <string name="search">Search</string>
+    <string name="enter">Enter</string>
+    <string name="clear">Clear</string>
+    <string name="go">Go</string>
+    <string name="myHealthResources">My Health Resources</string>
+    <string name="bloodPressure">Blood Pressure</string>
+    <string name="bloodSugar">Blood Sugar</string>
+    <string name="city">City</string>
+    <string name="searchBy">Search by:</string>
+    <string name="zip">ZIP Code</string>
 
     <string-array name="distances">
         <item>Radius</item>

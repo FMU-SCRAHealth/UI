@@ -33,7 +33,7 @@
                 android:layout_width="215dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="5dp"
-                android:text="Service Search"
+                android:text="@string/serviceSearch"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="5dp"
@@ -43,10 +43,10 @@
                 android:id="@+id/Home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_alignParentLeft="true"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
         </RelativeLayout>
 
@@ -55,7 +55,7 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="65dp">
+            android:layout_marginTop="45dp">
 
             <TextView
                 android:id="@+id/SearchForThese"
@@ -67,85 +67,95 @@
 
             <CheckBox
                 android:id="@+id/BloodSugarCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
-                android:text="Blood Sugar"
+                android:text="@string/bloodSugar"
                 app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />
 
             <CheckBox
                 android:id="@+id/BloodPressureCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
-                android:text="Blood Pressure"
+                android:text="@string/bloodPressure"
                 app:layout_constraintTop_toBottomOf="@+id/BloodSugarCheckBox" />
 
             <CheckBox
                 android:id="@+id/CholesterolCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="Cholesterol"
                 app:layout_constraintTop_toBottomOf="@+id/BloodPressureCheckBox" />
 
             <CheckBox
                 android:id="@+id/FlueShotCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="Flu Shot"
                 app:layout_constraintTop_toBottomOf="@+id/CholesterolCheckBox" />
 
             <CheckBox
                 android:id="@+id/ShinglesVaccinationCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="Shingles Vaccination"
                 app:layout_constraintTop_toBottomOf="@+id/FlueShotCheckBox" />
 
+
+            <!--android:textColor="@color/colorPrimaryDark"-->
             <CheckBox
                 android:id="@+id/PneumoniaVaccinationCheckBox"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="20dp"
                 android:textSize="20dp"
                 android:text="Pneumonia Vaccination"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.594"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ShinglesVaccinationCheckBox" />
+                android:layout_marginStart="10dp"/>
 
-            <Button
-                android:id="@+id/Search"
-                android:layout_width="125dp"
-                android:layout_height="62dp"
-                android:layout_marginTop="20dp"
-                android:textSize="15dp"
-                android:text="Search"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/PneumoniaVaccinationCheckBox" />
+            <LinearLayout
+                android:paddingLeft="4.0dip"
+                android:paddingTop="5.0dip"
+                android:paddingRight="4.0dip"
+                android:paddingBottom="1.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/Search"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="15dp"
+                    android:text="Search"
+                    android:layout_marginStart="10dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageButton
-            android:id="@+id/BackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@android:drawable/ic_media_rew" />
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

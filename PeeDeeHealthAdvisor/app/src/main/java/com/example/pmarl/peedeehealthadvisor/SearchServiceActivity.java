@@ -25,7 +25,6 @@ import android.widget.Toast;
 public class SearchServiceActivity extends AppCompatActivity
 {
     private ImageButton home;
-    private ImageButton backBtn;
     private Button search;
 
 
@@ -44,16 +43,6 @@ public class SearchServiceActivity extends AppCompatActivity
             }
         });
 
-
-        this.backBtn = (ImageButton) findViewById(R.id.BackBtn);
-
-        this.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchMainActivity();
-            }
-        });
-
         this.search = (Button) findViewById(R.id.Search);
 
         this.search.setOnClickListener(new View.OnClickListener() {
@@ -63,10 +52,11 @@ public class SearchServiceActivity extends AppCompatActivity
             }
         });
 
+    }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        launchMainActivity();
     }
 
     private void launchMainActivity()
