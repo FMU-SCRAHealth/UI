@@ -39,7 +39,7 @@
                 android:layout_marginTop="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
             <TextView
                 android:id="@+id/EnterBloodSugarScreen"
@@ -125,23 +125,28 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
+                <!--android:backgroundTint="@color/colorPrimaryDark"-->
+                <!--android:background="@drawable/mybutton"-->
+                <!--android:fontFamily="@font/catamaran_bold"-->
+                <!--android:textColor="@color/white"-->
                 <Button
                     android:id="@+id/clearData"
                     android:layout_width="125dp"
                     android:layout_height="62dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="6dp"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    android:background="@drawable/mybutton"
-                    android:fontFamily="@font/catamaran_bold"
                     android:text="@string/clear"
-                    android:textColor="@color/white" />
+                    />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
+
+                <!--android:fontFamily="@font/catamaran_bold"-->
+                <!--android:background="@drawable/mybutton"-->
+                <!--android:textColor="@color/white"-->
                 <Button
                     android:id="@+id/enterData"
                     android:layout_width="125dp"
@@ -149,9 +154,7 @@
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="6dp"
                     android:text="@string/enter"
-                    android:fontFamily="@font/catamaran_bold"
-                    android:background="@drawable/mybutton"
-                    android:textColor="@color/white"/>
+                    />
 
                 <View
                     android:layout_width="1dp"
@@ -163,19 +166,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/BackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@android:drawable/ic_media_rew" />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

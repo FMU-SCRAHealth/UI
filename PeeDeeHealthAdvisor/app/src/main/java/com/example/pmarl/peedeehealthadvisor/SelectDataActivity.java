@@ -22,7 +22,6 @@ public class SelectDataActivity extends AppCompatActivity
 {
 
     private ImageButton home;
-    private ImageButton backBtn;
     private Button enterBloodPressure;
     private Button enterBloodSugar;
     private Button enterCholesterol;
@@ -41,15 +40,6 @@ public class SelectDataActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 launchMainActivity();
-            }
-        });
-
-        backBtn = (ImageButton) findViewById(R.id.BackBtn);
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchPrevActivity();
             }
         });
 
@@ -90,6 +80,11 @@ public class SelectDataActivity extends AppCompatActivity
         });
     }
 
+
+    @Override
+    public void onBackPressed() {
+        launchPrevActivity();
+    }
 
     private void launchMainActivity()
     {

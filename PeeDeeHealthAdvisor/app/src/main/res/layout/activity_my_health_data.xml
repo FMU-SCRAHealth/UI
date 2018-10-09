@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
         </RelativeLayout>
 
@@ -78,20 +78,5 @@
         </LinearLayout> <!--End of bottom LinearLayout-->
 
     </LinearLayout> <!--End of larger LinearLayout-->
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        >
-
-        <ImageButton
-            android:id="@+id/BackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@android:drawable/ic_media_rew" />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

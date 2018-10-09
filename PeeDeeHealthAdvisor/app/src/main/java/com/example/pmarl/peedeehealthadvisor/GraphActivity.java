@@ -28,7 +28,6 @@ import java.util.ArrayList;
 public class GraphActivity extends AppCompatActivity
 {
     private ImageButton home;
-    private ImageButton backBtn;
     BarChart barChart;
 
 
@@ -44,15 +43,6 @@ public class GraphActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 launchMainActivity();
-            }
-        });
-
-        backBtn = (ImageButton) findViewById(R.id.BackBtn);
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchPrevActivity();
             }
         });
 
@@ -105,6 +95,11 @@ public class GraphActivity extends AppCompatActivity
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(true);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        launchPrevActivity();
     }
 
     private void launchMainActivity()

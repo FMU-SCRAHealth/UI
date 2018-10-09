@@ -37,7 +37,7 @@
                 android:id="@+id/Home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
             <TextView
                 android:id="@+id/MyHealthGraph"
@@ -105,21 +105,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/BackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@android:drawable/ic_media_rew" />
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

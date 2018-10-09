@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
             <TextView
                 android:id="@+id/EnterVaccinationScreen"
@@ -117,15 +117,16 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
-                    <Button
+
+                <!--android:background="@drawable/mybutton"-->
+                <!--android:fontFamily="@font/catamaran_bold"-->
+                <!--android:backgroundTint="@color/colorPrimaryDark"-->
+                <!--android:textColor="@color/white"-->
+                <Button
                         android:id="@+id/clearData3"
                         android:layout_marginTop="10dp"
                         android:layout_width="125dp"
                         android:layout_height="62dp"
-                        android:background="@drawable/mybutton"
-                        android:fontFamily="@font/catamaran_bold"
-                        android:backgroundTint="@color/colorPrimaryDark"
-                        android:textColor="@color/white"
                         android:text="@string/clear" />
 
                     <View
@@ -133,15 +134,17 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"/>
 
+
+                <!--android:background="@drawable/mybutton"-->
+                <!--android:fontFamily="@font/catamaran_bold"-->
+                <!--android:backgroundTint="@color/colorPrimaryDark"-->
+                <!--android:textColor="@color/white"-->
                     <Button
                         android:id="@+id/enterData3"
                         android:layout_marginTop="10dp"
                         android:layout_width="125dp"
                         android:layout_height="62dp"
-                        android:background="@drawable/mybutton"
-                        android:fontFamily="@font/catamaran_bold"
-                        android:backgroundTint="@color/colorPrimaryDark"
-                        android:textColor="@color/white"
+
                         android:text="@string/enter" />
                 <View
                     android:layout_width="1dp"
@@ -153,20 +156,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
-
-            <ImageButton
-                android:id="@+id/BackBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                app:srcCompat="@android:drawable/ic_media_rew" />
-
-        </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
