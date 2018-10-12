@@ -63,7 +63,7 @@
                 android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:textSize="20sp"
-                android:text="View Data"
+                android:text="@string/viewData"
                 app:layout_constraintTop_toBottomOf="@+id/MyHeaalthDataScreen" />
 
             <Button
@@ -72,7 +72,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="30dp"
                 android:textSize="20sp"
-                android:text="Enter Data"
+                android:text="@string/enterData"
                 app:layout_constraintTop_toBottomOf="@+id/ViewData" />
 
         </LinearLayout> <!--End of bottom LinearLayout-->

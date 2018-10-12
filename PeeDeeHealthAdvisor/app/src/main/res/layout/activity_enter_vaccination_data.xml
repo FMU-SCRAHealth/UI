@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Select Date Below"
+                android:text="@string/selectDateBelow"
                 android:textSize="20sp" />
 
             <EditText
@@ -75,7 +75,7 @@
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="Select Date"
+                android:hint="@string/selectDate"
                 android:inputType="date"
                 android:longClickable="false"
                 android:textAlignment="center" />
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
-                android:text="Vaccination Name" />
+                android:text="@string/vaccinationName" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/VaccNameInput"
@@ -99,7 +99,7 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
+                    android:hint="@string/name"
                     android:gravity="center_horizontal"
                     android:singleLine="true" />
 
