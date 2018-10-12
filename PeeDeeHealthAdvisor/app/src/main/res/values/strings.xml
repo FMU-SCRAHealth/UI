@@ -57,9 +57,6 @@
     <string name="shinglesVaccination">Shingles Vaccination</string>
     <string name="pneumoniaVaccination">Pneumonia Vaccination</string>
 
-
-
-
     <string-array name="distances">
         <item>Radius</item>
         <item>5 Miles</item>
