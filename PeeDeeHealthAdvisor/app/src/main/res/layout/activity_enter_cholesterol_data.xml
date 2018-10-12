@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:textSize="20sp"
-                android:text="High Density Lipoprotein"/>
+                android:text="@string/highDensityLipoprotein"/>
 
 
             <android.support.design.widget.TextInputLayout
@@ -79,7 +79,7 @@
                     android:inputType="number"
                     android:gravity="center_horizontal"
                     android:textSize="16sp"
-                    android:hint="HDL-Top Value"/>
+                    android:hint="@string/hDLTop"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
-                android:text="Low Density Lipoprotein"/>
+                android:text="@string/lowDensityLBottom"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/LDLInput"
@@ -103,7 +103,7 @@
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:textSize="16sp"
-                android:hint="LDL-Bottom Value" />
+                android:hint="@string/lDLBottom" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
-                android:text="Total Cholesterol" />
+                android:text="@string/totalCholesterol" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/TCInput"
@@ -127,7 +127,7 @@
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:textSize="16sp"
-                android:hint="TC" />
+                android:hint="@string/tc" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="20sp"
-                android:text="Select Date Below"/>
+                android:text="@string/selectDateBelow"/>
 
             <EditText
                 android:id="@+id/editDate"
@@ -146,7 +146,7 @@
                 android:ems="10"
                 android:focusable="false"
                 android:textSize="16sp"
-                android:hint="Select Date"
+                android:hint="@string/selectDate"
                 android:inputType="date"
                 android:longClickable="false"
                 android:textAlignment="center"/>
@@ -170,7 +170,7 @@
                     android:layout_width="125dp"
                     android:layout_height="62dp"
                     android:layout_marginTop="10dp"
-                    android:text="Clear"/>
+                    android:text="@string/clear"/>
 
                 <View
                     android:layout_width="0dp"
@@ -183,7 +183,7 @@
                     android:layout_height="62dp"
                     android:layout_marginStart="9dp"
                     android:layout_marginTop="10dp"
-                    android:text="Enter"/>
+                    android:text="@string/enter"/>
 
                 <View
                     android:layout_width="1dp"

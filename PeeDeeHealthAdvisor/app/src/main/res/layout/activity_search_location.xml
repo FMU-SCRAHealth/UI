@@ -89,7 +89,7 @@
                 android:id="@+id/inputedCity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="City Name"
+                android:hint="@string/cityName"
                 android:singleLine="true"
                 android:visibility="visible" />
 
@@ -121,7 +121,7 @@
                     android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="ZIP Code"
+                    android:hint="@string/zip"
                     android:visibility="visible" />
 
             </android.support.design.widget.TextInputLayout>
@@ -132,7 +132,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/catamaran_bold"
-            android:text="Near By"
+            android:text="@string/nearBy"
             android:textAlignment="textStart"
             android:textSize="20dp"
             app:layout_constraintTop_toBottomOf="@+id/SearchBy" />
@@ -165,7 +165,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="0dp"
             android:textSize="15dp"
-            android:text="Go"
+            android:text="@string/go"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
