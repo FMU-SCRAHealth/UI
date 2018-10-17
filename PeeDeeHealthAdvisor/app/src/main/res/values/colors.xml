@@ -6,4 +6,10 @@
         <color name="colorAccent">#FF4081</color>
         <color name="blueFont">#33d6ff</color>
         <color name="white">#ffffff</color>
+
+    <color name="themeBlue">#80dfff</color>
+    <color name="themeGreen">#e6fff7</color>
+    <color name="themeRed">#ff9999</color>
+    <color name="themeGray">#cccccc</color>
+    <color name="BGWhite">#e6ffff</color>
     </resources>

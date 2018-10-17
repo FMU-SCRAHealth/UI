@@ -35,6 +35,7 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/serviceSearch"
                 android:textSize="30sp"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:layout_marginEnd="5dp"
                 android:layout_alignParentEnd="true" />
@@ -55,7 +56,7 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="45dp">
+            android:layout_marginTop="75dp">
 
             <TextView
                 android:id="@+id/SearchForThese"
@@ -63,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="@string/searchForTheseServices"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintTop_toBottomOf="@+id/SearchServiceScreen" />
 
             <CheckBox
@@ -73,6 +75,7 @@
                 android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="@string/bloodSugar"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />
 
             <CheckBox
@@ -83,6 +86,7 @@
                 android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="@string/bloodPressure"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintTop_toBottomOf="@+id/BloodSugarCheckBox" />
 
             <CheckBox
@@ -93,6 +97,7 @@
                 android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="@string/cholesterol"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintTop_toBottomOf="@+id/BloodPressureCheckBox" />
 
             <CheckBox
@@ -103,6 +108,7 @@
                 android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="@string/fluShot"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintTop_toBottomOf="@+id/CholesterolCheckBox" />
 
             <CheckBox
@@ -113,6 +119,7 @@
                 android:layout_marginStart="10dp"
                 android:textSize="20dp"
                 android:text="@string/shinglesVaccination"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintTop_toBottomOf="@+id/FlueShotCheckBox" />
 
 
@@ -124,6 +131,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="20dp"
                 android:text="@string/pneumoniaVaccination"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_marginStart="10dp"/>
 
             <LinearLayout
@@ -142,10 +150,13 @@
                     android:id="@+id/Search"
                     android:layout_width="125dp"
                     android:layout_height="62dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:textSize="15dp"
                     android:text="@string/search"
-                    android:layout_marginStart="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
 
                 <View
                     android:layout_width="1dp"

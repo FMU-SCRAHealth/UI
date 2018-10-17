@@ -47,6 +47,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/enterVaccination"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -66,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="@string/selectDateBelow"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
 
             <EditText
@@ -86,7 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
-                android:text="@string/vaccinationName" />
+                android:text="@string/vaccinationName"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/VaccNameInput"
@@ -100,6 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/name"
+                    android:textColor="@color/colorPrimaryDark"
                     android:gravity="center_horizontal"
                     android:singleLine="true" />
 
@@ -123,29 +127,34 @@
                 <!--android:backgroundTint="@color/colorPrimaryDark"-->
                 <!--android:textColor="@color/white"-->
                 <Button
-                        android:id="@+id/clearData3"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="125dp"
-                        android:layout_height="62dp"
-                        android:text="@string/clear" />
+                    android:id="@+id/clearData3"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:text="@string/clear"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
 
 
                 <!--android:background="@drawable/mybutton"-->
                 <!--android:fontFamily="@font/catamaran_bold"-->
                 <!--android:backgroundTint="@color/colorPrimaryDark"-->
                 <!--android:textColor="@color/white"-->
-                    <Button
-                        android:id="@+id/enterData3"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="125dp"
-                        android:layout_height="62dp"
-
-                        android:text="@string/enter" />
+                <Button
+                    android:id="@+id/enterData3"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:text="@string/enter"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"

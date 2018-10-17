@@ -37,8 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
             <TextView
@@ -51,11 +49,7 @@
                 android:text="@string/enterBloodSugar"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                android:textColor="@color/colorPrimaryDark" />
 
         </RelativeLayout>
 
@@ -72,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:textSize="20sp"
-                android:text="@string/bloodSugarLevel"/>
+                android:text="@string/bloodSugarLevel"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/bloodSugarInput"
@@ -86,6 +81,7 @@
                     android:textSize="16sp"
                     android:gravity="center_horizontal"
                     android:hint="@string/mlDL"
+                    android:textColor="@color/colorPrimaryDark"
                     android:inputType="number"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
@@ -96,7 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
-                android:text="@string/selectDateBelow"/>
+                android:text="@string/selectDateBelow"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <EditText
                 android:id="@+id/editDate"
@@ -136,6 +133,8 @@
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="6dp"
                     android:text="@string/clear"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
                     />
 
                 <View
@@ -154,6 +153,8 @@
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="6dp"
                     android:text="@string/enter"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
                     />
 
                 <View
