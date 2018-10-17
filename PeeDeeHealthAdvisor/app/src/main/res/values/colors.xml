@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
     <resources>
         <!--Deafult android system colors DO NOT CHANGE COLOR-->
-        <color name="colorPrimary">#33d6ff</color>
+        <color name="colorPrimary">#e6ffff</color>
         <color name="colorPrimaryDark">#303F9F</color>
         <color name="colorAccent">#FF4081</color>
-        <color name="blueFont">#33d6ff</color>
+        <color name="blueFont">#80dfff</color>
         <color name="white">#ffffff</color>
 
-    <color name="themeBlue">#80dfff</color>
+    <color name="themeBlue">#303F9F</color>
     <color name="themeGreen">#e6fff7</color>
     <color name="themeRed">#ff9999</color>
     <color name="themeGray">#cccccc</color>
