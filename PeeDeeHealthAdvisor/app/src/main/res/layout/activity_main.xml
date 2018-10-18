@@ -35,8 +35,10 @@
                 android:id="@+id/AppLogo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                app:srcCompat="@android:drawable/ic_menu_myplaces"/>
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_homeicon"/>
+
 
             <!--android:fontFamily="@font/catamaran_bold"-->
             <!--android:textColor="@color/colorPrimaryDark"-->
@@ -49,7 +51,8 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/healthAdvisor"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"/>
 
         </RelativeLayout>
 
@@ -57,21 +60,19 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="90dp"
             android:gravity="center_horizontal"
             >
             <!-- Styling for the ovals and colors -->
-            <!--android:backgroundTint="@color/colorPrimaryDark"-->
-            <!--android:background="@drawable/mybutton"-->
-            <!--android:fontFamily="@font/catamaran_bold"-->
-            <!--android:textColor="@color/white"-->
 
             <Button
                 android:id="@+id/MyHealthData"
                 android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:textSize="20sp"
-                android:text="@string/myHealthData"/>
+                android:text="@string/myHealthData"
+                android:background="@drawable/mybutton"
+                android:textColor="@color/white"/>
 
             <!-- Styling for the ovals and colors -->
             <!--android:backgroundTint="@color/colorPrimaryDark"-->
@@ -84,7 +85,9 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="30dp"
                 android:textSize="20sp"
-                android:text="@string/myHealthResources" />
+                android:text="@string/myHealthResources"
+                android:background="@drawable/mybutton"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 

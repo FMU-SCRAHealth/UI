@@ -34,15 +34,18 @@
 
             <ImageButton
                 android:id="@+id/Home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/ic_menu_myplaces" />
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_homebuttonreverse" />
 
             <TextView
                 android:id="@+id/EnterCholesterolScreen"
                 android:layout_width="246dp"
                 android:layout_height="75dp"
                 android:text="@string/enterCholesterol"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
@@ -64,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:textSize="20sp"
-                android:text="@string/highDensityLipoprotein"/>
+                android:text="@string/highDensityLipoprotein"
+                android:textColor="@color/colorPrimaryDark"/>
 
 
             <android.support.design.widget.TextInputLayout
@@ -79,7 +83,8 @@
                     android:inputType="number"
                     android:gravity="center_horizontal"
                     android:textSize="16sp"
-                    android:hint="@string/hDLTop"/>
+                    android:hint="@string/hDLTop"
+                    android:textColor="@color/colorPrimaryDark"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -89,7 +94,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
-                android:text="@string/lowDensityLBottom"/>
+                android:text="@string/lowDensityLBottom"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/LDLInput"
@@ -103,7 +109,8 @@
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:textSize="16sp"
-                android:hint="@string/lDLBottom" />
+                android:hint="@string/lDLBottom"
+                android:textColor="@color/colorPrimaryDark"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -113,7 +120,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
-                android:text="@string/totalCholesterol" />
+                android:text="@string/totalCholesterol"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/TCInput"
@@ -137,7 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="20sp"
-                android:text="@string/selectDateBelow"/>
+                android:text="@string/selectDateBelow"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <EditText
                 android:id="@+id/editDate"
@@ -170,7 +179,10 @@
                     android:layout_width="125dp"
                     android:layout_height="62dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/clear"/>
+                    android:text="@string/clear"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
 
                 <View
                     android:layout_width="0dp"
@@ -183,7 +195,10 @@
                     android:layout_height="62dp"
                     android:layout_marginStart="9dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/enter"/>
+                    android:text="@string/enter"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
 
                 <View
                     android:layout_width="1dp"
