@@ -56,6 +56,7 @@
     <string name="vaccinationName">Vaccination Name</string>
     <string name="shinglesVaccination">Shingles Vaccination</string>
     <string name="pneumoniaVaccination">Pneumonia Vaccination</string>
+    <string name="gender">Gender</string>
 
     <string-array name="distances">
         <item>Radius</item>

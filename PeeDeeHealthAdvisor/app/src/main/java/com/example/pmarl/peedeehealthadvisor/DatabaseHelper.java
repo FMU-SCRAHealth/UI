@@ -1,5 +1,6 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -32,7 +33,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     public DatabaseHelper(Context context)
     {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
+
     }
 
     @Override
@@ -53,6 +54,24 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + USER_TABLE_NAME);
         onCreate(sqLiteDatabase);
+
+    }
+
+    public boolean insertData(String name, String DOB, String gender)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(USER_COL_1,name);
+        contentValues.put(USER_COL_2,DOB);
+        contentValues.put(USER_COL_3,gender);
+
+        long result = db.insert(USER_TABLE_NAME,null,contentValues);
+        if (result == -1)
+            return false;
+        else
+            return true;
 
     }
 }
