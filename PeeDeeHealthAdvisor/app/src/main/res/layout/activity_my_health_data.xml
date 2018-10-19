@@ -17,6 +17,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".MyHealthDataActivity">
 
     <LinearLayout
@@ -38,7 +39,7 @@
                 android:text="@string/myHealthData"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="2dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"/>

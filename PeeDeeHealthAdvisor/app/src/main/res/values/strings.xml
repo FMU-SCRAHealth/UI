@@ -7,15 +7,15 @@
     <string name="lastName">Last Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="viewData">View Data</string>
-    <string name="enterData">Enter Data</string>
+    <string name="viewData">Graph</string>
+    <string name="enterData">Update Journal</string>
     <string name="nearBy">Near By</string>
     <string name="cityName">City Name</string>
     <string name="healthAdvisor">Health Advisor</string>
     <string name="selectBirthDateBelow">Select Birth Date Below</string>
-    <string name="myHealthData">My Health Data</string>
+    <string name="myHealthData">Health Journal</string>
     <string name="serviceSearch">Service Search</string>
-    <string name="healthEntry">Health Entry</string>
+    <string name="healthEntry">Journal Entry</string>
     <string name="enterBloodPressure">Enter Blood Pressure</string>
     <string name="enterBloodSugar">Enter Blood Sugar</string>
     <string name="selectDateBelow">Select Date Below</string>
@@ -25,9 +25,9 @@
     <string name="bottomValue">Bottom Value</string>
     <string name="diastolic">Diastolic</string>
     <string name="enterCholesterol">Enter Cholesterol</string>
-    <string name="enterCholesterolLevels">Enter Cholesterol Levels</string>
-    <string name="enterBloodSugarLevels">Enter Blood Sugar Levels</string>
-    <string name="enterVaccinationRecords">Enter Vaccination Records</string>
+    <string name="enterCholesterolLevels">Enter Cholesterol</string>
+    <string name="enterBloodSugarLevels">Enter Blood Sugar</string>
+    <string name="enterVaccinationRecords">Enter Vaccination Record</string>
     <string name="cholesterol">Cholesterol</string>
     <string name="enterVaccination">Enter Vaccination</string>
     <string name="vaccination">Vaccinations</string>
@@ -38,7 +38,7 @@
     <string name="enter">Enter</string>
     <string name="clear">Clear</string>
     <string name="mlDL">mg/dL</string>
-    <string name="myHealthResources">My Health Resources</string>
+    <string name="myHealthResources">Health Resources</string>
     <string name="bloodPressure">Blood Pressure</string>
     <string name="bloodSugar">Blood Sugar</string>
     <string name="bloodSugarLevel">Blood Sugar Level</string>
@@ -53,7 +53,7 @@
     <string name="totalCholesterol">Total Cholesterol</string>
     <string name="tc">TC</string>
     <string name="name">Name</string>
-    <string name="vaccinationName">Vaccination Name</string>
+    <string name="vaccinationName">Vaccination Type</string>
     <string name="shinglesVaccination">Shingles Vaccination</string>
     <string name="pneumoniaVaccination">Pneumonia Vaccination</string>
     <string name="gender">Gender</string>
@@ -69,16 +69,16 @@
 
     <string-array name="distances">
         <item>Radius</item>
-        <item>5 Miles</item>
         <item>10 Miles</item>
-        <item>15 Miles</item>
-        <item>20 Miles</item>
-        <item>30 Miles</item>
-        <item>40 Miles</item>
+        <item>25 Miles</item>
         <item>50 Miles</item>
         <item>100 Miles</item>
-        <item>150 Miles</item>
-        <item>200 Miles</item>
-        <item>250 Miles</item>
+    </string-array>
+
+    <string-array name="vaccinations">
+        <item>Type</item>
+        <item>Shingle</item>
+        <item>Flu Shot</item>
+        <!--<item>15 Miles</item>-->
     </string-array>
 </resources>

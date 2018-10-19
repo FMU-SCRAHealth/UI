@@ -14,7 +14,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -91,6 +92,7 @@
                 android:text="@string/vaccinationName"
                 android:textColor="@color/colorPrimaryDark"/>
 
+<<<<<<< HEAD
             <Spinner
                 android:id="@+id/vaccinationSpinner"
                 android:layout_width="150dp"
@@ -98,6 +100,8 @@
                 android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
 
+=======
+>>>>>>> got new spinner working plus new names
             <!--<android.support.design.widget.TextInputLayout-->
                 <!--android:id="@+id/VaccNameInput"-->
                 <!--android:layout_marginBottom="25dp"-->
@@ -115,6 +119,16 @@
                     <!--android:singleLine="true" />-->
 
             <!--</android.support.design.widget.TextInputLayout>-->
+<<<<<<< HEAD
+=======
+
+            <Spinner
+                android:id="@+id/vaccinationSpinner"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
+>>>>>>> got new spinner working plus new names
 
             <LinearLayout
                 android:paddingLeft="4.0dip"
