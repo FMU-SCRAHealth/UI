@@ -20,18 +20,25 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class EnterVaccinationDataActivity extends AppCompatActivity
+
+public class EnterVaccinationDataActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     private ImageButton home;
 
     Context context = this;
     EditText editDate;
     Calendar myCalendar = Calendar.getInstance();
+    private Spinner Spinner;
     String dateFormat = "MM.dd.yyyy";
     DatePickerDialog.OnDateSetListener date;
     SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
@@ -82,6 +89,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity
         });
 
 
+
         home = (ImageButton) findViewById(R.id.Home);
 
         home.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +98,12 @@ public class EnterVaccinationDataActivity extends AppCompatActivity
                 launchMainActivity();
             }
         });
+
+        Spinner =  findViewById(R.id.vaccinationSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.vaccinations,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner.setAdapter(adapter);
+        Spinner.setOnItemSelectedListener(this);
 
     }
 
@@ -118,5 +132,20 @@ public class EnterVaccinationDataActivity extends AppCompatActivity
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
+    {
+        if(position != 0)
+        {
+            String text = parent.getItemAtPosition(position).toString();
+            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 public class SearchLocationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
-    //List of the instantiated attribuites
+    //List of the instantiated attributes
     private ImageButton home;               //Home Button
     private Spinner Spinner;                //Spinner for the distance radius
     private CheckBox nearBy;                //Near By check box
