@@ -76,7 +76,6 @@
     </string-array>
 
     <string-array name="vaccinations">
-        <item>Type</item>
         <item>Shingle</item>
         <item>Flu Shot</item>
         <!--<item>15 Miles</item>-->
