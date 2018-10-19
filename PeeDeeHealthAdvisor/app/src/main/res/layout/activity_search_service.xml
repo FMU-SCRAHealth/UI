@@ -31,14 +31,14 @@
 
             <TextView
                 android:id="@+id/SearchServiceScreen"
-                android:layout_width="215dp"
+                android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/serviceSearch"
                 android:textSize="30sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="6dp"
                 android:layout_alignParentEnd="true" />
 
             <ImageButton
