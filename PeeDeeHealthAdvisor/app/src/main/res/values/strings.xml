@@ -14,7 +14,7 @@
     <string name="healthAdvisor">Health Advisor</string>
     <string name="selectBirthDateBelow">Select Birth Date Below</string>
     <string name="myHealthData">Health Journal</string>
-    <string name="serviceSearch">Service Search</string>
+    <string name="serviceSearch">Health Resources</string>
     <string name="healthEntry">Journal Entry</string>
     <string name="enterBloodPressure">Enter Blood Pressure</string>
     <string name="enterBloodSugar">Enter Blood Sugar</string>
@@ -76,8 +76,8 @@
     </string-array>
 
     <string-array name="vaccinations">
+        <item>Select</item>
         <item>Shingle</item>
         <item>Flu Shot</item>
-        <!--<item>15 Miles</item>-->
     </string-array>
 </resources>
