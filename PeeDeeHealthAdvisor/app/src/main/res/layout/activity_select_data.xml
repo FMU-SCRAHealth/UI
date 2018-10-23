@@ -73,6 +73,7 @@
                         android:layout_width="170dp"
                         android:layout_height="128dp"
                         android:layout_marginTop="75dp"
+                        android:padding="3dp"
                         android:layout_marginEnd="3dp"
                         android:layout_alignParentEnd="true"
                         android:textSize="20sp"
