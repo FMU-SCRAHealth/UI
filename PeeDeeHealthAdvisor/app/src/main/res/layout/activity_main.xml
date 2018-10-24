@@ -45,10 +45,10 @@
             <!--android:textColor="@color/colorPrimaryDark"-->
             <TextView
                 android:id="@+id/AppName"
-                android:layout_width="209dp"
+                android:layout_width="265dp"
                 android:layout_height="80dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/healthAdvisor"
                 android:textSize="30sp"
@@ -69,10 +69,10 @@
             <Button
                 android:id="@+id/MyHealthData"
                 android:layout_width="200dp"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:textSize="20sp"
                 android:text="@string/myHealthData"
-                android:background="@drawable/mybutton"
+                android:background="@drawable/circle_buttons"
                 android:textColor="@color/white"/>
 
             <!-- Styling for the ovals and colors -->
@@ -83,12 +83,12 @@
             <Button
                 android:id="@+id/HealthResources"
                 android:layout_width="200dp"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="30dp"
                 android:textSize="20sp"
                 android:text="@string/myHealthResources"
                 android:padding="6dp"
-                android:background="@drawable/mybutton"
+                android:background="@drawable/circle_buttons"
                 android:textColor="@color/white"/>
 
         </LinearLayout>

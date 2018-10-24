@@ -22,9 +22,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -33,7 +35,8 @@ import java.util.Locale;
 
 public class EnterBloodSugarDataActivity extends AppCompatActivity
 {
-
+    private CheckBox fasting;                  // Fasting Checkbox
+    private CheckBox nonfasting;               // Nonfasting Checkbox
     private ImageButton home;
     private Context context = this;
     private EditText editDate;
@@ -92,6 +95,35 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
             }
         });
 
+
+         //Connects the fasting check box in the java class to the check box located on the screen
+//         this.fasting = (CheckBox) findViewById(R.id.BloodSugarCheckBoxFasting);
+
+         //Connects the nonfasting check box in the java class to the check box located on the screen
+//         this.nonfasting = (CheckBox) findViewById(R.id.BloodSugarCheckBoxNonFasting);
+
+
+//         fasting.setOnClickListener(new View.OnClickListener()
+//         {
+//             @Override
+//             public void onClick(View view)
+//             {
+//                 /*When the check box is checked the the Zip checkbox and the
+//                  * near by check box disappear and the city input text field appears*/
+//                 if(fasting.isChecked())
+//                 {
+//                     nonfasting.setChecked(false);
+//                 }
+//
+//                 /*if the city check box is unchecked then the zip check box and the
+//                  * near by check box appears and the city input text field disappears.*/
+//                 else if(fasting.isChecked() == false)
+//                 {
+//                     nonfasting.setChecked(true);
+//                 }
+//             }
+//         });
+
      }
 
 
@@ -123,5 +155,21 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
         finish();
     }
 
+    // method for the radio buttons for fasting and non fasting
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
 
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.fastingToggle:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.nonfastingToggle:
+                if (checked)
+                    // Ninjas rule
+                    break;
+        }
+    }
 }
