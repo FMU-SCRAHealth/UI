@@ -23,7 +23,7 @@ public class FirstTimeLogin extends AppCompatActivity
     //DatabaseHelper myDB;
     private Button enterData;
     private Button clearData;
-    private EditText firstNameText, lastNameText, genderText;
+    private TextInputEditText firstNameText, lastNameText, genderText;
 
     private Context context = this;
     private EditText editDate;
@@ -83,31 +83,42 @@ public class FirstTimeLogin extends AppCompatActivity
 
 
 
+
+
         enterData = (Button) findViewById(R.id.enterData);
 
         enterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                final String userFullName = firstNameText.getText().toString() + " " +
+                        lastNameText.getText().toString();
+
                boolean isInserted =
-                       MainActivity.myDB.insertData(firstNameText.getText().toString(),
+                       MainActivity.myDB.insertUserData(userFullName,
                         editDate.getText().toString(), genderText.getText().toString());
                if(isInserted = true)
                    Toast.makeText(FirstTimeLogin.this, "Data Inserted",Toast.LENGTH_LONG).show();
                else
                    Toast.makeText(FirstTimeLogin.this, "Data not Inserted", Toast.LENGTH_LONG).show();
 
-
-
-
-
-
-
-                launchMainActivity();
+               launchMainActivity();
             }
         });
 
         clearData = (Button) findViewById(R.id.clearData);
+
+        clearData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                firstNameText.setText("");
+                lastNameText.setText("");
+                genderText.setText("");
+                editDate.setText("");
+            }
+        });
 
         /*
         clearData.setOnClickListener(new View.OnClickListener() {
