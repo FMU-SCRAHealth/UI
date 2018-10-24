@@ -32,9 +32,9 @@
 
             <TextView
                 android:id="@+id/welcomeTextView"
-                android:layout_width="290dp"
+                android:layout_width="340dp"
                 android:layout_height="75dp"
-
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="3dp"
                 android:fontFamily="@font/catamaran_bold"
                 android:text="@string/welcomeToHealthAdvisor"
