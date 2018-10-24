@@ -155,6 +155,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
         finish();
     }
 
+
     // method for the radio buttons for fasting and non fasting
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
