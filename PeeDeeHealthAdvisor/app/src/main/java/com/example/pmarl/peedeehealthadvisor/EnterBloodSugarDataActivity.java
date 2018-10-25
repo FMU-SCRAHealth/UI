@@ -23,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -35,7 +36,6 @@ import java.util.Locale;
 
 public class EnterBloodSugarDataActivity extends AppCompatActivity
 {
-
     private Button clearData, enterData;
     private TextInputEditText bloodSugarInput;
     private ImageButton home;
@@ -98,9 +98,6 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                 launchMainActivity();
             }
         });
-
-
-
 
          enterData.setOnClickListener(new View.OnClickListener()
          {
@@ -176,5 +173,4 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                     break;
         }
     }
-
 }

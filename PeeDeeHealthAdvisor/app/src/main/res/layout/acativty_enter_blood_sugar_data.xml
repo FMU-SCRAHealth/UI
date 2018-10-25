@@ -88,6 +88,33 @@
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
 
+<<<<<<< HEAD
+=======
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodSugarCheckBoxFasting"-->
+                <!--android:layout_width="170dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:textSize="20dp"-->
+                <!--android:text="@string/fasting"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodSugarCheckBoxNonFasting"-->
+                <!--android:layout_width="170dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:textSize="20dp"-->
+                <!--android:text="@string/nonfasting"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />-->
+
+>>>>>>> 3902489a91ccd3564183162114619c083ed0070b
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

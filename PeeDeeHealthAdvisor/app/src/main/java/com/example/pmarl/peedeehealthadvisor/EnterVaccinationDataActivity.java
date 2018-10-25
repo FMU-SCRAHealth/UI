@@ -142,6 +142,8 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         }
     }
 
+
+    @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
