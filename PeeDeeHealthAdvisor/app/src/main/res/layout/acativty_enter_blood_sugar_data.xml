@@ -14,7 +14,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -41,7 +42,7 @@
 
             <TextView
                 android:id="@+id/EnterBloodSugarScreen"
-                android:layout_width="256dp"
+                android:layout_width="180dp"
                 android:layout_height="82dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
@@ -86,6 +87,30 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodSugarCheckBoxFasting"-->
+                <!--android:layout_width="170dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:textSize="20dp"-->
+                <!--android:text="@string/fasting"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodSugarCheckBoxNonFasting"-->
+                <!--android:layout_width="170dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:textSize="20dp"-->
+                <!--android:text="@string/nonfasting"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />-->
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"

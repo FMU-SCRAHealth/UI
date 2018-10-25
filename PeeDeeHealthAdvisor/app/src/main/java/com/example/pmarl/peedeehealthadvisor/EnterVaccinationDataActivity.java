@@ -87,6 +87,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         });
 
 
+
         home = (ImageButton) findViewById(R.id.Home);
 
         home.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +132,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         finish();
     }
 
+    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
     {
         if(position != 0)
@@ -141,9 +143,8 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     }
 
 
+    @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-
 }

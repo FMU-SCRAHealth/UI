@@ -15,7 +15,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchServiceActivity">
+    tools:context=".SearchServiceActivity"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,14 +31,14 @@
 
             <TextView
                 android:id="@+id/SearchServiceScreen"
-                android:layout_width="215dp"
+                android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/serviceSearch"
                 android:textSize="30sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="6dp"
                 android:layout_alignParentEnd="true" />
 
             <ImageButton
