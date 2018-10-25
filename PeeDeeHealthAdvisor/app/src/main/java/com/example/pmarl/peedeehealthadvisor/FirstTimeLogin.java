@@ -4,12 +4,14 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,8 +20,10 @@ import java.util.Locale;
 public class FirstTimeLogin extends AppCompatActivity
 {
 
+    //DatabaseHelper myDB;
     private Button enterData;
     private Button clearData;
+    private TextInputEditText firstNameText, lastNameText, genderText;
 
     private Context context = this;
     private EditText editDate;
@@ -73,16 +77,48 @@ public class FirstTimeLogin extends AppCompatActivity
 
 
 
+        firstNameText = (TextInputEditText) findViewById(R.id.firstNameText);
+        lastNameText = (TextInputEditText) findViewById(R.id.lastNameText);
+        genderText = (TextInputEditText) findViewById(R.id.genderText);
+
+
+
+
+
         enterData = (Button) findViewById(R.id.enterData);
 
         enterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchMainActivity();
+
+                final String userFullName = firstNameText.getText().toString() + " " +
+                        lastNameText.getText().toString();
+
+               boolean isInserted =
+                       MainActivity.myDB.insertUserData(userFullName,
+                        editDate.getText().toString(), genderText.getText().toString());
+               if(isInserted = true)
+                   Toast.makeText(FirstTimeLogin.this, "Data Inserted",Toast.LENGTH_LONG).show();
+               else
+                   Toast.makeText(FirstTimeLogin.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+
+               launchMainActivity();
             }
         });
 
         clearData = (Button) findViewById(R.id.clearData);
+
+        clearData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                firstNameText.setText("");
+                lastNameText.setText("");
+                genderText.setText("");
+                editDate.setText("");
+            }
+        });
 
         /*
         clearData.setOnClickListener(new View.OnClickListener() {

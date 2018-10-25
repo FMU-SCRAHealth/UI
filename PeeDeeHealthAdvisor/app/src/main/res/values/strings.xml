@@ -56,6 +56,16 @@
     <string name="vaccinationName">Vaccination Name</string>
     <string name="shinglesVaccination">Shingles Vaccination</string>
     <string name="pneumoniaVaccination">Pneumonia Vaccination</string>
+    <string name="gender">Gender</string>
+    <string name="fasting">Fasting</string>
+    <string name="nonfasting">Nonfasting</string>
+
+
+    <string-array name="vaccinations">
+        <item>Select</item>
+        <item>Shingle</item>
+        <item>Flu Shot</item>
+    </string-array>
 
     <string-array name="distances">
         <item>Radius</item>

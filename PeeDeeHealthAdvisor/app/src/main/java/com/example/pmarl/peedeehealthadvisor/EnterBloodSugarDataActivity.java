@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +36,8 @@ import java.util.Locale;
 public class EnterBloodSugarDataActivity extends AppCompatActivity
 {
 
+    private Button clearData, enterData;
+    private TextInputEditText bloodSugarInput;
     private ImageButton home;
     private Context context = this;
     private EditText editDate;
@@ -52,6 +56,9 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
          setContentView(R.layout.acativty_enter_blood_sugar_data);
 
          editDate = (EditText) findViewById(R.id.editDate);
+         clearData = (Button) findViewById(R.id.clearData);
+         enterData = (Button) findViewById(R.id.enterData);
+         bloodSugarInput = (TextInputEditText) findViewById(R.id.bloodSugarInput);
 
          //set date to current date
          long currentdate = System.currentTimeMillis();
@@ -92,6 +99,34 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
             }
         });
 
+
+
+
+         enterData.setOnClickListener(new View.OnClickListener()
+         {
+             @Override
+             public void onClick(View view)
+             {
+                 /*---------------------------------------------------------
+                 * Need to work out what to do with the fasting and non fasting values
+                 * before I can continue with the blood sugar input
+                 * ----------------------------------------------------------*/
+             }
+         });
+
+         clearData.setOnClickListener(new View.OnClickListener()
+         {
+             @Override
+             public void onClick(View view)
+             {
+                bloodSugarInput.setText("");
+                editDate.setText("");
+                /*---------------------------------------------------
+                Figure out what the hell to do with fasting and non fasting
+                ------------------------------------------------------ */
+             }
+         });
+
      }
 
 
@@ -123,5 +158,23 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
         finish();
     }
 
+
+    // method for the radio buttons for fasting and non fasting
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.fastingToggle:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.nonfastingToggle:
+                if (checked)
+                    // Ninjas rule
+                    break;
+        }
+    }
 
 }
