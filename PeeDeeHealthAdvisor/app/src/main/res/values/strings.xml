@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Pee Dee Health Advisor</string>
-    <string name="welcomeToHealthAdvisor">Welcome To Health Advisor</string>
+    <string name="app_name">Pee Dee Health Companion</string>
+    <string name="welcomeToHealthAdvisor">Welcome To Health Companion</string>
     <string name="genderAndName">Please Enter Your Name And Gender</string>
     <string name="searchForTheseServices">Search for These Services:</string>
     <string name="firstName">First Name</string>
@@ -11,7 +11,7 @@
     <string name="enterData">Update Journal</string>
     <string name="nearBy">Near By</string>
     <string name="cityName">City Name</string>
-    <string name="healthAdvisor">Health Advisor</string>
+    <string name="healthAdvisor">Health Companion</string>
     <string name="selectBirthDateBelow">Select Birth Date Below</string>
     <string name="myHealthData">Health Journal</string>
     <string name="serviceSearch">Health Resources</string>
@@ -56,16 +56,9 @@
     <string name="vaccinationName">Vaccination Type</string>
     <string name="shinglesVaccination">Shingles Vaccination</string>
     <string name="pneumoniaVaccination">Pneumonia Vaccination</string>
-    <string name="gender">Gender</string>
     <string name="fasting">Fasting</string>
     <string name="nonfasting">Nonfasting</string>
-
-
-    <string-array name="vaccinations">
-        <item>Select</item>
-        <item>Shingle</item>
-        <item>Flu Shot</item>
-    </string-array>
+    <string name="gender">Gender</string>
 
     <string-array name="distances">
         <item>Radius</item>
