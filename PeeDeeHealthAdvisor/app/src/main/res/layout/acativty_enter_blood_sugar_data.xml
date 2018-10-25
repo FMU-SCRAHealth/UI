@@ -87,6 +87,42 @@
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
 
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:checkedButton="@+id/fastingToggle">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <RadioButton android:id="@+id/fastingToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fasting"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton android:id="@+id/nonfastingToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="@string/nonfasting"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:onClick="onRadioButtonClicked"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </RadioGroup>
+
             <TextView
                 android:id="@+id/selectDateBelow"
                 android:layout_width="wrap_content"

@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -157,5 +158,23 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
         finish();
     }
 
+
+    // method for the radio buttons for fasting and non fasting
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.fastingToggle:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.nonfastingToggle:
+                if (checked)
+                    // Ninjas rule
+                    break;
+        }
+    }
 
 }
