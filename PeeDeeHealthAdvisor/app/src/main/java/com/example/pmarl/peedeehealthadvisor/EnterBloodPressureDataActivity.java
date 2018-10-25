@@ -15,11 +15,14 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,14 +30,18 @@ import java.util.Locale;
 
 public class EnterBloodPressureDataActivity extends AppCompatActivity //github test
 {
+    private Button enterData, clearData;
+
     private ImageButton home;
 
-    Context context = this;
-    EditText editDate;
-    Calendar myCalendar = Calendar.getInstance();
-    String dateFormat = "MM.dd.yyyy";
-    DatePickerDialog.OnDateSetListener date;
-    SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+    private TextInputEditText systolicInput, diastolicInput;
+
+    private Context context = this;
+    private EditText editDate;
+    private Calendar myCalendar = Calendar.getInstance();
+    private String dateFormat = "MM.dd.yyyy";
+    private DatePickerDialog.OnDateSetListener date;
+    private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)
@@ -43,6 +50,12 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
         setContentView(R.layout.activity_enter_blood_pressure_data);
 
         editDate = (EditText) findViewById(R.id.editDate);
+        home = (ImageButton) findViewById(R.id.Home);
+        enterData = (Button) findViewById(R.id.EnterData);
+        clearData = (Button) findViewById(R.id.ClearData);
+        systolicInput = (TextInputEditText) findViewById(R.id.systolicInput);
+        diastolicInput = (TextInputEditText) findViewById(R.id.diastolicInput);
+
 
         // init - set date to current date
         long currentdate = System.currentTimeMillis();
@@ -80,7 +93,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             }
         });
 
-        home = (ImageButton) findViewById(R.id.Home);
+
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +102,53 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             }
         });
 
+
+
+        enterData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString()
+                , Integer.parseInt(systolicInput.getText().toString()),
+                        Integer.parseInt(diastolicInput.getText().toString()));
+
+                if(isInserted = true)
+                    Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
+                            Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
+                            Toast.LENGTH_LONG).show();
+
+
+            }
+        });
+
+        clearData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                systolicInput.setText("");
+                diastolicInput.setText("");
+                editDate.setText("");
+            }
+        });
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
 
     private void updateDate()
     {

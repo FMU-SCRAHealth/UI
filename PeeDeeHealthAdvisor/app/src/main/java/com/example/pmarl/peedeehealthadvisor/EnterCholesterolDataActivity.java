@@ -16,11 +16,14 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,6 +31,10 @@ import java.util.Locale;
 
 public class EnterCholesterolDataActivity extends AppCompatActivity
 {
+    private Button enterData, clearData;
+    private TextInputEditText hdlInput, ldlInput, tcInput;
+
+
     private ImageButton home;
     private Context context = this;
     private EditText editDate;
@@ -49,6 +56,11 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         setContentView(R.layout.activity_enter_cholesterol_data);
 
         editDate = (EditText) findViewById(R.id.editDate);
+        enterData = (Button) findViewById(R.id.enterData);
+        clearData = (Button) findViewById(R.id.clearData);
+        hdlInput = (TextInputEditText) findViewById(R.id.hdlInput);
+        ldlInput = (TextInputEditText) findViewById(R.id.ldlInput);
+        tcInput = (TextInputEditText) findViewById(R.id.tcInput);
 
         // init - set date to current date
         long currentdate = System.currentTimeMillis();
@@ -93,6 +105,36 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 launchMainActivity();
+            }
+        });
+
+
+
+        enterData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString()
+                        ,Integer.parseInt(ldlInput.getText().toString())
+                        ,Integer.parseInt(hdlInput.getText().toString())
+                        ,Integer.parseInt(tcInput.getText().toString())
+                        );
+                if(isInserted = true)
+                    Toast.makeText(EnterCholesterolDataActivity.this,"Cholesterol Saved",
+                            Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(EnterCholesterolDataActivity.this,"Cholesterol NOT Saved",
+                            Toast.LENGTH_LONG).show();
+            }
+        });
+
+        clearData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hdlInput.setText("");
+                ldlInput.setText("");
+                tcInput.setText("");
+                editDate.setText("");
             }
         });
 

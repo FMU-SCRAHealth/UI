@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
-    DatabaseHelper myDB;
+    public static DatabaseHelper myDB;
 
     private Button MyHealthData;
     private Button  MyHealthResources;
