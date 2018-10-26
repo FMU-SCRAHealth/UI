@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author: Matt Harrington
+    Email Address: matt2harrington@gmail.com
+    Written: October 25th, 2018
+    Last Updated: October 11th, 2018 by Matt Harrington
+
+    Compilation:
+    Execution:
+
+    Description of Execution:
+-->
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_homebuttonreverse" />
+
+            <TextView
+                android:id="@+id/MyHealthGraph"
+                android:layout_width="175dp"
+                android:layout_height="75dp"
+                android:text="@string/cholesterolGraph"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="5dp"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp">
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/barGraph">
+
+            </com.github.mikephil.charting.charts.BarChart>
+
+        </RelativeLayout>
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:layout_marginTop="0dp"-->
+            <!--android:layout_weight="1">-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodSugarCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:text="@string/bloodSugar"-->
+                <!--android:textColor="@color/colorPrimaryDark"/>-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/FluShotCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:text="@string/fluShot"-->
+                <!--android:textColor="@color/colorPrimaryDark"/>-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodPressureCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:text="@string/bloodPressure"-->
+                <!--android:textColor="@color/colorPrimaryDark"/>-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/VaccinationCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:text="@string/vaccination"-->
+                <!--android:textColor="@color/colorPrimaryDark"/>-->
+
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

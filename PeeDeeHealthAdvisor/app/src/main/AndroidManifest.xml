@@ -94,6 +94,58 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        // DECLARING THE SELECT DATA ACTIVITY
+        <activity
+            android:name=".SelectBloodPressureActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
+
+        // DECLARING THE BLOOD SUGAR ACTIVITY
+        <activity
+            android:name=".SelectBloodSugarActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
+
+        // DECLARING THE VACCINATION ACTIVITY
+        <activity
+            android:name=".SelectVaccinationActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
+
+        // DECLARING CHOLESTEROL ACTIVITY
+        <activity
+            android:name=".SelectCholesterolActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+        </activity>
+
+        // DECLARING BLOOD PRESSURE GRAPH ACTIVITY
+        <activity
+            android:name=".BloodPressureGraph"
+            android:label="@string/app_name">
+        </activity>
+
+        // DECLARING BLOOD SUGAR GRAPH ACTIVITY
+        <activity
+            android:name=".BloodSugarGraph"
+            android:label="@string/app_name">
+        </activity>
+
+        // DECLARING VACCINATION GRAPH ACTIVITY
+        <activity
+            android:name=".VaccinationGraph"
+            android:label="@string/app_name">
+        </activity>
+
+        // DECLARING CHOLESTEROL GRAPH ACTIVITY
+        <activity
+            android:name=".CholesterolGraph"
+            android:label="@string/app_name">
+        </activity>
+
     </application>
 
 </manifest>

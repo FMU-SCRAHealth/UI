@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity
 
     private void launchMyHealthData()
     {
-        Intent intent = new Intent (this, MyHealthDataActivity.class);
+        Intent intent = new Intent (this, SelectDataActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

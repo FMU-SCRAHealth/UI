@@ -7,7 +7,7 @@
     <string name="lastName">Last Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="viewData">Graph</string>
+    <string name="viewData">View Graph</string>
     <string name="enterData">Update Journal</string>
     <string name="nearBy">Near By</string>
     <string name="cityName">City Name</string>
@@ -32,7 +32,7 @@
     <string name="enterVaccination">Vaccinations</string>
     <string name="vaccination">Vaccinations</string>
     <string name="fluShot">Flu Shot</string>
-    <string name="graph">Graph</string>
+    <string name="graph">View Graph</string>
     <string name="nearLocation">Near Your Location</string>
     <string name="search">Search</string>
     <string name="enter">Enter</string>
@@ -59,6 +59,11 @@
     <string name="fasting">Fasting</string>
     <string name="nonfasting">Nonfasting</string>
     <string name="gender">Gender</string>
+    <string name="bloodPressureGraph">Blood Pressure</string>
+    <string name="bloodSugarGraph">Blood Sugar</string>
+    <string name="cholesterolGraph">Cholesterol</string>
+    <string name="vaccinationGraph">Vaccinations</string>
+
 
     <string-array name="distances">
         <item>Radius</item>
