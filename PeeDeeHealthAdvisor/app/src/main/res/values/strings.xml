@@ -75,7 +75,8 @@
 
     <string-array name="vaccinations">
         <item>Select</item>
-        <item>Shingle</item>
         <item>Flu Shot</item>
+        <item>Pneumonia</item>
+        <item>Shingle</item>
     </string-array>
 </resources>
