@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Author: Matt Harrington
-    Email Address: pmarlowe782@gmail.com
-    Written: October 11th, 2018
-    Last Updated: October 25th, 2018 by Matt Harrington
+    Email Address: matt2harrington@gmail.com
+    Written: October 25th, 2018
+    Last Updated: October 11th, 2018 by Matt Harrington
 
     Compilation:
     Execution:
@@ -44,9 +44,9 @@
 
             <TextView
                 android:id="@+id/MyHealthGraph"
-                android:layout_width="92dp"
+                android:layout_width="185dp"
                 android:layout_height="75dp"
-                android:text="@string/graph"
+                android:text="@string/vaccinationGraph"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
@@ -71,48 +71,48 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:layout_weight="1">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_weight="1">-->
 
-            <CheckBox
-                android:id="@+id/BloodSugarCheckBox"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:text="@string/bloodSugar"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_weight="1"/>
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodSugarCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="28dp"-->
+                <!--android:text="@string/bloodSugar"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:layout_weight="1"/>-->
 
-            <CheckBox
-                android:id="@+id/FluShotCheckBox"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="@string/fluShot"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_weight="1"/>
+            <!--<CheckBox-->
+                <!--android:id="@+id/FluShotCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/fluShot"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:layout_weight="1"/>-->
 
-            <CheckBox
-                android:id="@+id/BloodPressureCheckBox"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="@string/bloodPressure"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_weight="1"/>
+            <!--<CheckBox-->
+                <!--android:id="@+id/BloodPressureCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/bloodPressure"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:layout_weight="1"/>-->
 
-            <CheckBox
-                android:id="@+id/VaccinationCheckBox"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="@string/vaccination"
-                android:textColor="@color/colorPrimaryDark"
-                android:layout_weight="1"/>
+            <!--<CheckBox-->
+                <!--android:id="@+id/VaccinationCheckBox"-->
+                <!--android:layout_width="130dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/vaccination"-->
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--android:layout_weight="1"/>-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
     </LinearLayout>
 
