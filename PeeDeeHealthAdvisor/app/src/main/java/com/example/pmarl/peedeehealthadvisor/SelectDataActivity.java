@@ -97,7 +97,7 @@ public class SelectDataActivity extends AppCompatActivity
 
     private void launchPrevActivity()
     {
-        Intent intent = new Intent (this, MyHealthDataActivity.class);
+        Intent intent = new Intent (this, MainActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -105,7 +105,7 @@ public class SelectDataActivity extends AppCompatActivity
 
     private void launchEnterBloodPressureActivity()
     {
-        Intent intent = new Intent (this, EnterBloodPressureDataActivity.class);
+        Intent intent = new Intent (this, SelectBloodPressureActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -113,7 +113,7 @@ public class SelectDataActivity extends AppCompatActivity
 
     private void launchEnterBloodSugarActivity()
     {
-        Intent intent = new Intent (this, EnterBloodSugarDataActivity.class);
+        Intent intent = new Intent (this, SelectBloodSugarActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -121,7 +121,7 @@ public class SelectDataActivity extends AppCompatActivity
 
     private void launchEnterCholesterolActivity()
     {
-        Intent intent = new Intent (this, EnterCholesterolDataActivity.class);
+        Intent intent = new Intent (this, SelectCholesterolActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -129,7 +129,7 @@ public class SelectDataActivity extends AppCompatActivity
 
     private void launchEnterVaccinationDataActivity()
     {
-        Intent intent = new Intent (this, EnterVaccinationDataActivity.class);
+        Intent intent = new Intent (this, SelectVaccinationActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

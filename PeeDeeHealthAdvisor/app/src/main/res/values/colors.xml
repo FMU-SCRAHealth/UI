@@ -13,4 +13,29 @@
     <color name="themeRed">#ff9999</color>
     <color name="themeGray">#cccccc</color>
     <color name="BGWhite">#e6ffff</color>
+
+
+
+
+    <!-- Graphic Design Colors-->
+    <color name="GreenHuesLight">#afdfe3</color>
+    <color name="GreenHuesMedium">#52c4ca</color>
+    <color name="GreenHuesDark">#1c676a</color>
+
+    <color name="PurpleHuesLight">#b297c7</color>
+    <color name="PurpleHuesMedium">#835da7</color>
+    <color name="PurpleHuesDark">#835da7</color>
+
+    <color name="BlueHuesLight">#65b4e4</color>
+    <color name="BlueHuesMedium">#217bc0</color>
+    <color name="BlueHuesDark">#0b5580</color>
+
+    <color name="YellowHuesLight">#daa03b</color>
+    <color name="YellowHuesMedium">#c68825</color>
+    <color name="YellowHuesDark">#aa7026</color>
+
+    <color name="RedHuesLight">#f26f88</color>
+    <color name="RedHuesMedium">#ee2d4e</color>
+    <color name="RedHuesDark">#b11f26</color>
+
     </resources>
