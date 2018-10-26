@@ -15,6 +15,7 @@ package com.example.pmarl.peedeehealthadvisor;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,7 +26,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
 {
     public static DatabaseHelper myDB;
-
     private Button MyHealthData;
     private Button  MyHealthResources;
     private boolean firstStart;
@@ -65,9 +65,6 @@ public class MainActivity extends AppCompatActivity
 //            Toast.makeText(this, "Welcome!!!", Toast.LENGTH_LONG).show();
         }
 
-
-
-
         this.MyHealthData = (Button) findViewById(R.id.MyHealthData);
 
         this.MyHealthData.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +75,6 @@ public class MainActivity extends AppCompatActivity
         });
 
         this.MyHealthResources = (Button) findViewById(R.id.HealthResources);
-
 
 
         this.MyHealthResources.setOnClickListener(new View.OnClickListener() {

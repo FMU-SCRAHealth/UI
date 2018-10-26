@@ -13,6 +13,7 @@
         // DECLARING THE ENTRANCE OF THE APP
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"
+            android:label="PD HC"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
