@@ -48,7 +48,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_clinic_home" />
+                android:background="@drawable/ic_clinic_blue_home" />
 
         </RelativeLayout>
 
