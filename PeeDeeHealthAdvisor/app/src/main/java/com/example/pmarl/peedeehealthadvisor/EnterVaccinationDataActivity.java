@@ -106,27 +106,27 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         Spinner.setOnItemSelectedListener(this);
 
 
-        clearData.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                // needs implementations
-            }
-        });
-
-
-        enterData.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-               // needs implementations
-
-                launchPrevActivity();
-
-            }
-        });
+//        clearData.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                // needs implementations
+//            }
+//        });
+//
+//
+//        enterData.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//               // needs implementations
+//
+//                launchPrevActivity();
+//
+//            }
+//        });
 
     }
 

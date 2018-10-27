@@ -72,7 +72,7 @@
                 android:id="@+id/MyHealthData"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:background="@drawable/ic_healthjournal"
+                android:background="@drawable/ic_journaltop"
                 />
 
             <!-- Styling for the ovals and colors -->
@@ -80,16 +80,16 @@
             <!--android:background="@drawable/mybutton"-->
             <!--android:fontFamily="@font/catamaran_bold"-->
             <!--android:textColor="@color/white"-->
+            <!--android:textSize="20sp"-->
+            <!--android:text="@string/myHealthResources"-->
+            <!--android:textColor="@color/white"-->
             <Button
                 android:id="@+id/HealthResources"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:text="@string/myHealthResources"
-                android:padding="6dp"
-                android:background="@drawable/mycircle"
-                android:textColor="@color/white"/>
+                android:background="@drawable/ic_resources"
+                />
 
         </LinearLayout>
 
