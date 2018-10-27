@@ -15,6 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SelectDataActivity"
+    android:background="@color/BGWhite"
     >
 
     <LinearLayout
@@ -35,7 +36,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebuttonreverse" />
+                android:background="@drawable/ic_homebutton_copy" />
 
             <TextView
                 android:id="@+id/SelectDataEnterScreen"
@@ -66,7 +67,13 @@
                 android:orientation="vertical"
                 android:layout_weight="1"
                 >
-                <Button
+
+
+                <!--android:textSize="20sp"-->
+                <!--android:text="@string/enterBloodPressure"-->
+                <!--android:backgroundTint="@color/RedHuesMedium"-->
+                <!--android:textColor="@color/white"-->
+                <ImageButton
                     android:id="@+id/EnterBloodPressure"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
@@ -74,24 +81,23 @@
                     android:padding="3dp"
                     android:layout_marginEnd="5dp"
                     android:layout_alignParentEnd="true"
-                    android:textSize="20sp"
-                    android:text="@string/enterBloodPressure"
-                    android:background="@drawable/mycircle"
-                    android:backgroundTint="@color/RedHuesMedium"
-                    android:textColor="@color/white" />
+                    android:background="@drawable/ic_bloodpressure"
+                    />
 
-                <Button
+                <!--android:backgroundTint="@color/BlueHuesMedium"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="20sp"-->
+                <!--android:text="@string/enterCholesterolLevels"-->
+
+                <ImageButton
                     android:id="@+id/EnterCholesterol"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:layout_marginEnd="5dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="275dp"
-                    android:textSize="20sp"
-                    android:text="@string/enterCholesterolLevels"
-                    android:background="@drawable/mycircle"
-                    android:backgroundTint="@color/BlueHuesMedium"
-                    android:textColor="@color/white" />
+                    android:background="@drawable/ic_cholesterol"
+                     />
 
             </RelativeLayout>
 
@@ -104,9 +110,13 @@
                 >
 
 
+                <!--android:backgroundTint="@color/PurpleHuesMedium"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="20sp"-->
+                <!--android:text="@string/enterBloodSugarLevels"-->
                 <!--android:layout_width="170dp"-->
                 <!--android:layout_height="128dp"-->
-                <Button
+                <ImageButton
                     android:id="@+id/EnterBloodSugar"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
@@ -115,22 +125,23 @@
                     android:layout_alignParentStart="true"
                     android:textSize="20sp"
                     android:text="@string/enterBloodSugarLevels"
-                    android:background="@drawable/mycircle"
-                    android:backgroundTint="@color/PurpleHuesMedium"
-                    android:textColor="@color/white" />
+                    android:background="@drawable/ic_bslogo"
+                     />
 
-                <Button
+
+                <!--android:textSize="20sp"-->
+                <!--android:text="@string/enterVaccinationRecords"-->
+                <!--android:backgroundTint="@color/GreenHuesMedium"-->
+                <!--android:textColor="@color/white"-->
+                <ImageButton
                     android:id="@+id/EnterVaccinationData"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:layout_marginTop="275dp"
                     android:layout_marginStart="5dp"
                     android:layout_alignParentStart="true"
-                    android:textSize="20sp"
-                    android:text="@string/enterVaccinationRecords"
-                    android:background="@drawable/mycircle"
-                    android:backgroundTint="@color/GreenHuesMedium"
-                    android:textColor="@color/white" />
+                    android:background="@drawable/ic_vaccination"
+                     />
             </RelativeLayout>
 
         </LinearLayout>

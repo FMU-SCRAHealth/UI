@@ -35,8 +35,7 @@
         <activity
             android:name=".EnterBloodPressureDataActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:background="@color/colorPrimary">
+            android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE ENTER BLOOD SUGAR DATA ACTIVITY

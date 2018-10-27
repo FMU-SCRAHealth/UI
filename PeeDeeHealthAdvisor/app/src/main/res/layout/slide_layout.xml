@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@color/BGWhite"
     >
 
        <LinearLayout
@@ -17,7 +18,7 @@
                android:layout_height="200dp"
                android:layout_gravity="center_horizontal"
                android:layout_marginBottom="20dp"
-               android:layout_marginTop="110dp"
+               android:layout_marginTop="80dp"
                android:background="@android:color/transparent" />
 
         <TextView
@@ -28,8 +29,9 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="2dp"
             android:gravity="center_horizontal"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
 
         <TextView
@@ -39,9 +41,9 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="65dp"
             android:gravity="center_horizontal"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
        </LinearLayout>
 

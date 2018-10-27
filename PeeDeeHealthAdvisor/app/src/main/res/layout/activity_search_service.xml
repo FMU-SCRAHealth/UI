@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchServiceActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/BGWhite">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebuttonreverse" />
+                android:background="@drawable/ic_homebutton_copy" />
 
         </RelativeLayout>
 

@@ -44,12 +44,14 @@ public class SliderAdapter extends PagerAdapter {
 
         public String[] slide_descriptions = {
 
-                "Pee Dee Health Companion is here to help you keep track of your health in four main categories. Swipe to see what is offered.",
-                "Keep up with your blood pressure readings by updating your journal.",
-                "Compare your blood sugar day to daywith journal entries; with fasting and non fasting options to give an accurate reading.",
-                "Monitor your cholesterol with daily journal entries. ",
-                "Keep up to date with your vaccination records to make sure you're up-to-date!",
-                "Get access to local clinics whenever you need a checkup."
+                "Pee Dee Health Companion is here to help you keep track of your health daily! "
+                    + "Swipe to see what is offered.",
+                "Keep up with your blood pressure readings by updating your journal daily.",
+                "Compare blood sugar values with daily journal entries " +
+                        "with fasting and non fasting entry types supported.",
+                "Monitor your cholesterol with daily journal entries.",
+                "Log your vaccination records to make sure you're up-to-date!",
+                "Get access to local clinics whenever you need a checkup by just searching on our map!"
 
         };
 

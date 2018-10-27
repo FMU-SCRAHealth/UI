@@ -64,6 +64,7 @@
     <string name="cholesterolGraph">Cholesterol</string>
     <string name="vaccinationGraph">Vaccinations</string>
     <string name="startSetup">Start Setup</string>
+    <string name="setupUser">Setup User</string>
 
 
     <string-array name="distances">
