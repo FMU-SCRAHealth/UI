@@ -63,6 +63,7 @@
     <string name="bloodSugarGraph">Blood Sugar</string>
     <string name="cholesterolGraph">Cholesterol</string>
     <string name="vaccinationGraph">Vaccinations</string>
+    <string name="startSetup">Start Setup</string>
 
 
     <string-array name="distances">

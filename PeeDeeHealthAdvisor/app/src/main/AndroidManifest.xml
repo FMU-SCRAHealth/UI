@@ -22,6 +22,15 @@
             </intent-filter>
         </activity>
 
+
+        // DECLARING THE ENTRANCE OF THE APP
+        <activity android:name=".SliderStart"
+            android:screenOrientation="portrait"
+            android:label="PD HC"
+            >
+
+        </activity>
+
         // DECLARING THE ENTER BLOOD PRESSURE DATA ACTIVITY
         <activity
             android:name=".EnterBloodPressureDataActivity"

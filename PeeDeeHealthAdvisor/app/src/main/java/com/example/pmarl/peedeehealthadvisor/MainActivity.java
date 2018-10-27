@@ -17,10 +17,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -29,12 +32,24 @@ public class MainActivity extends AppCompatActivity
     private Button MyHealthData;
     private Button  MyHealthResources;
     private boolean firstStart;
+    private boolean firstStartSlider;
+
+//    private ViewPager mSlideViewPager;
+//    private LinearLayout mDotLayout;
+//    private SliderAdapter sliderAdapter;
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
+
+
+//        mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
+//        mDotLayout = (LinearLayout) findViewById(R.id.dotsLayout);
+//
+//        sliderAdapter = new SliderAdapter(this);
+
 
         myDB = new DatabaseHelper(this);
 
@@ -56,6 +71,29 @@ public class MainActivity extends AppCompatActivity
 
             //do your one time code here
             launchFirstTimeLogIn();
+            //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
+
+        }
+        else
+        {
+            //app open directly
+//            Toast.makeText(this, "Welcome!!!", Toast.LENGTH_LONG).show();
+        }
+
+
+        firstStartSlider = app_preferences.getBoolean("first_time_slider",true);
+
+        /*If statement to see if the app has been open before or not*/
+        if(firstStartSlider)
+        {
+
+            /*If the app hasn't been opened before, it runs the following code
+             * and sets firstStart to false*/
+            editor.putBoolean("first_time_slider",false);
+            editor.commit();
+
+            //do your one time code here
+            launchSliderScreen();
             //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
 
         }
@@ -108,6 +146,14 @@ public class MainActivity extends AppCompatActivity
     private void launchFirstTimeLogIn()
     {
         Intent intent = new Intent(this, FirstTimeLogin.class);
+        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchSliderScreen()
+    {
+        Intent intent = new Intent(this, SliderStart.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
