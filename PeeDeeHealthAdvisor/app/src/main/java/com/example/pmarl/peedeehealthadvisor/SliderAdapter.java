@@ -21,12 +21,12 @@ public class SliderAdapter extends PagerAdapter {
 
         public int[] slide_images = {
 
-                R.drawable.ic_appicon,
-                R.drawable.ic_appicon,
-                R.drawable.ic_appicon,
-                R.drawable.ic_appicon,
-                R.drawable.ic_appicon,
-                R.drawable.ic_appicon
+                R.drawable.ic_ha_icon,
+                R.drawable.ic_blood_pressure,
+                R.drawable.ic_blood_sugar,
+                R.drawable.ic_cholesterol_arrows,
+                R.drawable.ic_vaccinations,
+                R.drawable.ic_compass
 
         };
 

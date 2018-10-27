@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -32,6 +33,7 @@ import android.widget.Toast;
 
 public class EnterVaccinationDataActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
+    private Button enterData, clearData;
     private ImageButton home;
     private Spinner Spinner;
     Context context = this;
@@ -102,6 +104,29 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner.setAdapter(adapter);
         Spinner.setOnItemSelectedListener(this);
+
+
+        clearData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                // needs implementations
+            }
+        });
+
+
+        enterData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+               // needs implementations
+
+                launchPrevActivity();
+
+            }
+        });
 
     }
 

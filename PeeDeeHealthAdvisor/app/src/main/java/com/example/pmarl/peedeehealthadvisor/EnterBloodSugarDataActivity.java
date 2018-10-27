@@ -108,6 +108,8 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                  * Need to work out what to do with the fasting and non fasting values
                  * before I can continue with the blood sugar input
                  * ----------------------------------------------------------*/
+
+                 launchPrevActivity();
              }
          });
 

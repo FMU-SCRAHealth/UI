@@ -59,13 +59,13 @@ public class SliderStart extends AppCompatActivity {
                 mDots[i] = new TextView(this);
                 mDots[i].setTextSize(35);
                 mDots[i].setText(Html.fromHtml("&#8226;"));
-                mDots[i].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                mDots[i].setTextColor(getResources().getColor(R.color.GreenHuesDark));
 
                 mDotLayout.addView(mDots[i]);
             }
 
             if(mDots.length > 0) {
-                mDots[position].setTextColor(getResources().getColor(R.color.blueFont));
+                mDots[position].setTextColor(getResources().getColor(R.color.GreenHuesLight));
             }
         }
 

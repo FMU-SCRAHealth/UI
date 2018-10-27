@@ -120,6 +120,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                     Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
                             Toast.LENGTH_LONG).show();
 
+                launchPrevActivity();
 
             }
         });
