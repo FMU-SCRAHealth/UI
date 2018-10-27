@@ -36,7 +36,7 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/serviceSearch"
                 android:textSize="30sp"
-                android:textColor="@color/BlueHuesDark"
+                android:textColor="@color/BlueHuesMedium"
                 android:textStyle="bold"
                 android:layout_marginEnd="6dp"
                 android:layout_alignParentEnd="true" />
@@ -47,7 +47,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebutton_copy" />
+                android:background="@drawable/ic_clinic_home" />
 
         </RelativeLayout>
 
@@ -154,6 +154,7 @@
                     android:textSize="15dp"
                     android:text="@string/search"
                     android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/BlueHuesLight"
                     android:background="@drawable/mybutton"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>

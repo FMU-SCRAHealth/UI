@@ -40,14 +40,14 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebuttonreverse" />
+                android:background="@drawable/ic_cholesterol_home" />
 
             <TextView
                 android:id="@+id/MyHealthGraph"
                 android:layout_width="175dp"
                 android:layout_height="75dp"
                 android:text="@string/cholesterolGraph"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/YellowHuesDark"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="1dp"
                 android:layout_marginTop="5dp"

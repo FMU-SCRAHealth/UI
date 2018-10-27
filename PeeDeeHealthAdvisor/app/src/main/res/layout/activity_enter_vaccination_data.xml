@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="@string/selectDateBelow"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/GreenHuesDark"
                 android:textSize="20sp" />
 
             <EditText
@@ -115,6 +115,7 @@
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:visibility="visible"
+                android:textColor="@color/GreenHuesMedium"
                 app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
 
             <LinearLayout
@@ -141,6 +142,7 @@
                     android:layout_height="62dp"
                     android:text="@string/clear"
                     android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/GreenHuesMedium"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
 
@@ -161,6 +163,7 @@
                     android:layout_height="62dp"
                     android:text="@string/enter"
                     android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/GreenHuesMedium"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
                 <View
