@@ -93,8 +93,9 @@ public class BloodPressureGraph extends AppCompatActivity
         // Constructor for adding the dates with the data from above. Works on gradle version v2.2.4
         BarData theData = new BarData(theDates, barDataSet);
         barChart.setData(theData);
-        barDataSet.setColor(getResources().getColor(R.color.RedHuesMedium));
-        barChart.setTouchEnabled(false);
+        barDataSet.setColor(getResources().getColor(R.color.RedHuesLight));
+        barChart.setDescription("");
+        barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(false);
 

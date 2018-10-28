@@ -91,9 +91,10 @@ public class BloodSugarGraph extends AppCompatActivity
         BarData theData = new BarData(theDates, barDataSet);
         barChart.setData(theData);
         barDataSet.setColor(getResources().getColor(R.color.PurpleHuesLight));
+        barChart.setDescription("");
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(true);
+        barChart.setScaleEnabled(false);
 
     }
 

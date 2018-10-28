@@ -36,7 +36,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/nearLocation"
-                android:textColor="@color/BlueHuesDark"
+                android:textColor="@color/BlueHuesMedium"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="5dp"
