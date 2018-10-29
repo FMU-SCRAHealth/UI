@@ -16,7 +16,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/BGWhite">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -40,14 +40,14 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebuttonreverse" />
+                android:background="@drawable/ic_vaccination_home_teal" />
 
             <TextView
                 android:id="@+id/MyHealthGraph"
                 android:layout_width="185dp"
                 android:layout_height="75dp"
                 android:text="@string/vaccinationGraph"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/GreenHuesMedium"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"

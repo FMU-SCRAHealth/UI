@@ -15,7 +15,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/BGWhite">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -38,7 +38,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebuttonreverse" />
+                android:background="@drawable/ic_vaccination_home_teal" />
 
             <TextView
                 android:id="@+id/EnterVaccinationScreen"
@@ -48,7 +48,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/enterVaccination"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/GreenHuesMedium"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -59,16 +59,32 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="75dp">
+            android:layout_marginTop="100dp">
 
+            <TextView
+                android:id="@+id/VaccName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="@string/vaccinationName"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <Spinner
+                android:id="@+id/vaccinationSpinner"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:visibility="visible"
+                android:textColor="@color/GreenHuesMedium"
+                app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
 
             <TextView
                 android:id="@+id/selectDateBelow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/selectDateBelow"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/GreenHuesDark"
                 android:textSize="20sp" />
 
             <EditText
@@ -82,40 +98,6 @@
                 android:inputType="date"
                 android:longClickable="false"
                 android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/VaccName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="@string/vaccinationName"
-                android:textColor="@color/colorPrimaryDark"/>
-
-            <!--<android.support.design.widget.TextInputLayout-->
-                <!--android:id="@+id/VaccNameInput"-->
-                <!--android:layout_marginBottom="25dp"-->
-                <!--android:layout_width="304dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--&gt;-->
-
-                <!--<android.support.design.widget.TextInputEditText-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="@string/name"-->
-                    <!--android:textColor="@color/colorPrimaryDark"-->
-                    <!--android:gravity="center_horizontal"-->
-                    <!--android:singleLine="true" />-->
-
-            <!--</android.support.design.widget.TextInputLayout>-->
-
-            <Spinner
-                android:id="@+id/vaccinationSpinner"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:visibility="visible"
-                app:layout_constraintTop_toBottomOf="@+id/nearByCheckBox" />
 
             <LinearLayout
                 android:paddingLeft="4.0dip"
@@ -141,6 +123,7 @@
                     android:layout_height="62dp"
                     android:text="@string/clear"
                     android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/GreenHuesMedium"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
 
@@ -161,6 +144,7 @@
                     android:layout_height="62dp"
                     android:text="@string/enter"
                     android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/GreenHuesMedium"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
                 <View

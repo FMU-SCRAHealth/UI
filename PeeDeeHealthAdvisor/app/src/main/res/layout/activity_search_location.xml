@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchLocationActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/BGWhite">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/nearLocation"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/BlueHuesMedium"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="5dp"
@@ -48,7 +48,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebuttonreverse" />
+                android:background="@drawable/ic_clinic_blue_home" />
 
         </RelativeLayout>
 
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/searchBy"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/BlueHuesDark"
                 android:textSize="20dp"
                 app:layout_constraintTop_toBottomOf="@+id/SearchLocationScreen" />
 
@@ -75,7 +75,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/city"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/BlueHuesDark"
             android:textAlignment="textStart"
             android:textSize="20dp" />
 
@@ -103,7 +103,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:text="@string/zip"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/BlueHuesDark"
             android:textSize="20dp" />
 
             <android.support.design.widget.TextInputLayout
@@ -133,7 +133,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:text="@string/nearBy"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/BlueHuesDark"
             android:textAlignment="textStart"
             android:textSize="20dp" />
 
@@ -161,6 +161,7 @@
             android:layout_height="62dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="0dp"
+            android:backgroundTint="@color/BlueHuesLight"
             android:textSize="15dp"
             android:text="@string/go"
             android:background="@drawable/mybutton"

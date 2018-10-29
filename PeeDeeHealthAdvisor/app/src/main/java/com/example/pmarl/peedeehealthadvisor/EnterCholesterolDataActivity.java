@@ -125,6 +125,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                 else
                     Toast.makeText(EnterCholesterolDataActivity.this,"Cholesterol NOT Saved",
                             Toast.LENGTH_LONG).show();
+                launchPrevActivity();
             }
         });
 

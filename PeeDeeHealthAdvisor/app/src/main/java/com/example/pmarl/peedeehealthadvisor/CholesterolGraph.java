@@ -69,7 +69,7 @@ public class CholesterolGraph extends AppCompatActivity
         barEntries.add(new BarEntry(71f, 11));
 
         // This constructor creates a data-set from the data above.
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Blood Sugar");
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Cholesterol");
 
         // This ArrayList holds the dates for the x-axis
         ArrayList<String> theDates = new ArrayList();
@@ -90,10 +90,12 @@ public class CholesterolGraph extends AppCompatActivity
         // Constructor for adding the dates with the data from above. Works on gradle version v2.2.4
         BarData theData = new BarData(theDates, barDataSet);
         barChart.setData(theData);
-
+        barDataSet.setColor(getResources().getColor(R.color.YellowHuesLight));
+        barChart.setDescription("");
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(true);
+        barChart.setScaleEnabled(false);
+        barDataSet.setValueTextSize(12f);
 
     }
 
