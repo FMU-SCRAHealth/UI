@@ -91,6 +91,7 @@ public class VaccinationGraph extends AppCompatActivity
         BarData theData = new BarData(theDates, barDataSet);
         barChart.setData(theData);
         barDataSet.setColor(getResources().getColor(R.color.GreenHuesMedium));
+        barDataSet.setValueTextSize(12f);
         barChart.setDescription("");
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);

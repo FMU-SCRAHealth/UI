@@ -95,6 +95,7 @@ public class CholesterolGraph extends AppCompatActivity
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(false);
+        barDataSet.setValueTextSize(12f);
 
     }
 

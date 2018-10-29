@@ -37,7 +37,7 @@ public class SliderAdapter extends PagerAdapter {
                 "Blood Sugar",
                 "Cholesterol",
                 "Vaccinations",
-                "Clinics"
+                "Resources"
 
         };
 
@@ -47,11 +47,10 @@ public class SliderAdapter extends PagerAdapter {
                 "Pee Dee Health Companion is here to help you keep track of your health daily! "
                     + "Swipe to see what is offered.",
                 "Keep up with your blood pressure readings by updating your journal daily.",
-                "Compare blood sugar values with daily journal entries " +
-                        "with fasting and non fasting entry types supported.",
+                "Compare blood sugar values with daily fasting and non-fasting journal entries.",
                 "Monitor your cholesterol with daily journal entries.",
-                "Log your vaccination records to make sure you're up-to-date!",
-                "Get access to local clinics whenever you need a checkup by just searching on our map!"
+                "Log vaccination records to make sure you're up-to-date!",
+                "Get access to local resources whenever you need a checkup just by searching!"
 
         };
 

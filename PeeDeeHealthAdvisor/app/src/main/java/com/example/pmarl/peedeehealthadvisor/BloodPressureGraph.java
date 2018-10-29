@@ -98,6 +98,7 @@ public class BloodPressureGraph extends AppCompatActivity
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(false);
+        barDataSet.setValueTextSize(12f);
 
     }
 

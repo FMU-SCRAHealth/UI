@@ -3,7 +3,7 @@
         <!--Default android system colors DO NOT CHANGE COLOR-->
         <color name="colorPrimary">#afdfe3</color>
         <color name="colorPrimaryDark">#1c676a</color>
-        <color name="colorAccent">#52c4ca</color>
+        <color name="colorAccent">#1c676a</color>
         <color name="blueFont">#80dfff</color>
         <color name="white">#ffffff</color>
 

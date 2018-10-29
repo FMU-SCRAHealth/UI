@@ -30,13 +30,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
+
+            <!--android:fontFamily="@font/catamaran_bold"-->
             <TextView
                 android:id="@+id/welcomeTextView"
                 android:layout_width="125dp"
                 android:layout_height="75dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="3dp"
-                android:fontFamily="@font/catamaran_bold"
                 android:text="@string/setupUser"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center_vertical"
@@ -55,7 +56,7 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="45dp">
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/welcomeNameEntryText"

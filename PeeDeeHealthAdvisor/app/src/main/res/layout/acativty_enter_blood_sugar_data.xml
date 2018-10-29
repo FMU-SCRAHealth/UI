@@ -160,8 +160,7 @@
             <EditText
                 android:id="@+id/editDate"
                 android:layout_width="230dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="3dp"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="false"
                 android:gravity="center_horizontal"
