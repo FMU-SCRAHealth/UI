@@ -22,10 +22,10 @@ public class SelectDataActivity extends AppCompatActivity
 {
 
     private ImageButton home;
-    private Button enterBloodPressure;
-    private Button enterBloodSugar;
-    private Button enterCholesterol;
-    private Button enterVaccinationData;
+    private ImageButton enterBloodPressure;
+    private ImageButton enterBloodSugar;
+    private ImageButton enterCholesterol;
+    private ImageButton enterVaccinationData;
 
 
     @Override
@@ -43,7 +43,7 @@ public class SelectDataActivity extends AppCompatActivity
             }
         });
 
-        enterBloodPressure = (Button) findViewById(R.id.EnterBloodPressure);
+        enterBloodPressure = (ImageButton) findViewById(R.id.EnterBloodPressure);
 
         enterBloodPressure.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +52,7 @@ public class SelectDataActivity extends AppCompatActivity
             }
         });
 
-        enterBloodSugar = (Button) findViewById(R.id.EnterBloodSugar);
+        enterBloodSugar = (ImageButton) findViewById(R.id.EnterBloodSugar);
 
         enterBloodSugar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +61,7 @@ public class SelectDataActivity extends AppCompatActivity
             }
         });
 
-        enterCholesterol = (Button) findViewById(R.id.EnterCholesterol);
+        enterCholesterol = (ImageButton) findViewById(R.id.EnterCholesterol);
 
         enterCholesterol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +70,7 @@ public class SelectDataActivity extends AppCompatActivity
             }
         });
 
-        enterVaccinationData = (Button) findViewById(R.id.EnterVaccinationData);
+        enterVaccinationData = (ImageButton) findViewById(R.id.EnterVaccinationData);
 
         enterVaccinationData.setOnClickListener(new View.OnClickListener() {
             @Override

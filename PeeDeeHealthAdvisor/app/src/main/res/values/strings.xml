@@ -63,6 +63,8 @@
     <string name="bloodSugarGraph">Blood Sugar</string>
     <string name="cholesterolGraph">Cholesterol</string>
     <string name="vaccinationGraph">Vaccinations</string>
+    <string name="startSetup">Start Setup</string>
+    <string name="setupUser">Setup User</string>
 
 
     <string-array name="distances">
@@ -75,7 +77,8 @@
 
     <string-array name="vaccinations">
         <item>Select</item>
-        <item>Shingle</item>
         <item>Flu Shot</item>
+        <item>Pneumonia</item>
+        <item>Shingle</item>
     </string-array>
 </resources>

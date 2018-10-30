@@ -15,7 +15,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/BGWhite"
     tools:context=".MyHealthDataActivity">
 
     <LinearLayout
@@ -48,7 +48,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_homebuttonreverse" />
+                android:background="@drawable/ic_homebutton_copy" />
 
         </RelativeLayout>
 
