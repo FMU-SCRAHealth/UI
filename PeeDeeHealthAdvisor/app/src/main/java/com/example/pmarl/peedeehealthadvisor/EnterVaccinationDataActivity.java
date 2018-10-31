@@ -106,27 +106,48 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         Spinner.setOnItemSelectedListener(this);
 
 
-//        clearData.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View view)
-//            {
-//                // needs implementations
-//            }
-//        });
-//
-//
-//        enterData.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View view)
-//            {
-//               // needs implementations
-//
-//                launchPrevActivity();
-//
-//            }
-//        });
+        clearData = (Button) findViewById(R.id.clearData);
+        clearData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                // needs implementations
+                Spinner.setSelection(0);
+                editDate.setText("");
+            }
+        });
+
+        enterData = (Button) findViewById(R.id.enterData);
+        enterData.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if(Spinner.getSelectedItemPosition()==0)
+                {
+                    Toast.makeText(EnterVaccinationDataActivity.this,
+                            "Please select a valid input.", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    // needs implementations
+                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString()
+                            , Spinner.getSelectedItem().toString());
+
+                    if (isInserted = true)
+                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination Saved",
+                                Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination NOT Saved",
+                                Toast.LENGTH_LONG).show();
+
+                    launchPrevActivity();
+                }
+
+
+            }
+        });
 
     }
 

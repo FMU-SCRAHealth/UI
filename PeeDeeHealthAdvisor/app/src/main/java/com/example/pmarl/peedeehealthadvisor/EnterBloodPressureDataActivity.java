@@ -109,19 +109,38 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             @Override
             public void onClick(View view)
             {
-                boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString()
-                , Integer.parseInt(systolicInput.getText().toString()),
-                        Integer.parseInt(diastolicInput.getText().toString()));
 
-                if(isInserted = true)
-                    Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
-                            Toast.LENGTH_LONG).show();
+                if(systolicInput.getText().toString().equals("")||diastolicInput.getText().toString().equals(""))
+                {
+                    Toast.makeText(EnterBloodPressureDataActivity.this,
+                            "Please enter all fields.",Toast.LENGTH_LONG).show();
+                }
+//                else if(systolicInput.getText().toString()=="")
+//                {
+//                    Toast.makeText(EnterBloodPressureDataActivity.this,
+//                            "Please enter a valid systolic input.", Toast.LENGTH_LONG).show();
+//                }
+//                else if(diastolicInput.getText().toString()=="")
+//                {
+//                    Toast.makeText(EnterBloodPressureDataActivity.this,
+//                            "Please enter a valid diastolic input.", Toast.LENGTH_LONG).show();
+//                }
+
                 else
-                    Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
-                            Toast.LENGTH_LONG).show();
+                {
+                    boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString()
+                            , Integer.parseInt(systolicInput.getText().toString()),
+                            Integer.parseInt(diastolicInput.getText().toString()));
 
-                launchPrevActivity();
+                    if (isInserted = true)
+                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
+                                Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
+                                Toast.LENGTH_LONG).show();
 
+                    launchPrevActivity();
+                }
             }
         });
 
