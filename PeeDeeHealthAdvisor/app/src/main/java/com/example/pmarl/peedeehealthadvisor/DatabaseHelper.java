@@ -26,7 +26,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String MEASUREMENT_COL_4 = "meas_type";
 
     private static final String MEASUREMENT_COL_5 = "fasting";
-    private static final String MEASUREMENT_COL_6 = "non_fasting";
+   // private static final String MEASUREMENT_COL_6 = "non_fasting";
     private static final String MEASUREMENT_COL_6_5 = "blood_sugar";
     private static final String MEASUREMENT_COL_7 = "immunized";
     private static final String MEASUREMENT_COL_8 = "virus";
@@ -52,7 +52,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 " DOB TEXT, gender TEXT)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + MEASUREMENT_TABLE_NAME + "(date TEXT, time TEXT," +
-                " user_name TEXT, meas_type TEXT, fasting INTEGER, non_fasting INTEGER, blood_sugar INTEGER," +
+                " user_name TEXT, meas_type TEXT, fasting INTEGER, blood_sugar INTEGER," +
                 " immunized INTEGER, virus TEXT, LDL INTEGER, HDL INTEGER, TC INTEGER, systolic INTEGER," +
                 " diastolic INTEGER, PRIMARY KEY(date, time))");
 
@@ -139,7 +139,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
 
 
-    public boolean insertBloodSugar(String date, int fasting, int non_fasting, int blood_sugar)
+    public boolean insertBloodSugar(String date, int fasting, int blood_sugar)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -171,7 +171,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(MEASUREMENT_COL_4,meas_type);
 
         contentValues.put(MEASUREMENT_COL_5,fasting);
-        contentValues.put(MEASUREMENT_COL_6,non_fasting);
+        //contentValues.put(MEASUREMENT_COL_6,non_fasting);
         contentValues.put(MEASUREMENT_COL_6_5,blood_sugar);
         //contentValues.put(MEASUREMENT_COL_7,immunized);
         //contentValues.put(MEASUREMENT_COL_8,virus);
@@ -203,7 +203,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
 
 
-        String meas_type = "Blood Sugar";
+        String meas_type = "Cholesterol";
 
         /*
         String fasting = null;
@@ -231,6 +231,57 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(MEASUREMENT_COL_9,LDL);
         contentValues.put(MEASUREMENT_COL_10,HDL);
         contentValues.put(MEASUREMENT_COL_10_5,TC);
+
+        //contentValues.put(MEASUREMENT_COL_11,systolic);
+        //contentValues.put(MEASUREMENT_COL_12,diastolic);
+
+        long result = db.insert(MEASUREMENT_TABLE_NAME,null,contentValues);
+        if( result == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+    public boolean insertVaccination(String date, String virus)
+    {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        String time = simpleDateFormat.format(calendar.getTime());
+
+
+
+        String meas_type = "Vaccination";
+
+
+        //String fasting = null;
+        //String non_fasting = null;
+        //Integer blood_sugar = null;
+        Integer immunized = 1;
+        //String virus = null;
+        //Integer LDL = null;
+        //Integer HDL = null;
+        //Integer TC = null;
+
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(MEASUREMENT_COL_1,date);
+        contentValues.put(MEASUREMENT_COL_2,time);
+        contentValues.put(MEASUREMENT_COL_3,this.user_name);
+        contentValues.put(MEASUREMENT_COL_4,meas_type);
+
+        //contentValues.put(MEASUREMENT_COL_5,fasting);
+        //contentValues.put(MEASUREMENT_COL_6,non_fasting);
+        //contentValues.put(MEASUREMENT_COL_6_5,blood_sugar);
+        contentValues.put(MEASUREMENT_COL_7,immunized);
+        contentValues.put(MEASUREMENT_COL_8,virus);
+        //contentValues.put(MEASUREMENT_COL_9,LDL);
+        //contentValues.put(MEASUREMENT_COL_10,HDL);
+        //contentValues.put(MEASUREMENT_COL_10_5,TC);
 
         //contentValues.put(MEASUREMENT_COL_11,systolic);
         //contentValues.put(MEASUREMENT_COL_12,diastolic);

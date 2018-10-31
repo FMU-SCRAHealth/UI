@@ -113,19 +113,43 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         enterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ldlInput.getText().toString().equals("")||hdlInput.getText().toString().equals("")||
+                        tcInput.getText().toString().equals(""))
+                {
+                    Toast.makeText(EnterCholesterolDataActivity.this,
+                            "Please enter all fields.", Toast.LENGTH_LONG).show();
+                }
+//                else if(ldlInput.getText().toString()=="")
+//                {
+//                    Toast.makeText(EnterCholesterolDataActivity.this,
+//                            "Please enter a valid value for LDL.",Toast.LENGTH_LONG).show();
+//                }
+//                else if(hdlInput.getText().toString()=="")
+//                {
+//                    Toast.makeText(EnterCholesterolDataActivity.this,
+//                            "Please enter a valid value for HDL.",Toast.LENGTH_LONG).show();
+//                }
+//                else if(tcInput.getText().toString()=="")
+//                {
+//                    Toast.makeText(EnterCholesterolDataActivity.this,
+//                            "Please enter a valid value for TC", Toast.LENGTH_SHORT).show();
+//                }
 
-                boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString()
-                        ,Integer.parseInt(ldlInput.getText().toString())
-                        ,Integer.parseInt(hdlInput.getText().toString())
-                        ,Integer.parseInt(tcInput.getText().toString())
-                        );
-                if(isInserted = true)
-                    Toast.makeText(EnterCholesterolDataActivity.this,"Cholesterol Saved",
-                            Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(EnterCholesterolDataActivity.this,"Cholesterol NOT Saved",
-                            Toast.LENGTH_LONG).show();
-                launchPrevActivity();
+                {
+                    boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString()
+                            , Integer.parseInt(ldlInput.getText().toString())
+                            , Integer.parseInt(hdlInput.getText().toString())
+                            , Integer.parseInt(tcInput.getText().toString())
+                    );
+                    if (isInserted = true)
+                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
+                                Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol NOT Saved",
+                                Toast.LENGTH_LONG).show();
+                    launchPrevActivity();
+                }
             }
         });
 

@@ -117,15 +117,15 @@
                 <!--android:backgroundTint="@color/colorPrimaryDark"-->
                 <!--android:textColor="@color/white"-->
                 <Button
-                    android:id="@+id/clearData3"
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/clearData"
                     android:layout_width="125dp"
                     android:layout_height="62dp"
-                    android:text="@string/clear"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/mybutton"
                     android:backgroundTint="@color/GreenHuesMedium"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="10dp"/>
+                    android:text="@string/clear"
+                    android:textColor="@color/white" />
 
                 <View
                     android:layout_width="0dp"
@@ -138,15 +138,15 @@
                 <!--android:backgroundTint="@color/colorPrimaryDark"-->
                 <!--android:textColor="@color/white"-->
                 <Button
-                    android:id="@+id/enterData3"
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/enterData"
                     android:layout_width="125dp"
                     android:layout_height="62dp"
-                    android:text="@string/enter"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/mybutton"
                     android:backgroundTint="@color/GreenHuesMedium"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="10dp"/>
+                    android:text="@string/enter"
+                    android:textColor="@color/white" />
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
