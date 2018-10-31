@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,6 +40,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
     private Button clearData, enterData;
     private TextInputEditText bloodSugarInput;
     private ImageButton home;
+    private RadioButton fastingToggle, nonfastingToggle;
     private Context context = this;
     private EditText editDate;
     private Calendar myCalendar = Calendar.getInstance();
@@ -59,6 +61,17 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
          clearData = (Button) findViewById(R.id.clearData);
          enterData = (Button) findViewById(R.id.enterData);
          bloodSugarInput = (TextInputEditText) findViewById(R.id.bloodSugarInput);
+         fastingToggle = (RadioButton) findViewById((R.id.fastingToggle));
+         nonfastingToggle = (RadioButton) findViewById(R.id.nonfastingToggle);
+
+         fastingToggle.setOnClickListener(new View.OnClickListener()
+         {
+             @Override
+             public void onClick(View view) {
+                 if (fastingToggle.isChecked()) {nonfastingToggle.setChecked(false);}
+                 else if(fastingToggle.isChecked()==false) {nonfastingToggle.setChecked(true);}
+             }
+         });
 
          //set date to current date
          long currentdate = System.currentTimeMillis();
@@ -104,12 +117,29 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
              @Override
              public void onClick(View view)
              {
-                 /*---------------------------------------------------------
-                 * Need to work out what to do with the fasting and non fasting values
-                 * before I can continue with the blood sugar input
-                 * ----------------------------------------------------------*/
 
-                 launchPrevActivity();
+                 if(bloodSugarInput.getText().toString().equals(""))
+                 {
+                     Toast.makeText(EnterBloodSugarDataActivity.this,
+                             "Please enter a valid blood sugar level.", Toast.LENGTH_LONG).show();
+                 }
+
+
+                 else {
+                     boolean isInserted = MainActivity.myDB.insertBloodSugar(editDate.getText().toString()
+                             , Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
+                             Integer.parseInt(bloodSugarInput.getText().toString()));
+
+                     if (isInserted = true)
+                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar Saved",
+                                 Toast.LENGTH_LONG).show();
+                     else
+                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar NOT Saved",
+                                 Toast.LENGTH_LONG).show();
+
+
+                     launchPrevActivity();
+                 }
              }
          });
 
@@ -120,9 +150,9 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
              {
                 bloodSugarInput.setText("");
                 editDate.setText("");
-                /*---------------------------------------------------
-                Figure out what the hell to do with fasting and non fasting
-                ------------------------------------------------------ */
+                fastingToggle.setChecked(true);
+                nonfastingToggle.setChecked(false);
+
              }
          });
 
