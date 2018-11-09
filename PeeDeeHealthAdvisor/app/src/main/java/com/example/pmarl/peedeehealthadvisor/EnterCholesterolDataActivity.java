@@ -39,7 +39,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private Context context = this;
     private EditText editDate;
     private Calendar myCalendar = Calendar.getInstance();
-    private String dateFormat = "MM.dd.yyyy";
+    private String dateFormat = "MM.dd.yy";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 
