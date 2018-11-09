@@ -39,7 +39,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     Context context = this;
     EditText editDate;
     Calendar myCalendar = Calendar.getInstance();
-    String dateFormat = "MM.dd.yyyy";
+    String dateFormat = "MM.dd.yy";
     DatePickerDialog.OnDateSetListener date;
     SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 

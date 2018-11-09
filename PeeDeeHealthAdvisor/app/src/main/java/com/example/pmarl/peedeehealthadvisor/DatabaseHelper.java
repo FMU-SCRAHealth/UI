@@ -5,6 +5,8 @@ import android.content.Context;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -135,10 +137,6 @@ public class DatabaseHelper  extends SQLiteOpenHelper
             return true;
 
     }
-
-
-
-
     public boolean insertBloodSugar(String date, int fasting, int blood_sugar)
     {
 
@@ -189,9 +187,6 @@ public class DatabaseHelper  extends SQLiteOpenHelper
             return true;
 
     }
-
-
-
     public boolean insertCholesterol(String date, int LDL, int HDL, int TC)
     {
 
@@ -242,7 +237,6 @@ public class DatabaseHelper  extends SQLiteOpenHelper
             return true;
 
     }
-
     public boolean insertVaccination(String date, String virus)
     {
 
@@ -294,6 +288,15 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
+    public Cursor readBloodPressure()
+    {
+        String[] columns = {MEASUREMENT_COL_1,MEASUREMENT_COL_11,MEASUREMENT_COL_12};
+
+        Cursor cursor = this.getReadableDatabase().query(MEASUREMENT_TABLE_NAME,
+                columns,null,null,null,null,null);
+
+        return cursor;
+    }
 
 
 
