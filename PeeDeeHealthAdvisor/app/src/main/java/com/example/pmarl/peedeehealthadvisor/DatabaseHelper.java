@@ -242,6 +242,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         SQLiteDatabase db = this.getWritableDatabase();
 
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
         String time = simpleDateFormat.format(calendar.getTime());
@@ -288,6 +289,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
+
     public Cursor readBloodPressure()
     {
         String[] columns = {MEASUREMENT_COL_1,MEASUREMENT_COL_11,MEASUREMENT_COL_12};
@@ -297,6 +299,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         return cursor;
     }
+
 
 
 
