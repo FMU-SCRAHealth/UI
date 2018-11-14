@@ -39,7 +39,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
     private Context context = this;
     private EditText editDate;
     private Calendar myCalendar = Calendar.getInstance();
-    private String dateFormat = "MM.dd.yy";
+    private String dateFormat = "MMM dd yyyy ";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 

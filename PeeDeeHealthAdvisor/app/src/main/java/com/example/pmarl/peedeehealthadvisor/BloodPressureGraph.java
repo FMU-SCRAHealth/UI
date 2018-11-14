@@ -34,9 +34,17 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.DefaultXAxisValueFormatter;
 import com.github.mikephil.charting.formatter.XAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.EntryXIndexComparator;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
+import java.text.ParseException;
+import java.util.Collections;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class BloodPressureGraph extends AppCompatActivity
 {
@@ -78,30 +86,60 @@ public class BloodPressureGraph extends AppCompatActivity
         final ArrayList<String> xLabels = new ArrayList<>();
 
         /*Test values for the xLabels array*/
-        Integer i = 0;
+        //Integer i = 0;
 
             /*Loop through the rows of the cursor and set the (y,x) values
             * cursor.moveToNext() returns a boolean value and performs an action to move to the
             * next cursor*/
+
+            String date;
+
+            Date date1;
+            long epoch;
+            long referenceTimeStamp=0;
             while(cursor.moveToNext())
             {
+
+                date = cursor.getString(0)+cursor.getString(1);
+                try {
+                    date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
+                    epoch = date1.getTime();
+                    if(cursor.isFirst())
+                    {
+                        referenceTimeStamp = epoch;
+                    }
+
+                    epoch = (epoch -referenceTimeStamp)/60;
+
+
+
+
+
                 /*Adding the systolic value from the DB and the date that corresponds
                 * with it*/
-                systolic.add(new Entry(Integer.parseInt(cursor.getString(1)),i));
+                systolic.add(new Entry(Integer.parseInt(cursor.getString(2)),(int)epoch));
 
                 /*Adding the diastolic value from the DB and the date that corresponds
                 * with it*/
-                diastolic.add(new Entry(Integer.parseInt(cursor.getString(2)),i));
+                diastolic.add(new Entry(Integer.parseInt(cursor.getString(3)),(int)epoch));
 
                 /*Adding test values for the systolic and diastolic values*/
-                xLabels.add(i.toString());
-
+                xLabels.add(new SimpleDateFormat("MMM dd").format(date1));
+                //xLabels.add(xAxisValueFormatter.toString());
+                }
+                catch (ParseException e)
+                {
+                    e.printStackTrace();
+                }
                 /*Incrementing i*/
-                i++;
+                //i++;
 
 
             }
+           Collections.sort(systolic, new EntryXIndexComparator());
+           Collections.sort(diastolic, new EntryXIndexComparator());
 
+        XAxisValueFormatter xAxisValueFormatter= new MonthAxisValueFormatter(referenceTimeStamp);
 
         /*Creating the systolic data set and setting different attributes for it*/
         LineDataSet systolicSet = new LineDataSet(systolic,"Systolic");
@@ -126,26 +164,30 @@ public class BloodPressureGraph extends AppCompatActivity
         diastolicSet.enableDashedLine(10f,5f,0f);
 
 
+
         XAxis xAxis = lineChart.getXAxis();
+       // xAxis.setValueFormatter(xAxisValueFormatter);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(true);
+        xAxis.setLabelRotationAngle(-90);
+
 
 
         /*Creating an array list for your data sets
         * "A set of sets"*/
-        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        List<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(systolicSet);
         dataSets.add(diastolicSet);
 
         /*creating the data to be plotted in the line chart*/
-        LineData data = new LineData(xLabels, dataSets);
+        LineData data = new LineData(xLabels,dataSets);
 
         /*Setting the data and attributes for the line chart*/
         lineChart.setDescription("Blood Pressure");
         lineChart.setNoDataTextDescription("You need to provide data for the chart.");
         lineChart.setData(data);
-        lineChart.setVisibleXRangeMaximum(30);
+        //lineChart.setVisibleXRangeMaximum(30);
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
