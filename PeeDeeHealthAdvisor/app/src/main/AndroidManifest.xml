@@ -59,6 +59,7 @@
             android:screenOrientation="portrait">
         </activity>
 
+
         // DECLARING THE GRAPH ACTIVITY
         <activity
             android:name=".GraphActivity"

@@ -34,9 +34,21 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.DefaultXAxisValueFormatter;
 import com.github.mikephil.charting.formatter.XAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.EntryXIndexComparator;
 import com.github.mikephil.charting.utils.ViewPortHandler;
-
+import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.util.Collections;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class BloodPressureGraph extends AppCompatActivity
 {
@@ -83,25 +95,70 @@ public class BloodPressureGraph extends AppCompatActivity
             /*Loop through the rows of the cursor and set the (y,x) values
             * cursor.moveToNext() returns a boolean value and performs an action to move to the
             * next cursor*/
+
+            String date;
+
+            Date date1;
+            long epoch;
+            long referenceTimeStamp=0;
+
+        TreeMap<Long,ArrayList<Integer>>  treeMap = new TreeMap<>();
+
+
             while(cursor.moveToNext())
             {
-                /*Adding the systolic value from the DB and the date that corresponds
-                * with it*/
-                systolic.add(new Entry(Integer.parseInt(cursor.getString(1)),i));
 
-                /*Adding the diastolic value from the DB and the date that corresponds
-                * with it*/
-                diastolic.add(new Entry(Integer.parseInt(cursor.getString(2)),i));
+                date = cursor.getString(0)+cursor.getString(1);
+                try {
+                    date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
+                    epoch = date1.getTime();
+//                    if(cursor.isFirst())
+//                    {
+//                        referenceTimeStamp = epoch;
+//                    }
 
-                /*Adding test values for the systolic and diastolic values*/
-                xLabels.add(i.toString());
+                    //epoch = (epoch -referenceTimeStamp)/60;
+                    treeMap.put( epoch, new ArrayList<Integer>());
+                    /*Systolic Added*/
+                    treeMap.get(epoch).add(Integer.parseInt(cursor.getString(2)));
+                    /*Diastolic added*/
+                    treeMap.get(epoch).add(Integer.parseInt(cursor.getString(3)));
 
-                /*Incrementing i*/
-                i++;
-
-
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
+            Set set = treeMap.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+            Map.Entry  mentry = (Map.Entry)iterator.next();
+            ArrayList<Integer> arrayList =(ArrayList<Integer>)mentry.getValue();
+
+            /*Adding the systolic value from the DB and the date that corresponds
+             * with it*/
+            systolic.add(new Entry(arrayList.get(0), i));
+
+            /*Adding the diastolic value from the DB and the date that corresponds
+             * with it*/
+            diastolic.add(new Entry(arrayList.get(1), i));
+
+            /*Adding test values for the systolic and diastolic values*/
+            Long epoch1 = (Long) mentry.getKey();
+            //long epoch2 = (long) epoch1 ;
+            Date date2 = new Date(epoch1);
+
+
+            xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
+            //xLabels.add(xAxisValueFormatter.toString());
+
+            i++;
+        }
+           //Collections.sort(systolic, new EntryXIndexComparator());
+           //Collections.sort(diastolic, new EntryXIndexComparator());
+
+        //XAxisValueFormatter xAxisValueFormatter= new MonthAxisValueFormatter(referenceTimeStamp);
 
         /*Creating the systolic data set and setting different attributes for it*/
         LineDataSet systolicSet = new LineDataSet(systolic,"Systolic");
@@ -127,25 +184,28 @@ public class BloodPressureGraph extends AppCompatActivity
 
 
         XAxis xAxis = lineChart.getXAxis();
+       // xAxis.setValueFormatter(xAxisValueFormatter);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(true);
+        xAxis.setLabelRotationAngle(-90);
 
 
         /*Creating an array list for your data sets
         * "A set of sets"*/
-        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        List<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(systolicSet);
         dataSets.add(diastolicSet);
 
         /*creating the data to be plotted in the line chart*/
-        LineData data = new LineData(xLabels, dataSets);
+        LineData data = new LineData(xLabels,dataSets);
+
 
         /*Setting the data and attributes for the line chart*/
         lineChart.setDescription("Blood Pressure");
         lineChart.setNoDataTextDescription("You need to provide data for the chart.");
         lineChart.setData(data);
-        lineChart.setVisibleXRangeMaximum(30);
+        //lineChart.setVisibleXRangeMaximum(30);
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
