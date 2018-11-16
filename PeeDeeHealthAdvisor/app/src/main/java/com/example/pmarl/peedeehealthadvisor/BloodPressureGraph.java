@@ -37,6 +37,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.EntryXIndexComparator;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.Date;
@@ -44,7 +45,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class BloodPressureGraph extends AppCompatActivity
 {
@@ -86,7 +91,7 @@ public class BloodPressureGraph extends AppCompatActivity
         final ArrayList<String> xLabels = new ArrayList<>();
 
         /*Test values for the xLabels array*/
-        //Integer i = 0;
+        Integer i = 0;
 
             /*Loop through the rows of the cursor and set the (y,x) values
             * cursor.moveToNext() returns a boolean value and performs an action to move to the
@@ -97,6 +102,10 @@ public class BloodPressureGraph extends AppCompatActivity
             Date date1;
             long epoch;
             long referenceTimeStamp=0;
+
+        TreeMap<Long,ArrayList<Integer>>  treeMap = new TreeMap<>();
+
+
             while(cursor.moveToNext())
             {
 
@@ -104,42 +113,53 @@ public class BloodPressureGraph extends AppCompatActivity
                 try {
                     date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
                     epoch = date1.getTime();
-                    if(cursor.isFirst())
-                    {
-                        referenceTimeStamp = epoch;
-                    }
+//                    if(cursor.isFirst())
+//                    {
+//                        referenceTimeStamp = epoch;
+//                    }
 
-                    epoch = (epoch -referenceTimeStamp)/60;
+                    //epoch = (epoch -referenceTimeStamp)/60;
+                    treeMap.put( epoch, new ArrayList<Integer>());
+                    /*Systolic Added*/
+                    treeMap.get(epoch).add(Integer.parseInt(cursor.getString(2)));
+                    /*Diastolic added*/
+                    treeMap.get(epoch).add(Integer.parseInt(cursor.getString(3)));
 
-
-
-
-
-                /*Adding the systolic value from the DB and the date that corresponds
-                * with it*/
-                systolic.add(new Entry(Integer.parseInt(cursor.getString(2)),(int)epoch));
-
-                /*Adding the diastolic value from the DB and the date that corresponds
-                * with it*/
-                diastolic.add(new Entry(Integer.parseInt(cursor.getString(3)),(int)epoch));
-
-                /*Adding test values for the systolic and diastolic values*/
-                xLabels.add(new SimpleDateFormat("MMM dd").format(date1));
-                //xLabels.add(xAxisValueFormatter.toString());
                 }
-                catch (ParseException e)
-                {
+                catch (ParseException e) {
                     e.printStackTrace();
                 }
-                /*Incrementing i*/
-                //i++;
-
-
             }
-           Collections.sort(systolic, new EntryXIndexComparator());
-           Collections.sort(diastolic, new EntryXIndexComparator());
 
-        XAxisValueFormatter xAxisValueFormatter= new MonthAxisValueFormatter(referenceTimeStamp);
+            Set set = treeMap.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+            Map.Entry  mentry = (Map.Entry)iterator.next();
+            ArrayList<Integer> arrayList =(ArrayList<Integer>)mentry.getValue();
+
+            /*Adding the systolic value from the DB and the date that corresponds
+             * with it*/
+            systolic.add(new Entry(arrayList.get(0), i));
+
+            /*Adding the diastolic value from the DB and the date that corresponds
+             * with it*/
+            diastolic.add(new Entry(arrayList.get(1), i));
+
+            /*Adding test values for the systolic and diastolic values*/
+            Long epoch1 = (Long) mentry.getKey();
+            //long epoch2 = (long) epoch1 ;
+            Date date2 = new Date(epoch1);
+
+
+            xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
+            //xLabels.add(xAxisValueFormatter.toString());
+
+            i++;
+        }
+           //Collections.sort(systolic, new EntryXIndexComparator());
+           //Collections.sort(diastolic, new EntryXIndexComparator());
+
+        //XAxisValueFormatter xAxisValueFormatter= new MonthAxisValueFormatter(referenceTimeStamp);
 
         /*Creating the systolic data set and setting different attributes for it*/
         LineDataSet systolicSet = new LineDataSet(systolic,"Systolic");
