@@ -94,7 +94,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS zzz");
         String time = simpleDateFormat.format(calendar.getTime());
 
 
@@ -143,7 +143,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS zzz");
         String time = simpleDateFormat.format(calendar.getTime());
 
 
@@ -193,7 +193,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS zzz");
         String time = simpleDateFormat.format(calendar.getTime());
 
 
@@ -242,9 +242,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS zzz");
         String time = simpleDateFormat.format(calendar.getTime());
 
 
@@ -289,17 +288,15 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-
     public Cursor readBloodPressure()
     {
-        String[] columns = {MEASUREMENT_COL_1,MEASUREMENT_COL_11,MEASUREMENT_COL_12};
+        String[] columns = {MEASUREMENT_COL_1,MEASUREMENT_COL_2,MEASUREMENT_COL_11,MEASUREMENT_COL_12};
 
         Cursor cursor = this.getReadableDatabase().query(MEASUREMENT_TABLE_NAME,
                 columns,null,null,null,null,null);
 
         return cursor;
     }
-
 
 
 
