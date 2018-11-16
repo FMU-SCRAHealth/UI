@@ -44,7 +44,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
     private Context context = this;
     private EditText editDate;
     private Calendar myCalendar = Calendar.getInstance();
-    private String dateFormat = "MM.dd.yy";
+    private String dateFormat = "MMM dd yyyy ";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.US);
 
