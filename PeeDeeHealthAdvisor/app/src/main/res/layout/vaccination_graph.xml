@@ -61,6 +61,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginTop="15dp"
             android:stretchColumns="*">
 
             <!--<TableRow>-->
@@ -82,33 +83,27 @@
 
                 <TextView
                     android:id="@+id/tableName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_span="1"
                     android:padding="20dp"
                     android:text="@string/tableName"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tableTaken"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_span="2"
                     android:padding="20dp"
                     android:text="@string/tableTaken"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tableDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_span="3"
                     android:padding="20dp"
                     android:singleLine="true"
                     android:text="@string/tableDate"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </TableRow>
@@ -120,19 +115,21 @@
                     android:layout_span="1"
                     android:padding="20dp"
                     android:text="@string/tableFluShot"
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/fluShotTaken"
                     android:layout_span="2"
                     android:padding="20dp"
-                    android:text=".."
-                    android:textSize="16sp" />
+                    android:text="Yes"
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/fluShotDate"
                     android:layout_span="3"
                     android:padding="20dp"
-                    android:text="...."
-                    android:textSize="16sp" />
+                    android:text="11-12-18"
+                    android:textSize="15sp" />
 
             </TableRow>
 
@@ -143,19 +140,19 @@
                     android:layout_span="1"
                     android:padding="20dp"
                     android:text="@string/tableShingle"
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
                 <TextView
                     android:id="@+id/shingleTaken"
                     android:layout_span="2"
                     android:padding="20dp"
                     android:text=".."
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
                 <TextView
                     android:id="@+id/shingleDate"
                     android:layout_span="3"
                     android:padding="20dp"
                     android:text="...."
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
 
             </TableRow>
 
@@ -166,19 +163,19 @@
                     android:layout_span="1"
                     android:padding="20dp"
                     android:text="@string/tablePneumonia"
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
                 <TextView
                     android:id="@+id/pneumoniaTaken"
                     android:layout_span="2"
                     android:padding="20dp"
                     android:text=".."
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
                 <TextView
                     android:id="@+id/pneumoniaDate"
                     android:layout_span="3"
                     android:padding="20dp"
                     android:text="...."
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
 
             </TableRow>
 
