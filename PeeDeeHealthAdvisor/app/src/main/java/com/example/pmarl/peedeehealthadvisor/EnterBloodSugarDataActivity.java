@@ -21,12 +21,15 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -120,8 +123,9 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 
                  if(bloodSugarInput.getText().toString().equals(""))
                  {
-                     Toast.makeText(EnterBloodSugarDataActivity.this,
-                             "Please enter a valid blood sugar level.", Toast.LENGTH_LONG).show();
+//                     Toast.makeText(EnterBloodSugarDataActivity.this,
+//                             "Please enter a valid blood sugar level.", Toast.LENGTH_LONG).show();
+                     showDataNotEnteredWarning();
                  }
 
 
@@ -131,11 +135,13 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                              Integer.parseInt(bloodSugarInput.getText().toString()));
 
                      if (isInserted = true)
-                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar Saved",
-                                 Toast.LENGTH_LONG).show();
+//                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar Saved",
+//                                 Toast.LENGTH_LONG).show();
+                         showDataEntryCheckmark();
                      else
-                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar NOT Saved",
-                                 Toast.LENGTH_LONG).show();
+//                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar NOT Saved",
+//                                 Toast.LENGTH_LONG).show();
+                     showDataError();
 
 
                      launchPrevActivity();
@@ -204,5 +210,45 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                     // Ninjas rule
                     break;
         }
+    }
+
+    // Show images in Toast prompt.
+    private void showDataEntryCheckmark()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Blood Sugar Entered", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_checkmark);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+
+    }
+
+    // Show images in Toast prompt.
+    private void showDataNotEnteredWarning()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataError()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Please Try Again", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_error);
+        toastContentView.addView(imageView, 0);
+        toast.show();
     }
 }

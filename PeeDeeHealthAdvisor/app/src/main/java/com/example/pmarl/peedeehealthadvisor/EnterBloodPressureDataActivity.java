@@ -17,11 +17,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -112,8 +115,9 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 
                 if(systolicInput.getText().toString().equals("")||diastolicInput.getText().toString().equals(""))
                 {
-                    Toast.makeText(EnterBloodPressureDataActivity.this,
-                            "Please enter all fields.",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(EnterBloodPressureDataActivity.this,
+//                            "Please enter all fields.",Toast.LENGTH_LONG).show();
+                    showDataNotEnteredWarning();
                 }
 //                else if(systolicInput.getText().toString()=="")
 //                {
@@ -133,11 +137,13 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                             Integer.parseInt(diastolicInput.getText().toString()));
 
                     if (isInserted = true)
-                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
-                                Toast.LENGTH_LONG).show();
+//                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
+//                                Toast.LENGTH_LONG).show();
+                        showDataEntryCheckmark();
                     else
-                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
-                                Toast.LENGTH_LONG).show();
+//                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
+//                                Toast.LENGTH_LONG).show();
+                        showDataError();
 
                     launchPrevActivity();
                 }
@@ -182,5 +188,45 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataEntryCheckmark()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Blood Pressure Entered", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_checkmark);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+
+    }
+
+    // Show images in Toast prompt.
+    private void showDataNotEnteredWarning()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataError()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Please Try Again", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_error);
+        toastContentView.addView(imageView, 0);
+        toast.show();
     }
 }
