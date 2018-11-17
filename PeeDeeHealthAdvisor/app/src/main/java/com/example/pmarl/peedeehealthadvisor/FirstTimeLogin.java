@@ -139,6 +139,12 @@ public class FirstTimeLogin extends AppCompatActivity
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
+
 
     private void launchMainActivity()
     {
