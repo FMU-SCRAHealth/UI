@@ -164,7 +164,8 @@ public class FirstTimeLogin extends AppCompatActivity
     private void showDataEntryCheckmarkUser()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_SHORT);
+        String welcomeText = "Welcome " + firstNameText.getText().toString() + "!";
+        Toast toast = Toast.makeText(getApplicationContext(), welcomeText, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
