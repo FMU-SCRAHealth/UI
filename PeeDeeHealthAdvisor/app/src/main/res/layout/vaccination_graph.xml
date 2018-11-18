@@ -121,14 +121,14 @@
                     android:id="@+id/fluShotTaken"
                     android:layout_span="2"
                     android:padding="20dp"
-                    android:text="Yes"
+                    android:text=""
                     android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/fluShotDate"
                     android:layout_span="3"
                     android:padding="20dp"
-                    android:text="11-12-18"
+                    android:text=""
                     android:textSize="15sp" />
 
             </TableRow>

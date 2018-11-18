@@ -57,14 +57,31 @@ public class VaccinationGraph extends AppCompatActivity
 
         String date = "Not Taken";
         int immunized;
-        String tableImmnuzed = "";
-        String vaccinationName = "";
+        String tableImmunized;
+        String vaccinationName;
 
         // Flu Shot Row
         TextView fluShotTableNameView = findViewById(R.id.fluShotTable);
         TextView fluShotTakenView = findViewById(R.id.fluShotTaken);
         TextView fluShotDateView = findViewById(R.id.fluShotDate);
 
+        // Shingles Row
+        TextView shingleTaken = findViewById(R.id.shingleTaken);
+        TextView shingleDate = findViewById(R.id.shingleDate);
+
+        // Pneumonia Row
+        TextView pneumoniaTaken = findViewById(R.id.pneumoniaTaken);
+        TextView pneumoniaDate = findViewById(R.id.pneumoniaDate);
+
+        // default table text
+        fluShotTakenView.setText("No");
+        fluShotDateView.setText(date);
+
+        shingleTaken.setText("No");
+        shingleDate.setText(date);
+
+        pneumoniaTaken.setText("No");
+        pneumoniaDate.setText(date);
 
         // cursor instantiations have to be different names or they will conflict with one another
         Cursor cursorVaccinations = MainActivity.myDB.readVaccinationRecords();
@@ -72,8 +89,6 @@ public class VaccinationGraph extends AppCompatActivity
         if(cursorVaccinations != null) {
             cursorVaccinations.moveToFirst();
         }
-
-        StringBuilder builder = new StringBuilder();
 
         while(cursorVaccinations.moveToNext()) {
 
@@ -84,15 +99,36 @@ public class VaccinationGraph extends AppCompatActivity
             vaccinationName = cursorVaccinations.getString(2);
 
             if (immunized == 0) {
-                tableImmnuzed = "No";
-            } else {
-                tableImmnuzed = "Yes";
+
+                tableImmunized = "No";
+
+            }
+            else
+            {
+                tableImmunized = "Yes";
+            }
+
+            if (vaccinationName.equals("Flu Shot"))
+            {
+                fluShotDateView.setText(date);
+                fluShotTakenView.setText(tableImmunized);
+            }
+            else if (vaccinationName.equals("Shingle"))
+            {
+                shingleDate.setText((date));
+                shingleTaken.setText(tableImmunized);
+            }
+            else if (vaccinationName.equals("Pneumonia"))
+            {
+                pneumoniaDate.setText(date);
+                pneumoniaTaken.setText(tableImmunized);
+            }
+            else {
+                fluShotDateView.setText("ERROR");
             }
 
         }
 
-        fluShotDateView.setText(date);
-        fluShotTakenView.setText(tableImmnuzed);
 
 
 
