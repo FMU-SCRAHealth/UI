@@ -52,9 +52,11 @@ public class VaccinationGraph extends AppCompatActivity
             }
         });
 
-        // finding the graph by element id.
-        barChart = (BarChart) findViewById(R.id.barGraph);
 
+        // cursor instantiations have to be different names or they will conflict with one another
+        Cursor cursorVaccinations = MainActivity.myDB.readVaccinationRecords();
+
+        // Strings
         String date = "Not Taken";
         int immunized;
         String tableImmunized ="No";
@@ -83,14 +85,13 @@ public class VaccinationGraph extends AppCompatActivity
         pneumoniaTaken.setText(tableImmunized);
         pneumoniaDate.setText(date);
 
-        // cursor instantiations have to be different names or they will conflict with one another
-        Cursor cursorVaccinations = MainActivity.myDB.readVaccinationRecords();
 
         if(cursorVaccinations != null) {
             cursorVaccinations.moveToFirst();
         }
 
-        while(cursorVaccinations.moveToNext()) {
+        // had to use isAfterLast() to get the first entry to be read
+        while(!cursorVaccinations.isAfterLast()) {
 
             date = cursorVaccinations.getString(0);
 
@@ -126,7 +127,7 @@ public class VaccinationGraph extends AppCompatActivity
             else {
                 fluShotDateView.setText("Test");
             }
-
+            cursorVaccinations.moveToNext();
         }
 
 
