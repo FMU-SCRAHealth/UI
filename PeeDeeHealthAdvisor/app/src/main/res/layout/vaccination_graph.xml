@@ -64,21 +64,6 @@
             android:layout_marginTop="15dp"
             android:stretchColumns="*">
 
-            <!--<TableRow>-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/tableTitle"-->
-                    <!--android:la-->
-                    <!--yout_width="410dp"android:layout_height="wrap_content"-->
-                    <!--android:gravity="center_horizontal"-->
-                    <!--android:orientation="vertical"-->
-                    <!--android:padding="15dp"-->
-                    <!--android:text="@string/tableTitleVaccinations"-->
-                    <!--android:textAlignment="center"-->
-                    <!--android:textSize="18sp"-->
-                    <!--android:textStyle="bold"/>-->
-            <!--</TableRow>-->
-
             <TableRow>
 
                 <TextView
