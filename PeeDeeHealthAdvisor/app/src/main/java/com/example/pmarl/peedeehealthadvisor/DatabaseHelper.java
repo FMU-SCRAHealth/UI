@@ -246,6 +246,15 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return cursor;
     }
 
+    public Cursor readVaccinationRecords()
+    {
+        String[] columns = {MEASUREMENT_COL_1,MEASUREMENT_COL_7, MEASUREMENT_COL_8};
+
+        Cursor cursorVaccinations = this.getReadableDatabase().query(MEASUREMENT_TABLE_NAME,
+                columns,null, null, null,null,null);
+
+        return cursorVaccinations;
+    }
 
 
 }

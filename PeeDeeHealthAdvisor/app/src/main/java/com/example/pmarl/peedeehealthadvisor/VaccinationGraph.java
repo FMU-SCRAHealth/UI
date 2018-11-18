@@ -25,8 +25,11 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.TreeMap;
 
 public class VaccinationGraph extends AppCompatActivity
 {
@@ -49,32 +52,47 @@ public class VaccinationGraph extends AppCompatActivity
             }
         });
 
-//        // finding the graph by element id.
-//        barChart = (BarChart) findViewById(R.id.barGraph);
+        // finding the graph by element id.
+        barChart = (BarChart) findViewById(R.id.barGraph);
 
-//        String date;
-//        ArrayList<String> immunized = new ArrayList<>();
-//        ArrayList<String> vaccinationName = new ArrayList<>();
+        String date = "Not Taken";
+        int immunized;
+        String tableImmnuzed = "";
+        String vaccinationName = "";
 
-//        Cursor cursor = MainActivity.myDB.readVaccinationRecords();
-//
-//        if(cursor != null) {
-//            cursor.moveToFirst();
-//        }
-//
-//        while(cursor.moveToNext()) {
-//            date = cursor.getString(0) + cursor.getString(1);
-//
-//            immunized.add(cursor.getString(2));
-//
-//            vaccinationName.add(cursor.getString(3));
-//        }
-//
-//        TextView fluShotTakenView = findViewById(R.id.fluShotTaken);
-//
-//        fluShotTakenView.setText(immunized.get(0));
+        // Flu Shot Row
+        TextView fluShotTableNameView = findViewById(R.id.fluShotTable);
+        TextView fluShotTakenView = findViewById(R.id.fluShotTaken);
+        TextView fluShotDateView = findViewById(R.id.fluShotDate);
 
 
+        // cursor instantiations have to be different names or they will conflict with one another
+        Cursor cursorVaccinations = MainActivity.myDB.readVaccinationRecords();
+
+        if(cursorVaccinations != null) {
+            cursorVaccinations.moveToFirst();
+        }
+
+        StringBuilder builder = new StringBuilder();
+
+        while(cursorVaccinations.moveToNext()) {
+
+            date = cursorVaccinations.getString(0);
+
+            immunized = cursorVaccinations.getInt(1);
+
+            vaccinationName = cursorVaccinations.getString(2);
+
+            if (immunized == 0) {
+                tableImmnuzed = "No";
+            } else {
+                tableImmnuzed = "Yes";
+            }
+
+        }
+
+        fluShotDateView.setText(date);
+        fluShotTakenView.setText(tableImmnuzed);
 
 
 
