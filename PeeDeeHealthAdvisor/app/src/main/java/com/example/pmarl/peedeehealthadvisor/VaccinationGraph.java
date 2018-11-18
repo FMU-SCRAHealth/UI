@@ -13,10 +13,12 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -24,6 +26,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class VaccinationGraph extends AppCompatActivity
 {
@@ -48,54 +51,31 @@ public class VaccinationGraph extends AppCompatActivity
 
 //        // finding the graph by element id.
 //        barChart = (BarChart) findViewById(R.id.barGraph);
+
+//        String date;
+//        ArrayList<String> immunized = new ArrayList<>();
+//        ArrayList<String> vaccinationName = new ArrayList<>();
+
+//        Cursor cursor = MainActivity.myDB.readVaccinationRecords();
 //
+//        if(cursor != null) {
+//            cursor.moveToFirst();
+//        }
 //
-//        // This is the array list that holds the values for the bar graph.
-//        // We can take data from the database, then store in this list.
-//        ArrayList<BarEntry> barEntries = new ArrayList<>();
+//        while(cursor.moveToNext()) {
+//            date = cursor.getString(0) + cursor.getString(1);
 //
-//        // method for entering data into the graph.
-//        barEntries.add(new BarEntry(65f, 0));
-//        barEntries.add(new BarEntry(59f, 1));
-//        barEntries.add(new BarEntry(80f, 2));
-//        barEntries.add(new BarEntry(79f, 3));
-//        barEntries.add(new BarEntry(72f, 4));
-//        barEntries.add(new BarEntry(69f, 5));
-//        barEntries.add(new BarEntry(75f, 6));
-//        barEntries.add(new BarEntry(80f, 7));
-//        barEntries.add(new BarEntry(79f, 8));
-//        barEntries.add(new BarEntry(65f, 9));
-//        barEntries.add(new BarEntry(74f, 10));
-//        barEntries.add(new BarEntry(71f, 11));
+//            immunized.add(cursor.getString(2));
 //
-//        // This constructor creates a data-set from the data above.
-//        BarDataSet barDataSet = new BarDataSet(barEntries, "Vaccinations");
+//            vaccinationName.add(cursor.getString(3));
+//        }
 //
-//        // This ArrayList holds the dates for the x-axis
-//        ArrayList<String> theDates = new ArrayList();
+//        TextView fluShotTakenView = findViewById(R.id.fluShotTaken);
 //
-//        theDates.add("January");
-//        theDates.add("February");
-//        theDates.add("March");
-//        theDates.add("April");
-//        theDates.add("May");
-//        theDates.add("June");
-//        theDates.add("July");
-//        theDates.add("August");
-//        theDates.add("September");
-//        theDates.add("October");
-//        theDates.add("November");
-//        theDates.add("December");
-//
-//        // Constructor for adding the dates with the data from above. Works on gradle version v2.2.4
-//        BarData theData = new BarData(theDates, barDataSet);
-//        barChart.setData(theData);
-//        barDataSet.setColor(getResources().getColor(R.color.GreenHuesMedium));
-//        barDataSet.setValueTextSize(12f);
-//        barChart.setDescription("");
-//        barChart.setTouchEnabled(true);
-//        barChart.setDragEnabled(true);
-//        barChart.setScaleEnabled(false);
+//        fluShotTakenView.setText(immunized.get(0));
+
+
+
 
 
 
