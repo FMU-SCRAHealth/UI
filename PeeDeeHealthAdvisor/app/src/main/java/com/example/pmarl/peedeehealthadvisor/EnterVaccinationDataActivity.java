@@ -191,7 +191,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         if(position != 0)
         {
             String text = parent.getItemAtPosition(position).toString();
-            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
         }
     }
 

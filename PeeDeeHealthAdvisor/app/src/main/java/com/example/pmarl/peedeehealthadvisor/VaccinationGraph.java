@@ -57,8 +57,8 @@ public class VaccinationGraph extends AppCompatActivity
 
         String date = "Not Taken";
         int immunized;
-        String tableImmunized;
-        String vaccinationName;
+        String tableImmunized ="No";
+        String vaccinationName ="";
 
         // Flu Shot Row
         TextView fluShotTableNameView = findViewById(R.id.fluShotTable);
@@ -74,13 +74,13 @@ public class VaccinationGraph extends AppCompatActivity
         TextView pneumoniaDate = findViewById(R.id.pneumoniaDate);
 
         // default table text
-        fluShotTakenView.setText("No");
+        fluShotTakenView.setText(tableImmunized);
         fluShotDateView.setText(date);
 
-        shingleTaken.setText("No");
+        shingleTaken.setText(tableImmunized);
         shingleDate.setText(date);
 
-        pneumoniaTaken.setText("No");
+        pneumoniaTaken.setText(tableImmunized);
         pneumoniaDate.setText(date);
 
         // cursor instantiations have to be different names or they will conflict with one another
@@ -124,14 +124,10 @@ public class VaccinationGraph extends AppCompatActivity
                 pneumoniaTaken.setText(tableImmunized);
             }
             else {
-                fluShotDateView.setText("ERROR");
+                fluShotDateView.setText("Test");
             }
 
         }
-
-
-
-
 
 
     }
