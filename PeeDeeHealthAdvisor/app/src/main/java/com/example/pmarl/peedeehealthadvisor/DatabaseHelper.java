@@ -250,8 +250,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         String[] columns = {MEASUREMENT_COL_1,MEASUREMENT_COL_7, MEASUREMENT_COL_8};
 
+        String selection = "meas_type = ?";
+
+        String[] selectionArgs = {"Vaccination"};
+
         Cursor cursorVaccinations = this.getReadableDatabase().query(MEASUREMENT_TABLE_NAME,
-                columns,null, null, null,null,null);
+                columns,selection, selectionArgs, null,null,null);
 
         return cursorVaccinations;
     }
