@@ -132,8 +132,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 
                 else
                 {
-                    boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString()
-                            , Integer.parseInt(systolicInput.getText().toString()),
+                    boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString(), Integer.parseInt(systolicInput.getText().toString()),
                             Integer.parseInt(diastolicInput.getText().toString()));
 
                     if (isInserted = true)

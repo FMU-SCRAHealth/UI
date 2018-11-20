@@ -136,8 +136,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 else
                 {
                     // needs implementations
-                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString()
-                            , Spinner.getSelectedItem().toString());
+                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), Spinner.getSelectedItem().toString());
 
                     if (isInserted = true)
 //                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination Saved",

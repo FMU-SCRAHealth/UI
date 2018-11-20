@@ -140,11 +140,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
                 else
                 {
-                    boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString()
-                            , Integer.parseInt(ldlInput.getText().toString())
-                            , Integer.parseInt(hdlInput.getText().toString())
-                            , Integer.parseInt(TRIGinput.getText().toString())
-                    );
+                    boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString(), Integer.parseInt(ldlInput.getText().toString()), Integer.parseInt(hdlInput.getText().toString()), Integer.parseInt(TRIGinput.getText().toString()));
                     if (isInserted = true)
 //                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
 //                                Toast.LENGTH_LONG).show();

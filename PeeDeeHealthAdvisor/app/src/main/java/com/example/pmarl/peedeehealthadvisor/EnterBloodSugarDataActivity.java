@@ -130,8 +130,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 
 
                  else {
-                     boolean isInserted = MainActivity.myDB.insertBloodSugar(editDate.getText().toString()
-                             , Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
+                     boolean isInserted = MainActivity.myDB.insertBloodSugar(editDate.getText().toString(), Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
                              Integer.parseInt(bloodSugarInput.getText().toString()));
 
                      if (isInserted = true)

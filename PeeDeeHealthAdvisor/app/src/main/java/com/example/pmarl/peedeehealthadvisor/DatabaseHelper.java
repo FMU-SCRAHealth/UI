@@ -29,7 +29,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String measurementType = "meas_type";
 
     private static final String measurementFasting = "fasting";
-   private static final String measurementBloodSugar = "blood_sugar";
+    private static final String measurementBloodSugar = "blood_sugar";
     private static final String measurementImmunized = "immunized";
     private static final String measurementVirus = "virus";
     private static final String measurementLDL = "LDL";
@@ -112,7 +112,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(measurementTime,time);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
-               contentValues.put(measurementSystolic,systolic);
+        contentValues.put(measurementSystolic,systolic);
         contentValues.put(measurementDiastolic,diastolic);
 
         long result = db.insert(measurementTable,null,contentValues);
@@ -248,17 +248,16 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     public Cursor readVaccinationRecords()
     {
-        String[] columns = {MEASUREMENT_COL_1,MEASUREMENT_COL_7, MEASUREMENT_COL_8};
+        String[] columns = {measurementDate,measurementImmunized, measurementVirus};
 
         String selection = "meas_type = ?";
 
         String[] selectionArgs = {"Vaccination"};
 
-        Cursor cursorVaccinations = this.getReadableDatabase().query(MEASUREMENT_TABLE_NAME,
+        Cursor cursorVaccinations = this.getReadableDatabase().query(measurementTable,
                 columns,selection, selectionArgs, null,null,null);
 
         return cursorVaccinations;
     }
-
 
 }
