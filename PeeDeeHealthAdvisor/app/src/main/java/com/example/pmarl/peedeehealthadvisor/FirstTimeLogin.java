@@ -164,7 +164,7 @@ public class FirstTimeLogin extends AppCompatActivity
     private void showDataEntryCheckmarkUser()
     {
 
-        String welcomeText = "Welcome " + firstNameText.getText().toString() + "!";
+        String welcomeText = "Welcome To Health Companion " + firstNameText.getText().toString() + "!";
         Toast toast = Toast.makeText(getApplicationContext(), welcomeText, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
