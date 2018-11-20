@@ -62,57 +62,143 @@
             android:layout_weight="1"
             android:layout_marginTop="5dp">
 
-            <com.github.mikephil.charting.charts.BarChart
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:id="@+id/barGraph">
+            <!--<com.github.mikephil.charting.charts.BarChart-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="250dp"-->
+                <!--android:id="@+id/barGraph">-->
 
-            </com.github.mikephil.charting.charts.BarChart>
+            <!--</com.github.mikephil.charting.charts.BarChart>-->
+
+            <TableLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:stretchColumns="*">
+
+                <!--<TableRow>-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/tableTitle"-->
+                <!--android:la-->
+                <!--yout_width="410dp"android:layout_height="wrap_content"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="15dp"-->
+                <!--android:text="@string/tableTitleVaccinations"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textSize="18sp"-->
+                <!--android:textStyle="bold"/>-->
+                <!--</TableRow>-->
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tableName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="1"
+                        android:padding="20dp"
+                        android:text="@string/tableName"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tableTaken"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="2"
+                        android:padding="20dp"
+                        android:text="@string/tableTaken"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tableDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="3"
+                        android:padding="20dp"
+                        android:singleLine="true"
+                        android:text="@string/tableDate"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/fluShotTable"
+                        android:layout_span="1"
+                        android:padding="20dp"
+                        android:text="@string/tableFluShot"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/fluShotTaken"
+                        android:layout_span="2"
+                        android:padding="20dp"
+                        android:text=".."
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/fluShotDate"
+                        android:layout_span="3"
+                        android:padding="20dp"
+                        android:text="...."
+                        android:textSize="16sp" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/shingleTable"
+                        android:layout_span="1"
+                        android:padding="20dp"
+                        android:text="@string/tableShingle"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/shingleTaken"
+                        android:layout_span="2"
+                        android:padding="20dp"
+                        android:text=".."
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/shingleDate"
+                        android:layout_span="3"
+                        android:padding="20dp"
+                        android:text="...."
+                        android:textSize="16sp" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/pneumoniaTable"
+                        android:layout_span="1"
+                        android:padding="20dp"
+                        android:text="@string/tablePneumonia"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/pneumoniaTaken"
+                        android:layout_span="2"
+                        android:padding="20dp"
+                        android:text=".."
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/pneumoniaDate"
+                        android:layout_span="3"
+                        android:padding="20dp"
+                        android:text="...."
+                        android:textSize="16sp" />
+
+                </TableRow>
+
+
+            </TableLayout>
 
         </RelativeLayout>
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:layout_weight="1">-->
-
-            <!--<CheckBox-->
-                <!--android:id="@+id/BloodSugarCheckBox"-->
-                <!--android:layout_width="130dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="28dp"-->
-                <!--android:text="@string/bloodSugar"-->
-                <!--android:textColor="@color/colorPrimaryDark"-->
-                <!--android:layout_weight="1"/>-->
-
-            <!--<CheckBox-->
-                <!--android:id="@+id/FluShotCheckBox"-->
-                <!--android:layout_width="130dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/fluShot"-->
-                <!--android:textColor="@color/colorPrimaryDark"-->
-                <!--android:layout_weight="1"/>-->
-
-            <!--<CheckBox-->
-                <!--android:id="@+id/BloodPressureCheckBox"-->
-                <!--android:layout_width="130dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/bloodPressure"-->
-                <!--android:textColor="@color/colorPrimaryDark"-->
-                <!--android:layout_weight="1"/>-->
-
-            <!--<CheckBox-->
-                <!--android:id="@+id/VaccinationCheckBox"-->
-                <!--android:layout_width="130dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/vaccination"-->
-                <!--android:textColor="@color/colorPrimaryDark"-->
-                <!--android:layout_weight="1"/>-->
-
-        <!--</LinearLayout>-->
 
     </LinearLayout>
 

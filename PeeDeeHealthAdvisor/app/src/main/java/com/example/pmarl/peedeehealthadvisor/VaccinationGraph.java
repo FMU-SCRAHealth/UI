@@ -13,17 +13,23 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TreeMap;
 
 public class VaccinationGraph extends AppCompatActivity
 {
@@ -46,56 +52,84 @@ public class VaccinationGraph extends AppCompatActivity
             }
         });
 
-        // finding the graph by element id.
-        barChart = (BarChart) findViewById(R.id.barGraph);
+
+        // cursor instantiations have to be different names or they will conflict with one another
+        Cursor cursorVaccinations = MainActivity.myDB.readVaccinationRecords();
+
+        // Strings
+        String date = "Not Taken";
+        int immunized;
+        String tableImmunized ="No";
+        String vaccinationName ="";
+
+        // Flu Shot Row
+        TextView fluShotTableNameView = findViewById(R.id.fluShotTable);
+        TextView fluShotTakenView = findViewById(R.id.fluShotTaken);
+        TextView fluShotDateView = findViewById(R.id.fluShotDate);
+
+        // Shingles Row
+        TextView shingleTaken = findViewById(R.id.shingleTaken);
+        TextView shingleDate = findViewById(R.id.shingleDate);
+
+        // Pneumonia Row
+        TextView pneumoniaTaken = findViewById(R.id.pneumoniaTaken);
+        TextView pneumoniaDate = findViewById(R.id.pneumoniaDate);
+
+        // default table text
+        fluShotTakenView.setText(tableImmunized);
+        fluShotDateView.setText(date);
+
+        shingleTaken.setText(tableImmunized);
+        shingleDate.setText(date);
+
+        pneumoniaTaken.setText(tableImmunized);
+        pneumoniaDate.setText(date);
 
 
-        // This is the array list that holds the values for the bar graph.
-        // We can take data from the database, then store in this list.
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        if(cursorVaccinations != null) {
+            cursorVaccinations.moveToFirst();
+        }
 
-        // method for entering data into the graph.
-        barEntries.add(new BarEntry(65f, 0));
-        barEntries.add(new BarEntry(59f, 1));
-        barEntries.add(new BarEntry(80f, 2));
-        barEntries.add(new BarEntry(79f, 3));
-        barEntries.add(new BarEntry(72f, 4));
-        barEntries.add(new BarEntry(69f, 5));
-        barEntries.add(new BarEntry(75f, 6));
-        barEntries.add(new BarEntry(80f, 7));
-        barEntries.add(new BarEntry(79f, 8));
-        barEntries.add(new BarEntry(65f, 9));
-        barEntries.add(new BarEntry(74f, 10));
-        barEntries.add(new BarEntry(71f, 11));
+        // had to use isAfterLast() to get the first entry to be read
+        while(!cursorVaccinations.isAfterLast()) {
 
-        // This constructor creates a data-set from the data above.
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Vaccinations");
+            date = cursorVaccinations.getString(0);
 
-        // This ArrayList holds the dates for the x-axis
-        ArrayList<String> theDates = new ArrayList();
+            immunized = cursorVaccinations.getInt(1);
 
-        theDates.add("January");
-        theDates.add("February");
-        theDates.add("March");
-        theDates.add("April");
-        theDates.add("May");
-        theDates.add("June");
-        theDates.add("July");
-        theDates.add("August");
-        theDates.add("September");
-        theDates.add("October");
-        theDates.add("November");
-        theDates.add("December");
+            vaccinationName = cursorVaccinations.getString(2);
 
-        // Constructor for adding the dates with the data from above. Works on gradle version v2.2.4
-        BarData theData = new BarData(theDates, barDataSet);
-        barChart.setData(theData);
-        barDataSet.setColor(getResources().getColor(R.color.GreenHuesMedium));
-        barDataSet.setValueTextSize(12f);
-        barChart.setDescription("");
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(false);
+            if (immunized == 0) {
+
+                tableImmunized = "No";
+
+            }
+            else
+            {
+                tableImmunized = "Yes";
+            }
+
+            if (vaccinationName.equals("Flu Shot"))
+            {
+                fluShotDateView.setText(date);
+                fluShotTakenView.setText(tableImmunized);
+            }
+            else if (vaccinationName.equals("Shingle"))
+            {
+                shingleDate.setText((date));
+                shingleTaken.setText(tableImmunized);
+            }
+            else if (vaccinationName.equals("Pneumonia"))
+            {
+                pneumoniaDate.setText(date);
+                pneumoniaTaken.setText(tableImmunized);
+            }
+            else {
+                fluShotDateView.setText("Test");
+            }
+            cursorVaccinations.moveToNext();
+        }
+
 
     }
 

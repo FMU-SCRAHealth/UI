@@ -12,17 +12,23 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -114,8 +120,10 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                 if(ldlInput.getText().toString().equals("")||hdlInput.getText().toString().equals("")||
                         TRIGinput.getText().toString().equals(""))
                 {
-                    Toast.makeText(EnterCholesterolDataActivity.this,
-                            "Please enter all fields.", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(EnterCholesterolDataActivity.this,
+//                            "Please enter all fields.", Toast.LENGTH_LONG).show();
+                    showDataNotEnteredWarning();
+
                 }
 //                else if(ldlInput.getText().toString()=="")
 //                {
@@ -135,17 +143,15 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
                 else
                 {
-                    boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString()
-                            , Integer.parseInt(ldlInput.getText().toString())
-                            , Integer.parseInt(hdlInput.getText().toString())
-                            , Integer.parseInt(TRIGinput.getText().toString())
-                    );
+                    boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString(), Integer.parseInt(ldlInput.getText().toString()), Integer.parseInt(hdlInput.getText().toString()), Integer.parseInt(TRIGinput.getText().toString()));
                     if (isInserted = true)
-                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
-                                Toast.LENGTH_LONG).show();
+//                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
+//                                Toast.LENGTH_LONG).show();
+                        showDataEntryCheckmark();
                     else
-                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol NOT Saved",
-                                Toast.LENGTH_LONG).show();
+//                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol NOT Saved",
+//                                Toast.LENGTH_LONG).show();
+                    showDataError();
                     launchPrevActivity();
                 }
             }
@@ -158,6 +164,18 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                 ldlInput.setText("");
                 TRIGinput.setText("");
                 editDate.setText("");
+            }
+        });
+
+        LinearLayout mainLayout = (LinearLayout)findViewById(R.id.cholesterolEntryLayout);
+        mainLayout.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                InputMethodManager inputMethodManager = (InputMethodManager)  EnterCholesterolDataActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(EnterCholesterolDataActivity.this.getCurrentFocus().getWindowToken(), 0);
+                return false;
             }
         });
 
@@ -188,5 +206,45 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataEntryCheckmark()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Cholesterol Entered", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_checkmark);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+
+    }
+
+    // Show images in Toast prompt.
+    private void showDataNotEnteredWarning()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataError()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Please Try Again", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_error);
+        toastContentView.addView(imageView, 0);
+        toast.show();
     }
 }

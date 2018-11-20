@@ -63,7 +63,7 @@ public class BloodPressureGraph extends AppCompatActivity
 
         /*Creating a cursor, which is a table that stores the data from
         * the sql query*/
-        Cursor  cursor = MainActivity.myDB.readBloodPressure();
+        Cursor cursor = MainActivity.myDB.readBloodPressure();
 
         /*Creating an array list that will hold the systolic values and the dates that
         * the values were taken on*/

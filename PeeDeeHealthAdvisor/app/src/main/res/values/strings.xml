@@ -65,6 +65,14 @@
     <string name="vaccinationGraph">Vaccinations</string>
     <string name="startSetup">Start Setup</string>
     <string name="setupUser">Setup User</string>
+    <string name="tableTitleVaccinations">Vaccinations</string>
+    <string name="tableName">Name</string>
+    <string name="tableTaken">Taken</string>
+    <string name="tableDate">Date</string>
+    <string name="tableFluShot">Flu Shot</string>
+    <string name="tableShingle">Shingles</string>
+    <string name="tablePneumonia">Pneumonia</string>
+
 
 
     <string-array name="distances">
