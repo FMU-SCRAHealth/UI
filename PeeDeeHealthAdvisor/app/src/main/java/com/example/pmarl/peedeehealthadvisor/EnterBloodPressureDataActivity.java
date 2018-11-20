@@ -11,6 +11,7 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +19,9 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -157,6 +160,18 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                 systolicInput.setText("");
                 diastolicInput.setText("");
                 editDate.setText("");
+            }
+        });
+
+        LinearLayout mainLayout = (LinearLayout)findViewById(R.id.bloodPressureEntryLayout);
+        mainLayout.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                InputMethodManager inputMethodManager = (InputMethodManager)  EnterBloodPressureDataActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(EnterBloodPressureDataActivity.this.getCurrentFocus().getWindowToken(), 0);
+                return false;
             }
         });
 
