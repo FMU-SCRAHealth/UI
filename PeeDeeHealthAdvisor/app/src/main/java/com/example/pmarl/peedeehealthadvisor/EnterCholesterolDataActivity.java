@@ -1,4 +1,4 @@
-/**
+/*
     Author: Patrick Marlowe
     Email Address: pmarlowe782@gmail.com
     Written: June 22, 2018
@@ -31,11 +31,9 @@ import java.util.Locale;
 
 public class EnterCholesterolDataActivity extends AppCompatActivity
 {
-    private Button enterData, clearData;
-    private TextInputEditText hdlInput, ldlInput, tcInput;
+    private TextInputEditText hdlInput, ldlInput, TRIGinput;
 
 
-    private ImageButton home;
     private Context context = this;
     private EditText editDate;
     private Calendar myCalendar = Calendar.getInstance();
@@ -55,12 +53,12 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_enter_cholesterol_data);
 
-        editDate = (EditText) findViewById(R.id.editDate);
-        enterData = (Button) findViewById(R.id.enterData);
-        clearData = (Button) findViewById(R.id.clearData);
-        hdlInput = (TextInputEditText) findViewById(R.id.hdlInput);
-        ldlInput = (TextInputEditText) findViewById(R.id.ldlInput);
-        tcInput = (TextInputEditText) findViewById(R.id.tcInput);
+        editDate = findViewById(R.id.editDate);
+        Button enterData = findViewById(R.id.enterData);
+        Button clearData = findViewById(R.id.clearData);
+        hdlInput = findViewById(R.id.hdlInput);
+        ldlInput = findViewById(R.id.ldlInput);
+        TRIGinput = findViewById(R.id.TRIGinput);
 
         // init - set date to current date
         long currentdate = System.currentTimeMillis();
@@ -99,7 +97,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         });
 
 
-        home = (ImageButton) findViewById(R.id.Home);
+        ImageButton home = findViewById(R.id.Home);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +112,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(ldlInput.getText().toString().equals("")||hdlInput.getText().toString().equals("")||
-                        tcInput.getText().toString().equals(""))
+                        TRIGinput.getText().toString().equals(""))
                 {
                     Toast.makeText(EnterCholesterolDataActivity.this,
                             "Please enter all fields.", Toast.LENGTH_LONG).show();
@@ -140,7 +138,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                     boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString()
                             , Integer.parseInt(ldlInput.getText().toString())
                             , Integer.parseInt(hdlInput.getText().toString())
-                            , Integer.parseInt(tcInput.getText().toString())
+                            , Integer.parseInt(TRIGinput.getText().toString())
                     );
                     if (isInserted = true)
                         Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
@@ -158,7 +156,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
             public void onClick(View view) {
                 hdlInput.setText("");
                 ldlInput.setText("");
-                tcInput.setText("");
+                TRIGinput.setText("");
                 editDate.setText("");
             }
         });
@@ -178,7 +176,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private void launchMainActivity()
     {
         Intent intent = new Intent (this, MainActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
 
@@ -187,7 +185,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private void launchPrevActivity()
     {
         Intent intent = new Intent (this, SelectCholesterolActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

@@ -11,33 +11,46 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
+
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class CholesterolGraph extends AppCompatActivity
 {
-    private ImageButton home;
-    BarChart barChart;
+    LineChart lineChart;
 
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.cholesterol_graph);
 
-        home = (ImageButton) findViewById(R.id.Home);
+        ImageButton home = findViewById(R.id.Home);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,55 +60,160 @@ public class CholesterolGraph extends AppCompatActivity
         });
 
         // finding the graph by element id.
-        barChart = (BarChart) findViewById(R.id.barGraph);
+        lineChart =  findViewById(R.id.lineGraph);
+
+        /*Creating a cursor, which is a table that stores the data from
+         * the sql query*/
+        Cursor cursor = MainActivity.myDB.readCholesterol();
+
+        /*Creating an array list that will hold the HDL values and the dates that
+         * the values were taken on*/
+        ArrayList<Entry> hdl = new ArrayList<>();
+
+        /*Creating an array list that will hold the LDL values and the dates that
+         * the values were taken on*/
+        ArrayList<Entry> ldl = new ArrayList<>();
+
+        /*Creating an array list that will hold the TRIG values and the dates that the values
+        * were taken*/
+        ArrayList<Entry> trig = new ArrayList<>();
+
+        /*Just a test array for the x values for the graph*/
+        final ArrayList<String> xLabels = new ArrayList<>();
+
+        /*Test values for the xLabels array*/
+        Integer i = 0;
+        String date;
+        Date date1;
+        long epoch;
+        TreeMap<Long,CholesterolValues> treeMap = new TreeMap<>();
 
 
-        // This is the array list that holds the values for the bar graph.
-        // We can take data from the database, then store in this list.
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        /*Loop through the rows of the cursor and set the (y,x) values
+         * cursor.moveToNext() returns a boolean value and performs an action to move to the
+         * next cursor*/
+        cursor.moveToLast();
+        do
+        {
 
-        // method for entering data into the graph.
-        barEntries.add(new BarEntry(65f, 0));
-        barEntries.add(new BarEntry(59f, 1));
-        barEntries.add(new BarEntry(80f, 2));
-        barEntries.add(new BarEntry(79f, 3));
-        barEntries.add(new BarEntry(72f, 4));
-        barEntries.add(new BarEntry(69f, 5));
-        barEntries.add(new BarEntry(75f, 6));
-        barEntries.add(new BarEntry(80f, 7));
-        barEntries.add(new BarEntry(79f, 8));
-        barEntries.add(new BarEntry(65f, 9));
-        barEntries.add(new BarEntry(74f, 10));
-        barEntries.add(new BarEntry(71f, 11));
 
-        // This constructor creates a data-set from the data above.
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Cholesterol");
+            try
+            {
+                date = cursor.getString(0) + cursor.getString(1);
+                date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
+                epoch = date1.getTime();
 
-        // This ArrayList holds the dates for the x-axis
-        ArrayList<String> theDates = new ArrayList();
 
-        theDates.add("January");
-        theDates.add("February");
-        theDates.add("March");
-        theDates.add("April");
-        theDates.add("May");
-        theDates.add("June");
-        theDates.add("July");
-        theDates.add("August");
-        theDates.add("September");
-        theDates.add("October");
-        theDates.add("November");
-        theDates.add("December");
+                treeMap.put(epoch, new CholesterolValues(Float.parseFloat(cursor.getString(2)),
+                        Float.parseFloat(cursor.getString(3)),
+                        Float.parseFloat(cursor.getString(4))));
 
-        // Constructor for adding the dates with the data from above. Works on gradle version v2.2.4
-        BarData theData = new BarData(theDates, barDataSet);
-        barChart.setData(theData);
-        barDataSet.setColor(getResources().getColor(R.color.YellowHuesLight));
-        barChart.setDescription("");
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(false);
-        barDataSet.setValueTextSize(12f);
+
+            } catch (ParseException e)
+            {
+                e.printStackTrace();
+            }
+
+        }while (cursor.moveToPrevious());
+
+
+
+        Set<Map.Entry<Long, CholesterolValues>> set = treeMap.entrySet();
+        Iterator<Map.Entry<Long, CholesterolValues>> iterator = set.iterator();
+        while(iterator.hasNext())
+        {
+            Map.Entry<Long, CholesterolValues> mEntry = iterator.next();
+            CholesterolValues cholesterolValues = mEntry.getValue();
+
+            /*Adding the hdl value from the DB and the date that corresponds
+             * with it*/
+            hdl.add(new Entry(cholesterolValues.getHdl(), i));
+
+            /*Adding the ldl value from the DB and the date that corresponds
+             * with it*/
+            ldl.add(new Entry(cholesterolValues.getLdl(), i));
+
+            /*Adding the trig value from the DB and the date that corresponds with it*/
+            trig.add(new Entry(cholesterolValues.getTrig(),i));
+
+            /*Adding test values for the hdl and ldl values*/
+            Long epoch1 = mEntry.getKey();
+
+            Date date2 = new Date(epoch1);
+
+
+            xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
+
+            i++;
+        }
+
+
+
+        /*Creating the hdl data set and setting different attributes for it*/
+        LineDataSet hdlSet = new LineDataSet(hdl,"HDL");
+        hdlSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+        hdlSet.setColor(getResources().getColor(R.color.YellowHuesDark));
+        hdlSet.setValueTextSize(13f);
+        hdlSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
+        hdlSet.setCircleRadius(4f);
+        hdlSet.setCircleColor(getResources().getColor(R.color.YellowHuesDark));
+        hdlSet.setLineWidth(2f);
+
+
+        /*Creating the ldl data set and setting different attributes for it*/
+        LineDataSet ldlSet = new LineDataSet(ldl,"LDL");
+        ldlSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+        ldlSet.setColor(getResources().getColor(R.color.YellowHuesLight));
+        ldlSet.setValueTextSize(13f);
+        ldlSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
+        ldlSet.setCircleRadius(4f);
+        ldlSet.setCircleColor(getResources().getColor(R.color.YellowHuesDark));
+        ldlSet.setLineWidth(2f);
+        ldlSet.enableDashedLine(10f,5f,0f);
+
+
+        /*Creating the trig data set and setting different attributes for it*/
+        LineDataSet trigSet = new LineDataSet(trig,"TRIG");
+        trigSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+        trigSet.setColor(getResources().getColor(R.color.YellowHuesDark));
+        trigSet.setValueTextSize(13f);
+        trigSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
+        trigSet.setCircleRadius(4f);
+        trigSet.setCircleColor(getResources().getColor(R.color.YellowHuesLight));
+        trigSet.setLineWidth(2f);
+        trigSet.enableDashedLine(10f,5f,0f);
+
+
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(true);
+        xAxis.setLabelRotationAngle(-90);
+
+
+        /*Creating an array list for your data sets
+         * "A set of sets"*/
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(hdlSet);
+        dataSets.add(ldlSet);
+        dataSets.add(trigSet);
+
+        /*creating the data to be plotted in the line chart*/
+        LineData data = new LineData(xLabels,dataSets);
+
+
+        /*Setting the data and attributes for the line chart*/
+        lineChart.setDescription("Cholesterol");
+        lineChart.setNoDataTextDescription("You need to provide data for the chart.");
+        lineChart.setData(data);
+        lineChart.setVisibleXRangeMaximum(30);
+        lineChart.setTouchEnabled(true);
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setPinchZoom(true);
+        lineChart.setDoubleTapToZoomEnabled(true);
+        lineChart.invalidate();
 
     }
 
@@ -107,7 +225,7 @@ public class CholesterolGraph extends AppCompatActivity
     private void launchMainActivity()
     {
         Intent intent = new Intent (this, MainActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
 
@@ -116,7 +234,7 @@ public class CholesterolGraph extends AppCompatActivity
     private void launchPrevActivity()
     {
         Intent intent = new Intent (this, SelectCholesterolActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

@@ -11,33 +11,46 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
+
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class BloodSugarGraph extends AppCompatActivity
 {
-    private ImageButton home;
-    BarChart barChart;
+    LineChart lineChart;
 
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.blood_sugar_graph);
 
-        home = (ImageButton) findViewById(R.id.Home);
+        ImageButton home = findViewById(R.id.Home);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,56 +60,125 @@ public class BloodSugarGraph extends AppCompatActivity
         });
 
         // finding the graph by element id.
-        barChart = (BarChart) findViewById(R.id.barGraph);
+        lineChart =  findViewById(R.id.lineGraph);
+
+        /*Creating a cursor, which is a table that stores the data from
+         * the sql query*/
+        Cursor cursor = MainActivity.myDB.readBloodSugar();
+
+        /*Creating an array list that will hold the blood pressure values and the dates that
+         * the values were taken on*/
 
 
-        // This is the array list that holds the values for the bar graph.
-        // We can take data from the database, then store in this list.
-        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        /*Just a test array for the x values for the graph*/
+        final ArrayList<String> xLabels = new ArrayList<>();
 
-        // method for entering data into the graph.
-        barEntries.add(new BarEntry(65f, 0));
-        barEntries.add(new BarEntry(59f, 1));
-        barEntries.add(new BarEntry(80f, 2));
-        barEntries.add(new BarEntry(79f, 3));
-        barEntries.add(new BarEntry(72f, 4));
-        barEntries.add(new BarEntry(69f, 5));
-        barEntries.add(new BarEntry(75f, 6));
-        barEntries.add(new BarEntry(80f, 7));
-        barEntries.add(new BarEntry(79f, 8));
-        barEntries.add(new BarEntry(65f, 9));
-        barEntries.add(new BarEntry(74f, 10));
-        barEntries.add(new BarEntry(71f, 11));
+        /*Test values for the xLabels array*/
+        Integer i = 0;
+        String date;
+        Date date1;
+        long epoch;
+        TreeMap<Long,BloodSugarValue> treeMap = new TreeMap<>();
+        Boolean fasting;
 
-        // This constructor creates a data-set from the data above.
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Blood Sugar");
 
-        // This ArrayList holds the dates for the x-axis
-        ArrayList<String> theDates = new ArrayList();
+        /*Loop through the rows of the cursor and set the (y,x) values
+         * cursor.moveToNext() returns a boolean value and performs an action to move to the
+         * next cursor*/
+        cursor.moveToLast();
+        do
+        {
 
-        theDates.add("January");
-        theDates.add("February");
-        theDates.add("March");
-        theDates.add("April");
-        theDates.add("May");
-        theDates.add("June");
-        theDates.add("July");
-        theDates.add("August");
-        theDates.add("September");
-        theDates.add("October");
-        theDates.add("November");
-        theDates.add("December");
 
-        // Constructor for adding the dates with the data from above. Works on gradle version v2.2.4
-        BarData theData = new BarData(theDates, barDataSet);
-        barChart.setData(theData);
-        barDataSet.setColor(getResources().getColor(R.color.PurpleHuesLight));
-        barChart.setDescription("");
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleEnabled(false);
-        barDataSet.setValueTextSize(12f);
+            try
+            {
+                date = cursor.getString(0) + cursor.getString(1);
+                date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
+                epoch = date1.getTime();
 
+                fasting = Integer.parseInt(cursor.getString(2)) == 1;
+
+                treeMap.put(epoch, new BloodSugarValue(fasting,Float.parseFloat(cursor.getString(3))));
+
+
+
+            } catch (ParseException e)
+            {
+                e.printStackTrace();
+            }
+
+        }while (cursor.moveToPrevious());
+
+
+
+        Set<Map.Entry<Long, BloodSugarValue>> set = treeMap.entrySet();
+        Iterator<Map.Entry<Long, BloodSugarValue>> iterator = set.iterator();
+        ArrayList<Entry> bloodSugar = new ArrayList<>();
+        while(iterator.hasNext())
+        {
+            Map.Entry<Long, BloodSugarValue> mEntry = iterator.next();
+            BloodSugarValue bloodSugarValue = mEntry.getValue();
+
+
+            /*Adding the systolic value from the DB and the date that corresponds
+             * with it*/
+            bloodSugar.add(new Entry(bloodSugarValue.getBloodSugar(), i));
+
+
+
+            /*Adding test values for the systolic and diastolic values*/
+            Long epoch1 = mEntry.getKey();
+
+            Date date2 = new Date(epoch1);
+
+
+            xLabels.add(new SimpleDateFormat("MMM dd HH:mm").format(date2));
+
+            i++;
+        }
+
+
+
+        /*Creating the systolic data set and setting different attributes for it*/
+        LineDataSet bloodSugarSet = new LineDataSet(bloodSugar,"Blood Sugar");
+        bloodSugarSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+        bloodSugarSet.setColor(getResources().getColor(R.color.PurpleHuesDark));
+        bloodSugarSet.setValueTextSize(13f);
+        bloodSugarSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
+        bloodSugarSet.setCircleRadius(4f);
+        bloodSugarSet.setCircleColor(getResources().getColor(R.color.PurpleHuesLight));
+        bloodSugarSet.setLineWidth(2f);
+
+
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(true);
+        xAxis.setLabelRotationAngle(-90);
+
+
+        /*Creating an array list for your data sets
+         * "A set of sets"*/
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(bloodSugarSet);
+
+
+        /*creating the data to be plotted in the line chart*/
+        LineData data = new LineData(xLabels,dataSets);
+
+
+        /*Setting the data and attributes for the line chart*/
+        lineChart.setDescription("Blood Pressure");
+        lineChart.setNoDataTextDescription("You need to provide data for the chart.");
+        lineChart.setData(data);
+        lineChart.setVisibleXRangeMaximum(30);
+        lineChart.setTouchEnabled(true);
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setPinchZoom(true);
+        lineChart.setDoubleTapToZoomEnabled(true);
+        lineChart.invalidate();
     }
 
     @Override
@@ -107,7 +189,7 @@ public class BloodSugarGraph extends AppCompatActivity
     private void launchMainActivity()
     {
         Intent intent = new Intent (this, MainActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
 
@@ -116,7 +198,7 @@ public class BloodSugarGraph extends AppCompatActivity
     private void launchPrevActivity()
     {
         Intent intent = new Intent (this, SelectBloodSugarActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
