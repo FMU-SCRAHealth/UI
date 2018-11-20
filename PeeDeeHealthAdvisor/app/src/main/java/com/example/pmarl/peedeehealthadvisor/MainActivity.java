@@ -1,4 +1,4 @@
-/**
+/*
  Author: Patrick Marlowe
  Email Address: pmarlowe782@gmail.com
  Written: August 30, 2018
@@ -15,41 +15,21 @@ package com.example.pmarl.peedeehealthadvisor;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
     public static DatabaseHelper myDB;
-    private Button MyHealthData;
-    private Button  MyHealthResources;
-    private boolean firstStart;
-    private boolean firstStartSlider;
 
-//    private ViewPager mSlideViewPager;
-//    private LinearLayout mDotLayout;
-//    private SliderAdapter sliderAdapter;
+
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_main);
-
-
-//        mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
-//        mDotLayout = (LinearLayout) findViewById(R.id.dotsLayout);
-//
-//        sliderAdapter = new SliderAdapter(this);
-
 
         myDB = new DatabaseHelper(this);
 
@@ -58,7 +38,7 @@ public class MainActivity extends AppCompatActivity
                 .getSharedPreferences("MyPref",0);
         SharedPreferences.Editor editor = app_preferences.edit();
 
-        firstStart = app_preferences.getBoolean("first_time_start",true);
+        boolean firstStart = app_preferences.getBoolean("first_time_start", true);
 
         /*If statement to see if the app has been open before or not*/
         if(firstStart)
@@ -67,21 +47,17 @@ public class MainActivity extends AppCompatActivity
             /*If the app hasn't been opened before, it runs the following code
             * and sets firstStart to false*/
             editor.putBoolean("first_time_start",false);
-            editor.commit();
+            editor.apply();
 
             //do your one time code here
             launchFirstTimeLogIn();
             //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
 
         }
-        else
-        {
-            //app open directly
-//            Toast.makeText(this, "Welcome!!!", Toast.LENGTH_LONG).show();
-        }
 
 
-        firstStartSlider = app_preferences.getBoolean("first_time_slider",true);
+
+        boolean firstStartSlider = app_preferences.getBoolean("first_time_slider", true);
 
         /*If statement to see if the app has been open before or not*/
         if(firstStartSlider)
@@ -94,28 +70,24 @@ public class MainActivity extends AppCompatActivity
 
             //do your one time code here
             launchSliderScreen();
-            //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
+
 
         }
-        else
-        {
-            //app open directly
-//            Toast.makeText(this, "Welcome!!!", Toast.LENGTH_LONG).show();
-        }
 
-        this.MyHealthData = (Button) findViewById(R.id.MyHealthData);
 
-        this.MyHealthData.setOnClickListener(new View.OnClickListener() {
+        Button myHealthData =  findViewById(R.id.MyHealthData);
+
+        myHealthData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchMyHealthData();
             }
         });
 
-        this.MyHealthResources = (Button) findViewById(R.id.HealthResources);
+        Button myHealthResources = findViewById(R.id.HealthResources);
 
 
-        this.MyHealthResources.setOnClickListener(new View.OnClickListener() {
+        myHealthResources.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchSearchServiceActivity();
@@ -128,7 +100,7 @@ public class MainActivity extends AppCompatActivity
     private void launchMyHealthData()
     {
         Intent intent = new Intent (this, SelectDataActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
 
@@ -137,7 +109,7 @@ public class MainActivity extends AppCompatActivity
     private void launchSearchServiceActivity()
     {
         Intent intent = new Intent (this, SearchServiceActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
 
@@ -146,7 +118,7 @@ public class MainActivity extends AppCompatActivity
     private void launchFirstTimeLogIn()
     {
         Intent intent = new Intent(this, FirstTimeLogin.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
@@ -154,7 +126,7 @@ public class MainActivity extends AppCompatActivity
     private void launchSliderScreen()
     {
         Intent intent = new Intent(this, SliderStart.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

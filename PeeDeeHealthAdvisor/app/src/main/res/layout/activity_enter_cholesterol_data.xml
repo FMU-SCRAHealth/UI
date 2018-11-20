@@ -118,13 +118,13 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:id="@+id/TCtext"
+                android:id="@+id/TRIGtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:text="@string/totalCholesterol"
-                android:textColor="@color/YellowHuesDark"/>
+                android:text="@string/TRIG"
+                android:textColor="@color/YellowHuesDark"
+                android:textSize="20sp" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/TCInput"
@@ -133,13 +133,13 @@
                 android:layout_marginTop="5dp">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/tcInput"
+                    android:id="@+id/TRIGinput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:hint="@string/tc"
-                    android:textColor="@color/YellowHuesMedium"
+                    android:hint="@string/trig"
                     android:inputType="number"
+                    android:textColor="@color/YellowHuesMedium"
                     android:textSize="16sp" />
         </android.support.design.widget.TextInputLayout>
 

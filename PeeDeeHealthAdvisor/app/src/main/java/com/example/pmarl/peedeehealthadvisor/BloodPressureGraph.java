@@ -11,36 +11,23 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.DefaultXAxisValueFormatter;
-import com.github.mikephil.charting.formatter.XAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.EntryXIndexComparator;
-import com.github.mikephil.charting.utils.ViewPortHandler;
-import java.lang.reflect.Array;
+
 import java.text.ParseException;
-import java.util.Collections;
-import java.util.Date;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,17 +39,17 @@ import java.util.TreeMap;
 
 public class BloodPressureGraph extends AppCompatActivity
 {
-    private ImageButton home;
     LineChart lineChart;
 
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.blood_pressure_graph);
 
-        home = (ImageButton) findViewById(R.id.Home);
+        ImageButton home = findViewById(R.id.Home);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +59,7 @@ public class BloodPressureGraph extends AppCompatActivity
         });
 
         // finding the graph by element id.
-        lineChart = (LineChart) findViewById(R.id.lineGraph);
+        lineChart =  findViewById(R.id.lineGraph);
 
         /*Creating a cursor, which is a table that stores the data from
         * the sql query*/
@@ -91,50 +78,48 @@ public class BloodPressureGraph extends AppCompatActivity
 
         /*Test values for the xLabels array*/
         Integer i = 0;
-
-            /*Loop through the rows of the cursor and set the (y,x) values
-            * cursor.moveToNext() returns a boolean value and performs an action to move to the
-            * next cursor*/
-
-            String date;
-
-            Date date1;
-            long epoch;
-            long referenceTimeStamp=0;
-
+        String date;
+        Date date1;
+        long epoch;
         TreeMap<Long,ArrayList<Integer>>  treeMap = new TreeMap<>();
 
 
-            while(cursor.moveToNext())
+        /*Loop through the rows of the cursor and set the (y,x) values
+            * cursor.moveToNext() returns a boolean value and performs an action to move to the
+            * next cursor*/
+            cursor.moveToLast();
+            do
             {
 
-                date = cursor.getString(0)+cursor.getString(1);
-                try {
+
+                try
+                {
+                    date = cursor.getString(0) + cursor.getString(1);
                     date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
                     epoch = date1.getTime();
-//                    if(cursor.isFirst())
-//                    {
-//                        referenceTimeStamp = epoch;
-//                    }
+//
 
-                    //epoch = (epoch -referenceTimeStamp)/60;
-                    treeMap.put( epoch, new ArrayList<Integer>());
+                    treeMap.put(epoch, new ArrayList<Integer>());
                     /*Systolic Added*/
                     treeMap.get(epoch).add(Integer.parseInt(cursor.getString(2)));
                     /*Diastolic added*/
                     treeMap.get(epoch).add(Integer.parseInt(cursor.getString(3)));
 
-                }
-                catch (ParseException e) {
+                } catch (ParseException e)
+                {
                     e.printStackTrace();
                 }
-            }
 
-            Set set = treeMap.entrySet();
-        Iterator iterator = set.iterator();
-        while(iterator.hasNext()) {
-            Map.Entry  mentry = (Map.Entry)iterator.next();
-            ArrayList<Integer> arrayList =(ArrayList<Integer>)mentry.getValue();
+            }while (cursor.moveToPrevious());
+
+
+
+            Set<Map.Entry<Long, ArrayList<Integer>>> set = treeMap.entrySet();
+        Iterator<Map.Entry<Long, ArrayList<Integer>>> iterator = set.iterator();
+        while(iterator.hasNext())
+        {
+            Map.Entry<Long, ArrayList<Integer>> mEntry = iterator.next();
+            ArrayList<Integer> arrayList = mEntry.getValue();
 
             /*Adding the systolic value from the DB and the date that corresponds
              * with it*/
@@ -145,20 +130,17 @@ public class BloodPressureGraph extends AppCompatActivity
             diastolic.add(new Entry(arrayList.get(1), i));
 
             /*Adding test values for the systolic and diastolic values*/
-            Long epoch1 = (Long) mentry.getKey();
-            //long epoch2 = (long) epoch1 ;
+            Long epoch1 = mEntry.getKey();
+
             Date date2 = new Date(epoch1);
 
 
             xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
-            //xLabels.add(xAxisValueFormatter.toString());
 
             i++;
         }
-           //Collections.sort(systolic, new EntryXIndexComparator());
-           //Collections.sort(diastolic, new EntryXIndexComparator());
 
-        //XAxisValueFormatter xAxisValueFormatter= new MonthAxisValueFormatter(referenceTimeStamp);
+
 
         /*Creating the systolic data set and setting different attributes for it*/
         LineDataSet systolicSet = new LineDataSet(systolic,"Systolic");
@@ -184,7 +166,6 @@ public class BloodPressureGraph extends AppCompatActivity
 
 
         XAxis xAxis = lineChart.getXAxis();
-       // xAxis.setValueFormatter(xAxisValueFormatter);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(true);
@@ -222,7 +203,7 @@ public class BloodPressureGraph extends AppCompatActivity
     private void launchMainActivity()
     {
         Intent intent = new Intent (this, MainActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
 
@@ -231,7 +212,7 @@ public class BloodPressureGraph extends AppCompatActivity
     private void launchPrevActivity()
     {
         Intent intent = new Intent (this, SelectBloodPressureActivity.class);
-        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
