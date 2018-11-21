@@ -18,7 +18,7 @@
     android:background="@color/BGWhite">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/cholesterolEntryLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"

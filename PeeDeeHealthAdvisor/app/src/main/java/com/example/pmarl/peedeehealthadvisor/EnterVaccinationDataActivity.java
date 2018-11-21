@@ -11,12 +11,17 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -28,6 +33,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -126,21 +134,24 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             {
                 if(Spinner.getSelectedItemPosition()==0)
                 {
-                    Toast.makeText(EnterVaccinationDataActivity.this,
-                            "Please select a valid input.", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(EnterVaccinationDataActivity.this,
+//                            "Please select a valid input.", Toast.LENGTH_LONG).show();
+                    showDataNotEnteredWarning();
                 }
                 else
                 {
                     // needs implementations
-                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString()
-                            , Spinner.getSelectedItem().toString());
+                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), Spinner.getSelectedItem().toString());
 
                     if (isInserted = true)
-                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination Saved",
-                                Toast.LENGTH_LONG).show();
+//                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination Saved",
+//                                Toast.LENGTH_LONG).show();
+                        showDataEntryCheckmark();
                     else
-                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination NOT Saved",
-                                Toast.LENGTH_LONG).show();
+//                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination NOT Saved",
+//                                Toast.LENGTH_LONG).show();
+
+                    showDataError();
 
                     launchPrevActivity();
                 }
@@ -149,6 +160,19 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             }
         });
 
+
+
+        LinearLayout mainLayout = (LinearLayout)findViewById(R.id.vaccinationEntryLayout);
+        mainLayout.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                InputMethodManager inputMethodManager = (InputMethodManager)  EnterVaccinationDataActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(EnterVaccinationDataActivity.this.getCurrentFocus().getWindowToken(), 0);
+                return false;
+            }
+        });
     }
 
     private void updateDate()
@@ -184,7 +208,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         if(position != 0)
         {
             String text = parent.getItemAtPosition(position).toString();
-            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -192,5 +216,45 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    // Show images in Toast prompt.
+    private void showDataEntryCheckmark()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Vaccination Entered", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_checkmark);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+
+    }
+
+    // Show images in Toast prompt.
+    private void showDataNotEnteredWarning()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataError()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Please Try Again", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_error);
+        toastContentView.addView(imageView, 0);
+        toast.show();
     }
 }
