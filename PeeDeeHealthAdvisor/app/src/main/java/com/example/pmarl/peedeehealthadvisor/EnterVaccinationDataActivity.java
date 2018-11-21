@@ -160,19 +160,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             }
         });
 
-
-
-        LinearLayout mainLayout = (LinearLayout)findViewById(R.id.vaccinationEntryLayout);
-        mainLayout.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // TODO Auto-generated method stub
-                InputMethodManager inputMethodManager = (InputMethodManager)  EnterVaccinationDataActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(EnterVaccinationDataActivity.this.getCurrentFocus().getWindowToken(), 0);
-                return false;
-            }
-        });
+        
     }
 
     private void updateDate()
