@@ -160,7 +160,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             }
         });
 
-        
+
     }
 
     private void updateDate()
