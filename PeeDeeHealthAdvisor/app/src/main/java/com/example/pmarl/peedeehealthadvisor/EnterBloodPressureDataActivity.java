@@ -143,15 +143,16 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                     boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString(), Integer.parseInt(systolicInput.getText().toString()),
                             Integer.parseInt(diastolicInput.getText().toString()));
 
-                    if (isInserted = true)
+                    if (isInserted = true) {
 //                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
 
                         if (Integer.parseInt(systolicInput.getText().toString()) >= 140 && Integer.parseInt(diastolicInput.getText().toString()) >= 100) {
                             sendOnChannel1();
-                        }
-                    else
+                        } // statement to show if both systolic and diastolic are high
+
+                    } else
 //                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataError();
