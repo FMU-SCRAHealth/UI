@@ -12,9 +12,15 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +28,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity
 {
     public static DatabaseHelper myDB;
+    private NotificationManagerCompat notificationManager;
 
 
 
@@ -94,6 +101,11 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        createNotificationChannels(); // this creates the notification channels on creation
+        notificationManager = NotificationManagerCompat.from(this);
+
+
+
     }
 
     @Override
@@ -134,4 +146,24 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
         finish();
     }
+
+    private void createNotificationChannels() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel1 = new NotificationChannel(
+                    "CHANNEL_1_ID",
+                    "Channel_One",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel1.setDescription("Blood Pressure Notifications");
+
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel1);
+        }
+    }
+
+
+
+
 }
