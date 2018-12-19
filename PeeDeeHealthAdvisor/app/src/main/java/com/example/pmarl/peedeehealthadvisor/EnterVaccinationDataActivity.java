@@ -13,9 +13,12 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -50,6 +53,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     String dateFormat = "MMM dd yyyy ";
     DatePickerDialog.OnDateSetListener date;
     SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+    private NotificationManagerCompat notificationManager;
 
 
     @Override
@@ -57,6 +61,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_enter_vaccination_data);
+        notificationManager = NotificationManagerCompat.from(this);
 
         editDate = (EditText) findViewById(R.id.editDate);
 
@@ -143,15 +148,16 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                     // needs implementations
                     boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), Spinner.getSelectedItem().toString());
 
-                    if (isInserted = true)
+                    if (isInserted = true) {
 //                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
-                    else
+                    } else {
 //                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination NOT Saved",
 //                                Toast.LENGTH_LONG).show();
 
-                    showDataError();
+                        showDataError();
+                    }
 
                     launchPrevActivity();
                 }
@@ -159,6 +165,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
             }
         });
+
 
 
     }
@@ -244,5 +251,18 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         imageView.setImageResource(R.drawable.ic_error);
         toastContentView.addView(imageView, 0);
         toast.show();
+    }
+
+    public void sendOnChannel4() {
+        String title = "";
+        String message = "";
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
+                .setContentTitle("Vaccination Reminder")
+                .setSmallIcon(R.drawable.ic_vaccination)
+                .setContentText("Remember to get your shots.")
+                .build();
+
+        notificationManager.notify(4,notification);
     }
 }

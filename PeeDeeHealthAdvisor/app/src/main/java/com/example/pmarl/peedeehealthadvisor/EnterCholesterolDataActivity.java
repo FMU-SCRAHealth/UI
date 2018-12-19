@@ -14,10 +14,13 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -38,7 +41,7 @@ import java.util.Locale;
 public class EnterCholesterolDataActivity extends AppCompatActivity
 {
     private TextInputEditText hdlInput, ldlInput, TRIGinput;
-
+    private NotificationManagerCompat notificationManager;
 
     private Context context = this;
     private EditText editDate;
@@ -46,6 +49,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private String dateFormat = "MMM dd yyyy ";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+
+
 
 
 
@@ -65,6 +70,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         hdlInput = findViewById(R.id.hdlInput);
         ldlInput = findViewById(R.id.ldlInput);
         TRIGinput = findViewById(R.id.TRIGinput);
+        notificationManager = NotificationManagerCompat.from(this);
 
         // init - set date to current date
         long currentdate = System.currentTimeMillis();
@@ -144,14 +150,19 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                 else
                 {
                     boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString(), Integer.parseInt(ldlInput.getText().toString()), Integer.parseInt(hdlInput.getText().toString()), Integer.parseInt(TRIGinput.getText().toString()));
-                    if (isInserted = true)
+                    if (isInserted = true) {
 //                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
-                    else
+                        if (Integer.parseInt(ldlInput.getText().toString()) >= 100 && Integer.parseInt(hdlInput.getText().toString()) <= 40 && Integer.parseInt(TRIGinput.getText().toString()) >= 150) {
+                            sendOnChannel3();
+                        }
+                    } else {
 //                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol NOT Saved",
 //                                Toast.LENGTH_LONG).show();
-                    showDataError();
+                        showDataError();
+                    }
+
                     launchPrevActivity();
                 }
             }
@@ -246,5 +257,18 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         imageView.setImageResource(R.drawable.ic_error);
         toastContentView.addView(imageView, 0);
         toast.show();
+    }
+
+    public void sendOnChannel3() {
+        String title = "";
+        String message = "";
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_3_ID")
+                .setContentTitle("Cholesterol Alert")
+                .setSmallIcon(R.drawable.ic_cholesterol_arrows)
+                .setContentText("The Cholesterol Values Entered Are High.")
+                .build();
+
+        notificationManager.notify(3,notification);
     }
 }

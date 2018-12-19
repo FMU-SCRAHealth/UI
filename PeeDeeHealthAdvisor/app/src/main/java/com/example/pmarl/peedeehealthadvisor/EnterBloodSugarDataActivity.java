@@ -14,12 +14,15 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -53,6 +56,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
     private String dateFormat = "MMM dd yyyy ";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.US);
+    private NotificationManagerCompat notificationManager;
 
 
 
@@ -69,6 +73,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
          bloodSugarInput = (TextInputEditText) findViewById(R.id.bloodSugarInput);
          fastingToggle = (RadioButton) findViewById((R.id.fastingToggle));
          nonfastingToggle = (RadioButton) findViewById(R.id.nonfastingToggle);
+         notificationManager = NotificationManagerCompat.from(this);
 
          fastingToggle.setOnClickListener(new View.OnClickListener()
          {
@@ -136,16 +141,20 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                      boolean isInserted = MainActivity.myDB.insertBloodSugar(editDate.getText().toString(), Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
                              Integer.parseInt(bloodSugarInput.getText().toString()));
 
-                     if (isInserted = true)
+                     if (isInserted = true) {
 //                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar Saved",
 //                                 Toast.LENGTH_LONG).show();
                          showDataEntryCheckmark();
-                     else
+
+                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600) {
+                             sendOnChannel2();
+                         }
+                     } else {
 //                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar NOT Saved",
 //                                 Toast.LENGTH_LONG).show();
-                     showDataError();
+                         showDataError();
 
-
+                     }
                      launchPrevActivity();
                  }
              }
@@ -264,5 +273,18 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
         imageView.setImageResource(R.drawable.ic_error);
         toastContentView.addView(imageView, 0);
         toast.show();
+    }
+
+    public void sendOnChannel2() {
+        String title = "";
+        String message = "";
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_2_ID")
+                .setContentTitle("Blood Sugar Alert")
+                .setSmallIcon(R.drawable.ic_blood_sugar)
+                .setContentText("The Blood Sugar Value Is High")
+                .build();
+
+        notificationManager.notify(2,notification);
     }
 }

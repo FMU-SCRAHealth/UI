@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel1 = new NotificationChannel(
                     "CHANNEL_1_ID",
-                    "Channel_One",
+                    "Blood Pressure Notifications",
                     NotificationManager.IMPORTANCE_HIGH
             );
 
@@ -159,7 +159,42 @@ public class MainActivity extends AppCompatActivity
 
 
             NotificationManager manager = getSystemService(NotificationManager.class);
+
             manager.createNotificationChannel(channel1);
+
+
+            NotificationChannel channel2 = new NotificationChannel(
+                    "CHANNEL_2_ID",
+                    "Blood Sugar Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel1.setDescription("Blood Sugar Notifications");
+
+            manager.createNotificationChannel(channel2);
+
+
+            NotificationChannel channel3 = new NotificationChannel(
+                    "CHANNEL_3_ID",
+                    "Cholesterol Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel1.setDescription("Cholesterol Notifications");
+
+            manager.createNotificationChannel(channel3);
+
+            NotificationChannel channel4 = new NotificationChannel(
+                    "CHANNEL_4_ID",
+                    "Vaccination Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel1.setDescription("Vaccinations Notifications");
+
+            manager.createNotificationChannel(channel4);
+
+
         }
     }
 
