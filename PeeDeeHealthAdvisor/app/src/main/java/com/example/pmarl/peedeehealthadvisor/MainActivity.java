@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity
         builder.setContentText("Remember to get your vaccination!");
 //        builder.setStyle(new NotificationCompat.BigTextStyle();
 //                builder.bigText("Remember to get your vaccinations in the recommended time-frame."));
-        builder.setSmallIcon(R.drawable.ic_vaccination);
+        builder.setSmallIcon(R.drawable.ic_vaccinations);
         return builder.build();
     }
 
