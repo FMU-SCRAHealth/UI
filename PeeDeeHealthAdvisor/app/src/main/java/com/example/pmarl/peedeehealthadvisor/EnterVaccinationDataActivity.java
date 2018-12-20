@@ -19,6 +19,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
@@ -33,8 +34,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
@@ -59,6 +63,14 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     DatePickerDialog.OnDateSetListener date;
     SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
     private NotificationManagerCompat notificationManager;
+    Cursor cursorVaccinations = MainActivity.myDB.readVaccinationRecords();
+    String dateQuery = "";
+    String vaccinationName = "";
+    Date date1;
+    long epoch;
+    long check;
+    long futureInMillis;
+
 
 
     @Override
@@ -144,8 +156,6 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             {
                 if(Spinner.getSelectedItemPosition()==0)
                 {
-//                    Toast.makeText(EnterVaccinationDataActivity.this,
-//                            "Please select a valid input.", Toast.LENGTH_LONG).show();
                     showDataNotEnteredWarning();
                 }
                 else
@@ -154,13 +164,66 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                     boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), Spinner.getSelectedItem().toString());
 
                     if (isInserted = true) {
-//                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination Saved",
-//                                Toast.LENGTH_LONG).show();
+
                         showDataEntryCheckmark();
-                        scheduleNotification(getNotification("Remember to get your vaccination!"), 5000);
+
+                        if(cursorVaccinations != null) {
+                            cursorVaccinations.moveToLast();
+                        }
+
+                        // finds the correct notification to send
+                        do {
+
+                            vaccinationName = cursorVaccinations.getString(3);
+
+                            try {
+
+                                dateQuery = cursorVaccinations.getString(0) + cursorVaccinations.getString(1);
+                                date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(dateQuery);
+                                epoch = date1.getTime();
+                                futureInMillis = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 10000); // makes three for four of these for the different types
+                                check = futureInMillis-System.currentTimeMillis();
+                                // 86400000 is one day in our time we need epoch milliseconds
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                                showDataError();
+                            }
+
+                            if(vaccinationName.equals("Flu Shot") && check < -1000) {
+                                scheduleNotification(getNotification("Past due For Flu Shot", "Flu Shot Reminder"), futureInMillis);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Flu Shot")) {
+                                scheduleNotification(getNotification("Remember to get your Flu Shot", "Flu Shot Reminder"), futureInMillis);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Shingle") && check < -1000) {
+                                scheduleNotification(getNotification("Past due for your Shingle Vaccination!", "Shingle Vaccination Reminder"), futureInMillis);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Shingle")) {
+                                scheduleNotification(getNotification("Remember to get your Shingle Vaccination!", "Shingle Vaccination Reminder"), futureInMillis);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Pneumonia") && check < -1000) {
+                                scheduleNotification(getNotification("Past due for your Pneumonia Shot!", "Pneumonia Reminder"), futureInMillis);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Pneumonia")) {
+                                scheduleNotification(getNotification("Remember to get your Pneumonia Shot!", "Pneumonia Reminder"), futureInMillis);
+                                break;
+                            }
+
+
+                        } while (cursorVaccinations.moveToPrevious());
+
                     } else {
-//                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination NOT Saved",
-//                                Toast.LENGTH_LONG).show();
 
                         showDataError();
                     }
@@ -171,8 +234,6 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
             }
         });
-
-
 
 
     }
@@ -260,44 +321,36 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         toast.show();
     }
 
-//    public void sendOnChannel4() {
-//        String title = "";
-//        String message = "";
-//
-//        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
-//                .setContentTitle("Vaccination Reminder")
-//                .setSmallIcon(R.drawable.ic_vaccination)
-//                .setContentText("Remember to get your vaccinations...")
-//                .setPriority(1)
-//                .setStyle(new NotificationCompat.BigTextStyle()
-//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
-//                .build();
-//
-//        notificationManager.notify(4,notification);
-//    }
+    private long futureMillisTimeCalculator(long epoch, long delay){
 
-    private void scheduleNotification(Notification notification, int delay) {
+        long futureInMillis = epoch + delay;
+
+        return futureInMillis;
+    }
+
+    private void scheduleNotification(Notification notification, long futureInMillis) {
 
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 4);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-//        delay = 30000;
-        long futureInMillis = SystemClock.elapsedRealtime() + delay;
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, futureInMillis, pendingIntent); // can use a repeating method to make notifications repeat after time or hard code
     }
 
-    @TargetApi(26)
-    private Notification getNotification(String content) {
-        Notification.Builder builder = new Notification.Builder(this, "CHANNEL_4_ID");
-        builder.setContentTitle("Vaccination Reminder");
-        builder.setContentText("Remember to get your vaccination!");
-//        builder.setStyle(new NotificationCompat.BigTextStyle();
-//                builder.bigText("Remember to get your vaccinations in the recommended time-frame."));
-        builder.setSmallIcon(R.drawable.ic_vaccinations);
-        return builder.build();
+    private Notification getNotification(String content, String title) {
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
+                .setContentTitle(title)
+                .setSmallIcon(R.drawable.ic_vaccinations)
+                .setContentText(content)
+                .setPriority(1)
+                // can be used to make the notifications longer. Just add another parameter to the getNotification() and add it in.
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+                .build();
+
+        return notification;
     }
 
 }

@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity
 
             //do your one time code here
             launchFirstTimeLogIn();
+            // this is send a reminder about the vaccinations after the initial boot up time.
+            scheduleNotification(getNotification("Remember to get your vaccination!", "Vaccination Reminder"), 86400000);
             //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
 
         }
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity
 
         createNotificationChannels(); // this creates the notification channels on creation
         notificationManager = NotificationManagerCompat.from(this);
-        scheduleNotification(getNotification("Remember to get your vaccination!"), 5000);
+
 
 
     } // end of onCreate()
@@ -216,15 +218,23 @@ public class MainActivity extends AppCompatActivity
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
 
-    @TargetApi(26)
-    private Notification getNotification(String content) {
-        Notification.Builder builder = new Notification.Builder(this, "CHANNEL_4_ID");
-        builder.setContentTitle("Vaccination Reminder");
-        builder.setContentText("Remember to get your vaccination!");
-//        builder.setStyle(new NotificationCompat.BigTextStyle();
-//                builder.bigText("Remember to get your vaccinations in the recommended time-frame."));
-        builder.setSmallIcon(R.drawable.ic_vaccinations);
-        return builder.build();
+    private Notification getNotification(String content, String title) {
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
+                .setContentTitle(title)
+                .setSmallIcon(R.drawable.ic_vaccination)
+                .setContentText(content)
+                .setPriority(1)
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+                .build();
+//        Notification builder = new NotificationCompat.Builder(this, "CHANNEL_4_ID");
+//        builder.setContentTitle(title);
+//        builder.setContentText(content);
+////        builder.setStyle(new NotificationCompat.BigTextStyle();
+////                builder.bigText("Remember to get your vaccinations in the recommended time-frame."));
+//        builder.setSmallIcon(R.drawable.ic_vaccinations);
+        return notification;
     }
 
 

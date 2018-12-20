@@ -248,7 +248,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     public Cursor readVaccinationRecords()
     {
-        String[] columns = {measurementDate,measurementImmunized, measurementVirus};
+        String[] columns = {measurementDate,measurementTime,measurementImmunized, measurementVirus};
 
         String selection = "meas_type = ?";
 

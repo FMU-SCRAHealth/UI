@@ -95,9 +95,12 @@ public class VaccinationGraph extends AppCompatActivity
 
             date = cursorVaccinations.getString(0);
 
-            immunized = cursorVaccinations.getInt(1);
+//            time = cursorVaccinations.getString(1);
 
-            vaccinationName = cursorVaccinations.getString(2);
+            immunized = cursorVaccinations.getInt(2);
+
+            vaccinationName = cursorVaccinations.getString(3);
+
 
             if (immunized == 0) {
 
