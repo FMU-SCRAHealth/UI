@@ -11,12 +11,16 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +45,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.app.Notification;
 
 public class EnterVaccinationDataActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
@@ -152,6 +157,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 //                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
+                        scheduleNotification(getNotification("Remember to get your vaccination!"), 5000);
                     } else {
 //                        Toast.makeText(EnterVaccinationDataActivity.this, "Vaccination NOT Saved",
 //                                Toast.LENGTH_LONG).show();
@@ -165,6 +171,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
             }
         });
+
 
 
 
@@ -253,16 +260,44 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         toast.show();
     }
 
-    public void sendOnChannel4() {
-        String title = "";
-        String message = "";
+//    public void sendOnChannel4() {
+//        String title = "";
+//        String message = "";
+//
+//        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
+//                .setContentTitle("Vaccination Reminder")
+//                .setSmallIcon(R.drawable.ic_vaccination)
+//                .setContentText("Remember to get your vaccinations...")
+//                .setPriority(1)
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+//                .build();
+//
+//        notificationManager.notify(4,notification);
+//    }
 
-        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
-                .setContentTitle("Vaccination Reminder")
-                .setSmallIcon(R.drawable.ic_vaccination)
-                .setContentText("Remember to get your shots.")
-                .build();
+    private void scheduleNotification(Notification notification, int delay) {
 
-        notificationManager.notify(4,notification);
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 4);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+//        delay = 30000;
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
+
+    @TargetApi(26)
+    private Notification getNotification(String content) {
+        Notification.Builder builder = new Notification.Builder(this, "CHANNEL_4_ID");
+        builder.setContentTitle("Vaccination Reminder");
+        builder.setContentText("Remember to get your vaccination!");
+//        builder.setStyle(new NotificationCompat.BigTextStyle();
+//                builder.bigText("Remember to get your vaccinations in the recommended time-frame."));
+        builder.setSmallIcon(R.drawable.ic_vaccination);
+        return builder.build();
+    }
+
 }

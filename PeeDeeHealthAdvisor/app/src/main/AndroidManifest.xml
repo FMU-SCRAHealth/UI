@@ -156,6 +156,7 @@
             android:label="@string/app_name">
         </activity>
 
+        <receiver android:name=".NotificationPublisher" />
     </application>
 
 </manifest>

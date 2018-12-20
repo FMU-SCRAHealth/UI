@@ -12,13 +12,18 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.annotation.TargetApi;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -103,10 +108,10 @@ public class MainActivity extends AppCompatActivity
 
         createNotificationChannels(); // this creates the notification channels on creation
         notificationManager = NotificationManagerCompat.from(this);
+        scheduleNotification(getNotification("Remember to get your vaccination!"), 5000);
 
 
-
-    }
+    } // end of onCreate()
 
     @Override
     public void onBackPressed() {
@@ -169,7 +174,7 @@ public class MainActivity extends AppCompatActivity
                     NotificationManager.IMPORTANCE_HIGH
             );
 
-            channel1.setDescription("Blood Sugar Notifications");
+            channel2.setDescription("Blood Sugar Notifications");
 
             manager.createNotificationChannel(channel2);
 
@@ -180,7 +185,7 @@ public class MainActivity extends AppCompatActivity
                     NotificationManager.IMPORTANCE_HIGH
             );
 
-            channel1.setDescription("Cholesterol Notifications");
+            channel3.setDescription("Cholesterol Notifications");
 
             manager.createNotificationChannel(channel3);
 
@@ -190,7 +195,7 @@ public class MainActivity extends AppCompatActivity
                     NotificationManager.IMPORTANCE_HIGH
             );
 
-            channel1.setDescription("Vaccinations Notifications");
+            channel4.setDescription("Vaccinations Notifications");
 
             manager.createNotificationChannel(channel4);
 
@@ -198,7 +203,29 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void scheduleNotification(Notification notification, int delay) {
 
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 4);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+//        delay = 30000;
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+    }
+
+    @TargetApi(26)
+    private Notification getNotification(String content) {
+        Notification.Builder builder = new Notification.Builder(this, "CHANNEL_4_ID");
+        builder.setContentTitle("Vaccination Reminder");
+        builder.setContentText("Remember to get your vaccination!");
+//        builder.setStyle(new NotificationCompat.BigTextStyle();
+//                builder.bigText("Remember to get your vaccinations in the recommended time-frame."));
+        builder.setSmallIcon(R.drawable.ic_vaccination);
+        return builder.build();
+    }
 
 
 }

@@ -154,6 +154,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 //                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
+
                         if (Integer.parseInt(ldlInput.getText().toString()) >= 100 && Integer.parseInt(hdlInput.getText().toString()) <= 40 && Integer.parseInt(TRIGinput.getText().toString()) >= 150) {
                             sendOnChannel3();
                         }
@@ -266,7 +267,11 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         Notification notification = new NotificationCompat.Builder(this, "CHANNEL_3_ID")
                 .setContentTitle("Cholesterol Alert")
                 .setSmallIcon(R.drawable.ic_cholesterol_arrows)
-                .setContentText("The Cholesterol Values Entered Are High.")
+                .setContentText("The value entered is higher...")
+                .setPriority(1)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText("The value entered is higher than the recommended value for your age and health. \n\nPlease contact your doctor or physician." +
+                                "\n\nIgnore if this entry was a mistake."))
                 .build();
 
         notificationManager.notify(3,notification);
