@@ -228,12 +228,6 @@ public class MainActivity extends AppCompatActivity
 //                .setStyle(new NotificationCompat.BigTextStyle()
 //                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
                 .build();
-//        Notification builder = new NotificationCompat.Builder(this, "CHANNEL_4_ID");
-//        builder.setContentTitle(title);
-//        builder.setContentText(content);
-////        builder.setStyle(new NotificationCompat.BigTextStyle();
-////                builder.bigText("Remember to get your vaccinations in the recommended time-frame."));
-//        builder.setSmallIcon(R.drawable.ic_vaccinations);
         return notification;
     }
 

@@ -340,6 +340,11 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
     private Notification getNotification(String content, String title) {
 
+        // this is for making the app open on this screen if the notification is clicked.
+        Intent intent = new Intent(this, EnterVaccinationDataActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
         Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
                 .setContentTitle(title)
                 .setSmallIcon(R.drawable.ic_vaccinations)
@@ -348,6 +353,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 // can be used to make the notifications longer. Just add another parameter to the getNotification() and add it in.
 //                .setStyle(new NotificationCompat.BigTextStyle()
 //                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+                .setContentIntent(pendingIntent)
                 .build();
 
         return notification;

@@ -15,6 +15,7 @@ package com.example.pmarl.peedeehealthadvisor;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -264,6 +265,11 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         String title = "";
         String message = "";
 
+        // this is for making the app open on this screen if the notification is clicked.
+        Intent intent = new Intent(this, CholesterolGraph.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
         Notification notification = new NotificationCompat.Builder(this, "CHANNEL_3_ID")
                 .setContentTitle("Cholesterol Alert")
                 .setSmallIcon(R.drawable.ic_cholesterol_arrows)
@@ -272,6 +278,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText("The value entered is higher than the recommended value for your age and health. \n\nPlease contact your doctor or physician." +
                                 "\n\nIgnore if this entry was a mistake."))
+                .setContentIntent(pendingIntent)
                 .build();
 
         notificationManager.notify(3,notification);
