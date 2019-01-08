@@ -12,9 +12,20 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +33,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity
 {
     public static DatabaseHelper myDB;
+    private NotificationManagerCompat notificationManager;
 
 
 
@@ -51,6 +63,8 @@ public class MainActivity extends AppCompatActivity
 
             //do your one time code here
             launchFirstTimeLogIn();
+            // this is send a reminder about the vaccinations after the initial boot up time.
+            scheduleNotification(getNotification("Remember to get your vaccination!", "Vaccination Reminder"), 86400000);
             //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
 
         }
@@ -94,7 +108,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-    }
+        createNotificationChannels(); // this creates the notification channels on creation
+        notificationManager = NotificationManagerCompat.from(this);
+
+
+
+    } // end of onCreate()
 
     @Override
     public void onBackPressed() {
@@ -134,4 +153,83 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
         finish();
     }
+
+    private void createNotificationChannels() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel1 = new NotificationChannel(
+                    "CHANNEL_1_ID",
+                    "Blood Pressure Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel1.setDescription("Blood Pressure Notifications");
+
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+
+            manager.createNotificationChannel(channel1);
+
+
+            NotificationChannel channel2 = new NotificationChannel(
+                    "CHANNEL_2_ID",
+                    "Blood Sugar Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel2.setDescription("Blood Sugar Notifications");
+
+            manager.createNotificationChannel(channel2);
+
+
+            NotificationChannel channel3 = new NotificationChannel(
+                    "CHANNEL_3_ID",
+                    "Cholesterol Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel3.setDescription("Cholesterol Notifications");
+
+            manager.createNotificationChannel(channel3);
+
+            NotificationChannel channel4 = new NotificationChannel(
+                    "CHANNEL_4_ID",
+                    "Vaccination Notifications",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+
+            channel4.setDescription("Vaccinations Notifications");
+
+            manager.createNotificationChannel(channel4);
+
+
+        }
+    }
+
+    private void scheduleNotification(Notification notification, int delay) {
+
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 4);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+//        delay = 30000;
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+    }
+
+    private Notification getNotification(String content, String title) {
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_4_ID")
+                .setContentTitle(title)
+                .setSmallIcon(R.drawable.ic_vaccination)
+                .setContentText(content)
+                .setPriority(1)
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+                .build();
+        return notification;
+    }
+
+
 }

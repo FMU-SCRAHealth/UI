@@ -13,10 +13,14 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -48,6 +52,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
     private String dateFormat = "MMM dd yyyy ";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+    private NotificationManagerCompat notificationManager;
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)
@@ -61,6 +66,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
         clearData = (Button) findViewById(R.id.ClearData);
         systolicInput = (TextInputEditText) findViewById(R.id.systolicInput);
         diastolicInput = (TextInputEditText) findViewById(R.id.diastolicInput);
+        notificationManager = NotificationManagerCompat.from(this);
 
 
         // init - set date to current date
@@ -138,14 +144,20 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                     boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString(), Integer.parseInt(systolicInput.getText().toString()),
                             Integer.parseInt(diastolicInput.getText().toString()));
 
-                    if (isInserted = true)
+                    if (isInserted = true) {
 //                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
-                    else
+
+                        if (Integer.parseInt(systolicInput.getText().toString()) >= 140 && Integer.parseInt(diastolicInput.getText().toString()) >= 100) {
+                            sendOnChannel1();
+                        } // statement to show if both systolic and diastolic are high
+
+                    } else {
 //                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
 //                                Toast.LENGTH_LONG).show();
                         showDataError();
+                    }
 
                     launchPrevActivity();
                 }
@@ -174,6 +186,12 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                 return false;
             }
         });
+
+
+
+
+
+
 
     }
 
@@ -242,5 +260,29 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
         imageView.setImageResource(R.drawable.ic_error);
         toastContentView.addView(imageView, 0);
         toast.show();
+    }
+
+    public void sendOnChannel1() {
+        String title = "";
+        String message = "";
+
+        // this is for making the app open on this screen if the notification is clicked.
+        Intent intent = new Intent(this, BloodPressureGraph.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        // this creates the notification
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_1_ID")
+                .setContentTitle("Blood Pressure Alert")
+                .setSmallIcon(R.drawable.ic_blood_pressure)
+                .setContentText("The value entered is higher...")
+                .setPriority(1)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText("The value entered is higher than the recommended value for your age and health. \n\nPlease contact your doctor or physician." +
+                                "\n\nIgnore if this entry was a mistake."))
+                .setContentIntent(pendingIntent)
+                .build();
+
+        notificationManager.notify(1,notification);
     }
 }
