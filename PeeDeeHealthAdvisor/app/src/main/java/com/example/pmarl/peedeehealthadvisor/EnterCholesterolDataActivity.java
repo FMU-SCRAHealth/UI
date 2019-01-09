@@ -132,21 +132,13 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                     showDataNotEnteredWarning();
 
                 }
-//                else if(ldlInput.getText().toString()=="")
-//                {
-//                    Toast.makeText(EnterCholesterolDataActivity.this,
-//                            "Please enter a valid value for LDL.",Toast.LENGTH_LONG).show();
-//                }
-//                else if(hdlInput.getText().toString()=="")
-//                {
-//                    Toast.makeText(EnterCholesterolDataActivity.this,
-//                            "Please enter a valid value for HDL.",Toast.LENGTH_LONG).show();
-//                }
-//                else if(tcInput.getText().toString()=="")
-//                {
-//                    Toast.makeText(EnterCholesterolDataActivity.this,
-//                            "Please enter a valid value for TC", Toast.LENGTH_SHORT).show();
-//                }
+
+                else if (Integer.parseInt(ldlInput.getText().toString()) >= 400 && Integer.parseInt(hdlInput.getText().toString()) <= 0
+                        && Integer.parseInt(TRIGinput.getText().toString()) >= 700 || Integer.parseInt(ldlInput.getText().toString()) <= 0 && Integer.parseInt(hdlInput.getText().toString()) >= 100
+                        && Integer.parseInt(TRIGinput.getText().toString()) <= 0) {
+
+                    showDataIncorrectRange();
+                }
 
                 else
                 {
@@ -156,7 +148,9 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
 
-                        if (Integer.parseInt(ldlInput.getText().toString()) >= 100 && Integer.parseInt(hdlInput.getText().toString()) <= 40 && Integer.parseInt(TRIGinput.getText().toString()) >= 150) {
+                        if (Integer.parseInt(ldlInput.getText().toString()) >= 200 && Integer.parseInt(hdlInput.getText().toString()) <= 40
+                                && Integer.parseInt(TRIGinput.getText().toString()) >= 200) {
+
                             sendOnChannel3();
                         }
                     } else {
@@ -249,6 +243,19 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     }
 
     // Show images in Toast prompt.
+    private void showDataIncorrectRange()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Incorrect Value Range Entered", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
+    // Show images in Toast prompt.
     private void showDataError()
     {
 
@@ -276,7 +283,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                 .setContentText("The value entered is higher...")
                 .setPriority(1)
                 .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("The value entered is higher than the recommended value for your age and health. \n\nPlease contact your doctor or physician." +
+                        .bigText("The value entered is outside the recommended value range for your age and health. \n\nPlease contact your doctor or physician." +
                                 "\n\nIgnore if this entry was a mistake."))
                 .setContentIntent(pendingIntent)
                 .build();
