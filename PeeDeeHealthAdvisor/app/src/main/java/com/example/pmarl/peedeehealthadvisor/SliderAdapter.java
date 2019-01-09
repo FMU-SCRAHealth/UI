@@ -26,7 +26,8 @@ public class SliderAdapter extends PagerAdapter {
                 R.drawable.ic_blood_sugar,
                 R.drawable.ic_cholesterol_arrows,
                 R.drawable.ic_vaccinations,
-                R.drawable.ic_compass
+                R.drawable.ic_compass,
+                R.drawable.ic_userenteredswipe
 
         };
 
@@ -37,7 +38,8 @@ public class SliderAdapter extends PagerAdapter {
                 "Blood Sugar",
                 "Cholesterol",
                 "Vaccinations",
-                "Resources"
+                "Resources",
+                "User Setup"
 
         };
 
@@ -50,7 +52,8 @@ public class SliderAdapter extends PagerAdapter {
                 "Compare blood sugar values with daily fasting and non-fasting journal entries.",
                 "Monitor your cholesterol with daily journal entries.",
                 "Log vaccination records to make sure you're up-to-date!",
-                "Get access to local resources whenever you need a checkup just by searching!"
+                "Get access to local resources whenever you need a checkup just by searching!",
+                "Let's get started by filling out the information on the next screen by clicking the button below!"
 
         };
 

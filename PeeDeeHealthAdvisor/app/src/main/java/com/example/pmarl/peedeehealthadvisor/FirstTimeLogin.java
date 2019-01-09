@@ -225,7 +225,7 @@ public class FirstTimeLogin extends AppCompatActivity
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setImageResource(R.drawable.ic_userenteredgreen2);
+        imageView.setImageResource(R.drawable.ic_userenteredswipe);
         toastContentView.addView(imageView, 0);
         toast.show();
 
