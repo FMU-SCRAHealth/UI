@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -29,8 +30,9 @@ public class FirstTimeLogin extends AppCompatActivity
     //DatabaseHelper myDB;
     private Button enterData;
     private Button clearData;
-    private TextInputEditText firstNameText, lastNameText, genderText;
-
+    private TextInputEditText firstNameText, lastNameText;
+    private RadioButton femaleToggle, maleToggle, otherToggle;
+    private String genderText;
     private Context context = this;
     private EditText editDate;
     private Calendar myCalendar = Calendar.getInstance();
@@ -85,7 +87,9 @@ public class FirstTimeLogin extends AppCompatActivity
 
         firstNameText = (TextInputEditText) findViewById(R.id.firstNameText);
         lastNameText = (TextInputEditText) findViewById(R.id.lastNameText);
-        genderText = (TextInputEditText) findViewById(R.id.genderText);
+        maleToggle = (RadioButton) findViewById(R.id.maleToggle);
+        femaleToggle = (RadioButton) findViewById(R.id.femaleToggle);
+        otherToggle = (RadioButton) findViewById((R.id.otherToggle));
 
 
 
@@ -100,13 +104,19 @@ public class FirstTimeLogin extends AppCompatActivity
                 final String userFullName = firstNameText.getText().toString() + " " +
                         lastNameText.getText().toString();
                 if (firstNameText.getText().toString().equals("") || lastNameText.getText().toString().equals("")
-                        || genderText.getText().toString().equals("")) {
+                        ) {
                     showDataNotEnteredWarning();
                 } else {
+                    if(femaleToggle.isChecked())
+                        genderText = "female";
+                    else if(maleToggle.isChecked())
+                        genderText = "male";
+                    else if(otherToggle.isChecked())
+                        genderText = "other";
 
                     boolean isInserted =
                             MainActivity.myDB.insertUserData(userFullName,
-                                    editDate.getText().toString(), genderText.getText().toString());
+                                    editDate.getText().toString(), genderText);
                     if (isInserted = true)
                         showDataEntryCheckmarkUser();
                     else
@@ -126,8 +136,10 @@ public class FirstTimeLogin extends AppCompatActivity
             {
                 firstNameText.setText("");
                 lastNameText.setText("");
-                genderText.setText("");
+
                 editDate.setText("");
+
+
             }
         });
 
@@ -158,6 +170,25 @@ public class FirstTimeLogin extends AppCompatActivity
 
     }
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.femaleToggle:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.maleToggle:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.otherToggle:
+                if(checked)
+                    break;
+        }
+    }
 
 
     private void launchMainActivity()
