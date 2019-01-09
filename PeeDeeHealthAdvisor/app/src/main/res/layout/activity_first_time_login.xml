@@ -104,38 +104,57 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:paddingLeft="4.0dip"
-                android:paddingTop="5.0dip"
-                android:paddingRight="4.0dip"
-                android:paddingBottom="1.0dip"
-                android:layout_marginBottom="15dp"
-                android:layout_width="fill_parent"
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                >
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:checkedButton="@+id/femaleToggle">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/Gender"
-                    android:layout_width="304dp"
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <RadioButton android:id="@+id/femaleToggle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp">
+                    android:text="@string/female"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="onRadioButtonClicked"/>
 
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/genderText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:gravity="center_horizontal"
-                        android:layout_marginBottom="15dp"
-                        android:hint="@string/gender"
-                        android:textColor="@color/colorPrimaryDark"/>
+                <RadioButton android:id="@+id/maleToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="@string/male"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:onClick="onRadioButtonClicked"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
 
-                </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
+
+                <RadioButton android:id="@+id/otherToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="onRadioButtonClicked"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/textView2"
