@@ -39,8 +39,6 @@ public class FirstTimeLogin extends AppCompatActivity
     private String dateFormat = "MM.dd.yyyy";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
-    private String blockCharacterSet = "~#^|$%&*!0123456789"; // used for validation
-    private char[] filter = blockCharacterSet.toCharArray(); // used for validation
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)

@@ -260,4 +260,18 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return cursorVaccinations;
     }
 
+    public Cursor readUserData()
+    {
+        String[] columns = {userName,userDOB,userGender};
+
+//        String selection = "?";
+//
+//        String[] selectionArgs = {"?"};
+
+        Cursor cursorUserData = this.getReadableDatabase().query(userTable,
+                columns, null, null, null,null,null);
+
+        return cursorUserData;
+    }
+
 }

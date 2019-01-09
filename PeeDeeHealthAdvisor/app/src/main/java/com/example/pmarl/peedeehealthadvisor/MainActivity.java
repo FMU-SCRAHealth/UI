@@ -21,6 +21,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
@@ -44,6 +46,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         myDB = new DatabaseHelper(this);
+
+        Cursor cursorUserData = MainActivity.myDB.readUserData();
+        String userName ="";
+        String userDOB = "";
+        String userGender = "";
 
         /*First time open code*/
         SharedPreferences app_preferences = getApplicationContext()
@@ -85,7 +92,12 @@ public class MainActivity extends AppCompatActivity
             //do your one time code here
             launchSliderScreen();
 
+        }
 
+
+        // finding if the user's data has been entered or not so slider can be brought up again.
+        if(cursorUserData.getCount() == 0) {
+            launchSliderScreen();
         }
 
 
