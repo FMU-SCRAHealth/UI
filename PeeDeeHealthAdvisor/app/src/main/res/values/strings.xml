@@ -74,9 +74,7 @@
     <string name="tablePneumonia">Pneumonia</string>
     <string name="other">Other</string>
 
-
-
-
+    <!--String Arrays-->
     <string-array name="distances">
         <item>Radius</item>
         <item>10 Miles</item>

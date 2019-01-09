@@ -39,6 +39,9 @@ public class FirstTimeLogin extends AppCompatActivity
     private String dateFormat = "MM.dd.yyyy";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+    private String blockCharacterSet = "~#^|$%&*!0123456789"; // used for validation
+    private char[] filter = blockCharacterSet.toCharArray(); // used for validation
+
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
@@ -103,20 +106,27 @@ public class FirstTimeLogin extends AppCompatActivity
 
                 final String userFullName = firstNameText.getText().toString() + " " +
                         lastNameText.getText().toString();
-                if (firstNameText.getText().toString().equals("") || lastNameText.getText().toString().equals("")
-                        ) {
+                if (firstNameText.getText().toString().equals("") || lastNameText.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
+
                 } else {
-                    if(femaleToggle.isChecked())
+
+                    if (femaleToggle.isChecked()) {
                         genderText = "female";
-                    else if(maleToggle.isChecked())
+                    }
+
+                    else if (maleToggle.isChecked()) {
                         genderText = "male";
-                    else if(otherToggle.isChecked())
+                    }
+
+                    else if (otherToggle.isChecked()) {
                         genderText = "other";
+                    }
 
                     boolean isInserted =
                             MainActivity.myDB.insertUserData(userFullName,
                                     editDate.getText().toString(), genderText);
+
                     if (isInserted = true)
                         showDataEntryCheckmarkUser();
                     else
@@ -151,6 +161,7 @@ public class FirstTimeLogin extends AppCompatActivity
             }
         });
         */
+
         LinearLayout mainLayout = (LinearLayout)findViewById(R.id.firstTimeLogInEntry);
         mainLayout.setOnTouchListener(new View.OnTouchListener() {
 

@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:textSize="20sp"
-                android:text="@string/highDensityLipoprotein"
+                android:text="@string/hDLTop"
                 android:textColor="@color/YellowHuesDark"/>
 
 
@@ -83,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:hint="@string/hDLTop"
+                    android:hint="@string/highDensityLipoprotein"
                     android:inputType="number"
                     android:textColor="@color/YellowHuesMedium"
                     android:textSize="16sp" />
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
-                android:text="@string/lowDensityLBottom"
+                android:text="@string/lDLBottom"
                 android:textColor="@color/YellowHuesDark"/>
 
             <android.support.design.widget.TextInputLayout
@@ -110,7 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:hint="@string/lDLBottom"
+                    android:hint="@string/lowDensityLBottom"
                     android:inputType="number"
                     android:textColor="@color/YellowHuesMedium"
                     android:textSize="16sp" />
