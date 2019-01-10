@@ -47,9 +47,9 @@
     <string name="go">Go</string>
     <string name="zip">ZIP Code</string>
     <string name="highDensityLipoprotein">High Density Lipoprotein</string>
-    <string name="hDLTop">HDL-Top Value</string>
+    <string name="hDLTop">HDL</string>
     <string name="lowDensityLBottom">Low Density Lipoprotein</string>
-    <string name="lDLBottom">LDL-Bottom Value</string>
+    <string name="lDLBottom">LDL</string>
     <string name="TRIG">Triglycerides</string>
     <string name="trig">TRIG</string>
     <string name="name">Name</string>
@@ -74,9 +74,7 @@
     <string name="tablePneumonia">Pneumonia</string>
     <string name="other">Other</string>
 
-
-
-
+    <!--String Arrays-->
     <string-array name="distances">
         <item>Radius</item>
         <item>10 Miles</item>

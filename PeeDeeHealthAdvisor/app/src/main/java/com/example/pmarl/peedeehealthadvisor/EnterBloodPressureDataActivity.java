@@ -122,22 +122,18 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             public void onClick(View view)
             {
 
-                if(systolicInput.getText().toString().equals("")||diastolicInput.getText().toString().equals(""))
+                if (systolicInput.getText().toString().equals("")||diastolicInput.getText().toString().equals(""))
                 {
 //                    Toast.makeText(EnterBloodPressureDataActivity.this,
 //                            "Please enter all fields.",Toast.LENGTH_LONG).show();
                     showDataNotEnteredWarning();
+
                 }
-//                else if(systolicInput.getText().toString()=="")
-//                {
-//                    Toast.makeText(EnterBloodPressureDataActivity.this,
-//                            "Please enter a valid systolic input.", Toast.LENGTH_LONG).show();
-//                }
-//                else if(diastolicInput.getText().toString()=="")
-//                {
-//                    Toast.makeText(EnterBloodPressureDataActivity.this,
-//                            "Please enter a valid diastolic input.", Toast.LENGTH_LONG).show();
-//                }
+
+                else if (Integer.parseInt(systolicInput.getText().toString()) >= 275 || Integer.parseInt(diastolicInput.getText().toString()) >= 150 || Integer.parseInt(systolicInput.getText().toString()) <= 0 || Integer.parseInt(diastolicInput.getText().toString()) <= 0)
+                {
+                    showDataIncorrectRange(); // if data is outside of reasonable range of entry
+                }
 
                 else
                 {
@@ -149,7 +145,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
 
-                        if (Integer.parseInt(systolicInput.getText().toString()) >= 140 && Integer.parseInt(diastolicInput.getText().toString()) >= 100) {
+                        if (Integer.parseInt(systolicInput.getText().toString()) >= 140 && Integer.parseInt(diastolicInput.getText().toString()) >= 90) {
                             sendOnChannel1();
                         } // statement to show if both systolic and diastolic are high
 
@@ -241,6 +237,19 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
     {
 
         Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataIncorrectRange()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Incorrect Value Range Entered", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());

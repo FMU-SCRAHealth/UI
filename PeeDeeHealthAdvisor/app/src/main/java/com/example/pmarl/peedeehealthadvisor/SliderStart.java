@@ -52,7 +52,7 @@ public class SliderStart extends AppCompatActivity {
 
 
         public void addDotsIndicator(int position) {
-            mDots = new TextView[6];
+            mDots = new TextView[7];
             mDotLayout.removeAllViews();
 
             for (int i = 0; i < mDots.length; i++) {

@@ -137,6 +137,9 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                      showDataNotEnteredWarning();
                  }
 
+                 else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600 || Integer.parseInt(bloodSugarInput.getText().toString()) <= 0) {
+                     showDataIncorrectRange();
+                 }
 
                  else {
                      boolean isInserted = MainActivity.myDB.insertBloodSugar(editDate.getText().toString(), Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
@@ -147,7 +150,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 //                                 Toast.LENGTH_LONG).show();
                          showDataEntryCheckmark();
 
-                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600) {
+                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 200) {
                              sendOnChannel2();
                          }
                      } else {
@@ -255,6 +258,19 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
     {
 
         Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataIncorrectRange()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Incorrect Value Range Entered", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());

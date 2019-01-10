@@ -74,6 +74,8 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/firstNameText"
+                    android:inputType="textCapWords"
+                    android:digits="qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -94,6 +96,8 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/lastNameText"
+                    android:inputType="textCapWords"
+                    android:digits="qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
@@ -110,21 +114,12 @@
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
-                android:checkedButton="@+id/femaleToggle">
+                android:checkedButton="@+id/maleToggle">
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
-
-                <RadioButton android:id="@+id/femaleToggle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/female"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_marginEnd="20dp"
-                    android:onClick="onRadioButtonClicked"/>
 
                 <RadioButton android:id="@+id/maleToggle"
                     android:layout_width="wrap_content"
@@ -138,7 +133,19 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
+                <RadioButton android:id="@+id/femaleToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="0dp"
+                    android:onClick="onRadioButtonClicked"/>
 
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
 
                 <RadioButton android:id="@+id/otherToggle"
                     android:layout_width="wrap_content"
@@ -146,8 +153,9 @@
                     android:text="@string/other"
                     android:textSize="16sp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="0dp"
                     android:onClick="onRadioButtonClicked"/>
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"

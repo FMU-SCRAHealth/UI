@@ -39,6 +39,7 @@ public class FirstTimeLogin extends AppCompatActivity
     private String dateFormat = "MM.dd.yyyy";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
@@ -103,20 +104,27 @@ public class FirstTimeLogin extends AppCompatActivity
 
                 final String userFullName = firstNameText.getText().toString() + " " +
                         lastNameText.getText().toString();
-                if (firstNameText.getText().toString().equals("") || lastNameText.getText().toString().equals("")
-                        ) {
+                if (firstNameText.getText().toString().equals("") || lastNameText.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
+
                 } else {
-                    if(femaleToggle.isChecked())
+
+                    if (femaleToggle.isChecked()) {
                         genderText = "female";
-                    else if(maleToggle.isChecked())
+                    }
+
+                    else if (maleToggle.isChecked()) {
                         genderText = "male";
-                    else if(otherToggle.isChecked())
+                    }
+
+                    else if (otherToggle.isChecked()) {
                         genderText = "other";
+                    }
 
                     boolean isInserted =
                             MainActivity.myDB.insertUserData(userFullName,
                                     editDate.getText().toString(), genderText);
+
                     if (isInserted = true)
                         showDataEntryCheckmarkUser();
                     else
@@ -151,6 +159,7 @@ public class FirstTimeLogin extends AppCompatActivity
             }
         });
         */
+
         LinearLayout mainLayout = (LinearLayout)findViewById(R.id.firstTimeLogInEntry);
         mainLayout.setOnTouchListener(new View.OnTouchListener() {
 
@@ -214,7 +223,7 @@ public class FirstTimeLogin extends AppCompatActivity
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setImageResource(R.drawable.ic_userenteredgreen2);
+        imageView.setImageResource(R.drawable.ic_userenteredswipe);
         toastContentView.addView(imageView, 0);
         toast.show();
 
