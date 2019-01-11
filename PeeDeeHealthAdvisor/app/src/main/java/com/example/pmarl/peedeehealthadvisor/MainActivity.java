@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity
 
 
         // finding if the user's data has been entered or not so slider can be brought up again.
+        // this will force the user to enter user data even if extreme case occurs.
         if(cursorUserData.getCount() == 0) {
             launchSliderScreen();
         }
