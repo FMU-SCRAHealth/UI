@@ -13,6 +13,7 @@ package com.example.pmarl.peedeehealthadvisor;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -109,7 +110,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
              @Override
              public void onClick(View view)
              {
-                 new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR),
+                 new DatePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar.get(Calendar.YEAR),
                          myCalendar.get(Calendar.MONTH),
                          myCalendar.get(Calendar.DAY_OF_MONTH)).show();
              }
