@@ -27,6 +27,7 @@ public class AppSwitcher extends AppCompatActivity {
     private ImageButton bloodSugar;
     private ImageButton cholesterol;
     private ImageButton vaccinatons;
+    private ImageButton reports;
 
     private int mCurrentPage;
 
@@ -36,6 +37,7 @@ public class AppSwitcher extends AppCompatActivity {
 
         super.onCreate(saveInstanceState);
         setContentView(R.layout.card_view);
+
 
 //        home = (ImageButton) findViewById(R.id.Home);
 //
@@ -55,6 +57,7 @@ public class AppSwitcher extends AppCompatActivity {
         bloodSugar = (ImageButton) findViewById(R.id.bloodSugarTEST);
         cholesterol = (ImageButton) findViewById(R.id.cholesterolTEST);
         vaccinatons = (ImageButton) findViewById(R.id.vaccinationsTEST);
+        reports = (ImageButton) findViewById(R.id.bloodPressureTEST);
 
         sliderAdapterSwitcher = new AppSwitcherAdapter(this);
 
@@ -92,17 +95,13 @@ public class AppSwitcher extends AppCompatActivity {
         });
 
 
-//        mNextBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchFirstTimeLogIn();
-//            }
-//        });
+
+
     }
 
 
     public void addDotsIndicator(int position) {
-        mDotsSwitcher = new TextView[2];
+        mDotsSwitcher = new TextView[2]; // actual amount
         mDotLayoutSwitcher.removeAllViews();
 
         for (int i = 0; i < mDotsSwitcher.length; i++) {
@@ -130,22 +129,30 @@ public class AppSwitcher extends AppCompatActivity {
         public void onPageSelected(int i) {
 
             addDotsIndicator(i);
-            mCurrentPage = i;
+            mCurrentPage = i; // 0
 
-            if(i == 1) {
+            if(i == 0) { // page 1 settings: starts at 0
                 bloodPressure.setEnabled(true);
-
                 bloodSugar.setEnabled(true);
                 bloodSugar.setEnabled(true);
                 cholesterol.setEnabled(true);
                 vaccinatons.setEnabled(true);
-//              mNextBtn.setVisibility(View.VISIBLE);
+                reports.setEnabled(false);
 
-            } else if (i == 2){
-                bloodSugar.setEnabled(false);
+            } else if (i == 1) { // page 2 settings
+//                bloodPressure.setEnabled(false);
+                bloodPressure.setEnabled(true);
                 bloodSugar.setEnabled(false);
                 cholesterol.setEnabled(false);
                 vaccinatons.setEnabled(false);
+//                reports.setEnabled(true);
+                bloodPressure.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to reports on second screen
+                    @Override
+                    public void onClick(View view) {
+                        launchMainActivity();
+                    }
+                });
+
             }
 
         }
