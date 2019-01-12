@@ -27,41 +27,41 @@ public class CardView extends AppCompatActivity{
             setContentView(R.layout.card_view);
 
 
-            enterBloodPressure = (ImageButton) findViewById(R.id.EnterBloodPressure);
-
-            enterBloodPressure.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    launchEnterBloodPressureActivity();
-                }
-            });
-
-            enterBloodSugar = (ImageButton) findViewById(R.id.EnterBloodSugar);
-
-            enterBloodSugar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    launchEnterBloodSugarActivity();
-                }
-            });
-
-            enterCholesterol = (ImageButton) findViewById(R.id.EnterCholesterol);
-
-            enterCholesterol.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    launchEnterCholesterolActivity();
-                }
-            });
-
-            enterVaccinationData = (ImageButton) findViewById(R.id.EnterVaccinationData);
-
-            enterVaccinationData.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    launchEnterVaccinationDataActivity();
-                }
-            });
+//            enterBloodPressure = (ImageButton) findViewById(R.id.EnterBloodPressure);
+//
+//            enterBloodPressure.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    launchEnterBloodPressureActivity();
+//                }
+//            });
+//
+//            enterBloodSugar = (ImageButton) findViewById(R.id.EnterBloodSugar);
+//
+//            enterBloodSugar.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    launchEnterBloodSugarActivity();
+//                }
+//            });
+//
+//            enterCholesterol = (ImageButton) findViewById(R.id.EnterCholesterol);
+//
+//            enterCholesterol.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    launchEnterCholesterolActivity();
+//                }
+//            });
+//
+//            enterVaccinationData = (ImageButton) findViewById(R.id.EnterVaccinationData);
+//
+//            enterVaccinationData.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    launchEnterVaccinationDataActivity();
+//                }
+//            });
 
 
 

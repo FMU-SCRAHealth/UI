@@ -32,7 +32,7 @@ public class SelectDataActivity extends AppCompatActivity
     private ImageButton enterBloodSugar;
     private ImageButton enterCholesterol;
     private ImageButton enterVaccinationData;
-    private RecyclerView.LayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     private List<View> listData = new ArrayList<>();
 
 
@@ -44,12 +44,12 @@ public class SelectDataActivity extends AppCompatActivity
 
         setupList();
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(false);
-        layoutManager =  new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        RecyclerAdapter adapter = new RecyclerAdapter(listData, this);
-        recyclerView.setAdapter(adapter);
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+//        recyclerView.setHasFixedSize(false);
+//        layoutManager =  new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//        recyclerView.setLayoutManager(layoutManager);
+//        RecyclerAdapter adapter = new RecyclerAdapter(listData, this);
+//        recyclerView.setAdapter(adapter);
 
 
 //
@@ -155,8 +155,8 @@ public class SelectDataActivity extends AppCompatActivity
     }
 
     private void setupList() {
-        listData.add(findViewById(R.layout.card_view));
+//        listData.add(findViewById(R.layout.card_view));
         listData.add(findViewById(R.layout.card_view_2));
-        listData.add(findViewById(R.layout.card_view_3));
+//        listData.add(findViewById(R.layout.card_view_3));
     }
 }

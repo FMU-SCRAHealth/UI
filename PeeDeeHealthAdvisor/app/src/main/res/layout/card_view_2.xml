@@ -85,14 +85,7 @@
                 <!--android:text="@string/enterVaccinationRecords"-->
                 <!--android:backgroundTint="@color/GreenHuesMedium"-->
                 <!--android:textColor="@color/white"-->
-                <ImageButton
-                    android:id="@+id/EnterVaccinationData2"
-                    android:layout_width="170dp"
-                    android:layout_height="170dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="275dp"
-                    android:background="@drawable/ic_vaccination" />
+
             </RelativeLayout>
 
         </LinearLayout>
