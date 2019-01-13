@@ -23,10 +23,10 @@ public class AppSwitcher extends AppCompatActivity {
     private AppSwitcherAdapter sliderAdapterSwitcher;
 
     private Button mNextBtn;
-    private ImageButton bloodPressure;
-    private ImageButton bloodSugar;
-    private ImageButton cholesterol;
-    private ImageButton vaccinatons;
+    private ImageButton topLeft;
+    private ImageButton topRight;
+    private ImageButton bottomLeft;
+    private ImageButton bottomRight;
     private ImageButton reports;
 
     private int mCurrentPage;
@@ -53,10 +53,10 @@ public class AppSwitcher extends AppCompatActivity {
 
       mNextBtn = (Button) findViewById(R.id.finishButton);
 
-        bloodPressure = (ImageButton) findViewById(R.id.bloodPressureTEST);
-        bloodSugar = (ImageButton) findViewById(R.id.bloodSugarTEST);
-        cholesterol = (ImageButton) findViewById(R.id.cholesterolTEST);
-        vaccinatons = (ImageButton) findViewById(R.id.vaccinationsTEST);
+        topLeft = (ImageButton) findViewById(R.id.bloodPressureTEST);
+        topRight = (ImageButton) findViewById(R.id.bloodSugarTEST);
+        bottomLeft = (ImageButton) findViewById(R.id.cholesterolTEST);
+        bottomRight = (ImageButton) findViewById(R.id.vaccinationsTEST);
         reports = (ImageButton) findViewById(R.id.bloodPressureTEST);
 
         sliderAdapterSwitcher = new AppSwitcherAdapter(this);
@@ -67,27 +67,27 @@ public class AppSwitcher extends AppCompatActivity {
 
         mSlideViewPagerSwitcher.addOnPageChangeListener(viewListener);
 
-        bloodPressure.setOnClickListener(new View.OnClickListener() {
+        topLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchEnterBloodPressureActivity();
             }
         });
 
-        bloodSugar.setOnClickListener(new View.OnClickListener() {
+        topRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { launchEnterBloodSugarActivity();
             }
         });
 
-        cholesterol.setOnClickListener(new View.OnClickListener() {
+        bottomLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchEnterCholesterolActivity();
             }
         });
 
-        vaccinatons.setOnClickListener(new View.OnClickListener() {
+        bottomRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchEnterVaccinationDataActivity();
@@ -132,21 +132,49 @@ public class AppSwitcher extends AppCompatActivity {
             mCurrentPage = i; // 0
 
             if(i == 0) { // page 1 settings: starts at 0
-                bloodPressure.setEnabled(true);
-                bloodSugar.setEnabled(true);
-                bloodSugar.setEnabled(true);
-                cholesterol.setEnabled(true);
-                vaccinatons.setEnabled(true);
-                reports.setEnabled(false);
+                topLeft.setEnabled(true);
+                topRight.setEnabled(true);
+                bottomLeft.setEnabled(true);
+                bottomRight.setEnabled(true);
+//                reports.setEnabled(false);
+
+                topLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Pressure on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchEnterBloodPressureActivity();
+                    }
+                });
+
+                topRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchEnterBloodSugarActivity();
+                    }
+                });
+
+                bottomLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Cholesterol on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchEnterCholesterolActivity();
+                    }
+                });
+
+                bottomRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Vaccinations on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchEnterVaccinationDataActivity();
+                    }
+                });
 
             } else if (i == 1) { // page 2 settings
 //                bloodPressure.setEnabled(false);
-                bloodPressure.setEnabled(true);
-                bloodSugar.setEnabled(false);
-                cholesterol.setEnabled(false);
-                vaccinatons.setEnabled(false);
+                topLeft.setEnabled(true);
+                topRight.setEnabled(false);
+                bottomLeft.setEnabled(false);
+                bottomRight.setEnabled(false);
 //                reports.setEnabled(true);
-                bloodPressure.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to reports on second screen
+
+                topLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to reports on second screen
                     @Override
                     public void onClick(View view) {
                         launchMainActivity();
