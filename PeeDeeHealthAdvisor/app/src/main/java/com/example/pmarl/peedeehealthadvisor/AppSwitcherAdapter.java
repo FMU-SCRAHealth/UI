@@ -49,32 +49,6 @@ public class AppSwitcherAdapter extends PagerAdapter {
 
     };
 
-//    public String[] slide_headings = {
-//
-//            "Welcome To Health Companion",
-//            "Blood Pressure",
-//            "Blood Sugar",
-//            "Cholesterol",
-//            "Vaccinations",
-//            "Resources",
-//            "User Setup"
-//
-//    };
-
-
-//    public String[] slide_descriptions = {
-//
-//            "Pee Dee Health Companion is here to help you keep track of your health daily! "
-//                    + "Swipe to see what is offered.",
-//            "Keep up with your blood pressure readings by updating your journal daily.",
-//            "Compare blood sugar values with daily fasting and non-fasting journal entries.",
-//            "Monitor your cholesterol with daily journal entries.",
-//            "Log vaccination records to make sure you're up-to-date!",
-//            "Get access to local resources whenever you need a checkup just by searching!",
-//            "Let's get started by filling out the information on the next screen by clicking the button below!"
-//
-//    };
-
 
     @Override
     public int getCount() {

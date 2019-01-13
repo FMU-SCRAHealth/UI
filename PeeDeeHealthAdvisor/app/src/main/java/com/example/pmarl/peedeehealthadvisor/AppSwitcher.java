@@ -28,6 +28,7 @@ public class AppSwitcher extends AppCompatActivity {
     private ImageButton bottomLeft;
     private ImageButton bottomRight;
     private ImageButton reports;
+    private ImageButton home;
 
     private int mCurrentPage;
 
@@ -39,14 +40,14 @@ public class AppSwitcher extends AppCompatActivity {
         setContentView(R.layout.card_view);
 
 
-//        home = (ImageButton) findViewById(R.id.Home);
-//
-//        home.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchMainActivity();
-//            }
-//        });
+        home = (ImageButton) findViewById(R.id.Home);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMainActivity();
+            }
+        });
 
         mSlideViewPagerSwitcher = (ViewPager) findViewById(R.id.slideViewPagerSwitcher);
         mDotLayoutSwitcher = (LinearLayout) findViewById(R.id.dotsLayoutSwitcher);
@@ -166,7 +167,7 @@ public class AppSwitcher extends AppCompatActivity {
                     }
                 });
 
-            } else if (i == 1) { // page 2 settings
+            } else if (i == 1) { // page 2 settings at i = 1
 //                bloodPressure.setEnabled(false);
                 topLeft.setEnabled(true);
                 topRight.setEnabled(false);
