@@ -1,3 +1,9 @@
+/*
+ * Create By: Matt Harrington
+ * Date: January 12th, 2019
+ * Last Updated: January 13th, 2019 by Matt Harrington
+ * */
+
 package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
@@ -15,7 +21,6 @@ public class AppSwitcher extends AppCompatActivity {
 
     private ViewPager mSlideViewPagerSwitcher;
     private LinearLayout mDotLayoutSwitcher;
-//    private ImageButton home;
 
 
     private TextView[] mDotsSwitcher;
@@ -68,6 +73,8 @@ public class AppSwitcher extends AppCompatActivity {
 
         mSlideViewPagerSwitcher.addOnPageChangeListener(viewListener);
 
+        // these setOnLickListers set the default action for the four buttons in the grid.
+
         topLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,22 +107,23 @@ public class AppSwitcher extends AppCompatActivity {
 
     }
 
+    // this method adds the dots to the bottom of the screen.
 
     public void addDotsIndicator(int position) {
-        mDotsSwitcher = new TextView[2]; // actual amount
+        mDotsSwitcher = new TextView[2]; // actual amount. Update the total number of screens here.
         mDotLayoutSwitcher.removeAllViews();
 
         for (int i = 0; i < mDotsSwitcher.length; i++) {
             mDotsSwitcher[i] = new TextView(this);
             mDotsSwitcher[i].setTextSize(35);
             mDotsSwitcher[i].setText(Html.fromHtml("&#8226;"));
-            mDotsSwitcher[i].setTextColor(getResources().getColor(R.color.GreenHuesLight));
+            mDotsSwitcher[i].setTextColor(getResources().getColor(R.color.GreenHuesLight)); // unactive page
 
             mDotLayoutSwitcher.addView(mDotsSwitcher[i]);
         }
 
         if(mDotsSwitcher.length > 0) {
-            mDotsSwitcher[position].setTextColor(getResources().getColor(R.color.GreenHuesDark));
+            mDotsSwitcher[position].setTextColor(getResources().getColor(R.color.GreenHuesDark)); // active page.
         }
     }
 
@@ -125,6 +133,17 @@ public class AppSwitcher extends AppCompatActivity {
         public void onPageScrolled(int i, float v, int i1) {
 
         }
+
+        /*
+         * This is where all of the magic happens
+         * 1) The following if statements are by page. You will only have the amount as the pages above.
+         * 2) pages start at index 0. So match the buttons functions with setOnCLickListener and SetEnabled.
+         * 3) If there are blank buttons, setEnabled() will be set to false. setEnabled(false)
+         * 4) IMPORTANT: the following format is the way it must be written to work on each page.
+         * ****You MUST set the setOnClickListener for each page with the correct method.****
+         * 5) Also, you must redeclare setEnabled on each page to be true.
+         * 6) Can add as many screens as wanted, just make sure that the above format is followed.
+         * */
 
         @Override
         public void onPageSelected(int i) {

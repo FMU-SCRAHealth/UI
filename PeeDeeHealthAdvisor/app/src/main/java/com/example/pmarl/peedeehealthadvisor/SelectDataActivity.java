@@ -2,12 +2,9 @@
     Author: Patrick Marlowe
     Email Address: pmarlowe782@gmail.com
     Written: June 22, 2018
-    Last Updated: June 25, 2018
+    Last Updated: January 11th, 2019 by Matt Harrington
 
-    Compilation:
-    Execution:
 
-    Description of Execution:
  */
 package com.example.pmarl.peedeehealthadvisor;
 
@@ -33,7 +30,7 @@ public class SelectDataActivity extends AppCompatActivity
     private ImageButton enterCholesterol;
     private ImageButton enterVaccinationData;
     private LinearLayoutManager layoutManager;
-    private List<View> listData = new ArrayList<>();
+//    private List<View> listData = new ArrayList<>();
 
 
     @Override
@@ -42,7 +39,7 @@ public class SelectDataActivity extends AppCompatActivity
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_select_data);
 
-        setupList();
+//        setupList();
 
 //        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 //        recyclerView.setHasFixedSize(false);
@@ -154,9 +151,9 @@ public class SelectDataActivity extends AppCompatActivity
         finish();
     }
 
-    private void setupList() {
-//        listData.add(findViewById(R.layout.card_view));
-        listData.add(findViewById(R.layout.card_view_2));
-//        listData.add(findViewById(R.layout.card_view_3));
-    }
+//    private void setupList() {
+////        listData.add(findViewById(R.layout.card_view));
+//        listData.add(findViewById(R.layout.card_view_2));
+////        listData.add(findViewById(R.layout.card_view_3));
+//    }
 }

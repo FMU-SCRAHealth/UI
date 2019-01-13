@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author: Matt Harrington
+    Email Address: matt2harrington@gmail.com
+    Written: June 22, 2018
+    Last Updated: January 13th, 2019 by Matt Harrington
+    Compilation:
+    Execution:
+    Description of Execution:
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -71,7 +80,7 @@
             android:layout_gravity="left|top"
             android:layout_marginBottom="40dp"
             android:scaleType="fitCenter"
-            android:padding="3dp"
+            android:padding="4dp"
             android:background="@android:color/transparent"/>
 
         <ImageButton
@@ -79,7 +88,7 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_gravity="left|top"
-            android:padding="3dp"
+            android:padding="4dp"
             android:background="@android:color/transparent"
             />
 
@@ -89,7 +98,7 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_gravity="left|top"
-            android:padding="3dp"
+            android:padding="4dp"
             android:background="@android:color/transparent"
             android:textSize="20sp" />
 
@@ -98,7 +107,7 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_gravity="left|top"
-            android:padding="3dp"
+            android:padding="4dp"
             android:background="@android:color/transparent"
             />
     </GridLayout>
