@@ -1,6 +1,7 @@
 package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -78,7 +79,7 @@ public class FirstTimeLogin extends AppCompatActivity
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(context, date, myCalendar
+                new DatePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }

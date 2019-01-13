@@ -12,6 +12,7 @@
 package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -19,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -99,7 +101,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             public void onClick(View v)
             {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(context, date, myCalendar
+                new DatePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
