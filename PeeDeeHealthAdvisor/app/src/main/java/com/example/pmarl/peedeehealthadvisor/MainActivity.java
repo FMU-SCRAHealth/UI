@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity
 
     private void launchMyHealthData()
     {
-        Intent intent = new Intent (this, SelectDataActivity.class);
+        Intent intent = new Intent (this,  AppSwitcher.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

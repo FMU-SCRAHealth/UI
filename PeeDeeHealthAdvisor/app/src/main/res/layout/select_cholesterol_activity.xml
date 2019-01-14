@@ -37,7 +37,7 @@
                 android:text="@string/cholesterol"
                 android:textColor="@color/YellowHuesLight"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="1dp"
+                android:layout_marginEnd="0dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"/>

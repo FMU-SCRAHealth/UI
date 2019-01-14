@@ -20,16 +20,6 @@
 
     </android.support.v4.view.ViewPager>
 
-    <!--<Button-->
-        <!--android:id="@+id/Button"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:background="@android:drawable/screen_background_light_transparent"-->
-        <!--android:text="@string/finishSetup"-->
-        <!--android:textColor="@color/colorPrimaryDark" />-->
-
     <LinearLayout
         android:id="@+id/dotsLayout"
         android:layout_width="match_parent"
