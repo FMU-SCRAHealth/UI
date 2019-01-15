@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author: Patrick Marlowe
+    Email Address: pmarlowe782@gmail.com
+    Written: June 22, 2018
+    Last Updated: July 9, 2018
+    Compilation:
+    Execution:
+    Description of Execution:
+-->
+
+<android.support.constraint.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BGWhite"
+    tools:context=".ReportsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_sugar_home" />
+
+
+            <!--android:fontFamily="@font/catamaran_bold"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <TextView
+                android:id="@+id/AppName"
+                android:layout_width="265dp"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="3dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/Reports"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/ReportsUserBoxName"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.60"
+                android:textSize="25dp"
+                android:layout_height="50dp"/>
+
+            <TextView
+                android:id="@+id/ReportsUserBoxAge"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.20"
+                android:textSize="25dp"
+                android:layout_height="50dp"/>
+
+            <TextView
+                android:id="@+id/ReportsUserBoxGender"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.20"
+                android:textSize="25dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+
+
+        <!-- Reports Box -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:id="@+id/ReportsBox"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                //Blood Pressure Section
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25dp"
+                    android:background="@color/RedHuesLight"
+                    android:text="Blood Pressure"/>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight=".25" >
+
+                    <TextView
+                        android:id="@+id/BloodPressureBoxDate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1.0"
+                        android:autoText="true"
+                        android:background="@color/white"
+                        android:text="Date" />
+
+                    <TextView
+                        android:id="@+id/BloodPressureBoxDia"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Diastolic"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/BloodPressureBoxSys"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1.0"
+                        android:text="Systolic"
+                        android:background="@color/white"
+                        />
+                </LinearLayout>
+
+                //Blood Sugar Section
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25dp"
+                    android:text="Blood Sugar"
+                    android:background="@color/PurpleHuesLight"/>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight=".25">
+
+                    <TextView
+                        android:id="@+id/BloodSugarDateBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Date"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/BloodSugarFastingBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Fasting"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/BloodSugarBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Blood Sugar"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
+
+                //Cholesterol Section
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25dp"
+                    android:text="Cholesterol"
+                    android:background="@color/YellowHuesLight"/>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".25" >
+
+                    <TextView
+                        android:id="@+id/CholesterolDateBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Date"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/CholesterolLDLBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="LDL"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/CholesterolHDLBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="HDL"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/CholesterolTrigBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Trig"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                </LinearLayout>
+
+                //Vax Section
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:textSize="25dp"
+                    android:text="Vaccinations"
+                    android:background="@color/BlueHuesLight"/>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".25" >
+
+                    <TextView
+                        android:id="@+id/VaxDateBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Date"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    <TextView
+                        android:id="@+id/VaxNameBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Vaccination"
+                        android:layout_weight="1.0"
+                        android:background="@color/white"
+                        />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

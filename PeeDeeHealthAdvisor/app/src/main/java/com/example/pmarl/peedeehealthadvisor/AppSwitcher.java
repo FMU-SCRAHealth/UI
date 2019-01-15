@@ -197,7 +197,7 @@ public class AppSwitcher extends AppCompatActivity {
                 topLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to reports on second screen
                     @Override
                     public void onClick(View view) {
-                        launchMainActivity();
+                        launchReports();
                     }
                 });
 
@@ -258,6 +258,14 @@ public class AppSwitcher extends AppCompatActivity {
     {
         Intent intent = new Intent (this, SelectVaccinationActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchReports()
+    {
+        Intent intent = new Intent(this, ReportsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
