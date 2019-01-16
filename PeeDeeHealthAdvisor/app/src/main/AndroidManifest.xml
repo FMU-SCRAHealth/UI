@@ -170,6 +170,14 @@
             android:screenOrientation="portrait">
         </activity>
 
+        // DECLARING APP SWITCHER
+        <activity
+            android:name=".ReportsActivity"
+            android:label="@string/app_name"
+            >
+        </activity>
+
+
         <receiver android:name=".NotificationPublisher" />
     </application>
 

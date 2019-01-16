@@ -71,6 +71,13 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     long epoch;
     long check;
     long futureInMillis;
+    long futureInMillisFlu; // makes three for four of these for the different types
+    long checkFlu;
+    long futureInMillisShingles;
+    long checkShingles;
+    long futureInMillisPneumonia;
+    long checkPneumonia;
+
 
 
 
@@ -182,8 +189,12 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 dateQuery = cursorVaccinations.getString(0) + cursorVaccinations.getString(1);
                                 date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(dateQuery);
                                 epoch = date1.getTime();
-                                futureInMillis = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 10000); // makes three for four of these for the different types
-                                check = futureInMillis-System.currentTimeMillis();
+                                futureInMillisFlu = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types
+                                checkFlu = futureInMillisFlu-System.currentTimeMillis();
+                                futureInMillisShingles = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 156556800000L); // makes three for four of these for the different types
+                                checkShingles = futureInMillisShingles-System.currentTimeMillis();
+                                futureInMillisPneumonia = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types
+                                checkPneumonia = futureInMillisPneumonia-System.currentTimeMillis();
                                 // 86400000 is one day in our time we need epoch milliseconds
 
                             } catch (ParseException e) {
@@ -191,33 +202,33 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 showDataError();
                             }
 
-                            if(vaccinationName.equals("Flu Shot") && check < -1000) {
-                                scheduleNotification(getNotification("Past due For Flu Shot", "Flu Shot Reminder"), futureInMillis);
+                            if(vaccinationName.equals("Flu Shot") && checkFlu < -1000) {
+                                scheduleNotification(getNotification("It is time for you to get your flu vaccination!", "Flu Shot Reminder"), futureInMillisFlu);
                                 break;
                             }
 
                             if(vaccinationName.equals("Flu Shot")) {
-                                scheduleNotification(getNotification("Remember to get your Flu Shot", "Flu Shot Reminder"), futureInMillis);
+                                scheduleNotification(getNotification("It is time for you to get your flu vaccination!", "Flu Shot Reminder"), futureInMillisFlu);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Shingle") && check < -1000) {
-                                scheduleNotification(getNotification("Past due for your Shingle Vaccination!", "Shingle Vaccination Reminder"), futureInMillis);
+                            if(vaccinationName.equals("Shingle") && checkShingles < -1000) {
+                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 
                             if(vaccinationName.equals("Shingle")) {
-                                scheduleNotification(getNotification("Remember to get your Shingle Vaccination!", "Shingle Vaccination Reminder"), futureInMillis);
+                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Pneumonia") && check < -1000) {
-                                scheduleNotification(getNotification("Past due for your Pneumonia Shot!", "Pneumonia Reminder"), futureInMillis);
+                            if(vaccinationName.equals("Pneumonia") && checkPneumonia < -1000) {
+                                scheduleNotification(getNotification("It is time for you to get your pneumonia vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
                             if(vaccinationName.equals("Pneumonia")) {
-                                scheduleNotification(getNotification("Remember to get your Pneumonia Shot!", "Pneumonia Reminder"), futureInMillis);
+                                scheduleNotification(getNotification("It is time for you to get your pneumonia vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
