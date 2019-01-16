@@ -187,14 +187,21 @@ public class AppSwitcher extends AppCompatActivity {
                 });
 
             } else if (i == 1) { // page 2 settings at i = 1
-//                bloodPressure.setEnabled(false);
+
                 topLeft.setEnabled(true);
-                topRight.setEnabled(false);
+                topRight.setEnabled(true);
                 bottomLeft.setEnabled(false);
                 bottomRight.setEnabled(false);
 //                reports.setEnabled(true);
 
-                topLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to reports on second screen
+                topLeft.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        launchMainActivity();
+                    }
+                });
+
+                topRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
                         launchReports();
