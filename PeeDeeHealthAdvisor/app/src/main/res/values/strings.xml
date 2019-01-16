@@ -73,6 +73,8 @@
     <string name="tableShingle">Shingles</string>
     <string name="tablePneumonia">Pneumonia</string>
     <string name="other">Other</string>
+    <string name="TC">Total Cholesterol</string>
+    <string name="tc">TC</string>
 
     <!--String Arrays-->
     <string-array name="distances">

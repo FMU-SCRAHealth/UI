@@ -36,6 +36,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String measurementHDL = "HDL";
 
     private static final String measurementTRIG = "TRIG";
+    private static final String measurementTC = "TC";
     private static final String measurementSystolic = "systolic";
     private static final String measurementDiastolic = "diastolic";
 
@@ -63,6 +64,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 +measurementFasting+" INTEGER, "+measurementBloodSugar+" INTEGER, "
                 +measurementImmunized+" INTEGER, "+measurementVirus+" TEXT, "+measurementLDL
                 +" INTEGER, "+measurementHDL+" INTEGER, "+measurementTRIG+" INTEGER, "
+                +measurementTC+" REAL, "
                 +measurementSystolic+" INTEGER, "+measurementDiastolic
                 +" INTEGER, PRIMARY KEY("+measurementDate+", "+measurementTime+"))");
 
@@ -145,7 +147,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
-    public boolean insertCholesterol(String date, int LDL, int HDL, int TRIG)
+    public boolean insertCholesterol(String date, int LDL, int HDL, int TRIG, double TC)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -167,6 +169,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(measurementHDL,HDL);
 
         contentValues.put(measurementTRIG,TRIG);
+        contentValues.put(measurementTC, TC);
 
 
         long result = db.insert(measurementTable,null,contentValues);
@@ -234,7 +237,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     public  Cursor readCholesterol()
     {
         String[] columns = {measurementDate, measurementTime, measurementHDL, measurementLDL,
-                measurementTRIG};
+                measurementTRIG, measurementTC};
 
         String whereClause = measurementType +" = ?";
 
