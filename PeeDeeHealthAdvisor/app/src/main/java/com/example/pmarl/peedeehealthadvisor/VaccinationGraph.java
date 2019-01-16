@@ -133,7 +133,6 @@ public class VaccinationGraph extends AppCompatActivity
             cursorVaccinations.moveToNext();
         }
 
-
     }
 
     @Override

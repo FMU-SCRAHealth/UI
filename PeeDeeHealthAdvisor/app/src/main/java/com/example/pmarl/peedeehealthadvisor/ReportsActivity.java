@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ReportsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -73,17 +76,26 @@ public class ReportsActivity extends AppCompatActivity {
         if (cursorUser != null) {
             cursorUser.moveToFirst();
         }
+        try {
+            //iterate
+            while (!cursorUser.isAfterLast()) {
 
-        //iterate
-        while (!cursorUser.isAfterLast()) {
+                reportUserName = cursorUser.getString(0);
+                reportUserGender = cursorUser.getString(1);
+                reportUserAge = cursorUser.getString(2);
 
-            reportUserName = cursorUser.getString(0);
-            reportUserGender = cursorUser.getString(1);
-            reportUserAge = cursorUser.getString(2);
-            textBoxUsername.setText(reportUserName);
-            textBoxGender.setText(reportUserGender);
-            textBoxAge.setText(reportUserAge);
-            cursorUser.moveToNext();
+//                Date dateFormatted = new SimpleDateFormat("MMM dd yyyy").parse(reportUserAge);
+//                String formattedDate = new SimpleDateFormat("dd MMM yyyy").format(dateFormatted);
+
+                textBoxUsername.setText(reportUserName);
+                textBoxGender.setText(reportUserGender);
+                textBoxAge.setText(reportUserAge);
+//                textBoxAge.setText(formattedDate);
+                cursorUser.moveToNext();
+
+            }
+
+        } catch (Exception e) {
 
         }
 
@@ -118,9 +130,16 @@ public class ReportsActivity extends AppCompatActivity {
             reportBSDate = cursorBloodSugar.getString(0);
             reportFasting = cursorBloodSugar.getString(2);
             reportBS = cursorBloodSugar.getString(3);
-            bsDateText.setText(bsDateText.getText() + "\n" + reportBSDate);
-            bsFasting.setText(bsFasting.getText() + "\n" + reportFasting);
-            bsLevelText.setText(bsLevelText.getText() + "\n" + reportBS);
+
+            if (reportFasting.equals("1")) {
+                bsDateText.setText(bsDateText.getText() + "\n" + reportBSDate);
+                bsFasting.setText(bsFasting.getText() + "\n" + "Yes");
+                bsLevelText.setText(bsLevelText.getText() + "\n" + reportBS);
+            } else {
+                bsDateText.setText(bsDateText.getText() + "\n" + reportBSDate);
+                bsFasting.setText(bsFasting.getText() + "\n" + "No");
+                bsLevelText.setText(bsLevelText.getText() + "\n" + reportBS);
+            }
             cursorBloodSugar.moveToNext();
         }
 
@@ -155,8 +174,15 @@ public class ReportsActivity extends AppCompatActivity {
 
             reportVaxDate = cursorVax.getString(0);
             reportVaccine = cursorVax.getString(2);
-            vaxDateBox.setText(vaxDateBox.getText() + "\n" + reportVaxDate);
-            vaxNameBox.setText(vaxNameBox.getText() + "\n" + reportVaccine);
+
+            if (reportVaccine.equals("1")) {
+                vaxDateBox.setText(vaxDateBox.getText() + "\n" + reportVaxDate);
+                vaxNameBox.setText(vaxNameBox.getText() + "\n" + "Taken");
+            } else {
+                vaxDateBox.setText(vaxDateBox.getText() + "\n" + reportVaxDate);
+                vaxNameBox.setText(vaxNameBox.getText() + "\n" + "Not Taken");
+            }
+
             cursorVax.moveToNext();
         }
 

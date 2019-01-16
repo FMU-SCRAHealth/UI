@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+            android:background="@color/GreenHuesDark"
             >
 
             <ImageButton
@@ -38,50 +39,69 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_sugar_home" />
+                android:background="@drawable/ic_homebutton_copy" />
 
 
             <!--android:fontFamily="@font/catamaran_bold"-->
             <!--android:textColor="@color/colorPrimaryDark"-->
             <TextView
                 android:id="@+id/AppName"
-                android:layout_width="265dp"
+                android:layout_width="130dp"
                 android:layout_height="80dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="3dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="0dp"
                 android:text="@string/Reports"
+                android:textColor="@color/BGWhite"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:orientation="horizontal"
             >
+
+            <ImageView
+                android:id="@+id/userReportLogo"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:paddingEnd="5dp"
+                android:paddingStart="3dp"
+                android:background="@color/GreenHuesDark"
+                android:src="@drawable/ic_userenteredswipe"/>
 
             <TextView
                 android:id="@+id/ReportsUserBoxName"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.60"
-                android:textSize="25dp"
+                android:layout_weight="0.50"
+                android:textSize="20dp"
+                android:paddingTop="4dp"
+                android:background="@color/GreenHuesDark"
+                android:textColor="@color/white"
                 android:layout_height="50dp"/>
 
             <TextView
                 android:id="@+id/ReportsUserBoxAge"
                 android:layout_width="wrap_content"
+                android:background="@color/GreenHuesDark"
+                android:textColor="@color/white"
                 android:layout_weight="0.20"
-                android:textSize="25dp"
+                android:paddingTop="4dp"
+                android:textSize="20dp"
                 android:layout_height="50dp"/>
 
             <TextView
                 android:id="@+id/ReportsUserBoxGender"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.20"
-                android:textSize="25dp"
+                android:layout_weight="0.30"
+                android:background="@color/GreenHuesDark"
+                android:textColor="@color/white"
+                android:paddingTop="4dp"
+                android:textSize="20dp"
                 android:layout_height="50dp"/>
 
         </LinearLayout>
@@ -101,14 +121,29 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
 
-                //Blood Pressure Section
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                <ImageView
+                    android:id="@+id/bloodPressureIconReport"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentStart="true"
+                    android:background="@color/RedHuesLight"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="3dp"
+                    android:src="@drawable/ic_blood_pressure"/>
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:textSize="25dp"
+                    android:textColor="@color/white"
                     android:background="@color/RedHuesLight"
-                    android:text="Blood Pressure"/>
+                    android:text="@string/bloodPressureGraph"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -121,17 +156,20 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1.0"
+                        android:textColor="@color/white"
+                        android:paddingStart="3dp"
                         android:autoText="true"
-                        android:background="@color/white"
-                        android:text="Date" />
+                        android:background="@color/RedHuesLight"
+                        android:text="@string/tableDate" />
 
                     <TextView
                         android:id="@+id/BloodPressureBoxDia"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Diastolic"
+                        android:textColor="@color/white"
+                        android:text="@string/diastolic"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:background="@color/RedHuesLight"
                         />
 
                     <TextView
@@ -139,19 +177,36 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1.0"
-                        android:text="Systolic"
-                        android:background="@color/white"
+                        android:textColor="@color/white"
+                        android:text="@string/systolic"
+                        android:background="@color/RedHuesLight"
                         />
+
                 </LinearLayout>
 
-                //Blood Sugar Section
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:textSize="25dp"
-                    android:text="Blood Sugar"
-                    android:background="@color/PurpleHuesLight"/>
+                    <ImageView
+                        android:id="@+id/bloodSugarIconReport"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@color/PurpleHuesLight"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="3dp"
+                        android:src="@drawable/ic_blood_sugar"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:textSize="25dp"
+                        android:text="Blood Sugar"
+                        android:textColor="@color/white"
+                        android:background="@color/PurpleHuesLight"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -163,9 +218,11 @@
                         android:id="@+id/BloodSugarDateBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Date"
+                        android:text="@string/tableDate"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:paddingStart="3dp"
+                        android:textColor="@color/white"
+                        android:background="@color/PurpleHuesLight"
                         />
 
                     <TextView
@@ -173,8 +230,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="Fasting"
+                        android:textColor="@color/white"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:background="@color/PurpleHuesLight"
+
                         />
 
                     <TextView
@@ -182,20 +241,36 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="Blood Sugar"
+                        android:textColor="@color/white"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:background="@color/PurpleHuesLight"
                         />
 
                 </LinearLayout>
 
-                //Cholesterol Section
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:textSize="25dp"
-                    android:text="Cholesterol"
-                    android:background="@color/YellowHuesLight"/>
+                    <ImageView
+                        android:id="@+id/cholesterolIconReport"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@color/YellowHuesLight"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="3dp"
+                        android:src="@drawable/ic_cholesterol_arrows"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:textSize="25dp"
+                        android:text="Cholesterol"
+                        android:textColor="@color/white"
+                        android:background="@color/YellowHuesLight"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -206,9 +281,11 @@
                         android:id="@+id/CholesterolDateBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Date"
+                        android:text="@string/tableDate"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:paddingStart="3dp"
+                        android:textColor="@color/white"
+                        android:background="@color/YellowHuesLight"
                         />
 
                     <TextView
@@ -216,8 +293,9 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="LDL"
+                        android:textColor="@color/white"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:background="@color/YellowHuesLight"
                         />
 
                     <TextView
@@ -225,8 +303,9 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="HDL"
+                        android:textColor="@color/white"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:background="@color/YellowHuesLight"
                         />
 
                     <TextView
@@ -234,21 +313,36 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="Trig"
+                        android:textColor="@color/white"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:background="@color/YellowHuesLight"
                         />
 
                 </LinearLayout>
 
-                //Vax Section
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
 
+                    <ImageView
+                        android:id="@+id/vaccinationsIconReport"
+                        android:layout_width="30dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@color/BlueHuesLight"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="3dp"
+                        android:src="@drawable/ic_vaccinations"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:textSize="25dp"
-                    android:text="Vaccinations"
-                    android:background="@color/BlueHuesLight"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:textSize="25dp"
+                        android:text="@string/vaccinationGraph"
+                        android:textColor="@color/white"
+                        android:background="@color/BlueHuesLight"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -259,9 +353,11 @@
                         android:id="@+id/VaxDateBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Date"
+                        android:text="@string/tableDate"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:paddingStart="3dp"
+                        android:textColor="@color/white"
+                        android:background="@color/BlueHuesLight"
                         />
 
                     <TextView
@@ -269,8 +365,9 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="Vaccination"
+                        android:textColor="@color/white"
                         android:layout_weight="1.0"
-                        android:background="@color/white"
+                        android:background="@color/BlueHuesLight"
                         />
 
                     </LinearLayout>

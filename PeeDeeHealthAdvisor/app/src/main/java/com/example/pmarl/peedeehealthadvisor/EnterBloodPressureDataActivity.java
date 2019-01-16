@@ -147,7 +147,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
 
-                        if (Integer.parseInt(systolicInput.getText().toString()) >= 140 && Integer.parseInt(diastolicInput.getText().toString()) >= 90) {
+                        if (Integer.parseInt(systolicInput.getText().toString()) >= 120 && Integer.parseInt(diastolicInput.getText().toString()) >= 90 || Integer.parseInt(systolicInput.getText().toString()) <= 90 && Integer.parseInt(diastolicInput.getText().toString()) <= 60) {
                             sendOnChannel1();
                         } // statement to show if both systolic and diastolic are high
 
@@ -289,8 +289,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                 .setContentText("The value entered is higher...")
                 .setPriority(1)
                 .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("The value entered is higher than the recommended value for your age and health. \n\nPlease contact your doctor or physician." +
-                                "\n\nIgnore if this entry was a mistake."))
+                        .bigText("If the values entered are correct, please contact a health professional."))
                 .setContentIntent(pendingIntent)
                 .build();
 

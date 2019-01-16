@@ -111,15 +111,15 @@ public class FirstTimeLogin extends AppCompatActivity
                 } else {
 
                     if (femaleToggle.isChecked()) {
-                        genderText = "female";
+                        genderText = "Female";
                     }
 
                     else if (maleToggle.isChecked()) {
-                        genderText = "male";
+                        genderText = "Male";
                     }
 
                     else if (otherToggle.isChecked()) {
-                        genderText = "other";
+                        genderText = "Other";
                     }
 
                     boolean isInserted =
@@ -145,21 +145,12 @@ public class FirstTimeLogin extends AppCompatActivity
             {
                 firstNameText.setText("");
                 lastNameText.setText("");
-
                 editDate.setText("");
 
 
             }
         });
 
-        /*
-        clearData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchprevActivity();
-            }
-        });
-        */
 
         LinearLayout mainLayout = (LinearLayout)findViewById(R.id.firstTimeLogInEntry);
         mainLayout.setOnTouchListener(new View.OnTouchListener() {

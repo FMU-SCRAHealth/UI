@@ -151,7 +151,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 //                                 Toast.LENGTH_LONG).show();
                          showDataEntryCheckmark();
 
-                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 200) {
+                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 && Integer.parseInt((fastingToggle.getText().toString())) == 1 || Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && Integer.parseInt((fastingToggle.getText().toString())) == 0) {
                              sendOnChannel2();
                          }
                      } else {
@@ -309,8 +309,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                 .setPriority(1)
                 .setLights(0xff00ff00, 300, 100)
                 .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("The value entered is higher than the recommended value for your age and health. \n\nPlease contact your doctor or physician." +
-                                "\n\nIgnore if this entry was a mistake."))
+                        .bigText("If the values entered are correct, please contact a health professional.\""))
                 .setContentIntent(pendingIntent)
                 .build();
 
