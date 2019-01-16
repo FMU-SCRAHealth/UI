@@ -74,6 +74,10 @@
     <string name="tablePneumonia">Pneumonia</string>
     <string name="other">Other</string>
     <string name="Reports">Reports</string>
+    <string name="TC">Total Cholesterol</string>
+    <string name="tc">TC</string>
+
+>>>>>>> TC was added, still working on cleaning the graphs
     <!--String Arrays-->
     <string-array name="distances">
         <item>Radius</item>

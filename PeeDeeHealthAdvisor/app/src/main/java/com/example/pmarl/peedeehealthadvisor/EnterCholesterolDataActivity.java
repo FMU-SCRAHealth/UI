@@ -42,7 +42,7 @@ import java.util.Locale;
 
 public class EnterCholesterolDataActivity extends AppCompatActivity
 {
-    private TextInputEditText hdlInput, ldlInput, TRIGinput;
+    private TextInputEditText hdlInput, ldlInput, TRIGinput, TCinput;
     private NotificationManagerCompat notificationManager;
 
     private Context context = this;
@@ -72,6 +72,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         hdlInput = findViewById(R.id.hdlInput);
         ldlInput = findViewById(R.id.ldlInput);
         TRIGinput = findViewById(R.id.TRIGinput);
+        TCinput = findViewById(R.id.TCinputThisOne);
         notificationManager = NotificationManagerCompat.from(this);
 
         // init - set date to current date
@@ -125,8 +126,10 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         enterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ldlInput.getText().toString().equals("")||hdlInput.getText().toString().equals("")||
-                        TRIGinput.getText().toString().equals(""))
+                if(ldlInput.getText().toString().equals("")
+                        || hdlInput.getText().toString().equals("")
+                        || TRIGinput.getText().toString().equals("")
+                        || TCinput.getText().toString().equals(""))
                 {
 //                    Toast.makeText(EnterCholesterolDataActivity.this,
 //                            "Please enter all fields.", Toast.LENGTH_LONG).show();
@@ -134,8 +137,11 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
                 }
 
-                else if (Integer.parseInt(ldlInput.getText().toString()) >= 400 && Integer.parseInt(hdlInput.getText().toString()) <= 0
-                        && Integer.parseInt(TRIGinput.getText().toString()) >= 700 || Integer.parseInt(ldlInput.getText().toString()) <= 0 && Integer.parseInt(hdlInput.getText().toString()) >= 100
+                else if (Integer.parseInt(ldlInput.getText().toString()) >= 400
+                        && Integer.parseInt(hdlInput.getText().toString()) <= 0
+                        && Integer.parseInt(TRIGinput.getText().toString()) >= 700
+                        || Integer.parseInt(ldlInput.getText().toString()) <= 0
+                        && Integer.parseInt(hdlInput.getText().toString()) >= 100
                         && Integer.parseInt(TRIGinput.getText().toString()) <= 0) {
 
                     showDataIncorrectRange();
@@ -143,7 +149,12 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
                 else
                 {
-                    boolean isInserted = MainActivity.myDB.insertCholesterol(editDate.getText().toString(), Integer.parseInt(ldlInput.getText().toString()), Integer.parseInt(hdlInput.getText().toString()), Integer.parseInt(TRIGinput.getText().toString()));
+                    boolean isInserted = MainActivity.myDB.insertCholesterol(
+                            editDate.getText().toString(),
+                            Integer.parseInt(ldlInput.getText().toString()),
+                            Integer.parseInt(hdlInput.getText().toString()),
+                            Integer.parseInt(TRIGinput.getText().toString()),
+                            Double.parseDouble(TCinput.getText().toString()));
                     if (isInserted = true) {
 //                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
 //                                Toast.LENGTH_LONG).show();
@@ -151,6 +162,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
                         if (Integer.parseInt(ldlInput.getText().toString()) >= 130 && Integer.parseInt(hdlInput.getText().toString()) <= 40 // add total and male/female support
                                 && Integer.parseInt(TRIGinput.getText().toString()) >= 150) {
+
 
                             sendOnChannel3();
                         }
@@ -176,12 +188,15 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         });
 
         LinearLayout mainLayout = (LinearLayout)findViewById(R.id.cholesterolEntryLayout);
-        mainLayout.setOnTouchListener(new View.OnTouchListener() {
+        mainLayout.setOnTouchListener(new View.OnTouchListener()
+        {
 
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View v, MotionEvent event)
+            {
                 // TODO Auto-generated method stub
-                InputMethodManager inputMethodManager = (InputMethodManager)  EnterCholesterolDataActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                InputMethodManager inputMethodManager =
+                        (InputMethodManager)EnterCholesterolDataActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(EnterCholesterolDataActivity.this.getCurrentFocus().getWindowToken(), 0);
                 return false;
             }
@@ -220,7 +235,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private void showDataEntryCheckmark()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Cholesterol Entered", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Cholesterol Entered",
+                Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
@@ -234,7 +250,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private void showDataNotEnteredWarning()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields",
+                Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
@@ -247,7 +264,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private void showDataIncorrectRange()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Incorrect Value Range Entered", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Incorrect Value Range Entered",
+                Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
@@ -260,7 +278,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private void showDataError()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Please Try Again", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Please Try Again",
+                Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
@@ -276,18 +295,21 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         // this is for making the app open on this screen if the notification is clicked.
         Intent intent = new Intent(this, CholesterolGraph.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        PendingIntent pendingIntent =
+                PendingIntent.getActivity(this, 0, intent, 0);
 
-        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_3_ID")
-                .setContentTitle("Cholesterol Alert")
-                .setSmallIcon(R.drawable.ic_cholesterol_arrows)
-                .setContentText("The value entered is higher...")
-                .setPriority(1)
-                .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("The value entered is outside the recommended value range for your age and health. \n\nPlease contact your doctor or physician." +
-                                "\n\nIgnore if this entry was a mistake."))
-                .setContentIntent(pendingIntent)
-                .build();
+        Notification notification;
+        notification = new NotificationCompat.Builder(this, "CHANNEL_3_ID")
+        .setContentTitle("Cholesterol Alert")
+        .setSmallIcon(R.drawable.ic_cholesterol_arrows)
+        .setContentText("The value entered is higher...")
+        .setPriority(1)
+        .setStyle(new NotificationCompat.BigTextStyle()
+                .bigText("The value entered is outside the recommended value range for your age " +
+                        "and health. \n\nPlease contact your doctor or physician." +
+                        "\n\nIgnore if this entry was a mistake."))
+        .setContentIntent(pendingIntent)
+        .build();
 
         notificationManager.notify(3,notification);
     }
