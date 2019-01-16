@@ -84,13 +84,13 @@ public class ReportsActivity extends AppCompatActivity {
                 reportUserGender = cursorUser.getString(1);
                 reportUserAge = cursorUser.getString(2);
 
-                Date dateFormatted = new SimpleDateFormat("MMM dd yyyy").parse(reportUserAge);
-                String formattedDate = new SimpleDateFormat("dd MMM yyyy").format(dateFormatted);
+//                Date dateFormatted = new SimpleDateFormat("MMM dd yyyy").parse(reportUserAge);
+//                String formattedDate = new SimpleDateFormat("dd MMM yyyy").format(dateFormatted);
 
                 textBoxUsername.setText(reportUserName);
                 textBoxGender.setText(reportUserGender);
-//                textBoxAge.setText(reportUserAge);
-                textBoxAge.setText(formattedDate);
+                textBoxAge.setText(reportUserAge);
+//                textBoxAge.setText(formattedDate);
                 cursorUser.moveToNext();
 
             }
