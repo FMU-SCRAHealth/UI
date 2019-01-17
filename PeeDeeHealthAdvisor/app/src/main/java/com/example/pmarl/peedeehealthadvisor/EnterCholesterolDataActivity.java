@@ -164,6 +164,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                                 || Integer.parseInt(TRIGinput.getText().toString()) >= 150 || Integer.parseInt(TCinput.getText().toString()) >= 200) {
 
 
+
                             sendOnChannel3();
                         }
                     } else {

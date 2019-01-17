@@ -76,7 +76,7 @@
     <string name="Reports">Reports</string>
     <string name="TC">Total Cholesterol</string>
     <string name="tc">TC</string>
-
+  
     <!--String Arrays-->
     <string-array name="distances">
         <item>Radius</item>
