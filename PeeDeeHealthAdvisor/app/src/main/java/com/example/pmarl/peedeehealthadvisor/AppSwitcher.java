@@ -197,7 +197,7 @@ public class AppSwitcher extends AppCompatActivity {
                 topLeft.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        launchReports();
+                        launchMainActivity();
                     }
                 });
 
