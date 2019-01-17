@@ -46,7 +46,7 @@ public class SliderAdapter extends PagerAdapter {
 
         public String[] slide_descriptions = {
 
-                "Health Companion will help you keep up with your health information.\n"
+                "Health Companion will help you keep up with your health information.\n\n\n"
                     + "Swipe to see what is offered.",
                 "Enter your blood pressure values.",
                 "Enter your blood sugar values. ",
