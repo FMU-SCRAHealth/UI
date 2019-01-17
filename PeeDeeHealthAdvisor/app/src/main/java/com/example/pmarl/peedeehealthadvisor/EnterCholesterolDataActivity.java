@@ -160,8 +160,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 //                                Toast.LENGTH_LONG).show();
                         showDataEntryCheckmark();
 
-                        if (Integer.parseInt(ldlInput.getText().toString()) >= 130 && Integer.parseInt(hdlInput.getText().toString()) <= 40 // add total and male/female support
-                                && Integer.parseInt(TRIGinput.getText().toString()) >= 150) {
+                        if (Integer.parseInt(ldlInput.getText().toString()) >= 130 || Integer.parseInt(hdlInput.getText().toString()) <= 40 // add total and male/female support
+                                || Integer.parseInt(TRIGinput.getText().toString()) >= 150 || Integer.parseInt(TCinput.getText().toString()) >= 200) {
 
 
                             sendOnChannel3();
