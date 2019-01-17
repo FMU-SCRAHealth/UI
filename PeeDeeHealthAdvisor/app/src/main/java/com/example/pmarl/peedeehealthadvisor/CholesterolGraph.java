@@ -78,6 +78,8 @@ public class CholesterolGraph extends AppCompatActivity
         * were taken*/
         ArrayList<Entry> trig = new ArrayList<>();
 
+        ArrayList<Entry> tc = new ArrayList<>();
+
         /*Just a test array for the x values for the graph*/
         final ArrayList<String> xLabels = new ArrayList<>();
 
@@ -106,7 +108,8 @@ public class CholesterolGraph extends AppCompatActivity
 
                 treeMap.put(epoch, new CholesterolValues(Float.parseFloat(cursor.getString(2)),
                         Float.parseFloat(cursor.getString(3)),
-                        Float.parseFloat(cursor.getString(4))));
+                        Float.parseFloat(cursor.getString(4)),
+                        Float.parseFloat(cursor.getString(5))));
 
 
             } catch (ParseException e)
@@ -135,6 +138,8 @@ public class CholesterolGraph extends AppCompatActivity
 
             /*Adding the trig value from the DB and the date that corresponds with it*/
             trig.add(new Entry(cholesterolValues.getTrig(),i));
+
+            tc.add(new Entry(cholesterolValues.getTc(), i));
 
             /*Adding test values for the hdl and ldl values*/
             Long epoch1 = mEntry.getKey();
@@ -183,6 +188,16 @@ public class CholesterolGraph extends AppCompatActivity
         trigSet.setLineWidth(2f);
         trigSet.enableDashedLine(10f,5f,0f);
 
+        /*Creating the tc data set and setting different attributes for it*/
+        LineDataSet tcSet = new LineDataSet(tc,"TC");
+        tcSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+        tcSet.setColor(getResources().getColor(R.color.YellowHuesLight));
+        tcSet.setValueTextSize(13f);
+        tcSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
+        tcSet.setCircleRadius(4f);
+        tcSet.setCircleColor(getResources().getColor(R.color.YellowHuesDark));
+        tcSet.setLineWidth(2f);
+
 
 
         XAxis xAxis = lineChart.getXAxis();
@@ -198,6 +213,7 @@ public class CholesterolGraph extends AppCompatActivity
         dataSets.add(hdlSet);
         dataSets.add(ldlSet);
         dataSets.add(trigSet);
+        dataSets.add(tcSet);
 
         /*creating the data to be plotted in the line chart*/
         LineData data = new LineData(xLabels,dataSets);

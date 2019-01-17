@@ -151,7 +151,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 //                                 Toast.LENGTH_LONG).show();
                          showDataEntryCheckmark();
 
-                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 && Integer.parseInt((fastingToggle.getText().toString())) == 1 || Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && Integer.parseInt((fastingToggle.getText().toString())) == 0) {
+                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 || Integer.parseInt((fastingToggle.getText().toString())) == 1 || Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && Integer.parseInt((fastingToggle.getText().toString())) == 0) {
                              sendOnChannel2();
                          }
                      } else {
