@@ -294,7 +294,7 @@
                         android:layout_height="fill_parent"
                         android:text="LDL"
                         android:textColor="@color/white"
-                        android:layout_weight="1.0"
+                        android:layout_weight="1.1"
                         android:background="@color/YellowHuesLight"
                         />
 
@@ -304,7 +304,7 @@
                         android:layout_height="fill_parent"
                         android:text="HDL"
                         android:textColor="@color/white"
-                        android:layout_weight="1.0"
+                        android:layout_weight="1.1"
                         android:background="@color/YellowHuesLight"
                         />
 
@@ -314,7 +314,16 @@
                         android:layout_height="fill_parent"
                         android:text="Trig"
                         android:textColor="@color/white"
-                        android:layout_weight="1.0"
+                        android:layout_weight="1.1"
+                        android:background="@color/YellowHuesLight"
+                        />
+                    <TextView
+                        android:id="@+id/CholesterolTCBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="TC"
+                        android:textColor="@color/white"
+                        android:layout_weight="1.2"
                         android:background="@color/YellowHuesLight"
                         />
 

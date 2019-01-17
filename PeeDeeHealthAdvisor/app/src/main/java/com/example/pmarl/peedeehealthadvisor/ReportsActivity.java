@@ -57,11 +57,12 @@ public class ReportsActivity extends AppCompatActivity {
         String reportHDL = "";
         String reportLDL = "";
         String reportTrig = "";
+        String reportTC = "";
         TextView cholDateText = findViewById(R.id.CholesterolDateBox);
         TextView cholHDLText = findViewById(R.id.CholesterolHDLBox);
         TextView cholLDLText = findViewById(R.id.CholesterolLDLBox);
         TextView cholTrigText = findViewById(R.id.CholesterolTrigBox);
-
+        TextView cholTCText = findViewById(R.id.CholesterolTCBox);
         //CursorInstantiation (VACCINATIONSs)
         Cursor cursorVax = MainActivity.myDB.readVaccinationRecords();
         String reportVaxDate = "";
@@ -156,10 +157,12 @@ public class ReportsActivity extends AppCompatActivity {
             reportHDL = cursorChol.getString(2);
             reportLDL = cursorChol.getString(3);
             reportTrig = cursorChol.getString(4);
+            reportTC = cursorChol.getString(5);
             cholDateText.setText(cholDateText.getText() + "\n" + reportCholDate);
             cholHDLText.setText(cholHDLText.getText() + "\n" + reportHDL);
             cholLDLText.setText(cholLDLText.getText() + "\n" + reportLDL);
             cholTrigText.setText(cholTrigText.getText() + "\n" + reportTrig);
+            cholTCText.setText(cholTCText.getText() + "\n" + reportTC);
             cursorChol.moveToNext();
         }
 
