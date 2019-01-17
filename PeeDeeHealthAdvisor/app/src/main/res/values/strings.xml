@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pee Dee Health Companion</string>
+    <string name="app_name">Health Companion</string>
     <string name="welcomeToHealthAdvisor">Welcome To Health Companion</string>
     <string name="genderAndName">Please Enter Your Name And Gender</string>
     <string name="searchForTheseServices">Search for These Services:</string>
