@@ -303,12 +303,10 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         notification = new NotificationCompat.Builder(this, "CHANNEL_3_ID")
         .setContentTitle("Cholesterol Alert")
         .setSmallIcon(R.drawable.ic_cholesterol_arrows)
-        .setContentText("The value entered is higher...")
+        .setContentText("If the values entered are correct...")
         .setPriority(1)
         .setStyle(new NotificationCompat.BigTextStyle()
-                .bigText("The value entered is outside the recommended value range for your age " +
-                        "and health. \n\nPlease contact your doctor or physician." +
-                        "\n\nIgnore if this entry was a mistake."))
+                .bigText("If the values entered are correct, please contact a health professional."))
         .setContentIntent(pendingIntent)
         .build();
 

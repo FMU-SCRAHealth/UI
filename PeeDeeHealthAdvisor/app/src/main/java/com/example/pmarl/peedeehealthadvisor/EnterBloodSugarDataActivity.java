@@ -151,9 +151,16 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 //                                 Toast.LENGTH_LONG).show();
                          showDataEntryCheckmark();
 
-                         if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 || Integer.parseInt((fastingToggle.getText().toString())) == 1 || Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && Integer.parseInt((fastingToggle.getText().toString())) == 0) {
-                             sendOnChannel2();
-                         }
+                             if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 && fastingToggle.isChecked() ==  true) {
+                                 sendOnChannel2();
+                             } else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && nonfastingToggle.isChecked() == true) {
+                                 sendOnChannel2();
+                             }
+
+//                             else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && fastingToggle.getText() == "0") {
+//                                 sendOnChannel2();
+//                             }
+
                      } else {
 //                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar NOT Saved",
 //                                 Toast.LENGTH_LONG).show();
@@ -305,11 +312,11 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
         Notification notification = new NotificationCompat.Builder(this, "CHANNEL_2_ID")
                 .setContentTitle("Blood Sugar Alert")
                 .setSmallIcon(R.drawable.ic_blood_sugar)
-                .setContentText("The value entered is higher...")
+                .setContentText("If the values entered are correct...")
                 .setPriority(1)
                 .setLights(0xff00ff00, 300, 100)
                 .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("If the values entered are correct, please contact a health professional.\""))
+                        .bigText("If the values entered are correct, please contact a health professional."))
                 .setContentIntent(pendingIntent)
                 .build();
 

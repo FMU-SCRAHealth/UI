@@ -286,7 +286,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
         Notification notification = new NotificationCompat.Builder(this, "CHANNEL_1_ID")
                 .setContentTitle("Blood Pressure Alert")
                 .setSmallIcon(R.drawable.ic_blood_pressure)
-                .setContentText("The value entered is higher...")
+                .setContentText("If the values entered are correct...")
                 .setPriority(1)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText("If the values entered are correct, please contact a health professional."))
