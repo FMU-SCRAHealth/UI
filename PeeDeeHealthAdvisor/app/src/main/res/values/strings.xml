@@ -76,6 +76,10 @@
     <string name="Reports">Reports</string>
     <string name="TC">Total Cholesterol</string>
     <string name="tc">TC</string>
+    <string name="allergies">Allergies</string>
+    <string name="description">Description</string>
+    <string name="allergyName">Allergy Name</string>
+    <string name="allergyDescription">Allergy Description</string>
   
     <!--String Arrays-->
     <string-array name="distances">

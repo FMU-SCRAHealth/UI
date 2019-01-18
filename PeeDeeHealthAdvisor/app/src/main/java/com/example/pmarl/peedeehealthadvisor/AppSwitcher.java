@@ -197,7 +197,7 @@ public class AppSwitcher extends AppCompatActivity {
                 topLeft.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        launchMainActivity();
+                        launchAllergies();
                     }
                 });
 
@@ -272,6 +272,14 @@ public class AppSwitcher extends AppCompatActivity {
     private void launchReports()
     {
         Intent intent = new Intent(this, ReportsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchAllergies()
+    {
+        Intent intent = new Intent(this, SelectAllergiesActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

@@ -77,8 +77,7 @@ public class ReportsActivity extends AppCompatActivity {
         if (cursorUser != null) {
             cursorUser.moveToFirst();
         }
-//        try {
-            //iterate
+
             while (!cursorUser.isAfterLast()) {
 
                 reportUserName = cursorUser.getString(0);
@@ -96,9 +95,6 @@ public class ReportsActivity extends AppCompatActivity {
 
             }
 
-//        } catch (Exception e) {
-//
-//        }
 
         //BLOOD PRESSURE BOX UPDATE
 

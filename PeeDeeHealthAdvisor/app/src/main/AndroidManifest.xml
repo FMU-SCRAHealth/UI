@@ -177,6 +177,27 @@
             >
         </activity>
 
+        // DECLARING Allergy INPUT
+        <activity
+            android:name=".EnterAllergyDataActivity"
+            android:label="@string/app_name"
+            >
+        </activity>
+
+        // DECLARING Allergies TABLE
+        <activity
+            android:name=".AllergiesTable"
+            android:label="@string/app_name"
+            >
+        </activity>
+
+        // DECLARING Allergies SELECT
+        <activity
+            android:name=".SelectAllergiesActivity"
+            android:label="@string/app_name"
+            >
+        </activity>
+
 
         <receiver android:name=".NotificationPublisher" />
     </application>
