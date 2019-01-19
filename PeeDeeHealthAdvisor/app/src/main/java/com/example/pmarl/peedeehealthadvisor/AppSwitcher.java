@@ -190,7 +190,7 @@ public class AppSwitcher extends AppCompatActivity {
 
                 topLeft.setEnabled(true);
                 topRight.setEnabled(true);
-                bottomLeft.setEnabled(false);
+                bottomLeft.setEnabled(true);
                 bottomRight.setEnabled(false);
 //                reports.setEnabled(true);
 
@@ -205,6 +205,13 @@ public class AppSwitcher extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         launchReports();
+                    }
+                });
+
+                bottomLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchUserProfile();
                     }
                 });
 
@@ -280,6 +287,14 @@ public class AppSwitcher extends AppCompatActivity {
     private void launchAllergies()
     {
         Intent intent = new Intent(this, SelectAllergiesActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchUserProfile()
+    {
+        Intent intent = new Intent(this, UserProfile.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

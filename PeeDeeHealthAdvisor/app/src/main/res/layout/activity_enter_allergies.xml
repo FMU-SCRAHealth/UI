@@ -30,14 +30,14 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_vaccination_home_teal" />
+                android:background="@drawable/ic_allergieshome" />
 
             <TextView
                 android:id="@+id/MyHealthGraph"
                 android:layout_width="135dp"
                 android:layout_height="75dp"
                 android:text="@string/allergies"
-                android:textColor="@color/GreenHuesMedium"
+                android:textColor="@color/LimeHuesDark"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="@string/allergyName"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/LimeHuesDark"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/allergyNameText"
@@ -69,7 +69,6 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/allergyNameInput"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -87,7 +86,7 @@
                 android:layout_marginTop="15dp"
                 android:textSize="20sp"
                 android:text="@string/allergyDescription"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="@color/LimeHuesDark"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/allergyDescriptions"
@@ -99,7 +98,6 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/allergyDescriptionInput"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="false"
@@ -154,6 +152,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/clear"
                     android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/LimeHuesDark"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
 
@@ -170,6 +169,7 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/enter"
                     android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/LimeHuesDark"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
 

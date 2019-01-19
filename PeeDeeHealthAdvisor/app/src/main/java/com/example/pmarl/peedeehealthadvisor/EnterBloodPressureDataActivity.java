@@ -126,8 +126,6 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 
                 if (systolicInput.getText().toString().equals("")||diastolicInput.getText().toString().equals(""))
                 {
-//                    Toast.makeText(EnterBloodPressureDataActivity.this,
-//                            "Please enter all fields.",Toast.LENGTH_LONG).show();
                     showDataNotEnteredWarning();
 
                 }
@@ -143,17 +141,15 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                             Integer.parseInt(diastolicInput.getText().toString()));
 
                     if (isInserted = true) {
-//                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure Saved",
-//                                Toast.LENGTH_LONG).show();
+
                         showDataEntryCheckmark();
 
-                        if (Integer.parseInt(systolicInput.getText().toString()) >= 120 && Integer.parseInt(diastolicInput.getText().toString()) >= 90 || Integer.parseInt(systolicInput.getText().toString()) <= 90 && Integer.parseInt(diastolicInput.getText().toString()) <= 60) {
-                            sendOnChannel1();
-                        } // statement to show if both systolic and diastolic are high
+//                        if (Integer.parseInt(systolicInput.getText().toString()) >= 120 && Integer.parseInt(diastolicInput.getText().toString()) >= 90 || Integer.parseInt(systolicInput.getText().toString()) <= 90 && Integer.parseInt(diastolicInput.getText().toString()) <= 60) {
+//                            sendOnChannel1();
+//                        } // statement to show if both systolic and diastolic are high
 
                     } else {
-//                        Toast.makeText(EnterBloodPressureDataActivity.this, "Blood Pressure NOT Saved",
-//                                Toast.LENGTH_LONG).show();
+
                         showDataError();
                     }
 

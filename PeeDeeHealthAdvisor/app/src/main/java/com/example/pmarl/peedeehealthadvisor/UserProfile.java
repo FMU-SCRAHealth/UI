@@ -12,6 +12,7 @@
 package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -21,16 +22,18 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class UserProfile extends AppCompatActivity
 {
     //List of the instantiated attributes
     private ImageButton home;               //Home Button
-   
+
 
     @Override
     //This is the onCreate method or Min method that is activated when the
@@ -43,6 +46,16 @@ public class UserProfile extends AppCompatActivity
         //Sets the layout to the activity_search_location layout
         setContentView(R.layout.activity_user_profile);
 
+        //CursorInstantiation (USER)
+        Cursor cursorUser = MainActivity.myDB.readUserData();
+        String userName = "";
+        String userAge = "";
+        String userGender = "";
+        String userWeight = "";
+        TextView textBoxUsername = findViewById(R.id.user_name);
+        TextView textBoxGender = findViewById(R.id.gender);
+        TextView textBoxAge = findViewById(R.id.date_of_birth);
+        TextView textBoxWeight = findViewById(R.id.weight);
 
         this.home = (ImageButton) findViewById(R.id.Home);
         this.home.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +64,32 @@ public class UserProfile extends AppCompatActivity
                 launchMainActivity();
             }
         });
+//Check for values (USER)
+        if (cursorUser != null) {
+            cursorUser.moveToFirst();
+        }
 
+        while (!cursorUser.isAfterLast()) {
+
+            userName = cursorUser.getString(0);
+            userAge = cursorUser.getString(1);
+            userGender = cursorUser.getString(2);
+
+            try {
+
+                Date dateFormatted = new SimpleDateFormat("MM.dd.yyyy").parse(userAge);
+                String formattedDate = new SimpleDateFormat(" MMM dd yyyy").format(dateFormatted);
+
+                textBoxUsername.setText(userName);
+                textBoxGender.setText(userGender);
+                textBoxAge.setText(formattedDate);
+
+            } catch (Exception e) {
+
+            }
+            cursorUser.moveToNext();
+
+        }
 
     }
 

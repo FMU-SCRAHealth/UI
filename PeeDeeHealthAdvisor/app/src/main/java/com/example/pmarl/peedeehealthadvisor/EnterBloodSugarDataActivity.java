@@ -133,8 +133,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 
                  if(bloodSugarInput.getText().toString().equals(""))
                  {
-//                     Toast.makeText(EnterBloodSugarDataActivity.this,
-//                             "Please enter a valid blood sugar level.", Toast.LENGTH_LONG).show();
+
                      showDataNotEnteredWarning();
                  }
 
@@ -147,23 +146,21 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                              Integer.parseInt(bloodSugarInput.getText().toString()));
 
                      if (isInserted = true) {
-//                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar Saved",
-//                                 Toast.LENGTH_LONG).show();
+
                          showDataEntryCheckmark();
 
-                             if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 && fastingToggle.isChecked() ==  true) {
-                                 sendOnChannel2();
-                             } else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && nonfastingToggle.isChecked() == true) {
-                                 sendOnChannel2();
-                             }
+//                             if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 && fastingToggle.isChecked() ==  true) {
+//                                 sendOnChannel2();
+//                             } else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && nonfastingToggle.isChecked() == true) {
+//                                 sendOnChannel2();
+//                             }
 
 //                             else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && fastingToggle.getText() == "0") {
 //                                 sendOnChannel2();
 //                             }
 
                      } else {
-//                         Toast.makeText(EnterBloodSugarDataActivity.this, "Blood Sugar NOT Saved",
-//                                 Toast.LENGTH_LONG).show();
+
                          showDataError();
 
                      }

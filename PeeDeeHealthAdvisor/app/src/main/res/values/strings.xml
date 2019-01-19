@@ -78,9 +78,9 @@
     <string name="TC">Total Cholesterol</string>
     <string name="tc">TC</string>
     <string name="allergies">Allergies</string>
-    <string name="description">Description</string>
+    <string name="description">Reaction</string>
     <string name="allergyName">Allergy Name</string>
-    <string name="allergyDescription">Allergy Description</string>
+    <string name="allergyDescription">Allergy Reaction</string>
     <string name="reportStatusVax">Status</string>
   
     <!--String Arrays-->

@@ -37,7 +37,7 @@ public class AppSwitcherAdapter extends PagerAdapter {
     public int[] slide_slot_top_left = {
 
             R.drawable.ic_bloodpressure,
-            R.drawable.ic_bodyweight
+            R.drawable.ic_allergies
 
     };
 
@@ -51,7 +51,7 @@ public class AppSwitcherAdapter extends PagerAdapter {
     public int[] slide_slot_bottom_left = {
 
             R.drawable.ic_cholesterol,
-            R.drawable.ic_blankspacesongrid
+            R.drawable.ic_bodyweight
 
     };
 

@@ -34,7 +34,7 @@ public class AllergiesTable extends AppCompatActivity {
         String allergyTitle = "";
         String allergyDescription = "";
         TextView allergyName = findViewById(R.id.allergies_name);
-        TextView allergyDescriptionView = findViewById(R.id.allergies_descriptions);
+        TextView allergyDescriptionView = findViewById(R.id.allergies_reactions);
 //        LinearLayout parent = findViewById(R.id.allergiesParent);
         ImageButton home = findViewById(R.id.Home);
         TableLayout tableLayout = findViewById(R.id.allergiesTable);
@@ -98,7 +98,7 @@ public class AllergiesTable extends AppCompatActivity {
 
     private void launchPrevActivity()
     {
-        Intent intent = new Intent (this, AppSwitcher.class);
+        Intent intent = new Intent (this, SelectAllergiesActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
