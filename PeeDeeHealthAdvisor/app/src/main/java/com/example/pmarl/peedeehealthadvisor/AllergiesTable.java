@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -35,7 +37,7 @@ public class AllergiesTable extends AppCompatActivity {
         TextView allergyDescriptionView = findViewById(R.id.allergies_descriptions);
 //        LinearLayout parent = findViewById(R.id.allergiesParent);
         ImageButton home = findViewById(R.id.Home);
-//        TableLayout tableLayout = findViewById(R.id.allergiesTable);
+        TableLayout tableLayout = findViewById(R.id.allergiesTable);
 
         // ALLERGY BOX UPDATE
 
@@ -50,18 +52,19 @@ public class AllergiesTable extends AppCompatActivity {
             allergyTitle = cursorAllergies.getString(0);
             allergyDescription = cursorAllergies.getString(1);
 
-//            if(allergyName.getParent()!=null) {
-//                ((ViewGroup) allergyName.getParent()).removeView(allergyName); // <- fix
-//                tableLayout.addView(allergyName);
-//            }
-//
-//            if(allergyDescriptionView.getParent()!=null) {
-//                ((ViewGroup) allergyDescriptionView.getParent()).removeView(allergyDescriptionView); // <- fix
-//            tableLayout.addView(allergyDescriptionView);
-//            }
 
-                allergyName.setText(allergyName.getText()  + "\n\n\n" + allergyTitle);
-                allergyDescriptionView.setText(allergyDescriptionView.getText() + "\n\n\n" + allergyDescription);
+            TableLayout table = (TableLayout)AllergiesTable.this.findViewById(R.id.allergiesTable);
+
+                // Inflate your row "template" and fill out the fields.
+                TableRow row = (TableRow)LayoutInflater.from(AllergiesTable.this).inflate(R.layout.allergies_row, null);
+                ((TextView)row.findViewById(R.id.attrib_name)).setText(allergyTitle);
+                ((TextView)row.findViewById(R.id.attrib_value)).setText(allergyDescription);
+                table.addView(row);
+
+            table.requestLayout();
+
+//                allergyName.setText(allergyName.getText()  + "\n\n\n" + allergyTitle);
+//                allergyDescriptionView.setText(allergyDescriptionView.getText() + "\n\n\n" + allergyDescription);
 
 //                tableLayout.addView(allergyName);
 //                tableLayout.addView(allergyDescriptionView);

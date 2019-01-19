@@ -49,41 +49,55 @@
 
             <LinearLayout
                 android:id="@+id/ReportsBox"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_marginTop="50dp"
                 android:orientation="vertical">
 
-                <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <!---->
+                    <TextView
+                        android:id="@+id/allergies_name"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.0"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/allergies"
+                        android:layout_height="fill_parent"
+                        android:textColor="@color/themeBlue"
+                        android:textSize="22sp" />
 
-                <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="35dp"-->
-                <!--android:textSize="25dp"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:background="@color/RedHuesLight"-->
-                <!--android:text="@string/bloodPressureGraph"/>-->
+                    <TextView
+                        android:id="@+id/allergies_descriptions"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1.0"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="14dp"
+                        android:gravity="right"
+                        android:text="@string/description"
+                        android:textColor="@color/themeBlue"
+                        android:textSize="22sp" />
 
-                <!--</LinearLayout>-->
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/allergiesParent"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight=".25"
                     android:orientation="horizontal">
 
-                    <!--<TableLayout-->
-                        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-                        <!--android:id="@+id/allergiesTable"-->
-                        <!--android:layout_width="fill_parent"-->
-                        <!--android:layout_height="fill_parent"-->
-                        <!--android:layout_marginTop="15dp"-->
-                        <!--android:stretchColumns="*">-->
+                    <TableLayout
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/allergiesTable"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginTop="15dp"
+                        >
 
                     <!--<TableRow>-->
 
@@ -103,28 +117,19 @@
                             <!--android:textSize="15sp"-->
                             <!--android:textStyle="bold" />-->
 
+                        <!--<TableRow-->
+                            <!--android:id="@+id/attrib_row">-->
+                            <!--<TextView-->
+                                <!--android:id="@+id/attrib_name"-->
+                                <!--android:textStyle="bold"/>-->
+                            <!--<TextView-->
+                                <!--android:id="@+id/attrib_value"-->
+                                <!--android:gravity="right"-->
+                                <!--android:textStyle="normal"/>-->
+                        <!--</TableRow>-->
+
                     <!--</TableRow>-->
-                    <!--</TableLayout>-->
-
-                    <TextView
-                        android:id="@+id/allergies_name"
-                        android:layout_width="fill_parent"
-                        android:layout_weight="2.0"
-                        android:autoText="true"
-                        android:paddingStart="3dp"
-                        android:text="@string/allergies"
-                        android:layout_height="fill_parent"
-                        android:textColor="@color/themeBlue"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/allergies_descriptions"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1.0"
-                        android:text="@string/description"
-                        android:textColor="@color/themeBlue"
-                        android:textSize="20sp" />
+                    </TableLayout>
 
                 </LinearLayout>
 

@@ -72,8 +72,10 @@ public class VaccinationGraph extends AppCompatActivity
         TextView shingleDate = findViewById(R.id.shingleDate);
 
         // Pneumonia Row
-        TextView pneumoniaTaken = findViewById(R.id.pneumoniaTaken);
-        TextView pneumoniaDate = findViewById(R.id.pneumoniaDate);
+        TextView pneumonia13Taken = findViewById(R.id.pneumoniaTaken13);
+        TextView pneumonia13Date = findViewById(R.id.pneumoniaDate13);
+        TextView pneumonia23Taken = findViewById(R.id.pneumoniaTaken23);
+        TextView pneumonia23Date = findViewById(R.id.pneumoniaDate23);
 
         // default table text
         fluShotTakenView.setText(tableImmunized);
@@ -82,8 +84,10 @@ public class VaccinationGraph extends AppCompatActivity
         shingleTaken.setText(tableImmunized);
         shingleDate.setText(date);
 
-        pneumoniaTaken.setText(tableImmunized);
-        pneumoniaDate.setText(date);
+        pneumonia13Taken.setText(tableImmunized);
+        pneumonia13Date.setText(date);
+        pneumonia23Taken.setText(tableImmunized);
+        pneumonia23Date.setText(date);
 
 
         if(cursorVaccinations != null) {
@@ -122,10 +126,16 @@ public class VaccinationGraph extends AppCompatActivity
                 shingleDate.setText((date));
                 shingleTaken.setText(tableImmunized);
             }
-            else if (vaccinationName.equals("Pneumonia"))
+            else if (vaccinationName.equals("Pneumonia PVC13"))
             {
-                pneumoniaDate.setText(date);
-                pneumoniaTaken.setText(tableImmunized);
+                pneumonia13Date.setText(date);
+                pneumonia13Taken.setText(tableImmunized);
+            }
+
+            else if (vaccinationName.equals("Pneumonia PPSV23"))
+            {
+                pneumonia23Date.setText(date);
+                pneumonia23Taken.setText(tableImmunized);
             }
             else {
                 fluShotDateView.setText("Test");

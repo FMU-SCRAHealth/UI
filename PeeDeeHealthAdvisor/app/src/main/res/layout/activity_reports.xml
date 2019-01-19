@@ -89,20 +89,21 @@
                 android:layout_width="wrap_content"
                 android:background="@color/GreenHuesDark"
                 android:textColor="@color/white"
-                android:layout_weight="0.20"
+                android:layout_weight="0.50"
                 android:paddingTop="4dp"
+                android:paddingStart="37dp"
                 android:textSize="20dp"
                 android:layout_height="50dp"/>
 
-            <TextView
-                android:id="@+id/ReportsUserBoxGender"
-                android:layout_width="wrap_content"
-                android:layout_weight="0.30"
-                android:background="@color/GreenHuesDark"
-                android:textColor="@color/white"
-                android:paddingTop="4dp"
-                android:textSize="20dp"
-                android:layout_height="50dp"/>
+            <!--<TextView-->
+                <!--android:id="@+id/ReportsUserBoxGender"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_weight="0.30"-->
+                <!--android:background="@color/GreenHuesDark"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:paddingTop="4dp"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_height="50dp"/>-->
 
         </LinearLayout>
 

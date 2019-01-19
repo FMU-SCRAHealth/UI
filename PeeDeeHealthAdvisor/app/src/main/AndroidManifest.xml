@@ -174,27 +174,31 @@
         <activity
             android:name=".ReportsActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             >
         </activity>
 
-        // DECLARING Allergy INPUT
+        // DECLARING ALLERGY INPUT
         <activity
             android:name=".EnterAllergyDataActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             >
         </activity>
 
-        // DECLARING Allergies TABLE
+        // DECLARING ALLERGIES TABLE
         <activity
             android:name=".AllergiesTable"
             android:label="@string/app_name"
             >
         </activity>
 
-        // DECLARING Allergies SELECT
+        // DECLARING ALLERGIES SELECT
         <activity
             android:name=".SelectAllergiesActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
+
             >
         </activity>
 

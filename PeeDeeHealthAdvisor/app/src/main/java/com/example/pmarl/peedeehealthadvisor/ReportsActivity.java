@@ -29,7 +29,7 @@ public class ReportsActivity extends AppCompatActivity {
         String reportUserAge = "";
         String reportUserGender = "";
         TextView textBoxUsername = findViewById(R.id.ReportsUserBoxName);
-        TextView textBoxGender = findViewById(R.id.ReportsUserBoxGender);
+//        TextView textBoxGender = findViewById(R.id.ReportsUserBoxGender);
         TextView textBoxAge = findViewById(R.id.ReportsUserBoxAge);
         ImageButton home = findViewById(R.id.Home);
 
@@ -81,16 +81,21 @@ public class ReportsActivity extends AppCompatActivity {
             while (!cursorUser.isAfterLast()) {
 
                 reportUserName = cursorUser.getString(0);
-                reportUserGender = cursorUser.getString(1);
-                reportUserAge = cursorUser.getString(2);
+                reportUserAge = cursorUser.getString(1);
+                reportUserGender = cursorUser.getString(2);
 
-//                Date dateFormatted = new SimpleDateFormat("MMM dd yyyy").parse(reportUserAge);
-//                String formattedDate = new SimpleDateFormat("dd MMM yyyy").format(dateFormatted);
+                try {
 
-                textBoxUsername.setText(reportUserName);
-                textBoxGender.setText(reportUserGender);
-                textBoxAge.setText(reportUserAge);
-//                textBoxAge.setText(formattedDate);
+                    Date dateFormatted = new SimpleDateFormat("MM.dd.yyyy").parse(reportUserAge);
+                    String formattedDate = new SimpleDateFormat(" MMM dd yyyy").format(dateFormatted);
+
+                    textBoxUsername.setText(reportUserName);
+//                    textBoxGender.setText(reportUserGender);
+                    textBoxAge.setText(formattedDate);
+
+                } catch (Exception e) {
+
+                }
                 cursorUser.moveToNext();
 
             }
