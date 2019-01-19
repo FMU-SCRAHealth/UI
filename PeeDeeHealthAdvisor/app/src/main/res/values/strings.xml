@@ -81,6 +81,7 @@
     <string name="description">Description</string>
     <string name="allergyName">Allergy Name</string>
     <string name="allergyDescription">Allergy Description</string>
+    <string name="reportStatusVax">Status</string>
   
     <!--String Arrays-->
     <string-array name="distances">

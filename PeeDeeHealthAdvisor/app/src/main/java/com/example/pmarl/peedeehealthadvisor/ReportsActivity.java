@@ -70,6 +70,7 @@ public class ReportsActivity extends AppCompatActivity {
         String reportVaccine = "";
         TextView vaxDateBox = findViewById(R.id.VaxDateBox);
         TextView vaxNameBox = findViewById(R.id.VaxNameBox);
+        TextView vaxImmunizedBox = findViewById(R.id.VaxImmunizedBox);
 
         //USER BOX UPDATE
 
@@ -177,14 +178,17 @@ public class ReportsActivity extends AppCompatActivity {
         while (!cursorVax.isAfterLast()) {
 
             reportVaxDate = cursorVax.getString(0);
-            reportVaccine = cursorVax.getString(2);
+            reportImmunized = cursorVax.getString(2);
+            reportVaccine = cursorVax.getString(3);
 
-            if (reportVaccine.equals("1")) {
+            if (reportImmunized.equals("1")) {
                 vaxDateBox.setText(vaxDateBox.getText() + "\n" + reportVaxDate);
-                vaxNameBox.setText(vaxNameBox.getText() + "\n" + "Taken");
+                vaxNameBox.setText(vaxNameBox.getText() + "\n" + reportVaccine);
+                vaxImmunizedBox.setText(vaxImmunizedBox.getText() + "\n" + "Taken");
             } else {
                 vaxDateBox.setText(vaxDateBox.getText() + "\n" + reportVaxDate);
-                vaxNameBox.setText(vaxNameBox.getText() + "\n" + "Not Taken");
+                vaxNameBox.setText(vaxNameBox.getText() + "\n" + reportVaccine);
+                vaxImmunizedBox.setText(vaxImmunizedBox.getText() + "\n" + "Not Taken");
             }
 
             cursorVax.moveToNext();

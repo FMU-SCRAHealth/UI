@@ -357,14 +357,15 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_weight=".25" >
+                    android:layout_weight=".25"
+                    android:layout_marginBottom="5dp">
 
                     <TextView
                         android:id="@+id/VaxDateBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="@string/tableDate"
-                        android:layout_weight="1.0"
+                        android:layout_weight="1.2"
                         android:paddingStart="3dp"
                         android:textColor="@color/white"
                         android:background="@color/BlueHuesLight"
@@ -377,6 +378,16 @@
                         android:text="Vaccination"
                         android:textColor="@color/white"
                         android:layout_weight="1.0"
+                        android:background="@color/BlueHuesLight"
+                        />
+
+                    <TextView
+                        android:id="@+id/VaxImmunizedBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="@string/reportStatusVax"
+                        android:textColor="@color/white"
+                        android:layout_weight="1.3"
                         android:background="@color/BlueHuesLight"
                         />
 
