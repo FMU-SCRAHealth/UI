@@ -52,6 +52,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.app.Notification;
 
+import static java.util.Calendar.DATE;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
+
 public class EnterVaccinationDataActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     private Button enterData, clearData;
@@ -65,6 +69,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
     private NotificationManagerCompat notificationManager;
     Cursor cursorVaccinations = MainActivity.myDB.readVaccinationRecords();
+    Cursor cursorUser = MainActivity.myDB.readUserData();
     String dateQuery = "";
     String vaccinationName = "";
     Date date1;
@@ -77,6 +82,10 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     long checkShingles;
     long futureInMillisPneumonia;
     long checkPneumonia;
+    int age;
+    Date userBirthday;
+    Date todayDate;
+
 
 
 
@@ -104,8 +113,8 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                   int dayOfMonth)
             {
                 // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(YEAR, year);
+                myCalendar.set(MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateDate();
             }
@@ -121,7 +130,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             {
                 // TODO Auto-generated method stub
                 new DatePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        .get(YEAR), myCalendar.get(MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -155,6 +164,28 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 editDate.setText("");
             }
         });
+
+        //Check for values (USER)
+        if (cursorUser != null) {
+            cursorUser.moveToLast();
+        }
+
+            try {
+                String reportUserAge = cursorUser.getString(1); // this pulls the date.
+
+                userBirthday = new SimpleDateFormat("MM.dd.yyyy").parse(reportUserAge);
+                todayDate = new SimpleDateFormat("MMM dd yyyy").parse(dateString);
+
+
+                getCalendar(userBirthday); // gets birthday
+
+                age = getDiffYears(userBirthday, todayDate); //computers the age.
+
+            } catch (Exception e) {
+                showDataError();
+            }
+
+
 
         enterData = (Button) findViewById(R.id.enterData);
         enterData.setOnClickListener(new View.OnClickListener()
@@ -193,9 +224,9 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 checkFlu = futureInMillisFlu-System.currentTimeMillis();
                                 futureInMillisShingles = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 156556800000L); // makes three for four of these for the different types
                                 checkShingles = futureInMillisShingles-System.currentTimeMillis();
-                                futureInMillisPneumonia = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types
+                                futureInMillisPneumonia = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types 30326400000L
                                 checkPneumonia = futureInMillisPneumonia-System.currentTimeMillis();
-                                // 86400000 is one day in our time we need epoch milliseconds
+                                // 86400000 is one day in our time we need epoch milliseconds this is in nanoseconds
 
                             } catch (ParseException e) {
                                 e.printStackTrace();
@@ -212,23 +243,33 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 break;
                             }
 
-                            if(vaccinationName.equals("Shingle") && checkShingles < -1000) {
+                            if(vaccinationName.equals("Shingle") && checkShingles < -1000 && age >= 60) {
                                 scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Shingle")) {
+                            if(vaccinationName.equals("Shingle") && age >= 60) {
                                 scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Pneumonia") && checkPneumonia < -1000) {
-                                scheduleNotification(getNotification("It is time for you to get your pneumonia vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
+                            if(vaccinationName.equals("Pneumonia PPSV23") && checkPneumonia < -1000 && age >= 65) {
+                                scheduleNotification(getNotification("It is time for you to get your pneumonia PVC13 vaccination!", "Pneumonia PVC13 Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Pneumonia")) {
-                                scheduleNotification(getNotification("It is time for you to get your pneumonia vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
+                            if(vaccinationName.equals("Pneumonia PPSV23") && age >= 65) {
+                                scheduleNotification(getNotification("It is time for you to get your pneumonia PVC13 vaccination!", "Pneumonia PVC13 Reminder"), futureInMillisPneumonia);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Pneumonia PVC13") && age >= 65 ) {
+                                scheduleNotification(getNotification("It is time for you to get your pneumonia PPSV23 vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Pneumonia PVC13") && checkPneumonia < -1000 && age >= 65 ) {
+                                scheduleNotification(getNotification("It is time for you to get your pneumonia PPSV23 vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
@@ -369,6 +410,23 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 .build();
 
         return notification;
+    }
+
+    public static int getDiffYears(Date first, Date last) {
+        Calendar a = getCalendar(first);
+        Calendar b = getCalendar(last);
+        int diff = b.get(YEAR) - a.get(YEAR);
+        if (a.get(MONTH) > b.get(MONTH) ||
+                (a.get(MONTH) == b.get(MONTH) && a.get(DATE) > b.get(DATE))) {
+            diff--;
+        }
+        return diff;
+    }
+
+    public static Calendar getCalendar(Date date) {
+        Calendar cal = Calendar.getInstance(Locale.US);
+        cal.setTime(date);
+        return cal;
     }
 
 }

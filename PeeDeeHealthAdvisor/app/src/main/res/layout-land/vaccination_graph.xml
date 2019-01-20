@@ -56,6 +56,10 @@
 
         </RelativeLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="500dp"
@@ -174,32 +178,54 @@
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/pneumoniaTable"
+                        android:id="@+id/pneumoniaTable13"
                         android:layout_span="1"
                         android:padding="20dp"
-                        android:text="@string/tablePneumonia"
-                        android:textSize="16sp" />
+                        android:text="@string/tablePneumonia13"
+                        android:textSize="15sp" />
                     <TextView
-                        android:id="@+id/pneumoniaTaken"
+                        android:id="@+id/pneumoniaTaken13"
                         android:layout_span="2"
                         android:padding="20dp"
                         android:text=".."
-                        android:textSize="16sp" />
+                        android:textSize="15sp" />
                     <TextView
-                        android:id="@+id/pneumoniaDate"
+                        android:id="@+id/pneumoniaDate13"
                         android:layout_span="3"
                         android:padding="20dp"
                         android:text="...."
-                        android:textSize="16sp" />
+                        android:textSize="15sp" />
 
                 </TableRow>
 
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/pneumoniaTable23"
+                        android:layout_span="1"
+                        android:padding="20dp"
+                        android:text="@string/tablePneumonia23"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/pneumoniaTaken23"
+                        android:layout_span="2"
+                        android:padding="20dp"
+                        android:text=".."
+                        android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/pneumoniaDate23"
+                        android:layout_span="3"
+                        android:padding="20dp"
+                        android:text="...."
+                        android:textSize="15sp" />
+
+                </TableRow>
 
             </TableLayout>
 
         </RelativeLayout>
 
-
+        </ScrollView>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

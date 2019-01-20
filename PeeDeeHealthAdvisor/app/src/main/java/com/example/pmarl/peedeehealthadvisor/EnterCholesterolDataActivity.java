@@ -156,20 +156,15 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                             Integer.parseInt(TRIGinput.getText().toString()),
                             Double.parseDouble(TCinput.getText().toString()));
                     if (isInserted = true) {
-//                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol Saved",
-//                                Toast.LENGTH_LONG).show();
+
                         showDataEntryCheckmark();
 
-                        if (Integer.parseInt(ldlInput.getText().toString()) >= 130 || Integer.parseInt(hdlInput.getText().toString()) <= 40 // add total and male/female support
-                                || Integer.parseInt(TRIGinput.getText().toString()) >= 150 || Integer.parseInt(TCinput.getText().toString()) >= 200) {
-
-
-
-                            sendOnChannel3();
-                        }
+//                        if (Integer.parseInt(ldlInput.getText().toString()) >= 130 || Integer.parseInt(hdlInput.getText().toString()) <= 40 // add total and male/female support
+//                                || Integer.parseInt(TRIGinput.getText().toString()) >= 150 || Integer.parseInt(TCinput.getText().toString()) >= 200) {
+//                            sendOnChannel3();
+//                        }
                     } else {
-//                        Toast.makeText(EnterCholesterolDataActivity.this, "Cholesterol NOT Saved",
-//                                Toast.LENGTH_LONG).show();
+
                         showDataError();
                     }
 

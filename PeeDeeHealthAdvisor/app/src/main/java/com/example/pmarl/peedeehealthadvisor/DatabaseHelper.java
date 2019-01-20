@@ -40,6 +40,10 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String measurementSystolic = "systolic";
     private static final String measurementDiastolic = "diastolic";
 
+    private static final String measurementAllergy = "allergy";
+    private static final String measurementAllergyDescriptions = "description";
+
+
     private String user_name;
     private Cursor cursor;
     @SuppressLint("SimpleDateFormat")
@@ -66,7 +70,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 +" INTEGER, "+measurementHDL+" INTEGER, "+measurementTRIG+" INTEGER, "
                 +measurementTC+" REAL, "
                 +measurementSystolic+" INTEGER, "+measurementDiastolic
-                +" INTEGER, PRIMARY KEY("+measurementDate+", "+measurementTime+"))");
+                +" INTEGER, "+measurementAllergy+" TEXT, "+measurementAllergyDescriptions+" TEXT, " +
+                "PRIMARY KEY("+measurementDate+", "+measurementTime+"))");
 
     }
 
@@ -77,6 +82,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         onCreate(sqLiteDatabase);
 
     }
+
+    // inserting methods
 
     public boolean insertUserData(String name, String DOB, String gender)
     {
@@ -176,6 +183,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
+
     public boolean insertVaccination(String date, String virus)
     {
 
@@ -198,6 +206,33 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementImmunized,immunized);
         contentValues.put(measurementVirus,virus);
+
+        long result = db.insert(measurementTable,null,contentValues);
+        return result != -1;
+
+    }
+
+    public boolean insertAllergies(String allergy, String allergyDescription)
+    {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+//        Calendar calendar = Calendar.getInstance();
+//        String time = simpleDateFormat.format(calendar.getTime());
+
+
+
+        String meas_type = "Allergies";
+
+
+        ContentValues contentValues = new ContentValues();
+
+//        contentValues.put(measurementDate,date);
+//        contentValues.put(measurementTime,time);
+        contentValues.put(measurementUserName,this.user_name);
+        contentValues.put(measurementType,meas_type);
+        contentValues.put(measurementAllergy,allergy);
+        contentValues.put(measurementAllergyDescriptions,allergyDescription);
 
         long result = db.insert(measurementTable,null,contentValues);
         return result != -1;
@@ -262,6 +297,22 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         return cursorVaccinations;
     }
+
+    public Cursor readAllergyRecords()
+    {
+        String[] columns = {measurementAllergy, measurementAllergyDescriptions};
+
+        String selection = "meas_type = ?";
+
+        String[] selectionArgs = {"Allergies"};
+
+        Cursor cursorAllergies = this.getReadableDatabase().query(measurementTable,
+                columns,selection, selectionArgs, null,null,null);
+
+        return cursorAllergies;
+    }
+
+
 
     public Cursor readUserData()
     {

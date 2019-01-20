@@ -71,11 +71,18 @@
     <string name="tableDate">Date</string>
     <string name="tableFluShot">Flu Shot</string>
     <string name="tableShingle">Shingles</string>
-    <string name="tablePneumonia">Pneumonia</string>
+    <string name="tablePneumonia13">Pneumonia PVC13</string>
+    <string name="tablePneumonia23">Pneumonia PPSV23</string>
     <string name="other">Other</string>
     <string name="Reports">Reports</string>
     <string name="TC">Total Cholesterol</string>
     <string name="tc">TC</string>
+    <string name="allergies">Allergies</string>
+    <string name="description">Reaction</string>
+    <string name="allergyName">Allergy Name</string>
+    <string name="allergyDescription">Allergy Reaction</string>
+    <string name="reportStatusVax">Status</string>
+    <string name="editUser">Edit User</string>
   
     <!--String Arrays-->
     <string-array name="distances">
@@ -89,7 +96,8 @@
     <string-array name="vaccinations">
         <item>Select</item>
         <item>Flu Shot</item>
-        <item>Pneumonia</item>
+        <item>Pneumonia PVC13</item>
+        <item>Pneumonia PPSV23</item>
         <item>Shingle</item>
     </string-array>
 </resources>

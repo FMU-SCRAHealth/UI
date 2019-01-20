@@ -17,6 +17,7 @@
 
 
 
+
     <!-- Graphic Design Colors-->
     <color name="GreenHuesLight">#afdfe3</color>
     <color name="GreenHuesMedium">#52c4ca</color>
@@ -37,5 +38,17 @@
     <color name="RedHuesLight">#f26f88</color>
     <color name="RedHuesMedium">#ee2d4e</color>
     <color name="RedHuesDark">#b11f26</color>
+
+    <color name="PinkHuesLight">#fd7ce3</color>
+    <color name="PinkHuesMedium">#f05cd2</color>
+    <color name="PinkHuesDark">#db48bd</color>
+
+    <color name="LimeHuesLight">#50e793</color>
+    <color name="LimeHuesMedium">#33dd7f</color>
+    <color name="LimeHuesDark">#2bd175</color>
+
+
+
+
 
     </resources>
