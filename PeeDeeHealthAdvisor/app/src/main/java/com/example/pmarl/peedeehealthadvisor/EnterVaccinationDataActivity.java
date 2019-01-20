@@ -167,7 +167,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
         //Check for values (USER)
         if (cursorUser != null) {
-            cursorUser.moveToFirst();
+            cursorUser.moveToLast();
         }
 
             try {

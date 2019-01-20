@@ -63,6 +63,32 @@
             android:layout_marginTop="45dp">
 
             <TextView
+                android:id="@+id/TCtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/TC"
+                android:textColor="@color/YellowHuesDark"
+                android:textSize="20sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/TC"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/TCinputThisOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/tc"
+                    android:inputType="number"
+                    android:textColor="@color/YellowHuesMedium"
+                    android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
                 android:id="@+id/HDLtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,33 +110,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:hint="@string/highDensityLipoprotein"
-                    android:inputType="number"
-                    android:textColor="@color/YellowHuesMedium"
-                    android:textSize="16sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:id="@+id/LDLtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:text="@string/lDLBottom"
-                android:textColor="@color/YellowHuesDark"/>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/LDLInput"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/ldlInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/lowDensityLBottom"
                     android:inputType="number"
                     android:textColor="@color/YellowHuesMedium"
                     android:textSize="16sp" />
@@ -144,33 +143,31 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:id="@+id/TCtext"
+                android:id="@+id/LDLtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/TC"
-                android:textColor="@color/YellowHuesDark"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:text="@string/lDLBottom"
+                android:textColor="@color/YellowHuesDark"/>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/TC"
+                android:id="@+id/LDLInput"
                 android:layout_width="304dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/TCinputThisOne"
+                    android:id="@+id/ldlInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:hint="@string/tc"
+                    android:hint="@string/lowDensityLBottom"
                     android:inputType="number"
                     android:textColor="@color/YellowHuesMedium"
                     android:textSize="16sp" />
+
             </android.support.design.widget.TextInputLayout>
-
-
-
 
             <TextView
                 android:id="@+id/selectDateBelow"

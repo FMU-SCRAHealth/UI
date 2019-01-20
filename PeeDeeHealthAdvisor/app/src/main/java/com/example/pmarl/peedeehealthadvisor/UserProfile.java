@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -56,6 +57,7 @@ public class UserProfile extends AppCompatActivity
         TextView textBoxGender = findViewById(R.id.gender);
         TextView textBoxAge = findViewById(R.id.date_of_birth);
         TextView textBoxWeight = findViewById(R.id.weight);
+        Button editUser = findViewById(R.id.editUserButton);
 
         this.home = (ImageButton) findViewById(R.id.Home);
         this.home.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +66,7 @@ public class UserProfile extends AppCompatActivity
                 launchMainActivity();
             }
         });
+
 //Check for values (USER)
         if (cursorUser != null) {
             cursorUser.moveToFirst();
@@ -91,6 +94,14 @@ public class UserProfile extends AppCompatActivity
 
         }
 
+        editUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchEditUserActivity();
+            }
+        });
+
+
     }
 
     @Override
@@ -110,6 +121,14 @@ public class UserProfile extends AppCompatActivity
     private void launchPrevActivity()
     {
         Intent intent = new Intent(this, SearchServiceActivity.class);
+        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchEditUserActivity()
+    {
+        Intent intent = new Intent(this, FirstTimeLogin.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
