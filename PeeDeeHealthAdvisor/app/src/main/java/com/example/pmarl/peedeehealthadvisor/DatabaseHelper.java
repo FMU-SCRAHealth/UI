@@ -318,12 +318,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         String[] columns = {userName,userDOB,userGender};
 
-//        String selection = "?";
+        String selection = "*";
 //
-//        String[] selectionArgs = {"?"};
+        String[] selectionArgs = {"*"};
 
         Cursor cursorUserData = this.getReadableDatabase().query(userTable,
-                columns, null, null, null,null,null);
+                columns, selection, selectionArgs, null,null,null);
 
         return cursorUserData;
     }
