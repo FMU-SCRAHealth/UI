@@ -67,12 +67,17 @@ public class UserProfile extends AppCompatActivity
             }
         });
 
-//Check for values (USER)
+    // Check for values (USER)
         if (cursorUser != null) {
-            cursorUser.moveToFirst();
+            cursorUser.moveToLast();
         }
 
-        while (!cursorUser.isAfterLast()) {
+        int size = cursorUser.getCount();
+        int counter;
+
+        counter = 0;
+
+        while (counter <= size) {
 
             userName = cursorUser.getString(0);
             userAge = cursorUser.getString(1);
@@ -90,9 +95,12 @@ public class UserProfile extends AppCompatActivity
             } catch (Exception e) {
 
             }
-            cursorUser.moveToNext();
 
+           counter++;
         }
+
+
+
 
         editUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +128,7 @@ public class UserProfile extends AppCompatActivity
 
     private void launchPrevActivity()
     {
-        Intent intent = new Intent(this, SearchServiceActivity.class);
+        Intent intent = new Intent(this, AppSwitcher.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
@@ -128,7 +136,7 @@ public class UserProfile extends AppCompatActivity
 
     private void launchEditUserActivity()
     {
-        Intent intent = new Intent(this, FirstTimeLogin.class);
+        Intent intent = new Intent(this, EditUserProfile.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

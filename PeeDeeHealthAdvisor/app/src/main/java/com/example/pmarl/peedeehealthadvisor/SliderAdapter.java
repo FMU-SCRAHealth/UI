@@ -48,9 +48,9 @@ public class SliderAdapter extends PagerAdapter {
 
                 "Health Companion will help you keep up with your health information.\n\n\n"
                     + "Swipe to see what is offered.",
-                "Enter your blood pressure values.",
-                "Enter your blood sugar values. ",
-                "Enter your cholesterol values.",
+                "Enter your blood pressure numbers.",
+                "Enter your blood sugar numbers. ",
+                "Enter your cholesterol numbers.",
                 "Enter your vaccination dates. ",
                 "Find your local health resources!",
                 "Let's get started by clicking the button below!"

@@ -169,7 +169,7 @@ public class BloodSugarGraph extends AppCompatActivity
 
 
         /*Setting the data and attributes for the line chart*/
-        lineChart.setDescription("Blood Pressure");
+        lineChart.setDescription("Blood Sugar");
         lineChart.setNoDataTextDescription("You need to provide data for the chart.");
         lineChart.setData(data);
         lineChart.setVisibleXRangeMaximum(30);

@@ -209,6 +209,13 @@
             >
         </activity>
 
+        // DECLARING EDIT PROFILE
+        <activity
+            android:name=".EditUserProfile"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+        </activity>
 
         <receiver android:name=".NotificationPublisher" />
     </application>
