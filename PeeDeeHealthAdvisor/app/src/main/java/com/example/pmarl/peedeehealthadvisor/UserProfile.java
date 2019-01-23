@@ -74,10 +74,9 @@ public class UserProfile extends AppCompatActivity
 
         int size = cursorUser.getCount();
         int counter;
+//        counter = 1 ;
 
-        counter = 0;
-
-        while (counter <= size) {
+        do {
 
             userName = cursorUser.getString(0);
             userAge = cursorUser.getString(1);
@@ -96,8 +95,9 @@ public class UserProfile extends AppCompatActivity
 
             }
 
-           counter++;
-        }
+//           cursorUser.moveToNext();
+//            counter++;
+        } while (cursorUser.moveToNext());
 
 
 
