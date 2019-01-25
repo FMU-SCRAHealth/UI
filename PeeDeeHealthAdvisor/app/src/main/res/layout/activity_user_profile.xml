@@ -13,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
-            android:background="@color/GreenHuesDark"
             >
 
             <ImageButton
@@ -29,13 +28,13 @@
             <!--android:textColor="@color/colorPrimaryDark"-->
             <TextView
                 android:id="@+id/AppName"
-                android:layout_width="130dp"
+                android:layout_width="170dp"
                 android:layout_height="80dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="0dp"
-                android:text="@string/Reports"
-                android:textColor="@color/white"
+                android:text="@string/user"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 

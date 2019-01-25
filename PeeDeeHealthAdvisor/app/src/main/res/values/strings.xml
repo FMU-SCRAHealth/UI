@@ -88,6 +88,8 @@
     <string name="weightInPounds">Weight in Pounds</string>
     <string name="bodyWeight">Body Weight</string>
     <string name="bodyWeightGraph">Body Weight</string>
+    <string name="user">User Profile</string>
+    <string name="updater">Update</string>
   
     <!--String Arrays-->
     <string-array name="distances">

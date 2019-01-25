@@ -1,0 +1,239 @@
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BGWhite">
+
+    <LinearLayout
+        android:id="@+id/firstTimeLogInEntryProfile"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_homebuttonreports" />
+
+
+            <!--android:fontFamily="@font/catamaran_bold"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <TextView
+                android:id="@+id/AppName"
+                android:layout_width="170dp"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="0dp"
+                android:text="@string/user"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/welcomeNameEntryTextProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/genderAndName"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/firstNameProfile"
+                android:layout_width="304dp"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/firstNameTextProfile"
+                    android:inputType="textCapWords"
+                    android:digits="qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/firstName"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/LastNameProfile"
+                android:layout_width="304dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/lastNameTextProfile"
+                    android:inputType="textCapWords"
+                    android:digits="qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM.-"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:hint="@string/lastName"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:checkedButton="@+id/maleToggleProfile">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <RadioButton android:id="@+id/maleToggleProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="@string/male"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:onClick="onRadioButtonClicked"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <RadioButton android:id="@+id/femaleToggleProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="0dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <RadioButton android:id="@+id/otherToggleProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="0dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:text="@string/selectBirthDateBelow"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <EditText
+                android:id="@+id/editDateProfile"
+                android:layout_width="228dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="@string/selectDate"
+                android:inputType="date"
+                android:longClickable="false"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"/>
+
+            <LinearLayout
+                android:paddingLeft="4.0dip"
+                android:layout_marginTop="15dp"
+                android:paddingTop="5.0dip"
+                android:paddingRight="4.0dip"
+                android:paddingBottom="1.0dip"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/clearDataProfile"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/clear"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/enterDataProfile"
+                    android:layout_width="125dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/enter"
+                    android:background="@drawable/mybutton"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
