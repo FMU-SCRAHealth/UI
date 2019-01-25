@@ -43,6 +43,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String measurementAllergy = "allergy";
     private static final String measurementAllergyDescriptions = "description";
 
+    private static final String measurementBodyWeight = "body_weight";
+
 
     private String user_name;
     private Cursor cursor;
@@ -70,7 +72,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 +" INTEGER, "+measurementHDL+" INTEGER, "+measurementTRIG+" INTEGER, "
                 +measurementTC+" REAL, "
                 +measurementSystolic+" INTEGER, "+measurementDiastolic
-                +" INTEGER, "+measurementAllergy+" TEXT, "+measurementAllergyDescriptions+" TEXT, " +
+                +" INTEGER, "+measurementAllergy+" TEXT, "+measurementAllergyDescriptions+" TEXT, "
+                +measurementBodyWeight+" REAL, "+
                 "PRIMARY KEY("+measurementDate+", "+measurementTime+"))");
 
     }
@@ -237,6 +240,44 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         long result = db.insert(measurementTable,null,contentValues);
         return result != -1;
 
+    }
+
+    public boolean insertBodyWeight(String date, double weight)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Calendar calendar = Calendar.getInstance();
+        String time = simpleDateFormat.format(calendar.getTime());
+
+
+
+        String meas_type = "Body Weight";
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(measurementDate,date);
+        contentValues.put(measurementTime,time);
+        contentValues.put(measurementUserName,this.user_name);
+        contentValues.put(measurementType,meas_type);
+        contentValues.put(measurementBodyWeight,weight);
+
+
+        long result = db.insert(measurementTable,null,contentValues);
+        return result != -1;
+
+    }
+    public Cursor readBodyWeight()
+    {
+        String[] columns = {measurementDate, measurementTime, measurementBodyWeight};
+
+        String whereClause = measurementType + " = ?";
+
+        String[] whereArgs = new String[]{"Body Weight"};
+
+        this.cursor = this.getReadableDatabase().query(measurementTable, columns, whereClause,
+                whereArgs,null,null,null);
+
+        return cursor;
     }
 
     public Cursor readBloodPressure()
