@@ -129,7 +129,7 @@ public class BodyWeightGraph extends AppCompatActivity
         /*Creating the systolic data set and setting different attributes for it*/
         LineDataSet weightSet = new LineDataSet(weight,"Weight");
         weightSet.setAxisDependency(YAxis.AxisDependency.LEFT);
-        weightSet.setColor(getResources().getColor(R.color.RedHuesDark));
+        weightSet.setColor(getResources().getColor(R.color.BodyWeightHuesDark));
         weightSet.setValueTextSize(13f);
         weightSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
         weightSet.setCircleRadius(4f);

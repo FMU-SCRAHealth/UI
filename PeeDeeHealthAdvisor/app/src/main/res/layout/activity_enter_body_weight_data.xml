@@ -27,17 +27,17 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_pressure_home" />
+                android:background="@drawable/ic_bodyweighthome" />
 
             <TextView
                 android:id="@+id/EnterBodyWeightScreen"
-                android:layout_width="220dp"
+                android:layout_width="180dp"
                 android:layout_height="67dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/enterBodyWeight"
-                android:textColor="@color/RedHuesDark"
+                android:textColor="@color/BodyWeightHuesDark"
                 android:textSize="30sp"
                 android:textStyle="bold"/>
 
@@ -58,7 +58,7 @@
                 android:gravity="center_horizontal"
                 android:textSize="20sp"
                 android:text="@string/weight"
-                android:textColor="@color/RedHuesDark"/>
+                android:textColor="@color/BodyWeightHuesDark"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/bodyWeight"
@@ -72,8 +72,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:hint="@string/weightInPounds"
-                    android:inputType="number"
-                    android:textColor="@color/RedHuesDark"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/BodyWeightHuesDark"
                     android:textSize="16sp" />
 
             </android.support.design.widget.TextInputLayout>
@@ -87,7 +87,7 @@
                 android:layout_marginTop="13dp"
                 android:textSize="20sp"
                 android:text="@string/selectDateBelow"
-                android:textColor="@color/RedHuesDark"/>
+                android:textColor="@color/BodyWeightHuesDark"/>
 
             <EditText
                 android:id="@+id/editDate"
@@ -122,7 +122,7 @@
                     android:layout_marginTop="20dp"
                     android:text="Clear"
                     android:background="@drawable/mybutton"
-                    android:backgroundTint="@color/RedHuesMedium"
+                    android:backgroundTint="@color/BodyWeightHuesDark"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
 
@@ -137,7 +137,7 @@
                     android:layout_height="62dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/RedHuesMedium"
+                    android:backgroundTint="@color/BodyWeightHuesDark"
                     android:text="Enter"
                     android:background="@drawable/mybutton"
                     android:textColor="@color/white"

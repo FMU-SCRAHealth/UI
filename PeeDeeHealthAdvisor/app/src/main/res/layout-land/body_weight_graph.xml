@@ -40,14 +40,14 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_pressure_home" />
+                android:background="@drawable/ic_bodyweighthome" />
 
             <TextView
                 android:id="@+id/MyHealthGraph"
                 android:layout_width="220dp"
                 android:layout_height="75dp"
                 android:text="@string/bodyWeightGraph"
-                android:textColor="@color/RedHuesDark"
+                android:textColor="@color/BodyWeightHuesDark"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"

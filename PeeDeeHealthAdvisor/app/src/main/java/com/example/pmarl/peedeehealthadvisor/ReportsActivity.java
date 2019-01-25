@@ -63,7 +63,8 @@ public class ReportsActivity extends AppCompatActivity {
         TextView cholLDLText = findViewById(R.id.CholesterolLDLBox);
         TextView cholTrigText = findViewById(R.id.CholesterolTrigBox);
         TextView cholTCText = findViewById(R.id.CholesterolTCBox);
-        //CursorInstantiation (VACCINATIONSs)
+
+        // CursorInstantiation (VACCINATIONSs)
         Cursor cursorVax = MainActivity.myDB.readVaccinationRecords();
         String reportVaxDate = "";
         String reportImmunized = "";
@@ -71,6 +72,13 @@ public class ReportsActivity extends AppCompatActivity {
         TextView vaxDateBox = findViewById(R.id.VaxDateBox);
         TextView vaxNameBox = findViewById(R.id.VaxNameBox);
         TextView vaxImmunizedBox = findViewById(R.id.VaxImmunizedBox);
+
+        // weight
+        Cursor cursorWeight = MainActivity.myDB.readBodyWeight();
+        String reportWeightDate = "";
+        String reportWeight = "";
+        TextView weightDateBox = findViewById(R.id.WeightDateBox);
+        TextView weightNameBox = findViewById(R.id.WeightNameBox);
 
         //USER BOX UPDATE
 
@@ -192,6 +200,23 @@ public class ReportsActivity extends AppCompatActivity {
             }
 
             cursorVax.moveToNext();
+        }
+
+        // body weight
+        if (cursorWeight != null) {
+            cursorWeight.moveToFirst();
+        }
+
+        //iterate
+        while (!cursorWeight.isAfterLast()) {
+
+            reportWeightDate = cursorWeight.getString(0);
+            reportWeight = cursorWeight.getString(2);
+
+            weightDateBox.setText(weightDateBox.getText() + "\n" + reportWeightDate);
+            weightNameBox.setText(weightNameBox.getText() + "\n" + reportWeight + " lbs");
+
+            cursorWeight.moveToNext();
         }
 
         home.setOnClickListener(new View.OnClickListener() {
