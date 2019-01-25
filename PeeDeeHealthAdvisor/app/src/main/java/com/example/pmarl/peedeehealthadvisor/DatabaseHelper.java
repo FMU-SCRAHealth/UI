@@ -21,6 +21,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String userName = "name";
     private static final String userDOB = "DOB";
     private static final String userGender = "gender";
+    private static final String measurementTypeUser = "meas_type";
 
     private static final String measurementTable = "measurement";
     private static final String measurementDate = "date";
@@ -63,7 +64,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
 
         sqLiteDatabase.execSQL("CREATE TABLE " + userTable + " ("+userName+" TEXT PRIMARY KEY," +
-                userDOB+" TEXT, "+userGender+" TEXT)");
+                userDOB+" TEXT, "+userGender+" TEXT, "+measurementTypeUser+" TEXT)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + measurementTable + "("+measurementDate+" TEXT, "
                 +measurementTime+" TEXT, "+measurementUserName+" TEXT, "+measurementType+" TEXT, "
@@ -92,6 +93,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
+        String meas_type = "User";
+
         this.user_name = name;
 
         ContentValues contentValues = new ContentValues();
@@ -99,8 +102,29 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(userName,name);
         contentValues.put(userDOB,DOB);
         contentValues.put(userGender,gender);
+        contentValues.put(measurementTypeUser, meas_type);
 
         long result = db.insert(userTable,null,contentValues);
+        return result != -1;
+
+    }
+
+    public boolean updateUserData(String name, String DOB, String gender)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String meas_type = "User";
+
+        this.user_name = name;
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(userName,name);
+        contentValues.put(userDOB,DOB);
+        contentValues.put(userGender,gender);
+        contentValues.put(measurementTypeUser, meas_type);
+
+        long result = db.update(userTable, contentValues, "name="+userName, null);
         return result != -1;
 
     }
@@ -359,12 +383,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         String[] columns = {userName,userDOB,userGender};
 
-//        String selection = "*";
-//
-//        String[] selectionArgs = {"*"};
+        String selection = "meas_type = ?";
+
+        String[] selectionArgs = {"User"};
 
         Cursor cursorUserData = this.getReadableDatabase().query(userTable,
-                columns, null, null, null,null,null);
+                columns, selection, selectionArgs, null,null,null);
 
         return cursorUserData;
     }

@@ -191,7 +191,7 @@ public class AppSwitcher extends AppCompatActivity {
                 topLeft.setEnabled(true);
                 topRight.setEnabled(true);
                 bottomLeft.setEnabled(true);
-                bottomRight.setEnabled(false);
+                bottomRight.setEnabled(true);
 //                reports.setEnabled(true);
 
                 topLeft.setOnClickListener(new View.OnClickListener() {
@@ -212,6 +212,13 @@ public class AppSwitcher extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         launchBodyWeight();
+                    }
+                });
+
+                bottomRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchUserProfile();
                     }
                 });
 

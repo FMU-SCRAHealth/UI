@@ -58,7 +58,7 @@ public class AppSwitcherAdapter extends PagerAdapter {
     public int[] slide_slot_bottom_right = {
 
             R.drawable.ic_vaccination,
-            R.drawable.ic_blankspacesongrid
+            R.drawable.ic_bslogo
 
     };
 
