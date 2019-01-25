@@ -83,6 +83,11 @@
     <string name="allergyDescription">Allergy Reaction</string>
     <string name="reportStatusVax">Status</string>
     <string name="editUser">Edit User</string>
+    <string name="enterBodyWeight">Body Weight</string>
+    <string name="weight">Weight</string>
+    <string name="weightInPounds">Weight in Pounds</string>
+    <string name="bodyWeight">Body Weight</string>
+    <string name="bodyWeightGraph">Body Weight</string>
     <string name="user">User Profile</string>
     <string name="updater">Update</string>
   

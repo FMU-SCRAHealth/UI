@@ -208,6 +208,27 @@
             android:screenOrientation="portrait"
             >
         </activity>
+      
+        <activity
+            android:name=".SelectBodyWeightActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".BodyWeightGraph"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".EnterBodyWeightDataActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+
+        </activity>
 
         // DECLARING EDIT PROFILE
         <activity
