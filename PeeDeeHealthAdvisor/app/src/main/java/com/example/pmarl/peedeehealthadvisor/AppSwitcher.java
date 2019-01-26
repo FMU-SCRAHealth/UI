@@ -192,7 +192,6 @@ public class AppSwitcher extends AppCompatActivity {
                 topRight.setEnabled(true);
                 bottomLeft.setEnabled(true);
                 bottomRight.setEnabled(true);
-//                reports.setEnabled(true);
 
                 topLeft.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -227,7 +226,6 @@ public class AppSwitcher extends AppCompatActivity {
                 topRight.setEnabled(false);
                 bottomLeft.setEnabled(false);
                 bottomRight.setEnabled(false);
-//                reports.setEnabled(true);
 
                 topLeft.setOnClickListener(new View.OnClickListener() {
                     @Override
