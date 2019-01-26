@@ -110,7 +110,7 @@ public class AppSwitcher extends AppCompatActivity {
     // this method adds the dots to the bottom of the screen.
 
     public void addDotsIndicator(int position) {
-        mDotsSwitcher = new TextView[2]; // actual amount. Update the total number of screens here.
+        mDotsSwitcher = new TextView[3]; // actual amount. Update the total number of screens here.
         mDotLayoutSwitcher.removeAllViews();
 
         for (int i = 0; i < mDotsSwitcher.length; i++) {
@@ -197,31 +197,44 @@ public class AppSwitcher extends AppCompatActivity {
                 topLeft.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        launchAllergies();
+                        launchBodyWeight();
                     }
                 });
 
                 topRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
-                        launchReports();
+                        launchAllergies();
                     }
                 });
 
                 bottomLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
-                        launchBodyWeight();
+                        launchMainActivity();
                     }
                 });
 
                 bottomRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
-                        launchUserProfile();
+                        launchReports();
                     }
                 });
 
+            } else if (i == 2) {
+                topLeft.setEnabled(true);
+                topRight.setEnabled(false);
+                bottomLeft.setEnabled(false);
+                bottomRight.setEnabled(false);
+//                reports.setEnabled(true);
+
+                topLeft.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        launchUserProfile();
+                    }
+                });
             }
 
         }
