@@ -47,10 +47,17 @@
     <color name="LimeHuesMedium">#33dd7f</color>
     <color name="LimeHuesDark">#2bd175</color>
 
-
     <color name="PollenHuesLight">#f5d34a</color>
     <color name="PollenHuesMedium">#edc72d</color>
     <color name="PollenHuesDark">#e3bb19</color>
+
+    <color name="BodyWeightHuesLight">#fa8639</color>
+    <color name="BodyWeightHuesMedium">#f68236</color>
+    <color name="BodyWeightHuesDark">#f3711b</color>
+
+
+
+
 
 
 

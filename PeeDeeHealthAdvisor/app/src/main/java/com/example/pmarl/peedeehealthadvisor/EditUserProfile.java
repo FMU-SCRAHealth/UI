@@ -124,7 +124,7 @@ public class EditUserProfile extends AppCompatActivity
                     }
 
                     boolean isInserted =
-                            MainActivity.myDB.insertUserData(userFullName,
+                            MainActivity.myDB.updateUserData(userFullName,
                                     editDate.getText().toString(), genderText);
 
                     if (isInserted = true) {
