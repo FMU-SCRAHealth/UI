@@ -97,8 +97,8 @@
     <string name="medDose">Dosage</string>
     <string name="medDelivery">Delivery</string>
     <string name="medRxNum">RX Number</string>
-    <string name="medPharmName">Pharmarcy Name</string>
-    <string name="medPhoneNum">Phone Number</string>
+    <string name="medPharmName">Pharmarcy</string>
+    <string name="medPhoneNum">Phone</string>
 
     <!--String Arrays-->
     <string-array name="distances">

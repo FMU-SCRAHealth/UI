@@ -60,6 +60,10 @@ public class MedicationTable extends AppCompatActivity {
             TableRow row = (TableRow) LayoutInflater.from(MedicationTable.this).inflate(R.layout.med_row, null);
             ((TextView)row.findViewById(R.id.medNameText)).setText(medName);
             ((TextView)row.findViewById(R.id.medDoseText)).setText(medDose);
+            ((TextView)row.findViewById(R.id.medDeliveryText)).setText(medDelivery);
+            ((TextView)row.findViewById(R.id.medRXNumText)).setText(medRXnum);
+            ((TextView)row.findViewById(R.id.medPharnNameText)).setText(medPharmName);
+            ((TextView)row.findViewById(R.id.medPharmNumText)).setText(medPharmNum);
             table.addView(row);
 
             table.requestLayout();

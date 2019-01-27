@@ -29,7 +29,7 @@
 
             <TextView
                 android:id="@+id/MyHealthGraph"
-                android:layout_width="135dp"
+                android:layout_width="160dp"
                 android:layout_height="75dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
@@ -62,25 +62,64 @@
                     <TextView
                         android:id="@+id/medName"
                         android:layout_width="wrap_content"
-                        android:layout_weight="0.0"
-                        android:paddingStart="14dp"
-                        android:paddingEnd="10dp"
-                        android:text="@string/medName"
+                        android:layout_weight="0"
+                        android:paddingStart="3dp"
+                        android:paddingEnd="8dp"
+                        android:text="@string/medication"
                         android:layout_height="fill_parent"
                         android:textColor="@color/PinkHuesDark"
-                        android:textSize="22sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/medDose"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_weight="1.0"
+                        android:layout_weight="1.8"
                         android:paddingStart="0dp"
-                        android:paddingEnd="14dp"
-                        android:gravity="right"
+                        android:paddingEnd="5dp"
                         android:text="@string/medDose"
                         android:textColor="@color/PinkHuesDark"
-                        android:textSize="22sp" />
+                        android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/medDeliveryLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0"
+                        android:text="Delivery"
+                        android:layout_height="fill_parent"
+                        android:paddingEnd="5dp"
+                        android:textColor="@color/PinkHuesDark"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/medRXNumberLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1.7"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="3dp"
+                        android:text="RX Number"
+                        android:textColor="@color/PinkHuesDark"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/medPharmNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.0"
+                        android:text="@string/medPharmName"
+                        android:layout_height="fill_parent"
+                        android:paddingEnd="3dp"
+                        android:textColor="@color/PinkHuesDark"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/medPharmNumberLabel"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1.9"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="3dp"
+                        android:text="@string/medPhoneNum"
+                        android:textColor="@color/PinkHuesDark"
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 

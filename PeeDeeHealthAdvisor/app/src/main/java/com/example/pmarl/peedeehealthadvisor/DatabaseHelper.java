@@ -432,15 +432,15 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     }
 
     public Cursor readMedData() {
-        String[] columns = {medName, medDose};
+        String[] columns = {medName, medDose, medDelivery, medRxNum, medPharmName, medPharmNum};
 
-        String whereClause = medName +" = ?";
+//        String selection = medName + "= ?";
+//
+//        String[] selectionArgs = {"Medication"};
 
-        String[] whereArgs = new String[]{"Medication"};
+        Cursor medCursor = this.getReadableDatabase().query(medTable,
+                columns,null,null,null,null,null);
 
-        this.cursor = this.getReadableDatabase().query(medTable,
-                columns,whereClause,whereArgs,null,null,null);
-
-        return cursor;
+        return medCursor;
     }
 }
