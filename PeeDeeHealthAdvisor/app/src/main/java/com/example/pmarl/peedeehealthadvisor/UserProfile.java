@@ -52,11 +52,9 @@ public class UserProfile extends AppCompatActivity
         String userName = "";
         String userAge = "";
         String userGender = "";
-        String userWeight = "";
         TextView textBoxUsername = findViewById(R.id.user_name);
         TextView textBoxGender = findViewById(R.id.gender);
         TextView textBoxAge = findViewById(R.id.date_of_birth);
-        TextView textBoxWeight = findViewById(R.id.weight);
         Button editUser = findViewById(R.id.editUserButton);
 
         this.home = (ImageButton) findViewById(R.id.Home);
@@ -71,10 +69,6 @@ public class UserProfile extends AppCompatActivity
         if (cursorUser != null) {
             cursorUser.moveToLast();
         }
-
-        int size = cursorUser.getCount();
-        int counter;
-//        counter = 1 ;
 
         do {
 
@@ -95,8 +89,6 @@ public class UserProfile extends AppCompatActivity
 
             }
 
-//           cursorUser.moveToNext();
-//            counter++;
         } while (cursorUser.moveToNext());
 
 

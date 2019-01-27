@@ -96,7 +96,7 @@ public class BodyWeightGraph extends AppCompatActivity
                 e.printStackTrace();
             }
 
-        }while (cursor.moveToPrevious());
+        } while (cursor.moveToPrevious());
 
 
 

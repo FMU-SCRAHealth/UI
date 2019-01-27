@@ -26,6 +26,9 @@ public class SliderAdapter extends PagerAdapter {
                 R.drawable.ic_blood_sugar,
                 R.drawable.ic_cholesterol_arrows,
                 R.drawable.ic_vaccinations,
+                R.drawable.ic_weight,
+                R.drawable.ic_allergiesintro,
+                R.drawable.ic_medicationsintro,
                 R.drawable.ic_compass,
                 R.drawable.ic_userenteredswipe
 
@@ -38,6 +41,9 @@ public class SliderAdapter extends PagerAdapter {
                 "Blood Sugar",
                 "Cholesterol",
                 "Vaccinations",
+                "Body Weight",
+                "Allergies",
+                "Medications",
                 "Resources",
                 "User Setup"
 
@@ -49,9 +55,12 @@ public class SliderAdapter extends PagerAdapter {
                 "Health Companion will help you keep up with your health information.\n\n\n"
                     + "Swipe to see what is offered.",
                 "Enter your blood pressure numbers.",
-                "Enter your blood sugar numbers. ",
+                "Enter your blood sugar numbers.",
                 "Enter your cholesterol numbers.",
-                "Enter your vaccination dates. ",
+                "Enter your vaccination dates.",
+                "Enter your body weight.",
+                "Enter your allergies. ",
+                "Enter your medications.",
                 "Find your local health resources!",
                 "Let's get started by clicking the button below!"
 
