@@ -90,7 +90,16 @@
     <string name="bodyWeightGraph">Body Weight</string>
     <string name="user">User Profile</string>
     <string name="updater">Update</string>
-  
+
+    <!--Medication Strings-->
+    <string name="medication">Medication</string>
+    <string name="medName">Medication Name</string>
+    <string name="medDose">Dosage</string>
+    <string name="medDelivery">Delivery</string>
+    <string name="medRxNum">RX Number</string>
+    <string name="medPharmName">Pharmarcy Name</string>
+    <string name="medPhoneNum">Phone Number</string>
+
     <!--String Arrays-->
     <string-array name="distances">
         <item>Radius</item>

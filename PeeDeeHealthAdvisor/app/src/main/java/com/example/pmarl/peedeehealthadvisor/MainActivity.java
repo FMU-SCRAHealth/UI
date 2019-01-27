@@ -36,9 +36,6 @@ public class MainActivity extends AppCompatActivity
     public static DatabaseHelper myDB;
     private NotificationManagerCompat notificationManager;
 
-
-
-
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {

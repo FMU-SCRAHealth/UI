@@ -46,6 +46,14 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     private static final String measurementBodyWeight = "body_weight";
 
+    private static final String medTable = "medications";
+    private static final String medName = "name";
+    private static final String medDose = "dosage";
+    private static final String medDelivery = "delivery";
+    private static final String medRxNum = "rxNumber";
+    private static final String medPharmName = "pharmacyName";
+    private static final String medPharmNum = "pharmacyNumber";
+
 
     private String user_name;
     private Cursor cursor;
@@ -76,6 +84,10 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 +" INTEGER, "+measurementAllergy+" TEXT, "+measurementAllergyDescriptions+" TEXT, "
                 +measurementBodyWeight+" REAL, "+
                 "PRIMARY KEY("+measurementDate+", "+measurementTime+"))");
+
+        sqLiteDatabase.execSQL("CREATE TABLE " + medTable + " ("+ medName + " TEXT PRIMARY KEY, "
+            + medDose + " TEXT, " + medDelivery + " TEXT, " + medRxNum + " TEXT, "
+            + medPharmName + " TEXT, " + medPharmNum + " TEXT)");
 
     }
 
@@ -128,6 +140,30 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
+
+    //Insert Medication Data
+    public boolean insertMedication(String medName, String medDose, String medDelivery,
+                                    String medRxNum, String medPharmName, String medPharmNum)
+    {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String meas_type = "Medications";
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(medName, this.medName);
+        contentValues.put(medDose, this.medDose);
+        contentValues.put(medDelivery, this.medDelivery);
+        contentValues.put(medRxNum, this.medRxNum);
+        contentValues.put(medPharmName, this.medPharmName);
+        contentValues.put(medPharmNum, this.medPharmNum);
+
+        long result = db.insert(medTable,null,contentValues);
+        return result != -1;
+
+    }
+
 
     public boolean insertBloodPressure(String date, int systolic, int diastolic)
     {
@@ -290,6 +326,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
+
+
     public Cursor readBodyWeight()
     {
         String[] columns = {measurementDate, measurementTime, measurementBodyWeight};
@@ -393,4 +431,16 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return cursorUserData;
     }
 
+    public Cursor readMedData() {
+        String[] columns = {medName, medDose};
+
+        String whereClause = medName +" = ?";
+
+        String[] whereArgs = new String[]{"Medication"};
+
+        this.cursor = this.getReadableDatabase().query(medTable,
+                columns,whereClause,whereArgs,null,null,null);
+
+        return cursor;
+    }
 }

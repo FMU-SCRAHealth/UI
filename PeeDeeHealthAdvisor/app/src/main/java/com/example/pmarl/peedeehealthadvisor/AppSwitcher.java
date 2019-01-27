@@ -218,7 +218,7 @@ public class AppSwitcher extends AppCompatActivity {
                 bottomRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
-                        launchUserProfile();
+                        launchMedications();
                     }
                 });
 
@@ -310,6 +310,14 @@ public class AppSwitcher extends AppCompatActivity {
     private void launchUserProfile()
     {
         Intent intent = new Intent(this, UserProfile.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    private void launchMedications()
+    {
+        Intent intent = new Intent(this, SelectMedicationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

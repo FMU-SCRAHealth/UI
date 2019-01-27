@@ -28,7 +28,6 @@ public class AllergiesTable extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_allergies);
 
-
         //CursorInstantiation (VACCINATIONSs)
         Cursor cursorAllergies = MainActivity.myDB.readAllergyRecords();
         String allergyTitle = "";
@@ -62,13 +61,6 @@ public class AllergiesTable extends AppCompatActivity {
                 table.addView(row);
 
             table.requestLayout();
-
-//                allergyName.setText(allergyName.getText()  + "\n\n\n" + allergyTitle);
-//                allergyDescriptionView.setText(allergyDescriptionView.getText() + "\n\n\n" + allergyDescription);
-
-//                tableLayout.addView(allergyName);
-//                tableLayout.addView(allergyDescriptionView);
-
             cursorAllergies.moveToNext();
         }
 
