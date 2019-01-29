@@ -54,16 +54,20 @@ public class EnterMedicationDataActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                final String userFullName = medNameInput.getText().toString() + " " +
-                        medNameInput.getText().toString();
-                if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")) {
+                final String medInputString = medNameInput.getText().toString() + " " +
+                        " " + medNameInput.getText().toString() +  " " + medDelivery.getText().toString() + " " +
+                       " "  + medRxNum.getText().toString() +  " " + medPharmName.getText().toString() + " " + medPhoneNum.toString();
+                if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")
+                        || medDelivery.getText().toString().equals("") || medRxNum.getText().toString().equals("")
+                        || medPharmName.getText().toString().equals("") || medPhoneNum.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
 
                 } else {
 
                     boolean isInserted =
-                            MainActivity.myDB.insertAllergies(medNameInput.getText().toString(),
-                                    medDoseInput.getText().toString());
+                            MainActivity.myDB.insertMedication(medNameInput.getText().toString(),
+                                    medDoseInput.getText().toString(), medDelivery.getText().toString(),
+                                    medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.toString());
 
                     if (isInserted = true)
                         showDataEntryCheckmark();
@@ -133,7 +137,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity
     private void showDataEntryCheckmark()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Allergy Entered", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Medication Entered", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
