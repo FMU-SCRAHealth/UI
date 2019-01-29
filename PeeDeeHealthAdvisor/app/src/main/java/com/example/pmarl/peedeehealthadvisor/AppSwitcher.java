@@ -326,6 +326,14 @@ public class AppSwitcher extends AppCompatActivity {
         finish();
     }
 
+    private void launchMedications()
+    {
+        Intent intent = new Intent(this, SelectMedicationActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     public void onBackPressed() {
         launchPrevActivity();

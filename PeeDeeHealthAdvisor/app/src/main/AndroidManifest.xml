@@ -240,7 +240,33 @@
             >
         </activity>
 
+        // DECLARING EDIT PROFILE
+        <activity
+            android:name=".SelectMedicationActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
+        <activity
+            android:name=".EnterMedicationDataActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+
         <receiver android:name=".NotificationPublisher" />
+
+        <activity
+            android:name=".MedicationTable"
+            android:label="@string/app_name"
+
+            >
+        </activity>
+
+        <receiver android:name=".NotificationPublisher" />
+
+
     </application>
 
 </manifest>
