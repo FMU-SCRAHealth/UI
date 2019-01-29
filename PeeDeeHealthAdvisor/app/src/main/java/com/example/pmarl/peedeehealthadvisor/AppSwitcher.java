@@ -110,7 +110,7 @@ public class AppSwitcher extends AppCompatActivity {
     // this method adds the dots to the bottom of the screen.
 
     public void addDotsIndicator(int position) {
-        mDotsSwitcher = new TextView[2]; // actual amount. Update the total number of screens here.
+        mDotsSwitcher = new TextView[3]; // actual amount. Update the total number of screens here.
         mDotLayoutSwitcher.removeAllViews();
 
         for (int i = 0; i < mDotsSwitcher.length; i++) {
@@ -192,36 +192,47 @@ public class AppSwitcher extends AppCompatActivity {
                 topRight.setEnabled(true);
                 bottomLeft.setEnabled(true);
                 bottomRight.setEnabled(true);
-//                reports.setEnabled(true);
 
                 topLeft.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        launchAllergies();
-                    }
-                });
-
-                topRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
-                    @Override
-                    public void onClick(View view) {
-                        launchReports();
-                    }
-                });
-
-                bottomLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
                         launchBodyWeight();
                     }
                 });
 
-                bottomRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
+                topRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
-                        launchMedications();
+                        launchAllergies();
                     }
                 });
 
+                bottomLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchMainActivity();
+                    }
+                });
+
+                bottomRight.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
+                    @Override
+                    public void onClick(View view) {
+                        launchReports();
+                    }
+                });
+
+            } else if (i == 2) {
+                topLeft.setEnabled(true);
+                topRight.setEnabled(false);
+                bottomLeft.setEnabled(false);
+                bottomRight.setEnabled(false);
+
+                topLeft.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        launchUserProfile();
+                    }
+                });
             }
 
         }
