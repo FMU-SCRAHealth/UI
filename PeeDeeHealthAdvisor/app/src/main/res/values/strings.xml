@@ -100,6 +100,10 @@
     <string name="medPharmName">Pharmarcy</string>
     <string name="medPhoneNum">Phone</string>
 
+    <!--editTime Strings-->
+    <string name="selectTimeBelow">Select Time Below</string>
+    <string name="selectTime">Select Time</string>
+
     <!--String Arrays-->
     <string-array name="distances">
         <item>Radius</item>
