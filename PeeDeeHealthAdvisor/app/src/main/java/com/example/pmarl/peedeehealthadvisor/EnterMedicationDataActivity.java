@@ -56,7 +56,8 @@ public class EnterMedicationDataActivity extends AppCompatActivity
 
                 final String medInputString = medNameInput.getText().toString() + " " +
                         " " + medNameInput.getText().toString() +  " " + medDelivery.getText().toString() + " " +
-                       " "  + medRxNum.getText().toString() +  " " + medPharmName.getText().toString() + " " + medPhoneNum.toString();
+                        medRxNum.getText().toString() +  " " + medPharmName.getText().toString() +
+                        " " + medPhoneNum.getText().toString();
                 if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")
                         || medDelivery.getText().toString().equals("") || medRxNum.getText().toString().equals("")
                         || medPharmName.getText().toString().equals("") || medPhoneNum.getText().toString().equals("")) {
@@ -67,7 +68,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity
                     boolean isInserted =
                             MainActivity.myDB.insertMedication(medNameInput.getText().toString(),
                                     medDoseInput.getText().toString(), medDelivery.getText().toString(),
-                                    medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.toString());
+                                    medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.getText().toString());
 
                     if (isInserted = true)
                         showDataEntryCheckmark();

@@ -46,7 +46,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     private static final String measurementBodyWeight = "body_weight";
 
-    private static final String medTable = "medications";
+    private static final String medTable = "Medications";
     private static final String medName = "name";
     private static final String medDose = "dosage";
     private static final String medDelivery = "delivery";
@@ -85,7 +85,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 +measurementBodyWeight+" REAL, "+
                 "PRIMARY KEY("+measurementDate+", "+measurementTime+"))");
 
-        sqLiteDatabase.execSQL("CREATE TABLE " + medTable + " ("+ medName + " TEXT PRIMARY KEY, "
+        sqLiteDatabase.execSQL("CREATE TABLE " + medTable + " ("+ medName + " TEXT PRIMARY KEY,"
             + medDose + " TEXT, " + medDelivery + " TEXT, " + medRxNum + " TEXT, "
             + medPharmName + " TEXT, " + medPharmNum + " TEXT)");
 
@@ -142,8 +142,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     }
 
     //Insert Medication Data
-    public boolean insertMedication(String medName, String medDose, String medDelivery,
-                                    String medRxNum, String medPharmName, String medPharmNum)
+    public boolean insertMedication(String name, String dose, String delivery,
+                                    String rxnum, String pharmname, String pharmnum)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -152,12 +152,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(medName, this.medName);
-        contentValues.put(medDose, this.medDose);
-        contentValues.put(medDelivery, this.medDelivery);
-        contentValues.put(medRxNum, this.medRxNum);
-        contentValues.put(medPharmName, this.medPharmName);
-        contentValues.put(medPharmNum, this.medPharmNum);
+        contentValues.put(medName, name);
+        contentValues.put(medDose, dose);
+        contentValues.put(medDelivery, delivery);
+        contentValues.put(medRxNum, rxnum);
+        contentValues.put(medPharmName, pharmname);
+        contentValues.put(medPharmNum, pharmnum);
 
         long result = db.insert(medTable,null,contentValues);
         return result != -1;

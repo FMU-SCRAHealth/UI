@@ -44,15 +44,19 @@ public class MedicationTable extends AppCompatActivity {
             cursorMedications.moveToFirst();
         }
 
-        // iterate
-        while (!cursorMedications.isAfterLast()) {
+        // iterat
+        do {
 
-            medName= cursorMedications.getString(0);
-            medDose = cursorMedications.getString(1);
-            medDelivery = cursorMedications.getString(2);
-            medRXnum = cursorMedications.getString(3);
-            medPharmName = cursorMedications.getString(4);
-            medPharmNum = cursorMedications.getString(5);
+            try {
+                medName = cursorMedications.getString(0);
+                medDose = cursorMedications.getString(1);
+                medDelivery = cursorMedications.getString(2);
+                medRXnum = cursorMedications.getString(3);
+                medPharmName = cursorMedications.getString(4);
+                medPharmNum = cursorMedications.getString(5);
+            } catch (Exception e) {
+                launchPrevActivity();
+            }
 
             TableLayout table = (TableLayout)MedicationTable.this.findViewById(R.id.medTable);
 
@@ -67,8 +71,8 @@ public class MedicationTable extends AppCompatActivity {
             table.addView(row);
 
             table.requestLayout();
-            cursorMedications.moveToNext();
-        }
+
+        } while (cursorMedications.moveToNext());
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
