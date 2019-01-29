@@ -163,14 +163,14 @@
             android:screenOrientation="portrait">
         </activity>
 
-        // DECLARING APP SWITCHER
+        // DECLARING APP CARDVIEW
         <activity
             android:name=".CardView"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
-        // DECLARING APP SWITCHER
+        // DECLARING REPORTS
         <activity
             android:name=".ReportsActivity"
             android:label="@string/app_name"
@@ -208,7 +208,8 @@
             android:screenOrientation="portrait"
             >
         </activity>
-      
+
+        // DECLARING SELECT BODY WEIGHT
         <activity
             android:name=".SelectBodyWeightActivity"
             android:label="@string/app_name"
@@ -216,12 +217,14 @@
 
         </activity>
 
+        // DECLARING WEIGHT GRAPH
         <activity
             android:name=".BodyWeightGraph"
             android:label="@string/app_name">
 
         </activity>
 
+        // DECLARING BODY WEIGHT ENTRY
         <activity
             android:name=".EnterBodyWeightDataActivity"
             android:label="@string/app_name"
