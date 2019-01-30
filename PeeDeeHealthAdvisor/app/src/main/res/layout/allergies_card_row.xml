@@ -9,20 +9,20 @@
 
 
     <android.support.v7.widget.CardView
-        android:id="@+id/vaccinations_card_view"
+        android:id="@+id/allergies_card_view"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         card_view:cardCornerRadius="25dp"
         card_view:contentPadding="10dp"
-        card_view:cardBackgroundColor="@color/GreenHuesMedium"
-        android:background="@color/GreenHuesMedium">
+        card_view:cardBackgroundColor="@color/PollenHuesLight"
+        android:background="@color/PollenHuesLight">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@color/GreenHuesMedium">
+            android:background="@color/PollenHuesLight">
 
             <ImageView
                 android:layout_width="30dp"
@@ -30,11 +30,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_vaccinations"
+                android:src="@drawable/ic_allergiesintro"
                 />
 
             <TextView
-                android:id="@+id/vaccinationNameCardText"
+                android:id="@+id/allergyNameCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -45,48 +45,27 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/takenCardText"
+                android:id="@+id/allergyDescriptionCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/vaccinationNameCardText"
+                android:layout_below="@+id/allergyNameCardText"
                 android:textSize="25dp"
                 android:textColor="@color/white"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="120dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/takenTextLabel"
+                android:id="@+id/allergyDescriptionTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/vaccinationNameCardText"
+                android:layout_below="@+id/allergyNameCardText"
                 android:textColor="@color/white"
-                android:text="@string/tableTaken"
+                android:text="@string/description"
                 android:textSize="25dp"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
-            <TextView
-                android:id="@+id/vaccinationDateCardText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/takenCardText"
-                android:textColor="@color/white"
-                android:textSize="25dp"
-                android:layout_marginStart="76dp"
-                android:layout_marginTop="10dp"/>
-
-            <TextView
-                android:id="@+id/vaccinationDateCardTextLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/takenCardText"
-                android:textColor="@color/white"
-                android:text="@string/tableDate"
-                android:layout_marginStart="6dp"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:layout_marginTop="9dp"/>
 
         </RelativeLayout>
 

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,22 +22,36 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class AllergiesTable extends AppCompatActivity {
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    ArrayList results = new ArrayList<AllergiesDataObject>();
+
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_allergies);
+        setContentView(R.layout.activity_card_view_allergies);
+
 
         //CursorInstantiation (VACCINATIONSs)
         Cursor cursorAllergies = MainActivity.myDB.readAllergyRecords();
         String allergyTitle = "No Allergies";
         String allergyDescription = "No Allergies";
-        TextView allergyName = findViewById(R.id.allergies_name);
-        TextView allergyDescriptionView = findViewById(R.id.allergies_reactions);
+//        TextView allergyName = findViewById(R.id.allergies_name);
+//        TextView allergyDescriptionView = findViewById(R.id.allergies_reactions);
         ImageButton home = findViewById(R.id.Home);
-        TableLayout tableLayout = findViewById(R.id.allergiesTable);
+//        TableLayout tableLayout = findViewById(R.id.allergiesTable);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_allergies);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyAllergiesRecyclerViewAdapter(results); // make sure to change this up copied
+        mRecyclerView.setAdapter(mAdapter);
 
         // ALLERGY BOX UPDATE
 
@@ -51,15 +67,20 @@ public class AllergiesTable extends AppCompatActivity {
             allergyDescription = cursorAllergies.getString(1);
 
 
-            TableLayout table = (TableLayout)AllergiesTable.this.findViewById(R.id.allergiesTable);
+//            TableLayout table = (TableLayout)AllergiesTable.this.findViewById(R.id.allergiesTable);
+//
+//                // Inflate your row "template" and fill out the fields.
+//                TableRow row = (TableRow)LayoutInflater.from(AllergiesTable.this).inflate(R.layout.allergies_row, null);
+//                ((TextView)row.findViewById(R.id.attrib_name)).setText(allergyTitle);
+//                ((TextView)row.findViewById(R.id.attrib_value)).setText(allergyDescription);
+//                table.addView(row);
+//
+//            table.requestLayout();
 
-                // Inflate your row "template" and fill out the fields.
-                TableRow row = (TableRow)LayoutInflater.from(AllergiesTable.this).inflate(R.layout.allergies_row, null);
-                ((TextView)row.findViewById(R.id.attrib_name)).setText(allergyTitle);
-                ((TextView)row.findViewById(R.id.attrib_value)).setText(allergyDescription);
-                table.addView(row);
+            AllergiesDataObject allergyEntry = new AllergiesDataObject(allergyTitle, allergyDescription);
 
-            table.requestLayout();
+            results.add(allergyEntry);
+
             cursorAllergies.moveToNext();
         }
 
