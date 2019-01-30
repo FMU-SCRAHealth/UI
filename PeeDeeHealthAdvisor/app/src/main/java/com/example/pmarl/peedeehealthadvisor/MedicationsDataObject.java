@@ -17,7 +17,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class DataObject {
+public class MedicationsDataObject {
 
     private String medName;
     private String medDose;
@@ -29,8 +29,8 @@ public class DataObject {
 
 
 
-    DataObject (String name, String dose, String delivery, String rxNum,
-                String pharmName, String pharmNum
+    MedicationsDataObject(String name, String dose, String delivery, String rxNum,
+                          String pharmName, String pharmNum
     ){
         medName = name;
         medDose = dose;

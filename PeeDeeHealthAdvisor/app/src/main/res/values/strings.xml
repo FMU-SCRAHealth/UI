@@ -67,12 +67,12 @@
     <string name="setupUser">Setup User</string>
     <string name="tableTitleVaccinations">Vaccinations</string>
     <string name="tableName">Name</string>
-    <string name="tableTaken">Taken</string>
-    <string name="tableDate">Date</string>
+    <string name="tableTaken">Taken:</string>
+    <string name="tableDate">Date:</string>
     <string name="tableFluShot">Flu Shot</string>
     <string name="tableShingle">Shingles</string>
-    <string name="tablePneumonia13">Pneumonia PVC13</string>
-    <string name="tablePneumonia23">Pneumonia PPSV23</string>
+    <string name="tablePneumonia13">Prevnar 13</string>
+    <string name="tablePneumonia23">Pneumovax 23</string>
     <string name="other">Other</string>
     <string name="Reports">Reports</string>
     <string name="TC">Total Cholesterol</string>
@@ -132,8 +132,8 @@
     <string-array name="vaccinations">
         <item>Select</item>
         <item>Flu Shot</item>
-        <item>Pneumonia PVC13</item>
-        <item>Pneumonia PPSV23</item>
+        <item>Prevnar 13</item>
+        <item>Pneumovax 23</item>
         <item>Shingle</item>
     </string-array>
 

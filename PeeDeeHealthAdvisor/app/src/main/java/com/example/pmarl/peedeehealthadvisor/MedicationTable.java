@@ -2,19 +2,12 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -31,18 +24,18 @@ public class MedicationTable extends AppCompatActivity {
     String medRxNum;
     String medPharmName;
     String medPharmNum;
-    ArrayList results = new ArrayList<DataObject>();
+    ArrayList results = new ArrayList<MedicationsDataObject>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_view);
+        setContentView(R.layout.activity_card_view_medications);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_medications);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyRecyclerViewAdapter(results);
+        mAdapter = new MyMedicationRecyclerViewAdapter(results);
         mRecyclerView.setAdapter(mAdapter);
 
         //Database Stuff
@@ -52,6 +45,13 @@ public class MedicationTable extends AppCompatActivity {
 
 //        LinearLayout parent = findViewById(R.id.allergiesParent);
         ImageButton home = findViewById(R.id.Home);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMainActivity();
+            }
+        });
 
         // ALLERGY BOX UPDATE
 
@@ -72,7 +72,7 @@ public class MedicationTable extends AppCompatActivity {
 
 
             // creates a data object to hold the card's contents
-            DataObject newData = new DataObject(medName, medDose, medDelivery, medRxNum,
+            MedicationsDataObject newData = new MedicationsDataObject(medName, medDose, medDelivery, medRxNum,
                     medPharmName, medPharmNum);
 
             results.add(newData);
@@ -92,7 +92,7 @@ public class MedicationTable extends AppCompatActivity {
     }
 
     //CREATE A NEW CARD OBJECT
-     private ArrayList<DataObject> getDataSet() {
+     private ArrayList<MedicationsDataObject> getDataSet() {
         return results;
     }
 
