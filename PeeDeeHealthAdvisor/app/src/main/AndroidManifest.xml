@@ -263,6 +263,7 @@
 
             >
         </activity>
+        <activity android:name=".CardViewActivity" />
 
         <receiver android:name=".NotificationPublisher" />
 
