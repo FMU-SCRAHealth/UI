@@ -16,6 +16,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -49,9 +51,10 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
     private TextInputEditText systolicInput, diastolicInput;
 
     private Context context = this;
-    private EditText editDate;
+    private EditText editDate, editTime;
     private Calendar myCalendar = Calendar.getInstance();
     private String dateFormat = "MMM dd yyyy ";
+    private String timeFormat = "HH:mm:ss.SSS zzz";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
     private NotificationManagerCompat notificationManager;
@@ -62,6 +65,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_enter_blood_pressure_data);
 
+        editTime = (EditText) findViewById(R.id.editTime);
         editDate = (EditText) findViewById(R.id.editDate);
         home = (ImageButton) findViewById(R.id.Home);
         enterData = (Button) findViewById(R.id.EnterData);
@@ -96,7 +100,6 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
         // onclick - popup datepicker
         editDate.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {
@@ -107,6 +110,23 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             }
         });
 
+        editTime.setOnClickListener(new View.OnClickListener() {
+            Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR);
+            int minute = c.get(Calendar.MINUTE);
+            @Override
+            public void onClick(View view)
+            {
+                TimePickerDialog timePickerDialog =
+                        new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minuteOfHour) {
+                        editTime.setText(hourOfDay + ":" + minuteOfHour);
+                    }
+                }, hour, minute, false);
+                timePickerDialog.show();
+            }
+        });
 
 
         home.setOnClickListener(new View.OnClickListener() {
@@ -124,21 +144,29 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             public void onClick(View view)
             {
 
-                if (systolicInput.getText().toString().equals("")||diastolicInput.getText().toString().equals(""))
+                if (systolicInput.getText().toString().equals("")||
+                        diastolicInput.getText().toString().equals(""))
                 {
                     showDataNotEnteredWarning();
 
                 }
 
-                else if (Integer.parseInt(systolicInput.getText().toString()) >= 275 || Integer.parseInt(diastolicInput.getText().toString()) >= 150 || Integer.parseInt(systolicInput.getText().toString()) <= 0 || Integer.parseInt(diastolicInput.getText().toString()) <= 0)
+                else if (Integer.parseInt(systolicInput.getText().toString()) >= 275 ||
+                        Integer.parseInt(diastolicInput.getText().toString()) >= 150 ||
+                        Integer.parseInt(systolicInput.getText().toString()) <= 0 ||
+                        Integer.parseInt(diastolicInput.getText().toString()) <= 0)
                 {
                     showDataIncorrectRange(); // if data is outside of reasonable range of entry
                 }
 
                 else
                 {
-                    boolean isInserted = MainActivity.myDB.insertBloodPressure(editDate.getText().toString(), Integer.parseInt(systolicInput.getText().toString()),
-                            Integer.parseInt(diastolicInput.getText().toString()));
+                    boolean isInserted =
+                            MainActivity.myDB.insertBloodPressure(
+                                    editDate.getText().toString(),
+                                    editTime.getText().toString()+ ":00.000 EST",
+                                    Integer.parseInt(systolicInput.getText().toString()),
+                                    Integer.parseInt(diastolicInput.getText().toString()));
 
                     if (isInserted = true) {
 

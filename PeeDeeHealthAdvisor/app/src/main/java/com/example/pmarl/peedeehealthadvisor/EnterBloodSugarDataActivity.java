@@ -17,6 +17,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -40,6 +41,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -48,14 +50,14 @@ import java.util.Locale;
 
 public class EnterBloodSugarDataActivity extends AppCompatActivity
 {
-    private Button clearData, enterData;
     private TextInputEditText bloodSugarInput;
-    private ImageButton home;
-    private RadioButton fastingToggle, nonfastingToggle;
+    private RadioButton fastingToggle;
+    private RadioButton nonfastingToggle;
     private Context context = this;
-    private EditText editDate;
+    private EditText editDate, editTime;
     private Calendar myCalendar = Calendar.getInstance();
     private String dateFormat = "MMM dd yyyy ";
+    private String timeFormat = "HH:mm:ss.SSS zzz";
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.US);
     private NotificationManagerCompat notificationManager;
@@ -69,9 +71,10 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
          super.onCreate(saveInstanceState);
          setContentView(R.layout.acativty_enter_blood_sugar_data);
 
+         editTime = (EditText) findViewById(R.id.editTime);
          editDate = (EditText) findViewById(R.id.editDate);
-         clearData = (Button) findViewById(R.id.clearData);
-         enterData = (Button) findViewById(R.id.enterData);
+         Button clearData = (Button) findViewById(R.id.clearData);
+         Button enterData = (Button) findViewById(R.id.enterData);
          bloodSugarInput = (TextInputEditText) findViewById(R.id.bloodSugarInput);
          fastingToggle = (RadioButton) findViewById((R.id.fastingToggle));
          nonfastingToggle = (RadioButton) findViewById(R.id.nonfastingToggle);
@@ -116,7 +119,27 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
              }
          });
 
-         home = (ImageButton) findViewById(R.id.Home);
+         editTime.setOnClickListener(new View.OnClickListener() {
+             Calendar c = Calendar.getInstance();
+             int hour = c.get(Calendar.HOUR);
+             int minute = c.get(Calendar.MINUTE);
+             @Override
+             public void onClick(View view)
+             {
+                 TimePickerDialog timePickerDialog =
+                         new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                             @Override
+                             public void onTimeSet(TimePicker timePicker,
+                                                   int hourOfDay,
+                                                   int minuteOfHour) {
+                                 editTime.setText(hourOfDay + ":" + minuteOfHour);
+                             }
+                         }, hour, minute,false);
+                 timePickerDialog.show();
+             }
+         });
+
+         ImageButton home = (ImageButton) findViewById(R.id.Home);
 
          home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,12 +160,16 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                      showDataNotEnteredWarning();
                  }
 
-                 else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600 || Integer.parseInt(bloodSugarInput.getText().toString()) <= 0) {
+                 else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600 ||
+                         Integer.parseInt(bloodSugarInput.getText().toString()) <= 0) {
                      showDataIncorrectRange();
                  }
 
                  else {
-                     boolean isInserted = MainActivity.myDB.insertBloodSugar(editDate.getText().toString(), Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
+                     boolean isInserted = MainActivity.myDB.insertBloodSugar(
+                             editDate.getText().toString(),
+                             editTime.getText().toString()+ ":00.000 EST",
+                             Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
                              Integer.parseInt(bloodSugarInput.getText().toString()));
 
                      if (isInserted = true) {

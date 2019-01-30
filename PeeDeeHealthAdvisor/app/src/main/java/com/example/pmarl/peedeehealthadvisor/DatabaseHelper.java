@@ -165,13 +165,13 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     }
 
 
-    public boolean insertBloodPressure(String date, int systolic, int diastolic)
+    public boolean insertBloodPressure(String date, String time, int systolic, int diastolic)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Calendar calendar = Calendar.getInstance();
-        String time = this.simpleDateFormat.format(calendar.getTime());
+        //Calendar calendar = Calendar.getInstance();
+        //String time = this.simpleDateFormat.format(calendar.getTime());
 
 
 
@@ -191,13 +191,13 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
-    public boolean insertBloodSugar(String date, int fasting, int blood_sugar)
+    public boolean insertBloodSugar(String date, String time, int fasting, int blood_sugar)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Calendar calendar = Calendar.getInstance();
-        String time = this.simpleDateFormat.format(calendar.getTime());
+        //Calendar calendar = Calendar.getInstance();
+        //String time = this.simpleDateFormat.format(calendar.getTime());
 
 
 
@@ -391,7 +391,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         String[] columns = {measurementDate,measurementTime,measurementImmunized, measurementVirus};
 
-        String selection = "meas_type = ?";
+        String selection = measurementType +" = ?";
 
         String[] selectionArgs = {"Vaccination"};
 
@@ -405,7 +405,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         String[] columns = {measurementAllergy, measurementAllergyDescriptions};
 
-        String selection = "meas_type = ?";
+        String selection = measurementType +" = ?";
 
         String[] selectionArgs = {"Allergies"};
 
@@ -421,7 +421,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     {
         String[] columns = {userName,userDOB,userGender};
 
-        String selection = "meas_type = ?";
+        String selection = measurementType +" = ?";
 
         String[] selectionArgs = {"User"};
 

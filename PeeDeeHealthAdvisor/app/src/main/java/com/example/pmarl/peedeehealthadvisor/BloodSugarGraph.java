@@ -132,7 +132,7 @@ public class BloodSugarGraph extends AppCompatActivity
             Date date2 = new Date(epoch1);
 
 
-            xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
+            xLabels.add(new SimpleDateFormat("MMM dd HH:mm").format(date2));
 
             i++;
         }
