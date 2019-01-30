@@ -53,7 +53,6 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
 
         medNameInput = (TextInputEditText) findViewById(R.id.medicationNameInput);
         medDoseInput = (TextInputEditText) findViewById(R.id.medDoseInput);
-//        medDelivery = (TextInputEditText) findViewById(R.id.medDeliveryInput);
         medRxNum = (TextInputEditText) findViewById(R.id.medRXInput);
         medPharmName = (TextInputEditText) findViewById(R.id.medPharmNameInput);
         medPhoneNum = (TextInputEditText) findViewById(R.id.medPharmNumberInput);
