@@ -10,18 +10,22 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class EnterMedicationDataActivity extends AppCompatActivity
+public class EnterMedicationDataActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
 
     //DatabaseHelper myDB;
     private Button enterData;
     private Button clearData;
+    private Spinner spinner;
     private TextInputEditText medNameInput, medDoseInput, medDelivery, medRxNum, medPharmName, medPhoneNum;
     private Context context = this;
 
@@ -40,9 +44,16 @@ public class EnterMedicationDataActivity extends AppCompatActivity
             }
         });
 
+        // spinner for delivery
+        spinner =  findViewById(R.id.medicationDeliverySpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.delivery,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
         medNameInput = (TextInputEditText) findViewById(R.id.medicationNameInput);
         medDoseInput = (TextInputEditText) findViewById(R.id.medDoseInput);
-        medDelivery = (TextInputEditText) findViewById(R.id.medDeliveryInput);
+//        medDelivery = (TextInputEditText) findViewById(R.id.medDeliveryInput);
         medRxNum = (TextInputEditText) findViewById(R.id.medRXInput);
         medPharmName = (TextInputEditText) findViewById(R.id.medPharmNameInput);
         medPhoneNum = (TextInputEditText) findViewById(R.id.medPharmNumberInput);
@@ -55,11 +66,11 @@ public class EnterMedicationDataActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 final String medInputString = medNameInput.getText().toString() + " " +
-                        " " + medNameInput.getText().toString() +  " " + medDelivery.getText().toString() + " " +
+                        " " + medNameInput.getText().toString() +  " " + spinner.getSelectedItem().toString() + " " +
                         medRxNum.getText().toString() +  " " + medPharmName.getText().toString() +
                         " " + medPhoneNum.getText().toString();
                 if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")
-                        || medDelivery.getText().toString().equals("") || medRxNum.getText().toString().equals("")
+                        || spinner.getSelectedItemPosition()==0 || medRxNum.getText().toString().equals("")
                         || medPharmName.getText().toString().equals("") || medPhoneNum.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
 
@@ -67,7 +78,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity
 
                     boolean isInserted =
                             MainActivity.myDB.insertMedication(medNameInput.getText().toString(),
-                                    medDoseInput.getText().toString(), medDelivery.getText().toString(),
+                                    medDoseInput.getText().toString(), spinner.getSelectedItem().toString(),
                                     medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.getText().toString());
 
                     if (isInserted = true)
@@ -89,7 +100,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity
             {
                 medNameInput.setText("");
                 medDoseInput.setText("");
-                medDelivery.setText("");
+                spinner.setSelection(0);
                 medRxNum.setText("");
                 medPharmName.setText("");
                 medPhoneNum.setText("");
@@ -115,6 +126,20 @@ public class EnterMedicationDataActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         launchPrevActivity();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
+    {
+        if(position != 0)
+        {
+            String text = parent.getItemAtPosition(position).toString();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     private void launchMainActivity()

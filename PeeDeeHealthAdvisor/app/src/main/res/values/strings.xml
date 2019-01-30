@@ -95,10 +95,15 @@
     <string name="medication">Medication</string>
     <string name="medName">Medication Name</string>
     <string name="medDose">Dosage</string>
-    <string name="medDelivery">Delivery</string>
+    <string name="medDelivery">Medication Delivery</string>
     <string name="medRxNum">RX Number</string>
-    <string name="medPharmName">Pharmarcy</string>
-    <string name="medPhoneNum">Phone</string>
+    <string name="medPharmName">Pharmacy</string>
+    <string name="medPhoneNum">Phone Number</string>
+    <string name="medicationName">Medication Name</string>
+    <string name="medicationDosage">Medication Dosage</string>
+    <string name="medPrescriptionNumber">Prescription Number</string>
+    <string name="medPharmacyName">Pharmacy Name</string>
+    <string name="medPharmacyOPhoneNumber">Number</string>
 
     <!--editTime Strings-->
     <string name="selectTimeBelow">Select Time Below</string>
@@ -119,5 +124,18 @@
         <item>Pneumonia PVC13</item>
         <item>Pneumonia PPSV23</item>
         <item>Shingle</item>
+    </string-array>
+
+    <string-array name="delivery">
+        <item>Choose Below</item>
+        <item>Oral (Tablet)</item>
+        <item>Oral (Liquid)</item>
+        <item>Sublingual</item>
+        <item>Rectal</item>
+        <item>Topical (Cream)</item>
+        <item>Topical (Eye Drop)</item>
+        <item>Topical (Ear Drop)</item>
+        <item>Intramuscular</item>
+        <item>Subcutaneous</item>
     </string-array>
 </resources>

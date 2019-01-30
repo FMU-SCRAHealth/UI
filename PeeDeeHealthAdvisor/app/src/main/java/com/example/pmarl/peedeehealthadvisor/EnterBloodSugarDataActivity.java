@@ -209,6 +209,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
              }
          });
 
+         // allows the user to click off the keyboard when activated
          LinearLayout mainLayout = (LinearLayout)findViewById(R.id.bloodSugarEntryLayout);
          mainLayout.setOnTouchListener(new View.OnTouchListener() {
 

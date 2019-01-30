@@ -210,7 +210,7 @@ public class AppSwitcher extends AppCompatActivity {
                 bottomLeft.setOnClickListener(new View.OnClickListener() { // overriding the onClick so it will go to Blood Sugar on first screen
                     @Override
                     public void onClick(View view) {
-                        launchMainActivity();
+                        launchMedications();
                     }
                 });
 

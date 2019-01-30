@@ -148,6 +148,7 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
             }
         });
 
+        // allows the user to click off the keyboard when activated
         LinearLayout mainLayout = (LinearLayout)findViewById(R.id.BodyWeightEntryLayout);
         mainLayout.setOnTouchListener(new View.OnTouchListener()
         {
@@ -161,12 +162,6 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
                 return false;
             }
         });
-
-
-
-
-
-
 
     }
 
