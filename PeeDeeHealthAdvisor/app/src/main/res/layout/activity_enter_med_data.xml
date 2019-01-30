@@ -57,8 +57,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                //Medication Name
-
                 <TextView
                     android:id="@+id/medName"
                     android:layout_width="wrap_content"
@@ -85,7 +83,6 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                //Medication Dose
 
                 <TextView
                     android:id="@+id/medDose"
@@ -116,7 +113,6 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                //Medication Delivery
 
                 <TextView
                     android:id="@+id/medDelivery"
@@ -127,27 +123,12 @@
                     android:textColor="@color/PinkHuesMedium"
                     android:textSize="20sp" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/medDeliveryDesc"
-                    android:layout_width="304dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="8dp">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/medDeliveryInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:gravity="center_horizontal"
-                        android:hint="@string/description"
-                        android:singleLine="false"
-                        android:textColor="@color/colorPrimaryDark" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                //Medication RX Number
+                <Spinner
+                    android:id="@+id/medicationDeliverySpinner"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:visibility="visible"
+                    android:textColor="@color/GreenHuesMedium"/>
 
                 <TextView
                     android:id="@+id/medRX"
@@ -178,7 +159,6 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                //Medication Pharm Name
 
                 <TextView
                     android:id="@+id/medPharmName"
@@ -209,7 +189,6 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                //Medication Phone Number
 
                 <TextView
                     android:id="@+id/medPharmNumber"
@@ -226,6 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="50dp"
                     android:layout_marginEnd="8dp">
 
                     <android.support.design.widget.TextInputEditText
@@ -239,8 +219,10 @@
                         android:textColor="@color/colorPrimaryDark" />
 
                 </android.support.design.widget.TextInputLayout>
+
             </LinearLayout>
-            </ScrollView>
+
+        </ScrollView>
 
         <LinearLayout
             android:paddingLeft="4.0dip"

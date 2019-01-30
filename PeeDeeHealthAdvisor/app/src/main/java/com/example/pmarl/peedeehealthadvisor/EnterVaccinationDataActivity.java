@@ -88,8 +88,6 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
 
 
-
-
     @Override
     protected void  onCreate(Bundle saveInstanceState)
     {
@@ -99,12 +97,12 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
         editDate = (EditText) findViewById(R.id.editDate);
 
-// init - set date to current date
+    // init - set date to current date
         long currentdate = System.currentTimeMillis();
         String dateString = sdf.format(currentdate);
         editDate.setText(dateString);
 
-// set calendar date and update editDate
+    // set calendar date and update editDate
         date = new DatePickerDialog.OnDateSetListener()
         {
 
@@ -121,7 +119,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
         };
 
-// onclick - popup datepicker
+    // onclick - popup datepicker
         editDate.setOnClickListener(new View.OnClickListener()
         {
 
@@ -324,7 +322,6 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         if(position != 0)
         {
             String text = parent.getItemAtPosition(position).toString();
-//            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
         }
     }
 

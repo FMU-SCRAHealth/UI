@@ -30,11 +30,10 @@ public class AllergiesTable extends AppCompatActivity {
 
         //CursorInstantiation (VACCINATIONSs)
         Cursor cursorAllergies = MainActivity.myDB.readAllergyRecords();
-        String allergyTitle = "";
-        String allergyDescription = "";
+        String allergyTitle = "No Allergies";
+        String allergyDescription = "No Allergies";
         TextView allergyName = findViewById(R.id.allergies_name);
         TextView allergyDescriptionView = findViewById(R.id.allergies_reactions);
-//        LinearLayout parent = findViewById(R.id.allergiesParent);
         ImageButton home = findViewById(R.id.Home);
         TableLayout tableLayout = findViewById(R.id.allergiesTable);
 

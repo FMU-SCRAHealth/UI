@@ -120,4 +120,17 @@
         <item>Pneumonia PPSV23</item>
         <item>Shingle</item>
     </string-array>
+
+    <string-array name="delivery">
+        <item>Delivery</item>
+        <item>Oral (Tablet)</item>
+        <item>Oral (Liquid)</item>
+        <item>Sublingual</item>
+        <item>Rectal</item>
+        <item>Topical (Cream)</item>
+        <item>Topical (Eye Drop)</item>
+        <item>Topical (Ear Drop)</item>
+        <item>Intramuscular</item>
+        <item>Subcutaneous</item>
+    </string-array>
 </resources>
