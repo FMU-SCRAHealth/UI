@@ -2,85 +2,98 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MedicationTable extends AppCompatActivity {
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private static String LOG_TAG = "CardViewActivity";
+
+    String medName = "";
+    String medDose = "";
+    String medDelivery;
+    String medRxNum;
+    String medPharmName;
+    String medPharmNum;
+    ArrayList results = new ArrayList<DataObject>();
+
     @Override
-    protected void onCreate(Bundle saveInstanceState) {
-        super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_medications);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_card_view);
 
-        Cursor cursorMedications = MainActivity.myDB.readMedData();
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyRecyclerViewAdapter(results);
+        mRecyclerView.setAdapter(mAdapter);
 
-        String medName = "";
-        String medDose = "";
-        String medDelivery = "";
-        String medRXnum = "";
-        String medPharmName = "";
-        String medPharmNum = "";
-        TextView medicationName = findViewById(R.id.medNameText);
-        TextView medicationDose = findViewById(R.id.medDoseText);
-        TextView medicationDelivery = findViewById(R.id.medDeliveryText);
-        TextView medicationRxNum = findViewById(R.id.medRXNumText);
-        TextView medicationPharmName = findViewById(R.id.medPharnNameText);
-        TextView medicationPharmNum = findViewById(R.id.medPharmNumText);
+        //Database Stuff
 
+        //CursorInstantiation (VACCINATIONSs)
+        Cursor cursorMed = MainActivity.myDB.readMedData();
 
+//        LinearLayout parent = findViewById(R.id.allergiesParent);
         ImageButton home = findViewById(R.id.Home);
-        TableLayout tableLayout = findViewById(R.id.medTable);
 
         // ALLERGY BOX UPDATE
 
         // Check for values (ALLERGIES)
-        if (cursorMedications != null) {
-            cursorMedications.moveToFirst();
+        if (cursorMed != null) {
+            cursorMed.moveToFirst();
         }
 
-        // iterat
-        do {
+        // iterate
+        while (!cursorMed.isAfterLast()) {
 
-            try {
-                medName = cursorMedications.getString(0);
-                medDose = cursorMedications.getString(1);
-                medDelivery = cursorMedications.getString(2);
-                medRXnum = cursorMedications.getString(3);
-                medPharmName = cursorMedications.getString(4);
-                medPharmNum = cursorMedications.getString(5);
-            } catch (Exception e) {
-                launchPrevActivity();
-            }
+            this.medName = cursorMed.getString(0);
+            this.medDose = cursorMed.getString(1);
+            this.medDelivery = cursorMed.getString(2);
+            this.medRxNum = cursorMed.getString(3);
+            this.medPharmName = cursorMed.getString(4);
+            this.medPharmNum = cursorMed.getString(5);
 
-            TableLayout table = (TableLayout)MedicationTable.this.findViewById(R.id.medTable);
 
-            // Inflate your row "template" and fill out the fields.
-            TableRow row = (TableRow) LayoutInflater.from(MedicationTable.this).inflate(R.layout.med_row, null);
-            ((TextView)row.findViewById(R.id.medNameText)).setText(medName);
-            ((TextView)row.findViewById(R.id.medDoseText)).setText(medDose);
-            ((TextView)row.findViewById(R.id.medDeliveryText)).setText(medDelivery);
-            ((TextView)row.findViewById(R.id.medRXNumText)).setText(medRXnum);
-            ((TextView)row.findViewById(R.id.medPharnNameText)).setText(medPharmName);
-            ((TextView)row.findViewById(R.id.medPharmNumText)).setText(medPharmNum);
-            table.addView(row);
+            // creates a data object to hold the card's contents
+            DataObject newData = new DataObject(medName, medDose, medDelivery, medRxNum,
+                    medPharmName, medPharmNum);
 
-            table.requestLayout();
+            results.add(newData);
 
-        } while (cursorMedications.moveToNext());
+            cursorMed.moveToNext();
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchMainActivity();
-            }
-        });
+        }
 
+    }
+
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    //CREATE A NEW CARD OBJECT
+     private ArrayList<DataObject> getDataSet() {
+        return results;
     }
 
     //Button Functionality
