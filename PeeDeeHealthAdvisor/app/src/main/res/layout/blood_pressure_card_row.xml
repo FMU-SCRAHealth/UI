@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/BGWhite">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/blood_pressure_card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="25dp"
+        card_view:contentPadding="10dp"
+        card_view:cardBackgroundColor="@color/RedHuesLight"
+        android:background="@color/RedHuesLight">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/RedHuesLight">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_blood_pressure"
+                />
+
+            <TextView
+                android:id="@+id/topValueBPCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textSize="40dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/bottomValueBPCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/topValueBPCardText"
+                android:textSize="33dp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"/>
+
+            <!--<TextView-->
+                <!--android:id="@+id/takenTextLabel"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/vaccinationNameCardText"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:text="@string/tableTaken"-->
+                <!--android:textSize="25dp"-->
+                <!--android:layout_marginStart="6dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_marginTop="9dp"/>-->
+
+            <TextView
+                android:id="@+id/bpDateCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bottomValueBPCardText"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/bpDateCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bottomValueBPCardText"
+                android:textColor="@color/white"
+                android:text="@string/tableDate"
+                android:layout_marginStart="6dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
