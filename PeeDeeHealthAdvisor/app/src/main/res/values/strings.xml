@@ -92,6 +92,7 @@
     <string name="updater">Update</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="taking">Taking</string>
 
     <!--Medication Strings-->
     <string name="medication">Medication</string>

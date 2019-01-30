@@ -157,6 +157,20 @@
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_below="@+id/medPharmNumCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textOff="OFF"
+                android:textOn="ON"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:text="@string/taking" />
+
             <!--<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"-->
                 <!--android:layout_width="160dp"-->
                 <!--android:layout_height="wrap_content"-->

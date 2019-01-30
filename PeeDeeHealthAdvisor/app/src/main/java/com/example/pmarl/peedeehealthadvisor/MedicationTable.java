@@ -2,6 +2,7 @@ package com.example.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -68,6 +70,8 @@ public class MedicationTable extends AppCompatActivity {
             this.medPharmName = cursorMed.getString(4);
             this.medPharmNum = cursorMed.getString(5);
 
+
+            // creates a data object to hold the card's contents
             DataObject newData = new DataObject(medName, medDose, medDelivery, medRxNum,
                     medPharmName, medPharmNum);
 
@@ -76,7 +80,9 @@ public class MedicationTable extends AppCompatActivity {
             cursorMed.moveToNext();
 
         }
+
     }
+
 
 
 
