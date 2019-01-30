@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CardViewActivity">
 
+    //HOME BAR
     <RelativeLayout
         android:id="@+id/home_bar"
         android:layout_width="match_parent"

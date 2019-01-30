@@ -19,13 +19,22 @@ public class MyRecyclerViewAdapter extends RecyclerView
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
-        TextView label;
-        TextView dateTime;
+        TextView medNameView;
+        TextView medDoseView;
+        TextView medDeliveryView;
+        TextView medRxNumView;
+        TextView medPharmNameView;
+        TextView medPharmNumView;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
-            label = (TextView) itemView.findViewById(R.id.textView);
-            dateTime = (TextView) itemView.findViewById(R.id.textView2);
+            medNameView = (TextView) itemView.findViewById(R.id.medNameCardText);
+            medDoseView = (TextView) itemView.findViewById(R.id.medDoseCardText);
+            medDeliveryView = (TextView) itemView.findViewById(R.id.medDeliveryCardText);
+            medRxNumView = (TextView) itemView.findViewById(R.id.medRXNumCardText);
+            medPharmNameView = (TextView) itemView.findViewById(R.id.medPharmNameCardText);
+            medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
+
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
@@ -56,7 +65,12 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.label.setText(mDataset.get(position).getmText1());
+        holder.medNameView.setText(mDataset.get(position).getName());
+        holder.medDoseView.setText(mDataset.get(position).getDose());
+        holder.medDeliveryView.setText(mDataset.get(position).getDelivery());
+        holder.medRxNumView.setText(mDataset.get(position).getRxNum());
+        holder.medPharmNameView.setText(mDataset.get(position).getPharmName());
+        holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
 
     }
 

@@ -20,13 +20,49 @@ import android.widget.TextView;
 public class DataObject {
 
     private String medName;
+    private String medDose;
+    private String medDelivery;
+    private String medRxNum;
+    private String medPharmName;
+    private String medPharmNum;
 
-    DataObject (String text1){
-        medName = text1;
+
+
+    DataObject (String name, String dose, String delivery, String rxNum,
+                String pharmName, String pharmNum
+    ){
+        medName = name;
+        medDose = dose;
+        medDelivery = delivery;
+        medRxNum = rxNum;
+        medPharmName = pharmName;
+        medPharmNum = pharmNum;
+
     }
 
-    public String getmText1() {
+    public String getName() {
         return medName;
+    }
+
+
+    public String getDose() {
+        return medDose;
+    }
+
+    public String getDelivery() {
+        return medDelivery;
+    }
+
+    public String getRxNum() {
+        return medRxNum;
+    }
+
+    public String getPharmName() {
+        return medPharmName;
+    }
+
+    public String getMedPharmNum() {
+        return medPharmNum;
     }
 
     public void setmText1(String medName) {
