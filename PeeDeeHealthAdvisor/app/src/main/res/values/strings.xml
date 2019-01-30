@@ -97,6 +97,7 @@
     <!--Medication Strings-->
     <string name="medication">Medication</string>
     <string name="medName">Medication Name</string>
+
     <string name="medDoseOne">Dosage</string>
     <string name="medDeliveryOne">Medication Delivery</string>
     <string name="medRxNumOne">RX Number</string>
@@ -107,6 +108,7 @@
     <string name="medPrescriptionNumber">Prescription Number</string>
     <string name="medPharmacyName">Pharmacy Name</string>
     <string name="medPharmacyOPhoneNumber">Number</string>
+
     <string name="medDose">Dosage: </string>
     <string name="medDelivery">Delivery: </string>
     <string name="medRxNum">RX Number:</string>
