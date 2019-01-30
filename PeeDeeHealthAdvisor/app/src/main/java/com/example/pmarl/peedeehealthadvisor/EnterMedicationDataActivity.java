@@ -44,6 +44,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             }
         });
 
+        // spinner for delivery
         spinner =  findViewById(R.id.medicationDeliverySpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.delivery,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,7 +70,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
                         medRxNum.getText().toString() +  " " + medPharmName.getText().toString() +
                         " " + medPhoneNum.getText().toString();
                 if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")
-                        || medRxNum.getText().toString().equals("")
+                        || spinner.getSelectedItemPosition()==0 || medRxNum.getText().toString().equals("")
                         || medPharmName.getText().toString().equals("") || medPhoneNum.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
 
@@ -99,7 +100,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             {
                 medNameInput.setText("");
                 medDoseInput.setText("");
-                medDelivery.setText("");
+                spinner.setSelection(0);
                 medRxNum.setText("");
                 medPharmName.setText("");
                 medPhoneNum.setText("");

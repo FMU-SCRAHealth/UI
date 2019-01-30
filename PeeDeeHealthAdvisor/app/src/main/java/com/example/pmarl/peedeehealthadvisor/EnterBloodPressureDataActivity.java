@@ -114,6 +114,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             Calendar c = Calendar.getInstance();
             int hour = c.get(Calendar.HOUR);
             int minute = c.get(Calendar.MINUTE);
+
             @Override
             public void onClick(View view)
             {
@@ -197,6 +198,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             }
         });
 
+        // allows the user to click off the keyboard when activated
         LinearLayout mainLayout = (LinearLayout)findViewById(R.id.bloodPressureEntryLayout);
         mainLayout.setOnTouchListener(new View.OnTouchListener() {
 
@@ -208,12 +210,6 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                 return false;
             }
         });
-
-
-
-
-
-
 
     }
 
