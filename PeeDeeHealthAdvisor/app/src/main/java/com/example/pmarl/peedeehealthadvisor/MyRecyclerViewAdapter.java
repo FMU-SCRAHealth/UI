@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
         TextView medRxNumView;
         TextView medPharmNameView;
         TextView medPharmNumView;
+        ImageButton callButton;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
@@ -34,6 +36,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
             medRxNumView = (TextView) itemView.findViewById(R.id.medRXNumCardText);
             medPharmNameView = (TextView) itemView.findViewById(R.id.medPharmNameCardText);
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
+//            callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
 
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);

@@ -25,6 +25,7 @@ public class DataObject {
     private String medRxNum;
     private String medPharmName;
     private String medPharmNum;
+    private ImageButton medCall;
 
 
 
@@ -38,7 +39,10 @@ public class DataObject {
         medPharmName = pharmName;
         medPharmNum = pharmNum;
 
+
     }
+
+
 
     public String getName() {
         return medName;
