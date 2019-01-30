@@ -24,6 +24,11 @@ public class MedicationTable extends AppCompatActivity {
     private static String LOG_TAG = "CardViewActivity";
 
     String medName = "";
+    String medDose = "";
+    String medDelivery;
+    String medRxNum;
+    String medPharmName;
+    String medPharmNum;
     ArrayList results = new ArrayList<DataObject>();
 
     @Override
@@ -57,8 +62,14 @@ public class MedicationTable extends AppCompatActivity {
         while (!cursorMed.isAfterLast()) {
 
             this.medName = cursorMed.getString(0);
+            this.medDose = cursorMed.getString(1);
+            this.medDelivery = cursorMed.getString(2);
+            this.medRxNum = cursorMed.getString(3);
+            this.medPharmName = cursorMed.getString(4);
+            this.medPharmNum = cursorMed.getString(5);
 
-            DataObject newData = new DataObject(medName);
+            DataObject newData = new DataObject(medName, medDose, medDelivery, medRxNum,
+                    medPharmName, medPharmNum);
 
             results.add(newData);
 
