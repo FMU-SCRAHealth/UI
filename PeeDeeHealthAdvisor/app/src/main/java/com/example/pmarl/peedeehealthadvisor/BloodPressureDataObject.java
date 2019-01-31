@@ -25,8 +25,8 @@ public class BloodPressureDataObject {
 
 
     BloodPressureDataObject(Integer top, Integer bottom, String date) {
-        bpTop = top.toString();
-        bpBottom = bottom.toString();
+        bpTop = top.toString() + " (Systolic)";
+        bpBottom = bottom.toString() + " (Diastolic)";
         bpDate = date;
 
     }

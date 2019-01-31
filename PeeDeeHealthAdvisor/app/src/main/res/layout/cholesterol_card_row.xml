@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/BGWhite">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cholesterol_card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="25dp"
+        card_view:contentPadding="10dp"
+        card_view:cardBackgroundColor="@color/YellowHuesLight"
+        android:background="@color/YellowHuesLight">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/YellowHuesLight">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_cholesterol_arrows"
+                />
+
+            <TextView
+                android:id="@+id/totalCholesterolCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="9dp"
+                />
+
+            <TextView
+                android:id="@+id/totalCholesterolCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/TC2"
+                android:textSize="25dp"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/hdlCardViewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/totalCholesterolCardText"
+                android:textSize="25dp"
+                android:layout_marginStart="67dp"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/hdlCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/totalCholesterolCardText"
+                android:textColor="@color/white"
+                android:text="@string/HDL2"
+                android:textSize="25dp"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/trigCardViewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/hdlCardViewText"
+                android:textSize="25dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/trigCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hdlCardViewText"
+                android:textColor="@color/white"
+                android:text="@string/TRIG2"
+                android:textSize="25dp"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/ldlCardViewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_below="@+id/trigCardTextLabel"
+                android:textSize="25dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/ldlCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/trigCardTextLabel"
+                android:textColor="@color/white"
+                android:text="@string/LDL2"
+                android:textSize="25dp"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/cholesterolDateCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ldlCardViewText"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/cholesterolDateCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ldlCardViewText"
+                android:textColor="@color/white"
+                android:text="@string/tableDate"
+                android:layout_marginStart="6dp"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

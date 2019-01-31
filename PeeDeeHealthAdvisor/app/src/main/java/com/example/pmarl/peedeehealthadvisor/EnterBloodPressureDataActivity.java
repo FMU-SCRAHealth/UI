@@ -112,7 +112,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
 
         editTime.setOnClickListener(new View.OnClickListener() {
             Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR);
+            int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
 
             @Override
@@ -146,7 +146,8 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             {
 
                 if (systolicInput.getText().toString().equals("")||
-                        diastolicInput.getText().toString().equals(""))
+                        diastolicInput.getText().toString().equals("") ||
+                        editTime.getText().toString().equals(""))
                 {
                     showDataNotEnteredWarning();
 

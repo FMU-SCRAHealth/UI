@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -29,6 +31,10 @@ import java.util.TreeMap;
 public class BodyWeightGraph extends AppCompatActivity
 {
     LineChart lineChart;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    ArrayList results = new ArrayList<BodyWeightDataObject>(); // make sure to change this to Blood Sugar Data Object
 
 
     @SuppressLint("SimpleDateFormat")
@@ -66,9 +72,17 @@ public class BodyWeightGraph extends AppCompatActivity
         /*Test values for the xLabels array*/
         Integer i = 0;
         String date;
+        String dateCard;
         Date date1;
         long epoch;
         TreeMap<Long,ArrayList<Float>> treeMap = new TreeMap<>();
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_body_weight);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyBodyWeightRecyclerViewAdapter(results); // make sure to check this
+        mRecyclerView.setAdapter(mAdapter);
 
 
         /*Loop through the rows of the cursor and set the (y,x) values
@@ -118,8 +132,13 @@ public class BodyWeightGraph extends AppCompatActivity
 
             Date date2 = new Date(epoch1);
 
+            dateCard = new SimpleDateFormat("MMM dd hh:mm a").format(date2);
 
             xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
+
+            BodyWeightDataObject bodyWeightEntry = new BodyWeightDataObject(arrayList.get(0), dateCard);
+
+            results.add(bodyWeightEntry);
 
             i++;
         }

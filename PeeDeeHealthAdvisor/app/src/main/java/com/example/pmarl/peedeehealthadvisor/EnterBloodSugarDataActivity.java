@@ -121,7 +121,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 
          editTime.setOnClickListener(new View.OnClickListener() {
              Calendar c = Calendar.getInstance();
-             int hour = c.get(Calendar.HOUR);
+             int hour = c.get(Calendar.HOUR_OF_DAY);
              int minute = c.get(Calendar.MINUTE);
              @Override
              public void onClick(View view)
@@ -134,7 +134,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                                                    int minuteOfHour) {
                                  editTime.setText(hourOfDay + ":" + minuteOfHour);
                              }
-                         }, hour, minute,false);
+                         }, hour, minute,true);
                  timePickerDialog.show();
              }
          });
@@ -154,7 +154,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
              public void onClick(View view)
              {
 
-                 if(bloodSugarInput.getText().toString().equals(""))
+                 if(bloodSugarInput.getText().toString().equals("") || editTime.getText().toString().equals(""))
                  {
 
                      showDataNotEnteredWarning();
