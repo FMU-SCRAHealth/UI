@@ -17,6 +17,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -41,7 +43,10 @@ import java.util.TreeMap;
 public class BloodSugarGraph extends AppCompatActivity
 {
     LineChart lineChart;
-
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    ArrayList results = new ArrayList<BloodSugarDataObject>(); // make sure to change this to Blood Sugar Data Object
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -77,9 +82,17 @@ public class BloodSugarGraph extends AppCompatActivity
         Integer i = 0;
         String date;
         Date date1;
+        String dateCard;
         long epoch;
         TreeMap<Long,BloodSugarValue> treeMap = new TreeMap<>();
         Boolean fasting;
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_blood_sugar);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyBloodSugarRecyclerViewAdapter(results); // make sure to check this
+        mRecyclerView.setAdapter(mAdapter);
 
 
         /*Loop through the rows of the cursor and set the (y,x) values
@@ -107,32 +120,33 @@ public class BloodSugarGraph extends AppCompatActivity
                 e.printStackTrace();
             }
 
-        }while (cursor.moveToPrevious());
+        } while (cursor.moveToPrevious());
 
 
 
         Set<Map.Entry<Long, BloodSugarValue>> set = treeMap.entrySet();
         Iterator<Map.Entry<Long, BloodSugarValue>> iterator = set.iterator();
         ArrayList<Entry> bloodSugar = new ArrayList<>();
+
         while(iterator.hasNext())
         {
             Map.Entry<Long, BloodSugarValue> mEntry = iterator.next();
             BloodSugarValue bloodSugarValue = mEntry.getValue();
 
-
-            /*Adding the systolic value from the DB and the date that corresponds
-             * with it*/
             bloodSugar.add(new Entry(bloodSugarValue.getBloodSugar(), i));
 
 
-
-            /*Adding test values for the systolic and diastolic values*/
             Long epoch1 = mEntry.getKey();
 
             Date date2 = new Date(epoch1);
 
+            dateCard = new SimpleDateFormat("MMM dd hh:mm a").format(date2);
 
-            xLabels.add(new SimpleDateFormat("MMM dd HH:mm").format(date2));
+            xLabels.add(new SimpleDateFormat("MMM dd hh:mm a").format(date2));
+
+            BloodSugarDataObject bloodSugarEntry = new BloodSugarDataObject(bloodSugarValue.getBloodSugar(), bloodSugarValue.getFasting(), dateCard);
+
+            results.add(bloodSugarEntry);
 
             i++;
         }

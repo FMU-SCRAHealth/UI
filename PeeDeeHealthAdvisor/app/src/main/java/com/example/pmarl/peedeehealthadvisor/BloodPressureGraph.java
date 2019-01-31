@@ -16,6 +16,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -40,7 +42,10 @@ import java.util.TreeMap;
 public class BloodPressureGraph extends AppCompatActivity
 {
     LineChart lineChart;
-
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    ArrayList results = new ArrayList<BloodPressureDataObject>();
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -79,9 +84,17 @@ public class BloodPressureGraph extends AppCompatActivity
         /*Test values for the xLabels array*/
         Integer i = 0;
         String date;
+        String dateCard;
         Date date1;
         long epoch;
         TreeMap<Long,ArrayList<Integer>>  treeMap = new TreeMap<>();
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_blood_pressure);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyBloodPressureRecyclerViewAdapter(results); // make sure to check this
+        mRecyclerView.setAdapter(mAdapter);
 
 
         /*Loop through the rows of the cursor and set the (y,x) values
@@ -96,6 +109,7 @@ public class BloodPressureGraph extends AppCompatActivity
                 {
                     date = cursor.getString(0) + cursor.getString(1);
                     date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
+
                     epoch = date1.getTime();
 //
 
@@ -110,7 +124,7 @@ public class BloodPressureGraph extends AppCompatActivity
                     e.printStackTrace();
                 }
 
-            }while (cursor.moveToPrevious());
+            } while (cursor.moveToPrevious());
 
 
 
@@ -134,8 +148,15 @@ public class BloodPressureGraph extends AppCompatActivity
 
             Date date2 = new Date(epoch1);
 
+            dateCard = new SimpleDateFormat("MMM dd hh:mm a").format(date2);
 
-            xLabels.add(new SimpleDateFormat("MMM dd HH:mm").format(date2));
+            xLabels.add(new SimpleDateFormat("MMM dd hh:mm a").format(date2));
+
+            BloodPressureDataObject bloodPressureEntry = new BloodPressureDataObject(arrayList.get(0), arrayList.get(1), dateCard);
+
+            results.add(bloodPressureEntry);
+
+
 
             i++;
         }

@@ -17,6 +17,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -41,6 +43,10 @@ import java.util.TreeMap;
 public class CholesterolGraph extends AppCompatActivity
 {
     LineChart lineChart;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    ArrayList results = new ArrayList<CholesterolDataObject>(); // make sure to change this to Cholesterol Data Object
 
 
     @SuppressLint("SimpleDateFormat")
@@ -86,10 +92,17 @@ public class CholesterolGraph extends AppCompatActivity
         /*Test values for the xLabels array*/
         Integer i = 0;
         String date;
+        String dateCard;
         Date date1;
         long epoch;
         TreeMap<Long,CholesterolValues> treeMap = new TreeMap<>();
 
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_cholesterol);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyCholesterolRecyclerViewAdapter(results); // make sure to check this
+        mRecyclerView.setAdapter(mAdapter);
 
         /*Loop through the rows of the cursor and set the (y,x) values
          * cursor.moveToNext() returns a boolean value and performs an action to move to the
@@ -146,8 +159,13 @@ public class CholesterolGraph extends AppCompatActivity
 
             Date date2 = new Date(epoch1);
 
+            dateCard = new SimpleDateFormat("MMM dd hh:mm a").format(date2);
 
             xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
+
+            CholesterolDataObject cholesterolEntry = new CholesterolDataObject(cholesterolValues.getTc(), cholesterolValues.getHdl(), cholesterolValues.getTrig(), cholesterolValues.getLdl(),dateCard);
+
+            results.add(cholesterolEntry);
 
             i++;
         }

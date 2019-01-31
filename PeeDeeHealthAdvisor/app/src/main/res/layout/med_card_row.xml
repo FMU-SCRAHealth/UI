@@ -14,8 +14,9 @@
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
-        card_view:cardCornerRadius="2dp"
+        card_view:cardCornerRadius="25dp"
         card_view:contentPadding="10dp"
+        card_view:cardBackgroundColor="@color/PinkHuesCardBackground"
         android:background="@color/BGWhite">
 
         <RelativeLayout
@@ -59,9 +60,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/medNameCardText"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 android:textColor="@color/white"
-                android:layout_marginStart="124dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -71,7 +72,7 @@
                 android:layout_below="@+id/medNameCardText"
                 android:textColor="@color/white"
                 android:text="@string/medDose"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>

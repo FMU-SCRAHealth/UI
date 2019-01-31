@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BGWhite"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/home_bar"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/Home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/ic_vaccination_home_teal" />
+
+        <TextView
+            android:id="@+id/MyHealthGraph"
+            android:layout_width="185dp"
+            android:layout_height="75dp"
+            android:text="@string/vaccinationGraph"
+            android:textColor="@color/GreenHuesMedium"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view_vaccinations"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_bar"
+        android:scrollbars="vertical"
+        android:background="@color/BGWhite"
+        />
+
+</RelativeLayout>

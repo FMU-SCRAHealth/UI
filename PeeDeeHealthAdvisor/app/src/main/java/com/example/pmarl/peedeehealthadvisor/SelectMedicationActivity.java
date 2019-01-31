@@ -93,10 +93,15 @@ public class SelectMedicationActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, MedicationTable.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
-        Cursor cursor = MainActivity.myDB.readBloodPressure();
-        startActivity(intent);
-        finish();
-
+        Cursor cursor = MainActivity.myDB.readMedData();
+        if(cursor.getCount()==0)
+        {
+            showDataError();
+        }
+        else{
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void launchSelectDataActivity()

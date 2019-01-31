@@ -67,18 +67,19 @@
     <string name="setupUser">Setup User</string>
     <string name="tableTitleVaccinations">Vaccinations</string>
     <string name="tableName">Name</string>
-    <string name="tableTaken">Taken</string>
-    <string name="tableDate">Date</string>
+    <string name="tableTaken">Taken:</string>
+    <string name="tableDate">Date:</string>
     <string name="tableFluShot">Flu Shot</string>
     <string name="tableShingle">Shingles</string>
-    <string name="tablePneumonia13">Pneumonia PVC13</string>
-    <string name="tablePneumonia23">Pneumonia PPSV23</string>
+    <string name="tablePneumonia13">Prevnar 13</string>
+    <string name="tablePneumonia23">Pneumovax 23</string>
     <string name="other">Other</string>
     <string name="Reports">Reports</string>
     <string name="TC">Total Cholesterol</string>
     <string name="tc">TC</string>
     <string name="allergies">Allergies</string>
     <string name="description">Reaction</string>
+    <string name="reaction">Reaction:</string>
     <string name="allergyName">Allergy Name</string>
     <string name="allergyDescription">Allergy Reaction</string>
     <string name="reportStatusVax">Status</string>
@@ -93,6 +94,13 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="taking">Taking</string>
+
+    <!--Card Views-->
+    <string name="TC2">TC:</string>
+    <string name="HDL2">HDL:</string>
+    <string name="TRIG2">TRIG:</string>
+    <string name="LDL2">LDL:</string>
+    <string name="lbs">lbs</string>
 
     <!--Medication Strings-->
     <string name="medication">Medication</string>
@@ -132,8 +140,8 @@
     <string-array name="vaccinations">
         <item>Select</item>
         <item>Flu Shot</item>
-        <item>Pneumonia PVC13</item>
-        <item>Pneumonia PPSV23</item>
+        <item>Prevnar 13</item>
+        <item>Pneumovax 23</item>
         <item>Shingle</item>
     </string-array>
 

@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyRecyclerViewAdapter extends RecyclerView
-        .Adapter<MyRecyclerViewAdapter
+public class MyMedicationRecyclerViewAdapter extends RecyclerView
+        .Adapter<MyMedicationRecyclerViewAdapter
         .DataObjectHolder> {
-    private static String LOG_TAG = "MyRecyclerViewAdapter";
-    private ArrayList<DataObject> mDataset;
+//    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
+    private ArrayList<MedicationsDataObject> mDataset;
     private static MyClickListener myClickListener;
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
@@ -38,7 +38,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
 //            callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
 
-            Log.i(LOG_TAG, "Adding Listener");
+//            Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
 
@@ -51,7 +51,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
         this.myClickListener = myClickListener;
     }
 
-    public MyRecyclerViewAdapter(ArrayList<DataObject> myDataset) {
+    public MyMedicationRecyclerViewAdapter(ArrayList<MedicationsDataObject> myDataset) {
         mDataset = myDataset;
     }
 
@@ -77,7 +77,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
     }
 
-    public void addItem(DataObject dataObj, int index) {
+    public void addItem(MedicationsDataObject dataObj, int index) {
         mDataset.add(index, dataObj);
         notifyItemInserted(index);
     }
