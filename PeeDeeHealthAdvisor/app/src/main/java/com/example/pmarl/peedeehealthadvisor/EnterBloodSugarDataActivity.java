@@ -134,7 +134,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                                                    int minuteOfHour) {
                                  editTime.setText(hourOfDay + ":" + minuteOfHour);
                              }
-                         }, hour, minute,true);
+                         }, hour, minute,false);
                  timePickerDialog.show();
              }
          });

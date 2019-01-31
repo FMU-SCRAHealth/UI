@@ -88,6 +88,10 @@ public class BodyWeightGraph extends AppCompatActivity
         /*Loop through the rows of the cursor and set the (y,x) values
          * cursor.moveToNext() returns a boolean value and performs an action to move to the
          * next cursor*/
+        if (cursor == null) {
+
+        }
+
         cursor.moveToLast();
         do
         {
