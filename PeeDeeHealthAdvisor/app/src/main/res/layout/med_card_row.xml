@@ -20,6 +20,7 @@
         android:background="@color/BGWhite">
 
         <RelativeLayout
+            android:id="@+id/card_view_background"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/PinkHuesCardBackground">
@@ -164,46 +165,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:checked="true"
                 android:textOff="OFF"
                 android:textOn="ON"
+                android:theme="@style/SCBSwitch"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
                 android:layout_alignParentStart="true"
                 android:text="@string/taking" />
-
-            <!--<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"-->
-                <!--android:layout_width="160dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_marginEnd="10dp"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:checkedButton="@+id/currentlyTakingYes">-->
-
-                <!--<RadioButton android:id="@+id/currentlyTakingYes"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textSize="16sp"-->
-                    <!--android:text="@string/yes"-->
-                    <!--android:textColor="@color/white"-->
-                    <!--android:onClick="onRadioButtonClicked"/>-->
-                <!--<View-->
-                    <!--android:layout_width="1dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="0"/>-->
-
-                <!--<RadioButton android:id="@+id/femaleToggleProfile"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/no"-->
-                    <!--android:textSize="16sp"-->
-                    <!--android:textColor="@color/white"-->
-                    <!--android:layout_marginEnd="0dp"-->
-                    <!--android:onClick="onRadioButtonClicked"/>-->
-
-            <!--</RadioGroup>-->
 
         </RelativeLayout>
 

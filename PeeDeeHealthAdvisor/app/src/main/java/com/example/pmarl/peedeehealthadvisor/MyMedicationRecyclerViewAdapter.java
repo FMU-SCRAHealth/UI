@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         TextView medPharmNameView;
         TextView medPharmNumView;
         ImageButton callButton;
+        Switch background;
 
 
         public DataObjectHolder(View itemView) {
@@ -50,6 +53,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medPharmNameView = (TextView) itemView.findViewById(R.id.medPharmNameCardText);
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
+            background = (Switch) itemView.findViewById(R.id.switch1);
 
 //            Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
@@ -91,7 +95,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medPharmNameView.setText(mDataset.get(position).getPharmName());
         holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
-        phoneNumber = mDataset.get(position).getMedPharmNum();
+        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
 
 
     }
