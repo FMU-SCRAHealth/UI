@@ -24,6 +24,8 @@ public class MedicationTable extends AppCompatActivity {
     String medRxNum;
     String medPharmName;
     String medPharmNum;
+    String medFreq;
+    String medTaking;
     ArrayList results = new ArrayList<MedicationsDataObject>();
 
     @Override
@@ -69,11 +71,12 @@ public class MedicationTable extends AppCompatActivity {
             this.medRxNum = cursorMed.getString(3);
             this.medPharmName = cursorMed.getString(4);
             this.medPharmNum = cursorMed.getString(5);
-
+            this.medFreq = cursorMed.getString(6);
+            this.medTaking = cursorMed.getString(7);
 
             // creates a data object to hold the card's contents
             MedicationsDataObject newData = new MedicationsDataObject(medName, medDose, medDelivery, medRxNum,
-                    medPharmName, medPharmNum);
+                    medPharmName, medPharmNum, medFreq, medTaking);
 
             results.add(newData);
 

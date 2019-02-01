@@ -1,5 +1,6 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -31,27 +32,39 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
     private String medRxNum;
     private String medPharmName;
     private String medPharmNum;
+    private String medFreq;
+    private String medTaking;
+    private Cursor cursorMed;
     private ImageButton medCall;
     private Switch mySwitch;
     private View.OnClickListener callClickListener;
     private Switch.OnCheckedChangeListener usingSwitchListener;
     private CardView background;
     private RelativeLayout backgroundRel;
+    private LinearLayout backgroundMed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.med_card_row);
+        View activity = findViewById(R.layout.med_card_row);
         backgroundRel = (RelativeLayout) findViewById(R.id.card_view_background);
         background = (CardView) findViewById(R.id.card_view);
-        mySwitch = (Switch) findViewById(R.id.switch1);
+//        mySwitch = (Switch) findViewById(R.id.switchTaking);
+        backgroundMed = (LinearLayout) findViewById(R.id.layoutMedCard);
+        cursorMed = MainActivity.myDB.readMedData();
+//        mySwitch = (Switch) findViewById(R.id.switchTaking);
+        mySwitch.setOnCheckedChangeListener(usingSwitchListener);
+
+
 
     }
 
 
 
     MedicationsDataObject(String name, String dose, String delivery, String rxNum,
-                          String pharmName, String pharmNum
+                          String pharmName, String pharmNum, String freq, String taking
     ){
         medName = name;
         medDose = dose;
@@ -59,6 +72,8 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         medRxNum = rxNum;
         medPharmName = pharmName;
         medPharmNum = pharmNum;
+        medFreq = freq + " Per Day";
+        medTaking = taking;
 
     }
 
@@ -72,8 +87,12 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton button, boolean bool) {
-
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//        if (isChecked) {
+//            changeBackgroundToPink();
+//        } else {
+//            changeBackgroundToGrey();
+//        }
     }
 
 
@@ -97,25 +116,52 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         return callClickListener;
     }
 
-
-    public Switch.OnCheckedChangeListener createSwitch() {
-        usingSwitchListener = new CompoundButton.OnCheckedChangeListener() {
+    public View.OnClickListener updateTaken() {
+        callClickListener = new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onClick(View v) {
+                if (medTaking.equals("Yes")){
+                    MainActivity.myDB.updateMedicationData(medName, "No");
+                } else
+                {
+                    MainActivity.myDB.updateMedicationData(medName, "Yes");
+                }
 
-                if (mySwitch.isChecked()) {
-                    backgroundRel.setBackgroundColor(Color.parseColor("#afdfe3"));
-                    background.setCardBackgroundColor(Color.parseColor("#fd91e7"));
-                }
-                else if (!mySwitch.isChecked())  {
-                    backgroundRel.setBackgroundColor(Color.parseColor("#afdfe3"));
-                    background.setCardBackgroundColor(Color.parseColor("#afdfe3"));
-                }
 
             }
         };
 
+        return callClickListener;
+    }
+
+
+    public CompoundButton.OnCheckedChangeListener createSwitch() {
+        usingSwitchListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    changeBackgroundToPink();
+                } else {
+                    changeBackgroundToGrey();
+                }
+            }
+        };
+
         return usingSwitchListener;
+    }
+
+    public void changeBackgroundToGrey() {
+
+//        backgroundRel.setBackgroundColor(Color.parseColor("#afdfe3"));
+//        background.setCardBackgroundColor(Color.parseColor("#afdfe3"));
+        MainActivity.myDB.updateMedicationData(medName, medTaking);
+    }
+
+    public void changeBackgroundToPink() {
+//        backgroundRel.setBackgroundColor(Color.parseColor("#fd91e7"));
+//        background.setCardBackgroundColor(Color.parseColor("#fd91e7"));
+//        MainActivity.myDB.updateMedicationData(medName, medTaking);
+
     }
 
 
@@ -144,12 +190,20 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         return medPharmNum;
     }
 
-//    public ImageButton getMedCall() {
-//        return medCall;
-//    }
-//
-//    public void setMedCall(ImageButton medCall) {
-//        this.medCall = medCall;
-//    }
+    public String getMedFreq() {
+        return medFreq;
+    }
+
+    public void setMedFreq(String medFreq) {
+        this.medFreq = medFreq;
+    }
+
+    public String getMedTaking() {
+        return medTaking;
+    }
+
+    public void setMedTaking(String medTaking) {
+        this.medTaking = medTaking;
+    }
 
 }

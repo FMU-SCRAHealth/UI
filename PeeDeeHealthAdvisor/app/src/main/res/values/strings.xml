@@ -94,6 +94,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="taking">Taking</string>
+    <string name="currentlyTaking">Currently Taking</string>
 
     <!--Card Views-->
     <string name="TC2">TC:</string>
@@ -116,6 +117,7 @@
     <string name="medPrescriptionNumber">Prescription Number</string>
     <string name="medPharmacyName">Pharmacy Name</string>
     <string name="medPharmacyOPhoneNumber">Number</string>
+    <string name="medFrequency">Times Taken Per Day</string>
 
     <string name="medDose">Dosage: </string>
     <string name="medDelivery">Delivery: </string>
@@ -157,4 +159,13 @@
         <item>Intramuscular</item>
         <item>Subcutaneous</item>
     </string-array>
+
+    <string-array name="frequency">
+        <item>Choose Below</item>
+        <item>Once</item>
+        <item>Twice</item>
+        <item>Three Times</item>
+        <item>Four Times</item>
+    </string-array>
+
 </resources>

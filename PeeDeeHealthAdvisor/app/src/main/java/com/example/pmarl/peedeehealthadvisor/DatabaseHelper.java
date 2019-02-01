@@ -53,9 +53,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String medRxNum = "rxNumber";
     private static final String medPharmName = "pharmacyName";
     private static final String medPharmNum = "pharmacyNumber";
+    private static final String medFreq = "freq";
+    private static final String medTaking = "taking";
 
 
     private String user_name;
+    private String med_name;
     private Cursor cursor;
     @SuppressLint("SimpleDateFormat")
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS zzz");
@@ -87,7 +90,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         sqLiteDatabase.execSQL("CREATE TABLE " + medTable + " ("+ medName + " TEXT PRIMARY KEY,"
             + medDose + " TEXT, " + medDelivery + " TEXT, " + medRxNum + " TEXT, "
-            + medPharmName + " TEXT, " + medPharmNum + " TEXT)");
+            + medPharmName + " TEXT, " + medPharmNum + " TEXT, " + medFreq + " TEXT," + medTaking + " TEXT)");
 
     }
 
@@ -143,7 +146,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     //Insert Medication Data
     public boolean insertMedication(String name, String dose, String delivery,
-                                    String rxnum, String pharmname, String pharmnum)
+                                    String rxnum, String pharmname, String pharmnum, String frequency, String taking)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -158,8 +161,27 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(medRxNum, rxnum);
         contentValues.put(medPharmName, pharmname);
         contentValues.put(medPharmNum, pharmnum);
+        contentValues.put(medFreq, frequency);
+        contentValues.put(medTaking, taking);
 
         long result = db.insert(medTable,null,contentValues);
+        return result != -1;
+
+    }
+
+    public boolean updateMedicationData(String name, String taking)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String meas_type = "Medications";
+
+        this.med_name = name;
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(medTaking, taking);
+
+        long result = db.update(medTable, contentValues, "name="+med_name, null);
         return result != -1;
 
     }
@@ -432,7 +454,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     }
 
     public Cursor readMedData() {
-        String[] columns = {medName, medDose, medDelivery, medRxNum, medPharmName, medPharmNum};
+        String[] columns = {medName, medDose, medDelivery, medRxNum, medPharmName, medPharmNum, medFreq, medTaking};
 
 //        String selection = medName + "= ?";
 //

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,8 +26,11 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
     //DatabaseHelper myDB;
     private Button enterData;
     private Button clearData;
-    private Spinner spinner;
+    private Spinner spinnerType;
+    private Spinner spinnerFrequency;
     private TextInputEditText medNameInput, medDoseInput, medDelivery, medRxNum, medPharmName, medPhoneNum;
+    private RadioButton yesToggle, noToggle;
+    String currentlyTaking;
     private Context context = this;
 
     @Override
@@ -45,11 +49,22 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
         });
 
         // spinner for delivery
-        spinner =  findViewById(R.id.medicationDeliverySpinner);
+        spinnerType =  findViewById(R.id.medicationDeliverySpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.delivery,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        spinnerType.setAdapter(adapter);
+        spinnerType.setOnItemSelectedListener(this);
+
+        // spinner for frequency
+        spinnerFrequency =  findViewById(R.id.medicationFrequencySpinner);
+        ArrayAdapter<CharSequence> adapterFreq = ArrayAdapter.createFromResource(this, R.array.frequency,android.R.layout.simple_spinner_item);
+        adapterFreq.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFrequency.setAdapter(adapterFreq);
+        spinnerFrequency.setOnItemSelectedListener(this);
+
+        // radio buttons
+        yesToggle = (RadioButton) findViewById(R.id.takingYes);
+        noToggle = (RadioButton) findViewById(R.id.takingNo);
 
         medNameInput = (TextInputEditText) findViewById(R.id.medicationNameInput);
         medDoseInput = (TextInputEditText) findViewById(R.id.medDoseInput);
@@ -65,20 +80,27 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             public void onClick(View view) {
 
                 final String medInputString = medNameInput.getText().toString() + " " +
-                        " " + medNameInput.getText().toString() +  " " + spinner.getSelectedItem().toString() + " " +
+                        " " + medNameInput.getText().toString() +  " " + spinnerType.getSelectedItem().toString() + " " +
                         medRxNum.getText().toString() +  " " + medPharmName.getText().toString() +
-                        " " + medPhoneNum.getText().toString();
+                        " " + medPhoneNum.getText().toString() + spinnerFrequency.getSelectedItem().toString();
                 if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")
-                        || spinner.getSelectedItemPosition()==0 || medRxNum.getText().toString().equals("")
+                        || spinnerType.getSelectedItemPosition()==0 || spinnerFrequency.getSelectedItemPosition()==0 || medRxNum.getText().toString().equals("")
                         || medPharmName.getText().toString().equals("") || medPhoneNum.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
 
                 } else {
 
+                    if (yesToggle.isChecked()) {
+                        currentlyTaking = "Yes";
+                    }
+
+                    else if (noToggle.isChecked()) {
+                        currentlyTaking = "No";
+                    }
                     boolean isInserted =
                             MainActivity.myDB.insertMedication(medNameInput.getText().toString(),
-                                    medDoseInput.getText().toString(), spinner.getSelectedItem().toString(),
-                                    medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.getText().toString());
+                                    medDoseInput.getText().toString(), spinnerType.getSelectedItem().toString(),
+                                    medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.getText().toString(), spinnerFrequency.getSelectedItem().toString(), currentlyTaking);
 
                     if (isInserted = true)
                         showDataEntryCheckmark();
@@ -99,7 +121,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             {
                 medNameInput.setText("");
                 medDoseInput.setText("");
-                spinner.setSelection(0);
+                spinnerType.setSelection(0);
                 medRxNum.setText("");
                 medPharmName.setText("");
                 medPhoneNum.setText("");
@@ -133,6 +155,23 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
         if(position != 0)
         {
             String text = parent.getItemAtPosition(position).toString();
+        }
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.takingYes:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.takingNo:
+                if (checked)
+                    // Ninjas rule
+                    break;
         }
     }
 

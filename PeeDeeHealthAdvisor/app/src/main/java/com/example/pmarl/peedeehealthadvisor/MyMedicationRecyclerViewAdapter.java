@@ -40,7 +40,10 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         TextView medRxNumView;
         TextView medPharmNameView;
         TextView medPharmNumView;
+        TextView medFreqView;
+        TextView medTaken;
         ImageButton callButton;
+        ImageButton takenButton;
         Switch background;
 
 
@@ -52,8 +55,11 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medRxNumView = (TextView) itemView.findViewById(R.id.medRXNumCardText);
             medPharmNameView = (TextView) itemView.findViewById(R.id.medPharmNameCardText);
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
+            medFreqView= (TextView) itemView.findViewById(R.id.medFreqCardText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
-            background = (Switch) itemView.findViewById(R.id.switch1);
+            takenButton = (ImageButton) itemView.findViewById(R.id.updateTakingButton);
+            medTaken = (TextView) itemView.findViewById(R.id.medTakingCardText);
+//            background = (Switch) itemView.findViewById(R.id.switchTaking);
 
 //            Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
@@ -94,8 +100,11 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medRxNumView.setText(mDataset.get(position).getRxNum());
         holder.medPharmNameView.setText(mDataset.get(position).getPharmName());
         holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
+        holder.medFreqView.setText(mDataset.get(position).getMedFreq());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
-        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
+        holder.medTaken.setText(mDataset.get(position).getMedTaking());
+        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
+//        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
 
 
     }
