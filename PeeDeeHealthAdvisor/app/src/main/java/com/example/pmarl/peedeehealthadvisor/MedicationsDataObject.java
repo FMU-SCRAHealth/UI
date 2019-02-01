@@ -3,6 +3,7 @@ package com.example.pmarl.peedeehealthadvisor;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,7 +18,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class MedicationsDataObject {
+public class MedicationsDataObject extends AppCompatActivity implements View.OnClickListener {
 
     private String medName;
     private String medDose;
@@ -26,6 +27,7 @@ public class MedicationsDataObject {
     private String medPharmName;
     private String medPharmNum;
     private ImageButton medCall;
+    private View.OnClickListener mOnClickListener;
 
 
 
@@ -38,11 +40,38 @@ public class MedicationsDataObject {
         medRxNum = rxNum;
         medPharmName = pharmName;
         medPharmNum = pharmNum;
+//        medCall = call;
 
 
     }
 
 
+    @Override
+    public void onClick(View v) {
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    String temp = "tel:" + medPharmNum;
+                    intent.setData(Uri.parse(temp));
+                    v.getContext().startActivity(intent);
+                }
+            });
+    }
+
+    public View.OnClickListener createCall() {
+        mOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                String temp = "tel:" + medPharmNum;
+                intent.setData(Uri.parse(temp));
+                v.getContext().startActivity(intent);
+            }
+        };
+
+        return mOnClickListener;
+    }
 
     public String getName() {
         return medName;
@@ -69,7 +98,12 @@ public class MedicationsDataObject {
         return medPharmNum;
     }
 
-    public void setmText1(String medName) {
-        medName = medName;
-    }
+//    public ImageButton getMedCall() {
+//        return medCall;
+//    }
+//
+//    public void setMedCall(ImageButton medCall) {
+//        this.medCall = medCall;
+//    }
+
 }

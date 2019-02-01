@@ -1,5 +1,10 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +21,13 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
 //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<MedicationsDataObject> mDataset;
     private static MyClickListener myClickListener;
+    static String phoneNumber;
+    private Context context;
+
+
+    public MyMedicationRecyclerViewAdapter(Context context) {
+        this.context = context;
+    }
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
@@ -28,6 +40,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         TextView medPharmNumView;
         ImageButton callButton;
 
+
         public DataObjectHolder(View itemView) {
             super(itemView);
             medNameView = (TextView) itemView.findViewById(R.id.medNameCardText);
@@ -36,16 +49,19 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medRxNumView = (TextView) itemView.findViewById(R.id.medRXNumCardText);
             medPharmNameView = (TextView) itemView.findViewById(R.id.medPharmNameCardText);
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
-//            callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
+            callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
 
 //            Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
+
         }
 
         @Override
         public void onClick(View v) {
         }
-    }
+
+    } // end of class
+
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
@@ -74,6 +90,9 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medRxNumView.setText(mDataset.get(position).getRxNum());
         holder.medPharmNameView.setText(mDataset.get(position).getPharmName());
         holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
+        holder.callButton.setOnClickListener(mDataset.get(position).createCall());
+        phoneNumber = mDataset.get(position).getMedPharmNum();
+
 
     }
 
@@ -94,5 +113,6 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
 
     public interface MyClickListener {
         public void onItemClick(int position, View v);
+
     }
 }
