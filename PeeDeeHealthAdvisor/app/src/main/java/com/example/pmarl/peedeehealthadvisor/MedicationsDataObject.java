@@ -120,12 +120,16 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         callClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (medTaking.equals("Yes")){
-                    MainActivity.myDB.updateMedicationData(medName, "No");
-                } else
-                {
-                    MainActivity.myDB.updateMedicationData(medName, "Yes");
-                }
+//                if (medTaking.equals("Yes")){
+//                    medTaking = "No";
+//                    MainActivity.myDB.updateMedicationData(medName, getMedTaking());
+//                } else
+//                {
+//                    medTaking = "Yes";
+//                    MainActivity.myDB.updateMedicationData(medName, getMedTaking());
+//                }
+
+//                v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
 
 
             }
@@ -140,9 +144,11 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    changeBackgroundToPink();
+//                    changeBackgroundToPink();
+                    buttonView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#afdfe3"));
+
                 } else {
-                    changeBackgroundToGrey();
+//                    changeBackgroundToGrey();
                 }
             }
         };
@@ -152,9 +158,9 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
 
     public void changeBackgroundToGrey() {
 
-//        backgroundRel.setBackgroundColor(Color.parseColor("#afdfe3"));
-//        background.setCardBackgroundColor(Color.parseColor("#afdfe3"));
-        MainActivity.myDB.updateMedicationData(medName, medTaking);
+//        getBackground().setCardBackgroundColor(Color.parseColor("#afdfe3"));
+//        getBackgroundRel().setBackgroundColor(Color.parseColor("#afdfe3"));
+//        MainActivity.myDB.updateMedicationData(medName, medTaking);
     }
 
     public void changeBackgroundToPink() {
@@ -204,6 +210,14 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
 
     public void setMedTaking(String medTaking) {
         this.medTaking = medTaking;
+    }
+
+    public CardView getBackground() {
+        return background;
+    }
+
+    public RelativeLayout getBackgroundRel() {
+        return backgroundRel;
     }
 
 }
