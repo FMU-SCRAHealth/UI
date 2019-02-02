@@ -103,8 +103,8 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medFreqView.setText(mDataset.get(position).getMedFreq());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
 //        holder.medTaken.setText(mDataset.get(position).getMedTaking());
-        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
-        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
+//        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
+//        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
 
 
     }
