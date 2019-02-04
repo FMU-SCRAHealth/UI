@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutMedCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -20,6 +21,7 @@
         android:background="@color/BGWhite">
 
         <RelativeLayout
+            android:id="@+id/card_view_background"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/PinkHuesCardBackground">
@@ -32,6 +34,17 @@
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_medicationsintro"
                 />
+
+            <!--<ImageButton-->
+                <!--android:id="@+id/updateTakingButton"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:layout_marginBottom="115dp"-->
+                <!--android:layout_marginEnd="10dp"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:background="@drawable/ic_phonecall"-->
+                <!--/>-->
 
             <ImageButton
                 android:id="@+id/phoneCallButton"
@@ -56,13 +69,23 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/medFreqCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/medNameCardText"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="17dp"/>
+
+            <TextView
                 android:id="@+id/medDoseCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/medNameCardText"
                 android:textSize="25dp"
                 android:textColor="@color/white"
-                android:layout_marginStart="110dp"
+                android:layout_marginStart="100dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -96,7 +119,6 @@
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
-
 
             <TextView
                 android:id="@+id/medRXNumCardText"
@@ -158,52 +180,38 @@
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_below="@+id/medPharmNumCardTextLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textOff="OFF"
-                android:textOn="ON"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:layout_alignParentStart="true"
-                android:text="@string/taking" />
-
-            <!--<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"-->
-                <!--android:layout_width="160dp"-->
+            <!--<TextView-->
+                <!--android:id="@+id/medTakingCardText"-->
+                <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_marginEnd="10dp"-->
+                <!--android:layout_below="@+id/medPharmNumCardText"-->
                 <!--android:textColor="@color/white"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:checkedButton="@+id/currentlyTakingYes">-->
+                <!--android:layout_marginStart="56dp"-->
+                <!--android:layout_marginTop="10dp"/>-->
 
-                <!--<RadioButton android:id="@+id/currentlyTakingYes"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textSize="16sp"-->
-                    <!--android:text="@string/yes"-->
-                    <!--android:textColor="@color/white"-->
-                    <!--android:onClick="onRadioButtonClicked"/>-->
-                <!--<View-->
-                    <!--android:layout_width="1dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="0"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/medTakingCardTextLabel"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/medPharmNumCardText"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:text="@string/taking"-->
+                <!--android:layout_marginStart="6dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_marginTop="9dp"/>-->
 
-                <!--<RadioButton android:id="@+id/femaleToggleProfile"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/no"-->
-                    <!--android:textSize="16sp"-->
-                    <!--android:textColor="@color/white"-->
-                    <!--android:layout_marginEnd="0dp"-->
-                    <!--android:onClick="onRadioButtonClicked"/>-->
-
-            <!--</RadioGroup>-->
+            <!--<Switch-->
+                <!--android:id="@+id/switchTaking"-->
+                <!--android:layout_below="@+id/medPharmNumCardTextLabel"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:theme="@style/SCBSwitch"-->
+                <!--android:layout_marginStart="6dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:text="@string/taking" />-->
 
         </RelativeLayout>
 

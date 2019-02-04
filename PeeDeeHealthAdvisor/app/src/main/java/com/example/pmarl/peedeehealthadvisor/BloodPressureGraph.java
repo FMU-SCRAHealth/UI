@@ -174,7 +174,7 @@ public class BloodPressureGraph extends AppCompatActivity
         systolicSet.setLineWidth(2f);
 
 
-        /*Creatin the diastolic data set and setting different attributes for it*/
+        /*Creating the diastolic data set and setting different attributes for it*/
         LineDataSet diastolicSet = new LineDataSet(diastolic,"Diastolic");
         diastolicSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         diastolicSet.setColor(getResources().getColor(R.color.RedHuesLight));
@@ -188,9 +188,18 @@ public class BloodPressureGraph extends AppCompatActivity
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawAxisLine(true);
-        xAxis.setDrawGridLines(true);
+//        xAxis.setDrawAxisLine(false);
+//        xAxis.setDrawGridLines(false);
         xAxis.setLabelRotationAngle(-90);
+
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setDrawAxisLine(false);
+        yAxisRight.setEnabled(false);
+        yAxisRight.setDrawGridLines(false);
+
+
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setDrawZeroLine(true);
 
 
         /*Creating an array list for your data sets
@@ -204,14 +213,17 @@ public class BloodPressureGraph extends AppCompatActivity
 
 
         /*Setting the data and attributes for the line chart*/
-        lineChart.setDescription("Blood Pressure");
+        lineChart.setDescription("");
         lineChart.setNoDataTextDescription("You need to provide data for the chart.");
         lineChart.setData(data);
         //lineChart.setVisibleXRangeMaximum(30);
+        lineChart.setDrawGridBackground(false);
+        lineChart.setDrawBorders(false);
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
         lineChart.setPinchZoom(true);
+        lineChart.animateXY(1000,1000);
         lineChart.setDoubleTapToZoomEnabled(true);
         lineChart.invalidate();
     }

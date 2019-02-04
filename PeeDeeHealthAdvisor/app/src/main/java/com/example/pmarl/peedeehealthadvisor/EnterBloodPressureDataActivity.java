@@ -119,7 +119,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             public void onClick(View view)
             {
                 TimePickerDialog timePickerDialog =
-                        new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                        new TimePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minuteOfHour) {
                         editTime.setText(hourOfDay + ":" + minuteOfHour);

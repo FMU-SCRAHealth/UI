@@ -82,4 +82,6 @@ public class MyAllergiesRecyclerViewAdapter extends RecyclerView
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }
+
+
 }
