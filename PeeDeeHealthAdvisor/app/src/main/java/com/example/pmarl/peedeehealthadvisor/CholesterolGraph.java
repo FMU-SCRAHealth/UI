@@ -224,6 +224,11 @@ public class CholesterolGraph extends AppCompatActivity
         xAxis.setDrawGridLines(true);
         xAxis.setLabelRotationAngle(-90);
 
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setDrawAxisLine(false);
+        yAxisRight.setEnabled(false);
+        yAxisRight.setDrawGridLines(false);
+
 
         /*Creating an array list for your data sets
          * "A set of sets"*/
@@ -238,13 +243,14 @@ public class CholesterolGraph extends AppCompatActivity
 
 
         /*Setting the data and attributes for the line chart*/
-        lineChart.setDescription("Cholesterol");
+        lineChart.setDescription("");
         lineChart.setNoDataTextDescription("You need to provide data for the chart.");
         lineChart.setData(data);
         lineChart.setVisibleXRangeMaximum(30);
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
+        lineChart.animateXY(1000,1000);
         lineChart.setPinchZoom(true);
         lineChart.setDoubleTapToZoomEnabled(true);
         lineChart.invalidate();
