@@ -59,8 +59,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.6"
-            android:layout_marginTop="15dp">
+            android:layout_weight="1.5"
+            android:layout_marginTop="5dp">
 
             <com.github.mikephil.charting.charts.LineChart
                 android:layout_width="match_parent"
