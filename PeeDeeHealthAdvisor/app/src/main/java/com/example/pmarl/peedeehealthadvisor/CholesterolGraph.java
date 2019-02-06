@@ -256,7 +256,7 @@ public class CholesterolGraph extends AppCompatActivity
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
-        lineChart.animateXY(1000,1000);
+        lineChart.animateXY(1700,0000);
         lineChart.setPinchZoom(true);
         lineChart.setDoubleTapToZoomEnabled(true);
         lineChart.invalidate();

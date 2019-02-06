@@ -26,6 +26,8 @@ public class SearchServiceActivity extends AppCompatActivity
 {
     private ImageButton home;
     private Button search;
+    private ImageButton bloodPressureSearch;
+    boolean clicked = true;
 
 
     @Override
@@ -49,6 +51,25 @@ public class SearchServiceActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 launchSearchActivity();
+            }
+        });
+
+        this.bloodPressureSearch = (ImageButton) findViewById(R.id.bloodPressureTEST1);
+
+        this.bloodPressureSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                clicked = true;
+                if (clicked) {
+                    bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure_checked);
+                    // make method for query call it here
+                    clicked = false;
+                }
+                else if (!clicked) {
+                    bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure);
+                    clicked = true;
+                }
+
             }
         });
 

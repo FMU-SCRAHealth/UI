@@ -225,7 +225,7 @@ public class BloodPressureGraph extends AppCompatActivity
         lineChart.setDragEnabled(false);
         lineChart.setScaleEnabled(false);
         lineChart.setPinchZoom(false);
-        lineChart.animateXY(1000,1000);
+        lineChart.animateXY(1700,0000);
         lineChart.setDoubleTapToZoomEnabled(false);
         lineChart.invalidate();
     }

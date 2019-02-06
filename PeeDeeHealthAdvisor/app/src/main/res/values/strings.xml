@@ -129,6 +129,9 @@
     <string name="selectTimeBelow">Select Time Below</string>
     <string name="selectTime">Select Time</string>
 
+    <string name="radius">Radius</string>
+    <string name="radiusSearch">Enter Radius In Miles</string>
+
 
     <!--String Arrays-->
     <string-array name="distances">
