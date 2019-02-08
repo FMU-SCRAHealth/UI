@@ -56,237 +56,231 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:layout_marginTop="75dp">
-
-            <TextView
-                android:id="@+id/SearchForThese"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/radius"
-                android:textColor="@color/BlueHuesDark"
-                app:layout_constraintTop_toBottomOf="@+id/SearchServiceScreen" />
-
-            <!--<Spinner-->
-                <!--android:id="@+id/radiusSpinner"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="40dp"-->
-                <!--android:visibility="visible"-->
-                <!--android:textColor="@color/GreenHuesMedium"/>-->
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/medNameText"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/medicationNameInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/radiusSearch"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:textColor="@color/colorPrimaryDark" />
-
-            </android.support.design.widget.TextInputLayout>
+            android:layout_marginTop="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_weight="1"
                 android:layout_gravity="center_vertical"
                 >
 
-            <GridLayout
-                android:id="@+id/searchIcons"
-                android:layout_marginTop="80dp"
-                android:layout_marginStart="0dp"
-                android:layout_width="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_height="450dp"
-                android:columnCount="3"
-                android:rowCount="2"
-                android:layout_gravity="center_vertical"
-                >
-
-
-                <ImageButton
-                    android:id="@+id/bloodPressureTEST1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="top"
-                    android:layout_marginBottom="40dp"
+                <GridLayout
+                    android:id="@+id/searchIcons"
+                    android:layout_marginTop="0dp"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="50dp"
-                    android:scaleType="fitCenter"
-                    android:padding="4dp"
-                    android:background="@drawable/ic_blood_pressure"/>
-
-                <ImageButton
-                    android:id="@+id/bloodPressureTEST2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="top"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitCenter"
-                    android:padding="4dp"
-                    android:background="@drawable/ic_blood_sugar"/>
-
-                <ImageButton
-                    android:id="@+id/bloodPressureTEST3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="top"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="50dp"
-                    android:scaleType="fitCenter"
-                    android:padding="4dp"
-                    android:background="@drawable/ic_cholesterol_arrows"/>
-
-                <ImageButton
-                    android:id="@+id/bloodPressureTEST4"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="top"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginStart="0dp"
-                    android:scaleType="fitCenter"
-                    android:padding="4dp"
-                    android:background="@drawable/ic_vaccinations"/>
-
-                <ImageButton
-                    android:id="@+id/bloodPressureTEST5"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="top"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitCenter"
-                    android:padding="4dp"
-                    android:background="@drawable/ic_vaccinations"/>
-
-                <ImageButton
-                    android:id="@+id/bloodPressureTEST6"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="top"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitCenter"
-                    android:padding="4dp"
-                    android:background="@drawable/ic_weight"/>
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_height="380dp"
+                    android:columnCount="3"
+                    android:rowCount="4"
+                    android:layout_gravity="center_vertical"
+                    >
 
 
-            <!--<CheckBox-->
-                <!--android:id="@+id/BloodSugarCheckBox"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginStart="10dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/bloodSugar"-->
-                <!--android:textColor="@color/BlueHuesDark"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />-->
+                    <ImageButton
+                        android:id="@+id/bloodPressureTEST1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="50dp"
+                        android:scaleType="fitCenter"
+                        android:padding="4dp"
+                        android:background="@drawable/ic_blood_pressure"/>
 
-            <!--<CheckBox-->
-                <!--android:id="@+id/BloodPressureCheckBox"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginStart="10dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/bloodPressure"-->
-                <!--android:textColor="@color/BlueHuesDark"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/BloodSugarCheckBox" />-->
+                    <ImageButton
+                        android:id="@+id/bloodSugarSearch"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginStart="3dp"
+                        android:scaleType="fitCenter"
+                        android:padding="4dp"
+                        android:background="@drawable/ic_blood_sugar"/>
 
-            <!--<CheckBox-->
-                <!--android:id="@+id/CholesterolCheckBox"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginStart="10dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/cholesterol"-->
-                <!--android:textColor="@color/BlueHuesDark"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/BloodPressureCheckBox" />-->
+                    <ImageButton
+                        android:id="@+id/cholesterolSearch"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="50dp"
+                        android:scaleType="fitCenter"
+                        android:padding="4dp"
+                        android:background="@drawable/ic_cholesterol_icon"/>
 
-            <!--<CheckBox-->
-                <!--android:id="@+id/FlueShotCheckBox"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginStart="10dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/fluShot"-->
-                <!--android:textColor="@color/BlueHuesDark"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/CholesterolCheckBox" />-->
+                    <TextView
+                        android:id="@+id/SearchBPText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16sp"
+                        android:text="@string/bloodPressure"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/BlueHuesDark"/>
 
-            <!--<CheckBox-->
-                <!--android:id="@+id/ShinglesVaccinationCheckBox"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginStart="10dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/shinglesVaccination"-->
-                <!--android:textColor="@color/BlueHuesDark"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/FlueShotCheckBox" />-->
+                    <TextView
+                        android:id="@+id/SearchBSText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16sp"
+                        android:text="@string/bloodSugar"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/BlueHuesDark"/>
+
+                    <TextView
+                        android:id="@+id/SearchCholesterolText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16sp"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/cholesterol"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/BlueHuesDark"/>
+
+                    <ImageButton
+                        android:id="@+id/fluShotSearch"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginStart="0dp"
+                        android:scaleType="fitCenter"
+                        android:padding="4dp"
+                        android:background="@drawable/ic_vaccinations"/>
+
+                    <ImageButton
+                        android:id="@+id/shinglesSearch"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="3dp"
+                        android:scaleType="fitCenter"
+                        android:padding="4dp"
+                        android:background="@drawable/ic_vaccinations"/>
+
+                    <ImageButton
+                        android:id="@+id/pneumoniaSearch"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="30dp"
+                        android:layout_gravity="top"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="11dp"
+                        android:scaleType="fitCenter"
+                        android:padding="4dp"
+                        android:background="@drawable/ic_vaccinations"/>
+
+                    <TextView
+                        android:id="@+id/SearchFluText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16sp"
+                        android:text="@string/fluShot"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="-9dp"
+                        android:textColor="@color/BlueHuesDark"/>
+
+                    <TextView
+                        android:id="@+id/SearchShingles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16sp"
+                        android:text="@string/tableShingle"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/BlueHuesDark"/>
+
+                    <TextView
+                        android:id="@+id/SearchPneumonia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16sp"
+                        android:text="@string/pneumonia"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="11dp"
+                        android:textColor="@color/BlueHuesDark"/>
 
 
-            <!--&lt;!&ndash;android:textColor="@color/colorPrimaryDark"&ndash;&gt;-->
-            <!--<CheckBox-->
-                <!--android:id="@+id/PneumoniaVaccinationCheckBox"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/pneumoniaVaccination"-->
-                <!--android:textColor="@color/BlueHuesDark"-->
-                <!--android:layout_marginStart="10dp"/>-->
-
-            </GridLayout>
+                </GridLayout>
 
             </RelativeLayout>
 
             <LinearLayout
-                android:paddingLeft="4.0dip"
-                android:paddingTop="5.0dip"
-                android:paddingRight="4.0dip"
-                android:paddingBottom="1.0dip"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-                <Button
-                    android:id="@+id/Search"
-                    android:layout_width="125dp"
-                    android:layout_height="62dp"
-                    android:layout_marginTop="30dp"
-                    android:textSize="15dp"
-                    android:text="@string/search"
-                    android:layout_marginStart="10dp"
-                    android:backgroundTint="@color/BlueHuesLight"
-                    android:background="@drawable/mybutton"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="10dp"/>
+                android:layout_weight="2.5"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                <!--<TextView-->
+                    <!--android:id="@+id/SearchForThese"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:textSize="20sp"-->
+                    <!--android:text="@string/radius"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:textColor="@color/BlueHuesDark"/>-->
+
+                <Spinner
+                    android:id="@+id/radiusSpinner"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    android:textColor="@color/GreenHuesMedium"/>
+
+                <!--<android.support.design.widget.TextInputLayout-->
+                    <!--android:id="@+id/medNameText"-->
+                    <!--android:layout_width="304dp"-->
+                    <!--android:layout_height="wrap_content">-->
+    <!---->
+                    <!--<android.support.design.widget.TextInputEditText-->
+                        <!--android:id="@+id/medicationNameInput"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:gravity="center_horizontal"-->
+                        <!--android:hint="@string/radiusSearch"-->
+                        <!--android:inputType="number"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColor="@color/colorPrimaryDark" />-->
+    <!---->
+                <!--</android.support.design.widget.TextInputLayout>-->
+
+                    <Button
+                        android:id="@+id/Search"
+                        android:layout_width="125dp"
+                        android:layout_height="62dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="15dp"
+                        android:text="@string/search"
+                        android:layout_marginStart="3dp"
+                        android:backgroundTint="@color/BlueHuesLight"
+                        android:background="@drawable/mybutton"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="10dp"/>
 
             </LinearLayout>
 

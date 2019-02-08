@@ -102,6 +102,7 @@
     <string name="TRIG2">TRIG:</string>
     <string name="LDL2">LDL:</string>
     <string name="lbs">lbs</string>
+    <string name="pneumonia">Pneumonia</string>
 
     <!--Medication Strings-->
     <string name="medication">Medication</string>
@@ -135,7 +136,7 @@
 
     <!--String Arrays-->
     <string-array name="distances">
-        <item>Radius</item>
+        <item>Select Radius</item>
         <item>10 Miles</item>
         <item>25 Miles</item>
         <item>50 Miles</item>

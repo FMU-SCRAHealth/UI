@@ -156,7 +156,7 @@ public class BodyWeightGraph extends AppCompatActivity
         weightSet.setValueTextSize(0f);
         weightSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
         weightSet.setCircleRadius(8f);
-        weightSet.setCircleColor(getResources().getColor(R.color.RedHuesLight));
+        weightSet.setCircleColor(getResources().getColor(R.color.BodyWeightHuesDark));
         weightSet.setLineWidth(5f);
 
 
