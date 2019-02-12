@@ -65,7 +65,7 @@ public class BloodPressureGraph extends AppCompatActivity
 
         // finding the graph by element id.
         lineChart =  findViewById(R.id.lineGraph);
-
+        // for landscape version have to duplicate code with different name and settings
         /*Creating a cursor, which is a table that stores the data from
         * the sql query*/
         Cursor cursor = MainActivity.myDB.readBloodPressure();
@@ -167,22 +167,22 @@ public class BloodPressureGraph extends AppCompatActivity
         LineDataSet systolicSet = new LineDataSet(systolic,"Systolic");
         systolicSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         systolicSet.setColor(getResources().getColor(R.color.RedHuesDark));
-        systolicSet.setValueTextSize(13f);
+        systolicSet.setValueTextSize(0f);
         systolicSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        systolicSet.setCircleRadius(4f);
+        systolicSet.setCircleRadius(8f);
         systolicSet.setCircleColor(getResources().getColor(R.color.RedHuesLight));
-        systolicSet.setLineWidth(2f);
+        systolicSet.setLineWidth(5f);
 
 
         /*Creating the diastolic data set and setting different attributes for it*/
         LineDataSet diastolicSet = new LineDataSet(diastolic,"Diastolic");
         diastolicSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         diastolicSet.setColor(getResources().getColor(R.color.RedHuesLight));
-        diastolicSet.setValueTextSize(13f);
+        diastolicSet.setValueTextSize(0f);
         diastolicSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        diastolicSet.setCircleRadius(4f);
+        diastolicSet.setCircleRadius(8f);
         diastolicSet.setCircleColor(getResources().getColor(R.color.RedHuesDark));
-        diastolicSet.setLineWidth(2f);
+        diastolicSet.setLineWidth(5f);
         diastolicSet.enableDashedLine(10f,5f,0f);
 
 
@@ -190,6 +190,7 @@ public class BloodPressureGraph extends AppCompatActivity
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 //        xAxis.setDrawAxisLine(false);
 //        xAxis.setDrawGridLines(false);
+        xAxis.setEnabled(false); // turns off bottom and lines
         xAxis.setLabelRotationAngle(-90);
 
         YAxis yAxisRight = lineChart.getAxisRight();
@@ -200,6 +201,7 @@ public class BloodPressureGraph extends AppCompatActivity
 
         YAxis yAxisLeft = lineChart.getAxisLeft();
         yAxisLeft.setDrawZeroLine(true);
+        yAxisLeft.setEnabled(false);
 
 
         /*Creating an array list for your data sets
@@ -220,11 +222,11 @@ public class BloodPressureGraph extends AppCompatActivity
         lineChart.setDrawGridBackground(false);
         lineChart.setDrawBorders(false);
         lineChart.setTouchEnabled(true);
-        lineChart.setDragEnabled(true);
-        lineChart.setScaleEnabled(true);
-        lineChart.setPinchZoom(true);
-        lineChart.animateXY(1000,1000);
-        lineChart.setDoubleTapToZoomEnabled(true);
+        lineChart.setDragEnabled(false);
+        lineChart.setScaleEnabled(false);
+        lineChart.setPinchZoom(false);
+        lineChart.animateXY(1700,0000);
+        lineChart.setDoubleTapToZoomEnabled(false);
         lineChart.invalidate();
     }
 

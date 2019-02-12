@@ -157,18 +157,19 @@ public class BloodSugarGraph extends AppCompatActivity
         LineDataSet bloodSugarSet = new LineDataSet(bloodSugar,"Blood Sugar");
         bloodSugarSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         bloodSugarSet.setColor(getResources().getColor(R.color.PurpleHuesDark));
-        bloodSugarSet.setValueTextSize(13f);
+        bloodSugarSet.setValueTextSize(0f);
         bloodSugarSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        bloodSugarSet.setCircleRadius(4f);
+        bloodSugarSet.setCircleRadius(8f);
         bloodSugarSet.setCircleColor(getResources().getColor(R.color.PurpleHuesLight));
-        bloodSugarSet.setLineWidth(2f);
+        bloodSugarSet.setLineWidth(5f);
 
 
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawAxisLine(true);
-        xAxis.setDrawGridLines(true);
+//        xAxis.setDrawAxisLine(false);
+//        xAxis.setDrawGridLines(false);
+        xAxis.setEnabled(false); // turns off bottom and lines
         xAxis.setLabelRotationAngle(-90);
 
         YAxis yAxisRight = lineChart.getAxisRight();
@@ -176,6 +177,10 @@ public class BloodSugarGraph extends AppCompatActivity
         yAxisRight.setEnabled(false);
         yAxisRight.setDrawGridLines(false);
 
+
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setDrawZeroLine(true);
+        yAxisLeft.setEnabled(false);
 
         /*Creating an array list for your data sets
          * "A set of sets"*/
@@ -194,7 +199,7 @@ public class BloodSugarGraph extends AppCompatActivity
         lineChart.setVisibleXRangeMaximum(30);
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
-        lineChart.animateXY(1000,1000);
+        lineChart.animateXY(1700,0000);
         lineChart.setScaleEnabled(true);
         lineChart.setPinchZoom(true);
         lineChart.setDoubleTapToZoomEnabled(true);

@@ -153,11 +153,11 @@ public class BodyWeightGraph extends AppCompatActivity
         LineDataSet weightSet = new LineDataSet(weight,"Weight");
         weightSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         weightSet.setColor(getResources().getColor(R.color.BodyWeightHuesDark));
-        weightSet.setValueTextSize(13f);
+        weightSet.setValueTextSize(0f);
         weightSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        weightSet.setCircleRadius(4f);
-        weightSet.setCircleColor(getResources().getColor(R.color.RedHuesLight));
-        weightSet.setLineWidth(2f);
+        weightSet.setCircleRadius(8f);
+        weightSet.setCircleColor(getResources().getColor(R.color.BodyWeightHuesDark));
+        weightSet.setLineWidth(5f);
 
 
 
@@ -165,8 +165,9 @@ public class BodyWeightGraph extends AppCompatActivity
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawAxisLine(true);
-        xAxis.setDrawGridLines(true);
+//        xAxis.setDrawAxisLine(false);
+//        xAxis.setDrawGridLines(false);
+        xAxis.setEnabled(false); // turns off bottom and lines
         xAxis.setLabelRotationAngle(-90);
 
         YAxis yAxisRight = lineChart.getAxisRight();
@@ -174,6 +175,10 @@ public class BodyWeightGraph extends AppCompatActivity
         yAxisRight.setEnabled(false);
         yAxisRight.setDrawGridLines(false);
 
+
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setDrawZeroLine(true);
+        yAxisLeft.setEnabled(false);
 
         /*Creating an array list for your data sets
          * "A set of sets"*/
@@ -193,7 +198,7 @@ public class BodyWeightGraph extends AppCompatActivity
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
-        lineChart.animateXY(1000,1000);
+        lineChart.animateXY(1700,0000);
         lineChart.setPinchZoom(true);
         lineChart.setDoubleTapToZoomEnabled(true);
         lineChart.invalidate();

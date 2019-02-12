@@ -176,22 +176,22 @@ public class CholesterolGraph extends AppCompatActivity
         LineDataSet hdlSet = new LineDataSet(hdl,"HDL");
         hdlSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         hdlSet.setColor(getResources().getColor(R.color.YellowHuesDark));
-        hdlSet.setValueTextSize(13f);
+        hdlSet.setValueTextSize(0f);
         hdlSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        hdlSet.setCircleRadius(4f);
+        hdlSet.setCircleRadius(8f);
         hdlSet.setCircleColor(getResources().getColor(R.color.YellowHuesDark));
-        hdlSet.setLineWidth(2f);
+        hdlSet.setLineWidth(5f);
 
 
         /*Creating the ldl data set and setting different attributes for it*/
         LineDataSet ldlSet = new LineDataSet(ldl,"LDL");
         ldlSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         ldlSet.setColor(getResources().getColor(R.color.YellowHuesLight));
-        ldlSet.setValueTextSize(13f);
+        ldlSet.setValueTextSize(0f);
         ldlSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        ldlSet.setCircleRadius(4f);
+        ldlSet.setCircleRadius(8f);
         ldlSet.setCircleColor(getResources().getColor(R.color.YellowHuesDark));
-        ldlSet.setLineWidth(2f);
+        ldlSet.setLineWidth(5f);
         ldlSet.enableDashedLine(10f,5f,0f);
 
 
@@ -199,35 +199,41 @@ public class CholesterolGraph extends AppCompatActivity
         LineDataSet trigSet = new LineDataSet(trig,"TRIG");
         trigSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         trigSet.setColor(getResources().getColor(R.color.YellowHuesDark));
-        trigSet.setValueTextSize(13f);
+        trigSet.setValueTextSize(0f);
         trigSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        trigSet.setCircleRadius(4f);
+        trigSet.setCircleRadius(8f);
         trigSet.setCircleColor(getResources().getColor(R.color.YellowHuesLight));
-        trigSet.setLineWidth(2f);
+        trigSet.setLineWidth(5f);
         trigSet.enableDashedLine(10f,5f,0f);
 
         /*Creating the tc data set and setting different attributes for it*/
         LineDataSet tcSet = new LineDataSet(tc,"TC");
         tcSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         tcSet.setColor(getResources().getColor(R.color.YellowHuesLight));
-        tcSet.setValueTextSize(13f);
+        tcSet.setValueTextSize(0f);
         tcSet.setDrawCubic(true);//Allows for curved lines instead of linear lines
-        tcSet.setCircleRadius(4f);
+        tcSet.setCircleRadius(8f);
         tcSet.setCircleColor(getResources().getColor(R.color.YellowHuesDark));
-        tcSet.setLineWidth(2f);
+        tcSet.setLineWidth(5f);
 
 
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawAxisLine(true);
-        xAxis.setDrawGridLines(true);
+//        xAxis.setDrawAxisLine(false);
+//        xAxis.setDrawGridLines(false);
+        xAxis.setEnabled(false); // turns off bottom and lines
         xAxis.setLabelRotationAngle(-90);
 
         YAxis yAxisRight = lineChart.getAxisRight();
         yAxisRight.setDrawAxisLine(false);
         yAxisRight.setEnabled(false);
         yAxisRight.setDrawGridLines(false);
+
+
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setDrawZeroLine(true);
+        yAxisLeft.setEnabled(false);
 
 
         /*Creating an array list for your data sets
@@ -250,7 +256,7 @@ public class CholesterolGraph extends AppCompatActivity
         lineChart.setTouchEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(true);
-        lineChart.animateXY(1000,1000);
+        lineChart.animateXY(1700,0000);
         lineChart.setPinchZoom(true);
         lineChart.setDoubleTapToZoomEnabled(true);
         lineChart.invalidate();
