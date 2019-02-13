@@ -105,7 +105,7 @@
     <string name="pneumonia">Pneumonia</string>
 
     <!--Medication Strings-->
-    <string name="medication">Medication</string>
+    <string name="medication">Medications</string>
     <string name="medName">Medication Name</string>
 
     <string name="medDoseOne">Dosage</string>

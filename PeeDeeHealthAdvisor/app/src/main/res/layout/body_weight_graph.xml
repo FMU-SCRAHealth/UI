@@ -49,7 +49,7 @@
                 android:text="@string/bodyWeightGraph"
                 android:textColor="@color/BodyWeightHuesDark"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="6dp"
                 android:layout_marginTop="5dp"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -88,6 +88,12 @@
                 />
         </RelativeLayout>
 
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/lineGraphWeightLand">
+
+        </com.github.mikephil.charting.charts.LineChart>
 
 
     </LinearLayout>

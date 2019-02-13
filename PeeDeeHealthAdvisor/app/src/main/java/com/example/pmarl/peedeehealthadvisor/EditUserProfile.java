@@ -177,7 +177,7 @@ public class EditUserProfile extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        launchHomeScreenActivity();
+        launchUserActivity();
     }
 
     public void onRadioButtonClicked(View view) {
@@ -213,6 +213,15 @@ public class EditUserProfile extends AppCompatActivity
     private void launchHomeScreenActivity()
     {
         Intent intent = new Intent (this, AppSwitcher.class);
+        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+
+    }
+
+    private void launchUserActivity()
+    {
+        Intent intent = new Intent (this, UserProfile.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

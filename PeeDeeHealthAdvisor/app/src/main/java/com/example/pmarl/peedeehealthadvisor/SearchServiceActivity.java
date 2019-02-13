@@ -63,7 +63,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         }
 
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Locations?user=testuser&password=secrepwd");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Locations");
 //            PreparedStatement statement =  con.prepareStatement("CALL build_table_nearest_resources(34.205035, -79.895093, 7");
 //            ResultSet result = statement.executeQuery();
         } catch (SQLException e) {

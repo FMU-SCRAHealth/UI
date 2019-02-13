@@ -32,12 +32,12 @@
 
             <TextView
                 android:id="@+id/cholesterolTitle"
-                android:layout_width="175dp"
+                android:layout_width="160dp"
                 android:layout_height="75dp"
                 android:text="@string/cholesterol"
                 android:textColor="@color/YellowHuesLight"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="0dp"
+                android:layout_marginEnd="11dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"/>

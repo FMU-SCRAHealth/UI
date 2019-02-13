@@ -43,6 +43,7 @@ import java.util.TreeMap;
 public class BloodSugarGraph extends AppCompatActivity
 {
     LineChart lineChart;
+    LineChart lineChartLand;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -66,6 +67,7 @@ public class BloodSugarGraph extends AppCompatActivity
 
         // finding the graph by element id.
         lineChart =  findViewById(R.id.lineGraph);
+        lineChartLand =  findViewById(R.id.lineGraphBSLand);
 
         /*Creating a cursor, which is a table that stores the data from
          * the sql query*/
@@ -164,7 +166,7 @@ public class BloodSugarGraph extends AppCompatActivity
         bloodSugarSet.setLineWidth(5f);
 
 
-
+        // vertical graph
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 //        xAxis.setDrawAxisLine(false);
@@ -172,15 +174,33 @@ public class BloodSugarGraph extends AppCompatActivity
         xAxis.setEnabled(false); // turns off bottom and lines
         xAxis.setLabelRotationAngle(-90);
 
+        // landscape graph
+        XAxis xAxisLand = lineChartLand.getXAxis();
+        xAxisLand.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxisLand.setEnabled(true);
+        xAxisLand.setLabelRotationAngle(-90);
+
+        // vertical graph
         YAxis yAxisRight = lineChart.getAxisRight();
         yAxisRight.setDrawAxisLine(false);
         yAxisRight.setEnabled(false);
         yAxisRight.setDrawGridLines(false);
 
+        // landscape graph
+        YAxis yAxisRightLand = lineChartLand.getAxisRight();
+        yAxisRightLand.setDrawAxisLine(false);
+        yAxisRightLand.setEnabled(false);
+        yAxisRightLand.setDrawGridLines(false);
 
+        // vertical graph
         YAxis yAxisLeft = lineChart.getAxisLeft();
         yAxisLeft.setDrawZeroLine(true);
         yAxisLeft.setEnabled(false);
+
+        // landscape graph
+        YAxis yAxisLeftLand = lineChartLand.getAxisLeft();
+        yAxisLeftLand.setDrawZeroLine(true);
+        yAxisLeftLand.setEnabled(true);
 
         /*Creating an array list for your data sets
          * "A set of sets"*/
@@ -204,6 +224,20 @@ public class BloodSugarGraph extends AppCompatActivity
         lineChart.setPinchZoom(true);
         lineChart.setDoubleTapToZoomEnabled(true);
         lineChart.invalidate();
+
+        lineChartLand.setDescription("");
+        lineChartLand.setNoDataTextDescription("You need to provide data for the chart.");
+        lineChartLand.setData(data);
+        lineChartLand.setVisibleXRangeMaximum(29);
+        lineChartLand.setDrawGridBackground(false);
+        lineChartLand.setDrawBorders(false);
+        lineChartLand.setTouchEnabled(true);
+        lineChartLand.setDragEnabled(true);
+        lineChartLand.setScaleEnabled(false);
+        lineChartLand.setPinchZoom(false);
+        lineChartLand.animateXY(1700,0000);
+        lineChartLand.setDoubleTapToZoomEnabled(false);
+        lineChartLand.invalidate();
     }
 
     @Override
