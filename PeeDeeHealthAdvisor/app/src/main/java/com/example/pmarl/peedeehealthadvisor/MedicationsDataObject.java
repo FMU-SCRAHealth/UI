@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -38,6 +39,7 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
     private ImageButton medCall;
     private Switch mySwitch;
     private View.OnClickListener callClickListener;
+    private View.OnClickListener listenerClickListener;
     private Switch.OnCheckedChangeListener usingSwitchListener;
     private CardView background;
     private RelativeLayout backgroundRel;
@@ -80,6 +82,9 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
 
 
 
+
+
+
     // this satisfies the interface
     @Override
     public void onClick(View v) {
@@ -117,50 +122,52 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
     }
 
     public View.OnClickListener updateTaken() {
-        callClickListener = new View.OnClickListener() {
+        listenerClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (medTaking.equals("Yes")){
-//                    medTaking = "No";
-//                    MainActivity.myDB.updateMedicationData(medName, getMedTaking());
-//                } else
-//                {
-//                    medTaking = "Yes";
-//                    MainActivity.myDB.updateMedicationData(medName, getMedTaking());
-//                }
-
-//                v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
-
-
-            }
-        };
-
-        return callClickListener;
-    }
-
-
-    public CompoundButton.OnCheckedChangeListener createSwitch() {
-        usingSwitchListener = new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-//                    changeBackgroundToPink();
-                    buttonView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#afdfe3"));
-
-                } else {
-//                    changeBackgroundToGrey();
+                if (medTaking.equals("Yes")){
+                    medTaking = "No";
+                    v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
+                } else
+                {
+                    medTaking = "Yes";
+                    v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
                 }
+
+                v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
+
+
             }
         };
 
-        return usingSwitchListener;
+        return listenerClickListener;
     }
+
+
+//    public CompoundButton.OnCheckedChangeListener createSwitch() {
+//        usingSwitchListener = new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+////                    changeBackgroundToPink();
+//                    buttonView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#afdfe3"));
+//
+//                } else {
+////                    changeBackgroundToGrey();
+//                }
+//
+//
+//            }
+//        };
+//
+//        return usingSwitchListener;
+//    }
 
     public void changeBackgroundToGrey() {
 
-//        getBackground().setCardBackgroundColor(Color.parseColor("#afdfe3"));
-//        getBackgroundRel().setBackgroundColor(Color.parseColor("#afdfe3"));
-//        MainActivity.myDB.updateMedicationData(medName, medTaking);
+        getBackground().setCardBackgroundColor(Color.parseColor("#afdfe3"));
+        getBackgroundRel().setBackgroundColor(Color.parseColor("#afdfe3"));
+        MainActivity.myDB.updateMedicationData(medName, medTaking);
     }
 
     public void changeBackgroundToPink() {
@@ -169,6 +176,8 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
 //        MainActivity.myDB.updateMedicationData(medName, medTaking);
 
     }
+
+
 
 
     public String getName() {

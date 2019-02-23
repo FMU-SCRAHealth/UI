@@ -58,9 +58,9 @@ public class SliderAdapter extends PagerAdapter {
                 "Enter your blood sugar numbers.",
                 "Enter your cholesterol numbers.",
                 "Enter your vaccination dates.",
-                "Enter your body weight.",
-                "Enter your allergies. ",
-                "Enter your medications.",
+                "   Enter your body weight.",
+                "   Enter your allergies. ",
+                "  Enter your medications.",
                 "Find your local health resources!",
                 "Let's get started by clicking the button below!"
 

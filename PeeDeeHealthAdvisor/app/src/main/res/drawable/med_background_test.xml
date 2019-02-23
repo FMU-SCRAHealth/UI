@@ -3,12 +3,9 @@
 
     <corners android:radius="0dip" />
     <gradient
-        android:angle="-90"
-        android:startColor="@color/PinkHuesCardBackground"
-        android:centerColor="@color/BGWhite"
-        android:endColor="@color/PinkHuesCardBackground"
-        android:bottomLeftRadius="0dp"
-        android:bottomRightRadius="0dp"
-        android:topLeftRadius="0dp"
-        android:topRightRadius="0dp"/>
+        android:angle="90"
+        android:startColor="@color/PinkHuesDark"
+
+        android:endColor="@color/PinkHuesDark"
+        android:type="linear" />
 </shape>
