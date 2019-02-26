@@ -14,12 +14,19 @@ package com.example.pmarl.peedeehealthadvisor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import android.widget.Toast;
 
 public class SearchServiceActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
@@ -47,6 +54,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_search_service);
+
 
         this.home = (ImageButton) findViewById(R.id.Home);
 

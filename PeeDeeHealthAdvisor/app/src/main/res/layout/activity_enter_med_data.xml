@@ -21,7 +21,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <ImageButton
                 android:id="@+id/Home"
@@ -33,12 +34,12 @@
 
             <TextView
                 android:id="@+id/MyHealthGraph"
-                android:layout_width="165dp"
+                android:layout_width="170dp"
                 android:layout_height="75dp"
                 android:text="@string/medication"
                 android:textColor="@color/PinkHuesDark"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="14dp"
                 android:layout_marginTop="5dp"
                 android:textSize="30sp"
                 android:textStyle="bold" />

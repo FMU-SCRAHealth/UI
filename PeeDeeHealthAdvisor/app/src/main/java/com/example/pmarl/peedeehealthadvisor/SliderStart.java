@@ -65,7 +65,7 @@ public class SliderStart extends AppCompatActivity {
             }
 
             if(mDots.length > 0) {
-                mDots[position].setTextColor(getResources().getColor(R.color.GreenHuesDark));
+                mDots[position].setTextColor(getResources().getColor(R.color.GreenHuesMedium));
             }
         }
 

@@ -44,12 +44,12 @@
 
             <TextView
                 android:id="@+id/MyHealthGraph"
-                android:layout_width="180dp"
+                android:layout_width="170dp"
                 android:layout_height="75dp"
                 android:text="@string/bloodSugarGraph"
                 android:textColor="@color/PurpleHuesDark"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginTop="5dp"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -87,6 +87,13 @@
                 android:background="@color/BGWhite"
                 />
         </RelativeLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/lineGraphBSLand">
+
+        </com.github.mikephil.charting.charts.LineChart>
 
     </LinearLayout>
 

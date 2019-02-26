@@ -9,6 +9,8 @@
     Execution:
 
     Description of Execution:
+
+    CAN BE DELETED!
 -->
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,7 +52,7 @@
                 android:text="@string/vaccinationGraph"
                 android:textColor="@color/GreenHuesMedium"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="7dp"
                 android:layout_marginTop="5dp"
                 android:textSize="30sp"
                 android:textStyle="bold" />

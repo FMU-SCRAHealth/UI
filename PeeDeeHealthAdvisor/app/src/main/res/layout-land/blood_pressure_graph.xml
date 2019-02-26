@@ -58,14 +58,17 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="50dp">
 
             <com.github.mikephil.charting.charts.LineChart
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:id="@+id/lineGraph">
+                android:paddingStart="50dp"
+                android:paddingEnd="50dp"
+                android:id="@+id/lineGraphBPLand">
 
             </com.github.mikephil.charting.charts.LineChart>
 
@@ -73,7 +76,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="10"
             android:layout_marginTop="0dp">
 
@@ -82,7 +85,7 @@
                 android:id="@+id/my_recycler_view_blood_pressure"
                 android:layout_width="match_parent"
                 android:layout_marginTop="15dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:scrollbars="vertical"
                 android:background="@color/BGWhite"
                 />
@@ -130,6 +133,12 @@
                 <!--android:layout_weight="1"/>-->
 
         <!--</LinearLayout>-->
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/lineGraph">
+        </com.github.mikephil.charting.charts.LineChart>
 
     </LinearLayout>
 
