@@ -55,23 +55,6 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_search_service);
 
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            // this makes it talk to it but link failure
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Locations?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT", "root", "");
-//            PreparedStatement statement =  con.prepareStatement("CALL build_table_nearest_resources(34.205035, -79.895093, 7");
-//            ResultSet result = statement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
 
         this.home = (ImageButton) findViewById(R.id.Home);
 
