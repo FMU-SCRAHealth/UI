@@ -32,6 +32,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import android.widget.Toast;
 
@@ -101,25 +102,25 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 //        DatabaseReference myRef = database.getReference("message");
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-//         Create a new user with a first and last name EXAMPLE FOR ADDING
-        Map<String, Object> locations = new HashMap<>();
-        locations.put("city", city);
-        locations.put("latitude", latitude);
-        locations.put("longitude", longitude);
-        locations.put("phone", phone);
-        locations.put("scheduleMonFri", scheduleMonFri);
-        locations.put("scheduleSat", scheduleSat);
-        locations.put("scheduleSun", scheduleSun);
-        locations.put("serviceBloodPressure", serviceBloodPressure);
-        locations.put("serviceBloodSugar", serviceBloodSugar);
-        locations.put("serviceCholesterol", serviceCholesterol);
-        locations.put("serviceFlu", serviceFlu);
-        locations.put("servicePneumonia", servicePneumonia);
-        locations.put("serviceShingles", serviceShingles);
-        locations.put("state", state);
-        locations.put("streetAddress", streetAddress);
-        locations.put("url", url);
-        locations.put("zip", zip);
+//      Create a new user with a first and last name EXAMPLE FOR ADDING
+//        Map<String, Object> locations = new TreeMap<>();
+//        locations.put("city", city);
+//        locations.put("latitude", latitude);
+//        locations.put("longitude", longitude);
+//        locations.put("phone", phone);
+//        locations.put("scheduleMonFri", scheduleMonFri);
+//        locations.put("scheduleSat", scheduleSat);
+//        locations.put("scheduleSun", scheduleSun);
+//        locations.put("serviceBloodPressure", serviceBloodPressure);
+//        locations.put("serviceBloodSugar", serviceBloodSugar);
+//        locations.put("serviceCholesterol", serviceCholesterol);
+//        locations.put("serviceFlu", serviceFlu);
+//        locations.put("servicePneumonia", servicePneumonia);
+//        locations.put("serviceShingles", serviceShingles);
+//        locations.put("state", state);
+//        locations.put("streetAddress", streetAddress);
+//        locations.put("url", url);
+//        locations.put("zip", zip);
 
 
 
@@ -150,10 +151,10 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                               String address = document.getString("streetAddress");
+                               streetAddress = document.getString("streetAddress");
 
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                Log.d(TAG, address);
+                                Log.d(TAG, streetAddress);
                                 document.getString("city");
 
                                 Log.d(TAG, "City: " + document.getString("city"));
