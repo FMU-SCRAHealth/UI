@@ -50,6 +50,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 
 public class SearchLocationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -123,7 +124,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyAllergiesRecyclerViewAdapter(results); // make sure to change this up copied
+        mAdapter = new MySearchResultRecyclerViewAdapter(results); // make sure to change this up copied
         mRecyclerView.setAdapter(mAdapter);
 
 

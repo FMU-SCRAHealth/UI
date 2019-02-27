@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,12 +19,16 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 public class SearchServiceDataObject {
 
     String name;
     String address;
     String phone;
     String schedule;
+    private View.OnClickListener callClickListener;
+    private View.OnClickListener listenerClickListener;
 
     double distance;
 //    boolean serviceBloodPressure;
@@ -36,25 +41,24 @@ public class SearchServiceDataObject {
     String url;
 
 
-    SearchServiceDataObject(String name, String address, double distance, String phone, String schedule, String services, String url) {
-        this.name = name;
-        this.address = address;
-        this.distance = distance;
-        this.phone = phone;
-        this.schedule = schedule;
-        this.services = services;
-        this.address = address;
-        this.url = url;
+
+    SearchServiceDataObject(String locationName, String searchAddress, double searchDistance, String searchPhone, String searchSchedule, String searchServices, String searchUrl) {
+        name = locationName;
+        address = searchAddress;
+        distance = searchDistance;
+        phone = searchPhone;
+        schedule = searchSchedule;
+        services = searchServices;
+        address = searchAddress;
+        url = searchUrl;
 
     }
+
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
 //    public double getLatitude() {
 //        return latitude;
@@ -72,53 +76,51 @@ public class SearchServiceDataObject {
 //        this.longitude = longitude;
 //    }
 
+    public View.OnClickListener createCall() {
+        callClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                String temp = "tel:" + phone;
+                intent.setData(Uri.parse(temp));
+                v.getContext().startActivity(intent);
+            }
+        };
+
+        return callClickListener;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+
 
     public double getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
+
 
     public String getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
-    }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     public String getServices() {
         return services;
     }
 
-    public void setServices(String services) {
-        this.services = services;
-    }
 
 
 
