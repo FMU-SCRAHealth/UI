@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SearchServiceActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
@@ -65,6 +66,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         myRef.setValue("Hello, World!");
 
