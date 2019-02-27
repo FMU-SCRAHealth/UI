@@ -126,6 +126,14 @@
     <string name="medPharmName">Pharmacy: </string>
     <string name="medPhoneNum">Phone:</string>
 
+
+    <string name="searchResult">Location: </string>
+    <string name="searchService">Services: </string>
+    <string name="searchPhone">Phone:</string>
+    <string name="searchAddress">Address: </string>
+    <string name="hours">Hours: </string>
+    <string name="website">Website: </string>
+
     <!--editTime Strings-->
     <string name="selectTimeBelow">Select Time Below</string>
     <string name="selectTime">Select Time</string>
