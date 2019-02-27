@@ -11,13 +11,17 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +36,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.Manifest;
+import android.support.v4.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -75,6 +81,20 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
         //Sets the layout to the activity_search_location layout
         setContentView(R.layout.activity_card_view_search_services);
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED) {
+        } else {
+//            Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(this, new String[] {
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION },
+                    0);
+//            launchPrevActivity();
+
+        }
 
 
 
@@ -138,6 +158,17 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                try {
+                                    LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                                    Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                                    longitudeGPS = locationGPS.getLongitude();
+                                    latitudeGPS = locationGPS.getLatitude();
+                                    Location locationService = new Location("");
+
+
+
+                                String name = document.getId();
                                 String city = document.getString("city");
                                 double latitude = document.getGeoPoint("latitude").getLatitude();
                                 double longitude = document.getGeoPoint("latitude").getLongitude();
@@ -150,6 +181,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 String fluShot = "";
                                 String pneumonia = "";
                                 String shingles = "";
+                                locationService.setLatitude(latitude);
+                                locationService.setLongitude(longitude);
 
                                 if (dayOfWeek == 7 ) {
                                     schedule = document.getString("scheduleSat");
@@ -190,19 +223,25 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 String streetAddress = document.getString("streetAddress");
                                 String url = document.getString("url");
                                 String zip = document.getString("zip");
-                                double distance = 7;
+                                double distance = locationGPS.distanceTo(locationService)/1000;
 
                                 String address = streetAddress + ", " + city + ", " + state + ", " + zip;
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, name);
                                 Log.d(TAG, address);
                                 Log.d(TAG, schedule);
                                 Log.d(TAG, services);
+                                Log.d(TAG, String.valueOf(distance));
 //                                document.getString("city");
 
 //                                Log.d(TAG, "City: " + document.getString("city"));
 
-                                SearchServiceDataObject resultsObject = new SearchServiceDataObject(address, distance, phone, schedule, services, url);
+                                SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url);
                                 results.add(resultsObject);
+
+                                } catch (SecurityException e) {
+                                    e.printStackTrace();
+                                }
                             }
 
                         } else {

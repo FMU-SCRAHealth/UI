@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 public class SearchServiceDataObject {
 
+    String name;
     String address;
     String phone;
     String schedule;
@@ -35,7 +36,8 @@ public class SearchServiceDataObject {
     String url;
 
 
-    SearchServiceDataObject(String address, double distance, String phone, String schedule, String services, String url) {
+    SearchServiceDataObject(String name, String address, double distance, String phone, String schedule, String services, String url) {
+        this.name = name;
         this.address = address;
         this.distance = distance;
         this.phone = phone;
@@ -69,6 +71,14 @@ public class SearchServiceDataObject {
 //    public void setLongitude(double longitude) {
 //        this.longitude = longitude;
 //    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPhone() {
         return phone;

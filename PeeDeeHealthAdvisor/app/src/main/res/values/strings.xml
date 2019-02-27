@@ -131,8 +131,9 @@
     <string name="searchService">Services: </string>
     <string name="searchPhone">Phone:</string>
     <string name="searchAddress">Address: </string>
-    <string name="hours">Hours: </string>
-    <string name="website">Website: </string>
+    <string name="searchHours">Hours: </string>
+    <string name="searchWebsite">Website: </string>
+    <string name="searchDistance">Distance: </string>
 
     <!--editTime Strings-->
     <string name="selectTimeBelow">Select Time Below</string>

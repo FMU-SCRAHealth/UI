@@ -58,7 +58,7 @@
                 />
 
             <TextView
-                android:id="@+id/medNameCardText"
+                android:id="@+id/locationNameCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -68,132 +68,132 @@
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/medFreqCardText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/medNameCardText"
-                android:textSize="20dp"
-                android:textColor="@color/white"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="17dp"/>
+            <!--<TextView-->
+                <!--android:id="@+id/medFreqCardText"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/medNameCardText"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:layout_marginStart="200dp"-->
+                <!--android:layout_marginTop="17dp"/>-->
 
             <TextView
-                android:id="@+id/medDoseCardText"
+                android:id="@+id/searchDistanceCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medNameCardText"
+                android:layout_below="@+id/locationNameCardText"
                 android:textSize="25dp"
                 android:textColor="@color/white"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/medDoseCardTextLabel"
+                android:id="@+id/searchDistanceCardTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medNameCardText"
+                android:layout_below="@+id/locationNameCardText"
                 android:textColor="@color/white"
-                android:text="@string/searchService"
+                android:text="@string/searchDistance"
                 android:textSize="25dp"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
             <TextView
-                android:id="@+id/medDeliveryCardText"
+                android:id="@+id/searchHoursCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medDoseCardText"
+                android:layout_below="@+id/searchDistanceCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="66dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/medDeliveryCardTextLabel"
+                android:id="@+id/searchHoursCardTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medDoseCardText"
+                android:layout_below="@+id/searchDistanceCardText"
                 android:textColor="@color/white"
-                android:text="@string/hours"
+                android:text="@string/searchHours"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
             <TextView
-                android:id="@+id/medRXNumCardText"
+                android:id="@+id/searchServicesCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medDeliveryCardText"
+                android:layout_below="@+id/searchHoursCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="89dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/medRXNumCardTextLabel"
+                android:id="@+id/searchServicesCardTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medDeliveryCardText"
+                android:layout_below="@+id/searchHoursCardText"
                 android:textColor="@color/white"
-                android:text="@string/medRxNum"
+                android:text="@string/searchService"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
             <TextView
-                android:id="@+id/medPharmNameCardText"
+                android:id="@+id/searchAddressCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medRXNumCardText"
+                android:layout_below="@+id/searchServicesCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/medPharmNameCardTextLabel"
+                android:id="@+id/searchAddressCardTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medRXNumCardText"
+                android:layout_below="@+id/searchServicesCardText"
                 android:textColor="@color/white"
-                android:text="@string/medPharmName"
+                android:text="@string/searchAddress"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
             <TextView
-                android:id="@+id/medPharmNumCardText"
+                android:id="@+id/searchWebsiteNumCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medPharmNameCardText"
+                android:layout_below="@+id/searchAddressCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/medPharmNumCardTextLabel"
+                android:id="@+id/searchWebsiteNumCardTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medPharmNameCardText"
+                android:layout_below="@+id/searchAddressCardText"
                 android:textColor="@color/white"
-                android:text="@string/website"
+                android:text="@string/searchWebsite"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
             <TextView
-                android:id="@+id/medTakingCardText"
+                android:id="@+id/searchPhoneCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medPharmNumCardText"
+                android:layout_below="@+id/searchWebsiteNumCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/medTakingCardTextLabel"
+                android:id="@+id/searchPhoneCardTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medPharmNumCardText"
+                android:layout_below="@+id/searchWebsiteNumCardText"
                 android:textColor="@color/white"
                 android:text="@string/searchPhone"
                 android:layout_marginStart="6dp"
