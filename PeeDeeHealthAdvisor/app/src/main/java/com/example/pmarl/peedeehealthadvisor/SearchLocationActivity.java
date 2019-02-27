@@ -23,6 +23,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -50,6 +51,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -120,12 +122,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        String zip;
 //        String address;
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_search_services);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MySearchResultRecyclerViewAdapter(results); // make sure to change this up copied
-        mRecyclerView.setAdapter(mAdapter);
+
 
 
 
@@ -150,6 +147,23 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        locations.put("streetAddress", streetAddress);
 //        locations.put("url", url);
 //        locations.put("zip", zip);
+
+        ArrayList results2 = new ArrayList<SearchServiceDataObject>();
+
+//        try {
+//            TimeUnit.SECONDS.sleep(7);
+//
+//            mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_search_services);
+//            mRecyclerView.setHasFixedSize(true);
+//            mLayoutManager = new LinearLayoutManager(this);
+//            mRecyclerView.setLayoutManager(mLayoutManager);
+//            mAdapter = new MySearchResultRecyclerViewAdapter(results); // make sure to change this up copied
+//            mRecyclerView.setAdapter(mAdapter);
+//
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
 
 
         db.collection("Locations")
@@ -240,10 +254,12 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url);
                                 results.add(resultsObject);
 
+
                                 } catch (SecurityException e) {
                                     e.printStackTrace();
                                 }
                             }
+                            send();
 
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
@@ -312,6 +328,17 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
             String text = parent.getItemAtPosition(position).toString();
             Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void send(){
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_search_services);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MySearchResultRecyclerViewAdapter(results); // make sure to change this up copied
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setItemAnimator( new DefaultItemAnimator());
+
     }
 
     @Override
