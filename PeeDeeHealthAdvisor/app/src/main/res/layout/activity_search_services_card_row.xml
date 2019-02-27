@@ -39,7 +39,7 @@
                 android:id="@+id/mapButton"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginBottom="115dp"
+                android:layout_marginBottom="185dp"
                 android:layout_marginEnd="10dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:layout_marginStart="6dp"
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/locationNameCardText"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@color/white"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="10dp"/>
@@ -95,7 +95,7 @@
                 android:layout_below="@+id/locationNameCardText"
                 android:textColor="@color/white"
                 android:text="@string/searchDistance"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchDistanceCardText"
                 android:textColor="@color/white"
-                android:layout_marginStart="66dp"
+                android:layout_marginStart="55dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchHoursCardText"
                 android:textColor="@color/white"
-                android:layout_marginStart="89dp"
+                android:layout_marginStart="70dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchServicesCardText"
                 android:textColor="@color/white"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="67dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchAddressCardText"
                 android:textColor="@color/white"
-                android:layout_marginStart="56dp"
+                android:layout_marginStart="67dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView

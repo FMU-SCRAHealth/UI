@@ -130,8 +130,9 @@ public class BloodPressureGraph extends AppCompatActivity
 
 
 
-            Set<Map.Entry<Long, ArrayList<Integer>>> set = treeMap.entrySet();
+        Set<Map.Entry<Long, ArrayList<Integer>>> set = treeMap.entrySet();
         Iterator<Map.Entry<Long, ArrayList<Integer>>> iterator = set.iterator();
+
         while(iterator.hasNext())
         {
             Map.Entry<Long, ArrayList<Integer>> mEntry = iterator.next();

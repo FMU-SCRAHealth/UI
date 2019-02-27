@@ -95,13 +95,14 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.locationNameView.setText(mDataset.get(position).getName());
-        holder.searchDistanceView.setText(String.valueOf(mDataset.get(position).getDistance()));
+        holder.searchDistanceView.setText(String.valueOf(String.format( "%.2f", mDataset.get(position).getDistance()) + " Miles"));
         holder.searchHoursView.setText(mDataset.get(position).getSchedule());
         holder.searchServicesView.setText(mDataset.get(position).getServices());
         holder.searchAddressView.setText(mDataset.get(position).getAddress());
         holder.searchWebsiteView.setText(mDataset.get(position).getUrl());
         holder.searchPhoneView.setText(mDataset.get(position).getPhone());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
+        holder.mapsButton.setOnClickListener(mDataset.get(position).openMap());
         Log.d("TESTINGCARD: ", mDataset.get(position).getServices());
 
 //        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());

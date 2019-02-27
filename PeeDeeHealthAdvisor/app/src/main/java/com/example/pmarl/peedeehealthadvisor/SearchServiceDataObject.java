@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class SearchServiceDataObject {
@@ -29,6 +31,7 @@ public class SearchServiceDataObject {
     String schedule;
     private View.OnClickListener callClickListener;
     private View.OnClickListener listenerClickListener;
+    private View.OnClickListener mapClickListener;
 
     double distance;
 //    boolean serviceBloodPressure;
@@ -39,10 +42,12 @@ public class SearchServiceDataObject {
 //    boolean serviceShingles;
     String services;
     String url;
+    double latitude;
+    double longitude;
 
 
 
-    SearchServiceDataObject(String locationName, String searchAddress, double searchDistance, String searchPhone, String searchSchedule, String searchServices, String searchUrl) {
+    SearchServiceDataObject(String locationName, String searchAddress, double searchDistance, String searchPhone, String searchSchedule, String searchServices, String searchUrl, double searchLatitude, double searchLongitude) {
         name = locationName;
         address = searchAddress;
         distance = searchDistance;
@@ -51,6 +56,8 @@ public class SearchServiceDataObject {
         services = searchServices;
         address = searchAddress;
         url = searchUrl;
+        latitude = searchLatitude;
+        longitude= searchLongitude;
 
     }
 
@@ -88,6 +95,29 @@ public class SearchServiceDataObject {
         };
 
         return callClickListener;
+    }
+
+    public View.OnClickListener openMap() {
+        mapClickListener = (new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+//                        Uri gmmIntentUri = Uri.parse("geo:" + String.valueOf(latitude) + "," + String.valueOf(longitude) + "?q=");
+//                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//                        mapIntent.setPackage("com.google.android.apps.maps");
+//                        startActivity(mapIntent);
+                        String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps?daddr=%f,%f (%s)", latitude, longitude, "Getting Directions");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                        intent.setPackage("com.google.android.apps.maps");
+                        v.getContext().startActivity(intent);
+                    }
+                }, 1000);
+            }
+        });
+
+        return mapClickListener;
     }
 
     public String getName() {

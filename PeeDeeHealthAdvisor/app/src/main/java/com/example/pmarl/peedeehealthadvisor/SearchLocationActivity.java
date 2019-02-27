@@ -40,6 +40,7 @@ import android.widget.Toast;
 import android.Manifest;
 import android.support.v4.content.ContextCompat;
 
+import com.github.mikephil.charting.data.Entry;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -47,11 +48,16 @@ import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 
@@ -69,6 +75,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     double latitudeGPS = 0;
     Location locationGPS;
     Location locationService;
+    Integer i = 0;
 
 
 
@@ -180,6 +187,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     longitudeGPS = locationGPS.getLongitude();
                                     latitudeGPS = locationGPS.getLatitude();
                                     Location locationService = new Location("");
+                                    TreeMap<Double,SearchServiceDataObject> treeMap = new TreeMap<>();
 
 
 
@@ -232,7 +240,14 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     shingles = "Shingles";
                                 }
 
-                                services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
+                                if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
+                                        && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
+                                    services = "All Services Available";
+                                } else  {
+                                    services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
+                                }
+
+
 
                                 String state = document.getString("state");
                                 String streetAddress = document.getString("streetAddress");
@@ -251,15 +266,34 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
 //                                Log.d(TAG, "City: " + document.getString("city"));
 
-                                SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url);
-                                results.add(resultsObject);
+                                SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
+                                treeMap.put(distance, resultsObject);
+//                                results.add(resultsObject);
+
+
+                                    Set<Map.Entry<Double, SearchServiceDataObject>> set = treeMap.entrySet();
+                                    Iterator<Map.Entry<Double, SearchServiceDataObject>> iterator = set.iterator();
+
+                                    while(iterator.hasNext())
+                                    {
+                                        Map.Entry<Double, SearchServiceDataObject> mEntry = iterator.next();
+                                        resultsObject = mEntry.getValue();
+
+
+//                                        SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
+
+                                        results.add(resultsObject);
+
+
+                                    }
 
 
                                 } catch (SecurityException e) {
                                     e.printStackTrace();
                                 }
                             }
-                            send();
+
+                            send(); // this sends the results list to the RecyclerViewAdapter for the Card Views
 
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
@@ -298,27 +332,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         startActivity(intent);
         finish();
     }
-
-//    public double getDistance(double locationLat, double locationLong) {
-//        try {
-//            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-//            Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//            longitudeGPS = locationGPS.getLongitude();
-//            latitudeGPS = locationGPS.getLatitude();
-//            Location locationService = new Location("");
-//            locationService.setLatitude(locationLat);
-//            locationService.setLongitude(locationLong);
-//
-//
-//
-//        } catch (SecurityException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return locationGPS.distanceTo(locationService);
-//
-//    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
