@@ -69,23 +69,23 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     boolean notClickedShingles = true;
     boolean notClickedPneumonia = true;
     private String TAG = "TESTING: ";
-    String city;
-    String latitude;
-    String longitude;
-    String phone;
-    String scheduleMonFri;
-    String scheduleSat;
-    String scheduleSun;
-    boolean serviceBloodPressure;
-    boolean serviceBloodSugar;
-    boolean serviceCholesterol;
-    boolean serviceFlu;
-    boolean servicePneumonia;
-    boolean serviceShingles;
-    String state;
-    String streetAddress;
-    String url;
-    String zip;
+//    String city;
+//    String latitude;
+//    String longitude;
+//    String phone;
+//    String scheduleMonFri;
+//    String scheduleSat;
+//    String scheduleSun;
+//    boolean serviceBloodPressure;
+//    boolean serviceBloodSugar;
+//    boolean serviceCholesterol;
+//    boolean serviceFlu;
+//    boolean servicePneumonia;
+//    boolean serviceShingles;
+//    String state;
+//    String streetAddress;
+//    String url;
+//    String zip;
 
 
 
@@ -97,80 +97,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_search_service);
 
-        // Write a message to the database
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-//      Create a new user with a first and last name EXAMPLE FOR ADDING
-//        Map<String, Object> locations = new TreeMap<>();
-//        locations.put("city", city);
-//        locations.put("latitude", latitude);
-//        locations.put("longitude", longitude);
-//        locations.put("phone", phone);
-//        locations.put("scheduleMonFri", scheduleMonFri);
-//        locations.put("scheduleSat", scheduleSat);
-//        locations.put("scheduleSun", scheduleSun);
-//        locations.put("serviceBloodPressure", serviceBloodPressure);
-//        locations.put("serviceBloodSugar", serviceBloodSugar);
-//        locations.put("serviceCholesterol", serviceCholesterol);
-//        locations.put("serviceFlu", serviceFlu);
-//        locations.put("servicePneumonia", servicePneumonia);
-//        locations.put("serviceShingles", serviceShingles);
-//        locations.put("state", state);
-//        locations.put("streetAddress", streetAddress);
-//        locations.put("url", url);
-//        locations.put("zip", zip);
-
-
-
-//
-//
-//        // Add a new document with a generated ID
-//        db.collection("Locations")
-//                .add(user)
-//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w(TAG, "Error adding document", e);
-//                    }
-//                });
-
-//        DocumentReference locations = db.collection("Locations").document("CVS Minute Clinic");
-
-        db.collection("Locations")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                               streetAddress = document.getString("streetAddress");
-
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                Log.d(TAG, streetAddress);
-                                document.getString("city");
-
-                                Log.d(TAG, "City: " + document.getString("city"));
-                                Toast toast = Toast.makeText(getApplicationContext(), "City: " + document.getString("city"), Toast.LENGTH_SHORT);
-                                toast.setGravity(Gravity.CENTER, 0, 0);
-                                LinearLayout toastContentView = (LinearLayout) toast.getView();
-                                ImageView imageView = new ImageView(getApplicationContext());
-                                imageView.setImageResource(R.drawable.ic_warning);
-                                toastContentView.addView(imageView, 0);
-                                toast.show();
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
 
 
 
@@ -211,7 +138,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                launchSearchActivity();
+                launchSearchActivity();
             }
         });
 

@@ -3,6 +3,7 @@ package com.example.pmarl.peedeehealthadvisor;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,74 +20,54 @@ import android.widget.TextView;
 
 public class SearchServiceDataObject {
 
-    String city;
-    String latitude;
-    String longitude;
+    String address;
+    double latitude;
+    double longitude;
     String phone;
-    String scheduleMonFri;
-    String scheduleSat;
-    String scheduleSun;
-    boolean serviceBloodPressure;
-    boolean serviceBloodSugar;
-    boolean serviceCholesterol;
-    boolean serviceFlu;
-    boolean servicePneumonia;
-    boolean serviceShingles;
-    String state;
-    String streetAddress;
+    String schedule;
+//    boolean serviceBloodPressure;
+//    boolean serviceBloodSugar;
+//    boolean serviceCholesterol;
+//    boolean serviceFlu;
+//    boolean servicePneumonia;
+//    boolean serviceShingles;
+    String services;
     String url;
 
 
-
-    String zip;
-
-
-    SearchServiceDataObject(String city,String latitude, String longitude, String phone, String scheduleMonFri, String scheduleSat, String scheduleSun, boolean serviceBloodPressure, boolean serviceBloodSugar, boolean serviceCholesterol, boolean serviceFlu, boolean servicePneumonia, boolean serviceShingles, String state, String streetAddress, String url, String zip) {
-        this.city = city;
+    SearchServiceDataObject(String address,double latitude, double longitude, String phone, String schedule, String services, String url) {
+        this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
         this.phone = phone;
-        this.scheduleMonFri = scheduleMonFri;
-        this.scheduleSat = scheduleSat;
-        this.scheduleSun = scheduleSun;
-        this.serviceBloodPressure = serviceBloodPressure;
-        this.serviceBloodSugar =  serviceBloodSugar;
-        this.serviceCholesterol = serviceCholesterol;
-        this.serviceFlu = serviceFlu;
-        this.servicePneumonia = servicePneumonia;
-        this.serviceShingles = serviceShingles;
-        this.state = state;
-        this.streetAddress = streetAddress;
+        this.schedule = schedule;
+        this.services = services;
+        this.address = address;
         this.url = url;
-        this.zip = zip;
-
-
-
 
     }
 
-
-    public String getCity() {
-        return city;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -98,92 +79,12 @@ public class SearchServiceDataObject {
         this.phone = phone;
     }
 
-    public String getScheduleMonFri() {
-        return scheduleMonFri;
+    public String getSchedule() {
+        return schedule;
     }
 
-    public void setScheduleMonFri(String scheduleMonFri) {
-        this.scheduleMonFri = scheduleMonFri;
-    }
-
-    public String getScheduleSat() {
-        return scheduleSat;
-    }
-
-    public void setScheduleSat(String scheduleSat) {
-        this.scheduleSat = scheduleSat;
-    }
-
-    public String getScheduleSun() {
-        return scheduleSun;
-    }
-
-    public void setScheduleSun(String scheduleSun) {
-        this.scheduleSun = scheduleSun;
-    }
-
-    public boolean isServiceBloodPressure() {
-        return serviceBloodPressure;
-    }
-
-    public void setServiceBloodPressure(boolean serviceBloodPressure) {
-        this.serviceBloodPressure = serviceBloodPressure;
-    }
-
-    public boolean isServiceBloodSugar() {
-        return serviceBloodSugar;
-    }
-
-    public void setServiceBloodSugar(boolean serviceBloodSugar) {
-        this.serviceBloodSugar = serviceBloodSugar;
-    }
-
-    public boolean isServiceCholesterol() {
-        return serviceCholesterol;
-    }
-
-    public void setServiceCholesterol(boolean serviceCholesterol) {
-        this.serviceCholesterol = serviceCholesterol;
-    }
-
-    public boolean isServiceFlu() {
-        return serviceFlu;
-    }
-
-    public void setServiceFlu(boolean serviceFlu) {
-        this.serviceFlu = serviceFlu;
-    }
-
-    public boolean isServicePneumonia() {
-        return servicePneumonia;
-    }
-
-    public void setServicePneumonia(boolean servicePneumonia) {
-        this.servicePneumonia = servicePneumonia;
-    }
-
-    public boolean isServiceShingles() {
-        return serviceShingles;
-    }
-
-    public void setServiceShingles(boolean serviceShingles) {
-        this.serviceShingles = serviceShingles;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
     }
 
     public String getUrl() {
@@ -194,13 +95,24 @@ public class SearchServiceDataObject {
         this.url = url;
     }
 
-    public String getZip() {
-        return zip;
+    public String getServices() {
+        return services;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setServices(String services) {
+        this.services = services;
     }
+
+    public double getDistance() {
+        Location loc1 = new Location("");
+
+        Location loc2 = new Location("");
+
+        return loc1.distanceTo(loc2);
+    }
+
+
+
 
 
 }
