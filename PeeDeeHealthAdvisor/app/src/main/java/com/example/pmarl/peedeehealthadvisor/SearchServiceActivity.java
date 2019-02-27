@@ -61,14 +61,32 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     private ImageButton fluShotSearch;
     private ImageButton ShinglesSearch;
     private ImageButton PneumoniaSearch;
-    boolean clickedBP = true;
-    boolean clickedBS = true;
-    boolean clickedCholesterol = true;
-    boolean clickedFlu = true;
-    boolean clickedShingles = true;
-    boolean clickedPneumonia = true;
+    boolean notClickedBP = true;
+    boolean notClickedBS = true;
+    boolean notClickedCholesterol = true;
+    boolean notClickedFlu = true;
+    boolean notClickedShingles = true;
+    boolean notClickedPneumonia = true;
     private String TAG = "TESTING: ";
-//    String address;
+    String city;
+    String latitude;
+    String longitude;
+    String phone;
+    String scheduleMonFri;
+    String scheduleSat;
+    String scheduleSun;
+    boolean serviceBloodPressure;
+    boolean serviceBloodSugar;
+    boolean serviceCholesterol;
+    boolean serviceFlu;
+    boolean servicePneumonia;
+    boolean serviceShingles;
+    String state;
+    String streetAddress;
+    String url;
+    String zip;
+
+
 
 
 
@@ -83,11 +101,28 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 //        DatabaseReference myRef = database.getReference("message");
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // Create a new user with a first and last name EXAMPLE FOR ADDING
-//        Map<String, Object> user = new HashMap<>();
-//        user.put("first", "Ada");
-//        user.put("last", "Lovelace");
-//        user.put("born", 1815);
+//         Create a new user with a first and last name EXAMPLE FOR ADDING
+        Map<String, Object> locations = new HashMap<>();
+        locations.put("city", city);
+        locations.put("latitude", latitude);
+        locations.put("longitude", longitude);
+        locations.put("phone", phone);
+        locations.put("scheduleMonFri", scheduleMonFri);
+        locations.put("scheduleSat", scheduleSat);
+        locations.put("scheduleSun", scheduleSun);
+        locations.put("serviceBloodPressure", serviceBloodPressure);
+        locations.put("serviceBloodSugar", serviceBloodSugar);
+        locations.put("serviceCholesterol", serviceCholesterol);
+        locations.put("serviceFlu", serviceFlu);
+        locations.put("servicePneumonia", servicePneumonia);
+        locations.put("serviceShingles", serviceShingles);
+        locations.put("state", state);
+        locations.put("streetAddress", streetAddress);
+        locations.put("url", url);
+        locations.put("zip", zip);
+
+
+
 //
 //
 //        // Add a new document with a generated ID
@@ -190,14 +225,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.bloodPressureSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedBP) {
+                if (notClickedBP) {
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure_checked);
                     // make method for query call it here
-                    clickedBP = false;
+                    notClickedBP = false;
                 }
-                else if (!clickedBP) {
+                else if (!notClickedBP) {
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure);
-                    clickedBP = true;
+                    notClickedBP = true;
                 }
 
             }
@@ -208,14 +243,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.bloodSugarSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedBS) {
+                if (notClickedBS) {
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar_selected);
                     // make method for query call it here
-                    clickedBS = false;
+                    notClickedBS = false;
                 }
-                else if (!clickedBS) {
+                else if (!notClickedBS) {
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar);
-                    clickedBS = true;
+                    notClickedBS = true;
                 }
 
             }
@@ -226,14 +261,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.cholesterolSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedCholesterol) {
+                if (notClickedCholesterol) {
                     cholesterolSearch.setBackgroundResource(R.drawable.ic_cholesterol_icon_selected);
                     // make method for query call it here
-                    clickedCholesterol = false;
+                    notClickedCholesterol = false;
                 }
-                else if (!clickedCholesterol) {
+                else if (!notClickedCholesterol) {
                     cholesterolSearch.setBackgroundResource(R.drawable.ic_cholesterol_icon);
-                    clickedCholesterol = true;
+                    notClickedCholesterol = true;
                 }
 
             }
@@ -244,14 +279,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.fluShotSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedFlu) {
+                if (notClickedFlu) {
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
-                    clickedFlu = false;
+                    notClickedFlu = false;
                 }
-                else if (!clickedFlu) {
+                else if (!notClickedFlu) {
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations);
-                    clickedFlu = true;
+                    notClickedFlu = true;
                 }
 
             }
@@ -262,14 +297,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.ShinglesSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedShingles) {
+                if (notClickedShingles) {
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
-                    clickedShingles = false;
+                    notClickedShingles = false;
                 }
-                else if (!clickedShingles) {
+                else if (!notClickedShingles) {
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations);
-                    clickedShingles = true;
+                    notClickedShingles = true;
                 }
 
             }
@@ -280,14 +315,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.PneumoniaSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedPneumonia) {
+                if (notClickedPneumonia) {
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
-                    clickedPneumonia = false;
+                    notClickedPneumonia = false;
                 }
-                else if (!clickedPneumonia) {
+                else if (!notClickedPneumonia) {
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations);
-                    clickedPneumonia = true;
+                    notClickedPneumonia = true;
                 }
 
             }
