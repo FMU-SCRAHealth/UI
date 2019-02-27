@@ -21,10 +21,10 @@ import android.widget.TextView;
 public class SearchServiceDataObject {
 
     String address;
-    double latitude;
-    double longitude;
     String phone;
     String schedule;
+
+    double distance;
 //    boolean serviceBloodPressure;
 //    boolean serviceBloodSugar;
 //    boolean serviceCholesterol;
@@ -35,10 +35,9 @@ public class SearchServiceDataObject {
     String url;
 
 
-    SearchServiceDataObject(String address,double latitude, double longitude, String phone, String schedule, String services, String url) {
+    SearchServiceDataObject(String address, double distance, String phone, String schedule, String services, String url) {
         this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.distance = distance;
         this.phone = phone;
         this.schedule = schedule;
         this.services = services;
@@ -55,21 +54,21 @@ public class SearchServiceDataObject {
         this.address = address;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
+//    public double getLatitude() {
+//        return latitude;
+//    }
+//
+//    public void setLatitude(double latitude) {
+//        this.latitude = latitude;
+//    }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
+//    public double getLongitude() {
+//        return longitude;
+//    }
+//
+//    public void setLongitude(double longitude) {
+//        this.longitude = longitude;
+//    }
 
     public String getPhone() {
         return phone;
@@ -77,6 +76,14 @@ public class SearchServiceDataObject {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public String getSchedule() {
@@ -103,13 +110,7 @@ public class SearchServiceDataObject {
         this.services = services;
     }
 
-    public double getDistance() {
-        Location loc1 = new Location("");
 
-        Location loc2 = new Location("");
-
-        return loc1.distanceTo(loc2);
-    }
 
 
 

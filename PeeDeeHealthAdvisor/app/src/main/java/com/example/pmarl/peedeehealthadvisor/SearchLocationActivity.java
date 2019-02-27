@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -55,6 +56,11 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //    Date today = new Date();
     Calendar calendar = Calendar.getInstance();
     int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+    double longitudeGPS = 0;
+    double latitudeGPS = 0;
+    Location locationGPS;
+    Location locationService;
+
 
 
 
@@ -69,6 +75,9 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
         //Sets the layout to the activity_search_location layout
         setContentView(R.layout.activity_card_view_search_services);
+
+
+
         //List of the instantiated attributes
 
 //        String city;
@@ -96,16 +105,9 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MyAllergiesRecyclerViewAdapter(results); // make sure to change this up copied
         mRecyclerView.setAdapter(mAdapter);
-        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
 
 
 
-        // Write a message to the database
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 //      Create a new user with a first and last name EXAMPLE FOR ADDING
@@ -129,27 +131,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        locations.put("zip", zip);
 
 
-
-//
-//
-//        // Add a new document with a generated ID
-//        db.collection("Locations")
-//                .add(user)
-//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w(TAG, "Error adding document", e);
-//                    }
-//                });
-
-//        DocumentReference locations = db.collection("Locations").document("CVS Minute Clinic");
-
         db.collection("Locations")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -158,8 +139,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String city = document.getString("city");
-                                double latitude = document.getDouble("latitude");
-                                double longitude = document.getDouble("longitude");
+                                double latitude = document.getGeoPoint("latitude").getLatitude();
+                                double longitude = document.getGeoPoint("latitude").getLongitude();
                                 String phone = document.getString("phone");
                                 String schedule = document.getString("scheduleMonFri");
                                 String services = "No Services";
@@ -187,19 +168,19 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 if (serviceBloodPressure == true) {
                                     bloodPressure = "Blood Pressure";
                                 }
-                                else if (serviceBloodSugar == true) {
+                                if (serviceBloodSugar == true) {
                                     bloodSugar = "Blood Sugar";
                                 }
-                                else if (serviceCholesterol == true) {
+                                if (serviceCholesterol == true) {
                                     cholesterol = "Cholesterol";
                                 }
-                                else if (serviceFlu == true) {
+                                if (serviceFlu == true) {
                                     fluShot = "Flu Shot";
                                 }
-                                else if (servicePneumonia == true) {
+                                if (servicePneumonia == true) {
                                     pneumonia = "Pneumonia";
                                 }
-                                else if (serviceShingles == true) {
+                                if (serviceShingles == true) {
                                     shingles = "Shingles";
                                 }
 
@@ -209,15 +190,18 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 String streetAddress = document.getString("streetAddress");
                                 String url = document.getString("url");
                                 String zip = document.getString("zip");
+                                double distance = 7;
 
                                 String address = streetAddress + ", " + city + ", " + state + ", " + zip;
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
                                 Log.d(TAG, address);
+                                Log.d(TAG, schedule);
+                                Log.d(TAG, services);
 //                                document.getString("city");
 
 //                                Log.d(TAG, "City: " + document.getString("city"));
 
-                                SearchServiceDataObject resultsObject = new SearchServiceDataObject(address,latitude, longitude, phone, schedule, services, url);
+                                SearchServiceDataObject resultsObject = new SearchServiceDataObject(address, distance, phone, schedule, services, url);
                                 results.add(resultsObject);
                             }
 
@@ -258,6 +242,27 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         startActivity(intent);
         finish();
     }
+
+//    public double getDistance(double locationLat, double locationLong) {
+//        try {
+//            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+//            Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//
+//            longitudeGPS = locationGPS.getLongitude();
+//            latitudeGPS = locationGPS.getLatitude();
+//            Location locationService = new Location("");
+//            locationService.setLatitude(locationLat);
+//            locationService.setLongitude(locationLong);
+//
+//
+//
+//        } catch (SecurityException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return locationGPS.distanceTo(locationService);
+//
+//    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
