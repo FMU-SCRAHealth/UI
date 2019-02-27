@@ -48,10 +48,14 @@ import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -75,7 +79,11 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     double latitudeGPS = 0;
     Location locationGPS;
     Location locationService;
+    double comparingValueDistance = 1000;
     Integer i = 0;
+    TreeMap<Double, ArrayList<SearchServiceDataObject>> treeMap = new TreeMap<>();
+    SearchServiceActivity valuesClicked = new SearchServiceActivity();
+
 
 
 
@@ -92,23 +100,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         //Sets the layout to the activity_search_location layout
         setContentView(R.layout.activity_card_view_search_services);
 
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                        PackageManager.PERMISSION_GRANTED) {
-        } else {
-//            Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
-            ActivityCompat.requestPermissions(this, new String[] {
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION },
-                    0);
-//            launchPrevActivity();
-
-        }
-
-
-
-        //List of the instantiated attributes
+        //List of the instantiated attributes for web
 
 //        String city;
 //        String latitude;
@@ -135,7 +127,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-//      Create a new user with a first and last name EXAMPLE FOR ADDING
+//      Create a new user with a first and last name EXAMPLE FOR ADDING WEBSITE
 //        Map<String, Object> locations = new TreeMap<>();
 //        locations.put("city", city);
 //        locations.put("latitude", latitude);
@@ -155,8 +147,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        locations.put("url", url);
 //        locations.put("zip", zip);
 
-        ArrayList results2 = new ArrayList<SearchServiceDataObject>();
-
 //        try {
 //            TimeUnit.SECONDS.sleep(7);
 //
@@ -172,23 +162,21 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        }
 
 
+            db.collection("Locations").orderBy("latitude") // orders largest to smallest
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            try {
+                                // getting current location
+                                LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                                Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-        db.collection("Locations")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                try {
-                                    LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-                                    Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-                                    longitudeGPS = locationGPS.getLongitude();
-                                    latitudeGPS = locationGPS.getLatitude();
-                                    Location locationService = new Location("");
-                                    TreeMap<Double,SearchServiceDataObject> treeMap = new TreeMap<>();
-
+                                longitudeGPS = locationGPS.getLongitude();
+                                latitudeGPS = locationGPS.getLatitude();
+                                Location locationService = new Location("");
 
 
                                 String name = document.getId();
@@ -207,13 +195,12 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 locationService.setLatitude(latitude);
                                 locationService.setLongitude(longitude);
 
-                                if (dayOfWeek == 7 ) {
+                                if (dayOfWeek == 7) {
                                     schedule = document.getString("scheduleSat");
-                                }
-                                else if(dayOfWeek == 0) {
+                                } else if (dayOfWeek == 0) {
                                     schedule = document.getString("scheduleSun");
                                 }
-
+                                SearchServiceActivity valuesClicked = new SearchServiceActivity();
                                 boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
                                 boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
                                 boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
@@ -243,17 +230,16 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
                                         && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
                                     services = "All Services Available";
-                                } else  {
+                                } else {
                                     services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
                                 }
-
 
 
                                 String state = document.getString("state");
                                 String streetAddress = document.getString("streetAddress");
                                 String url = document.getString("url");
                                 String zip = document.getString("zip");
-                                double distance = locationGPS.distanceTo(locationService)/1000;
+                                double distance = locationGPS.distanceTo(locationService) / 1000;
 
                                 String address = streetAddress + ", " + city + ", " + state + ", " + zip;
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
@@ -267,39 +253,29 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //                                Log.d(TAG, "City: " + document.getString("city"));
 
                                 SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-                                treeMap.put(distance, resultsObject);
-//                                results.add(resultsObject);
+//                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
+//                                treeMap.get(distance).add(resultsObject);
+
+                                results.add(resultsObject);
 
 
-                                    Set<Map.Entry<Double, SearchServiceDataObject>> set = treeMap.entrySet();
-                                    Iterator<Map.Entry<Double, SearchServiceDataObject>> iterator = set.iterator();
-
-                                    while(iterator.hasNext())
-                                    {
-                                        Map.Entry<Double, SearchServiceDataObject> mEntry = iterator.next();
-                                        resultsObject = mEntry.getValue();
-
-
-//                                        SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-
-                                        results.add(resultsObject);
-
-
-                                    }
-
-
-                                } catch (SecurityException e) {
-                                    e.printStackTrace();
-                                }
+                            } catch (SecurityException e) {
+                                e.printStackTrace();
+                                showDataError();
                             }
-
-                            send(); // this sends the results list to the RecyclerViewAdapter for the Card Views
-
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
                         }
+
+                        send(); // this sends the results list to the RecyclerViewAdapter for the Card Views
+
+                    } else {
+                        Log.w(TAG, "Error getting documents.", task.getException());
                     }
-                });
+                }
+            });
+
+
+//        Set<Map.Entry<Double, ArrayList<SearchServiceDataObject>>> set = treeMap.entrySet();
+//        Iterator<Map.Entry<Double, ArrayList<SearchServiceDataObject>>> iterator = set.iterator();
 
 
         this.home = (ImageButton) findViewById(R.id.Home);
@@ -348,14 +324,32 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        Collections.reverse(results); // flip to show shortest distance first.
         mAdapter = new MySearchResultRecyclerViewAdapter(results); // make sure to change this up copied
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator( new DefaultItemAnimator());
 
     }
 
+    // Show images in Toast prompt.
+    private void showDataError()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Can't Find Location", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_error);
+        toastContentView.addView(imageView, 0);
+        toast.show();
+    }
+
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    public boolean compareTo(double distanceOne, double distanceTwo) {
+        return distanceOne < distanceTwo;
     }
 }

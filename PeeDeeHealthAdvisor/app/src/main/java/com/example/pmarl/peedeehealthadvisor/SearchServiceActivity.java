@@ -11,9 +11,13 @@
  */
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -62,6 +66,8 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     private ImageButton fluShotSearch;
     private ImageButton ShinglesSearch;
     private ImageButton PneumoniaSearch;
+
+
     boolean notClickedBP = true;
     boolean notClickedBS = true;
     boolean notClickedCholesterol = true;
@@ -87,7 +93,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 //    String url;
 //    String zip;
 
-
+    public SearchServiceActivity() {
+        boolean notClickedBP = isNotClickedBP();
+        boolean notClickedBS = isNotClickedBS();
+        boolean notClickedCholesterol = isNotClickedCholesterol();
+        boolean notClickedFlu = isNotClickedFlu();
+        boolean notClickedShingles = isNotClickedShingles();
+        boolean notClickedPneumonia = isNotClickedPneumonia();
+    }
 
 
 
@@ -98,7 +111,19 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         setContentView(R.layout.activity_search_service);
 
 
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED) {
+        } else {
+//            Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(this, new String[] {
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION },
+                    0);
+//            launchPrevActivity();
 
+        }
 
 
 
@@ -138,7 +163,11 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchSearchActivity();
+                if (notClickedBP == true && notClickedBS == true && notClickedCholesterol == true && notClickedFlu == true && notClickedPneumonia == true && notClickedShingles == true) {
+                    showDataIncorrectRange();
+                } else {
+                    launchSearchActivity();
+                }
             }
         });
 
@@ -259,6 +288,54 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 
     }
 
+    public boolean isNotClickedBP() {
+        return notClickedBP;
+    }
+
+    public void setNotClickedBP(boolean notClickedBP) {
+        this.notClickedBP = notClickedBP;
+    }
+
+    public boolean isNotClickedBS() {
+        return notClickedBS;
+    }
+
+    public void setNotClickedBS(boolean notClickedBS) {
+        this.notClickedBS = notClickedBS;
+    }
+
+    public boolean isNotClickedCholesterol() {
+        return notClickedCholesterol;
+    }
+
+    public void setNotClickedCholesterol(boolean notClickedCholesterol) {
+        this.notClickedCholesterol = notClickedCholesterol;
+    }
+
+    public boolean isNotClickedFlu() {
+        return notClickedFlu;
+    }
+
+    public void setNotClickedFlu(boolean notClickedFlu) {
+        this.notClickedFlu = notClickedFlu;
+    }
+
+    public boolean isNotClickedShingles() {
+        return notClickedShingles;
+    }
+
+    public void setNotClickedShingles(boolean notClickedShingles) {
+        this.notClickedShingles = notClickedShingles;
+    }
+
+    public boolean isNotClickedPneumonia() {
+        return notClickedPneumonia;
+    }
+
+    public void setNotClickedPneumonia(boolean notClickedPneumonia) {
+        this.notClickedPneumonia = notClickedPneumonia;
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
     {
@@ -293,6 +370,19 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    // Show images in Toast prompt.
+    private void showDataIncorrectRange()
+    {
+
+        Toast toast = Toast.makeText(getApplicationContext(), "No Selection Made!", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.ic_warning);
+        toastContentView.addView(imageView, 0);
+        toast.show();
     }
 
 
