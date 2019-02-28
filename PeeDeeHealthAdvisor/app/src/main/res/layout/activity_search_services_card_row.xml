@@ -37,13 +37,24 @@
 
             <ImageButton
                 android:id="@+id/mapButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginBottom="185dp"
                 android:layout_marginEnd="10dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/ic_maps_round_launcher_color_48"
+                />
+
+            <ImageButton
+                android:id="@+id/urlButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="65dp"
+                android:layout_marginEnd="11dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_appicns_chrome"
                 />
 
             <ImageButton

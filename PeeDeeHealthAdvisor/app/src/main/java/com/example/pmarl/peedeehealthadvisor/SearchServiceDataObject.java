@@ -32,6 +32,7 @@ public class SearchServiceDataObject {
     private View.OnClickListener callClickListener;
     private View.OnClickListener listenerClickListener;
     private View.OnClickListener mapClickListener;
+    private View.OnClickListener urlClickListener;
 
     double distance;
 //    boolean serviceBloodPressure;
@@ -118,6 +119,24 @@ public class SearchServiceDataObject {
         });
 
         return mapClickListener;
+    }
+
+    public View.OnClickListener openURL() {
+        urlClickListener = (new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Uri uriUrl = Uri.parse("http://" + url);
+                        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                        v.getContext().startActivity(launchBrowser);
+                    }
+                }, 1000);
+            }
+        });
+
+        return urlClickListener;
     }
 
     public String getName() {

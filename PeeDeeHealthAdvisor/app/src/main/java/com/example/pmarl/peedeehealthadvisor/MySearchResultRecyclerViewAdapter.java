@@ -44,6 +44,7 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
 //        TextView medTaken;
         ImageButton callButton;
         ImageButton mapsButton;
+        ImageButton urlButton;
 //        Switch background;
 
 
@@ -58,7 +59,7 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
             searchPhoneView= (TextView) itemView.findViewById(R.id.searchPhoneCardText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButtonSearch);
             mapsButton = (ImageButton) itemView.findViewById(R.id.mapButton);
-//            medTaken = (TextView) itemView.findViewById(R.id.medTakingCardText);
+            urlButton= (ImageButton) itemView.findViewById(R.id.urlButton);
 //            background = (Switch) itemView.findViewById(R.id.switchTaking);
 //            Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
@@ -103,6 +104,7 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
         holder.searchPhoneView.setText(mDataset.get(position).getPhone());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
         holder.mapsButton.setOnClickListener(mDataset.get(position).openMap());
+        holder.urlButton.setOnClickListener(mDataset.get(position).openURL());
         Log.d("TESTINGCARD: ", mDataset.get(position).getServices());
 
 //        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());

@@ -43,6 +43,7 @@ import android.support.v4.content.ContextCompat;
 import com.github.mikephil.charting.data.Entry;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -124,7 +125,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
 
 
-
+        FirebaseApp.initializeApp(this);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 //      Create a new user with a first and last name EXAMPLE FOR ADDING WEBSITE
