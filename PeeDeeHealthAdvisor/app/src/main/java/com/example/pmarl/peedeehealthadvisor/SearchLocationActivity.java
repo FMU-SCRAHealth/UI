@@ -80,14 +80,9 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     double latitudeGPS = 0;
     Location locationGPS;
     Location locationService;
-    double comparingValueDistance = 1000;
-    Integer i = 0;
-    TreeMap<Double, ArrayList<SearchServiceDataObject>> treeMap = new TreeMap<>();
+    
+    // this of way to select values you want by selection
     SearchServiceActivity valuesClicked = new SearchServiceActivity();
-
-
-
-
 
 
     @Override
@@ -100,6 +95,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
         //Sets the layout to the activity_search_location layout
         setContentView(R.layout.activity_card_view_search_services);
+
 
         //List of the instantiated attributes for web
 
@@ -148,20 +144,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        locations.put("url", url);
 //        locations.put("zip", zip);
 
-//        try {
-//            TimeUnit.SECONDS.sleep(7);
-//
-//            mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_search_services);
-//            mRecyclerView.setHasFixedSize(true);
-//            mLayoutManager = new LinearLayoutManager(this);
-//            mRecyclerView.setLayoutManager(mLayoutManager);
-//            mAdapter = new MySearchResultRecyclerViewAdapter(results); // make sure to change this up copied
-//            mRecyclerView.setAdapter(mAdapter);
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
 
             db.collection("Locations").orderBy("latitude") // orders largest to smallest
             .get()
@@ -201,7 +183,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 } else if (dayOfWeek == 0) {
                                     schedule = document.getString("scheduleSun");
                                 }
-                                SearchServiceActivity valuesClicked = new SearchServiceActivity();
+
                                 boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
                                 boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
                                 boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
@@ -244,11 +226,11 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                 String address = streetAddress + ", " + city + ", " + state + ", " + zip;
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                Log.d(TAG, name);
-                                Log.d(TAG, address);
-                                Log.d(TAG, schedule);
-                                Log.d(TAG, services);
-                                Log.d(TAG, String.valueOf(distance));
+//                                Log.d(TAG, name);
+//                                Log.d(TAG, address);
+//                                Log.d(TAG, schedule);
+//                                Log.d(TAG, services);
+//                                Log.d(TAG, String.valueOf(distance));
 //                                document.getString("city");
 
 //                                Log.d(TAG, "City: " + document.getString("city"));
@@ -273,10 +255,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                     }
                 }
             });
-
-
-//        Set<Map.Entry<Double, ArrayList<SearchServiceDataObject>>> set = treeMap.entrySet();
-//        Iterator<Map.Entry<Double, ArrayList<SearchServiceDataObject>>> iterator = set.iterator();
 
 
         this.home = (ImageButton) findViewById(R.id.Home);
@@ -320,6 +298,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         }
     }
 
+    /* This method is for sending the objects to the Recycler Adapter after all have been loaded into the ArrayList from Firebase*/
     public void send(){
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_search_services);
         mRecyclerView.setHasFixedSize(true);
