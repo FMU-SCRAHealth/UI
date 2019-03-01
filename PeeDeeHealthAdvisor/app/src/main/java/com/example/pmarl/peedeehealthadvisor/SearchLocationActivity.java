@@ -385,6 +385,12 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
 //                                Log.d(TAG, "City: " + document.getString("city"));
 
+                                // make all possiblities of button selections and corresponding database values; put the object creation and results.add ************
+
+                                if (!valuesClicked.isNotClickedCholesterol()) {
+
+                                }
+
                                 SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
 //                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
 //                                treeMap.get(distance).add(resultsObject);
