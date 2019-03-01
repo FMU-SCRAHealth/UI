@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.pmarl.peedeehealthadvisor"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -47,6 +47,7 @@ dependencies {
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
 //    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
     api 'com.google.firebase:firebase-crash:9.4.0'
+    implementation "com.google.android.gms:play-services-location:15.0.1"
 
     implementation 'com.google.firebase:firebase-database:16.0.1'
 }

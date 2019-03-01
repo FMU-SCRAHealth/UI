@@ -118,6 +118,7 @@
                 android:layout_below="@+id/searchDistanceCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="55dp"
+                android:textSize="14dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -128,6 +129,7 @@
                 android:textColor="@color/white"
                 android:text="@string/searchHours"
                 android:layout_marginStart="6dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
@@ -137,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchHoursCardText"
                 android:textColor="@color/white"
+                android:textSize="14dp"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="10dp"/>
 
@@ -147,6 +150,7 @@
                 android:layout_below="@+id/searchHoursCardText"
                 android:textColor="@color/white"
                 android:text="@string/searchService"
+                android:textSize="14dp"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
@@ -157,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchServicesCardText"
                 android:textColor="@color/white"
+                android:textSize="14dp"
                 android:layout_marginStart="67dp"
                 android:layout_marginTop="10dp"/>
 
@@ -168,6 +173,7 @@
                 android:textColor="@color/white"
                 android:text="@string/searchAddress"
                 android:layout_marginStart="6dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
@@ -177,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchAddressCardText"
                 android:textColor="@color/white"
+                android:textSize="14dp"
                 android:layout_marginStart="67dp"
                 android:layout_marginTop="10dp"/>
 
@@ -188,6 +195,7 @@
                 android:textColor="@color/white"
                 android:text="@string/searchWebsite"
                 android:layout_marginStart="6dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 
@@ -197,6 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchWebsiteNumCardText"
                 android:textColor="@color/white"
+                android:textSize="14dp"
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="10dp"/>
 
@@ -207,6 +216,7 @@
                 android:layout_below="@+id/searchWebsiteNumCardText"
                 android:textColor="@color/white"
                 android:text="@string/searchPhone"
+                android:textSize="14dp"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
