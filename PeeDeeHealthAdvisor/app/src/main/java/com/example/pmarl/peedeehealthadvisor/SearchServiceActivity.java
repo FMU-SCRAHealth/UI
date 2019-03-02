@@ -685,18 +685,15 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
+
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         // Save UI state changes to the savedInstanceState.
         // This bundle will be passed to onCreate if the process is
         // killed and restarted.
-//        savedInstanceState.putBoolean("clickedBP", isClickedBP());
-//        savedInstanceState.putBoolean("clickedBS", isClickedBS());
-//        savedInstanceState.putBoolean("clickedCholesterol", isClickedCholesterol());
-//        savedInstanceState.putBoolean("clickedFlu", isClickedFlu());
-//        savedInstanceState.putBoolean("clickedPneumonia", isClickedPneumonia());
-//        savedInstanceState.putBoolean("clickedShingles", isClickedShingles());
+//        savedInstanceState.clear()
 
         // etc.
     }

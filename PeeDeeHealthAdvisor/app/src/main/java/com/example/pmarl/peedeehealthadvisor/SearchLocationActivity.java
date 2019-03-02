@@ -115,6 +115,12 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         //Sets the layout to the activity_search_location layout
         setContentView(R.layout.activity_card_view_search_services);
 
+//        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_search_services);
+//        mRecyclerView.setHasFixedSize(true);
+//        mLayoutManager = new LinearLayoutManager(this);
+////        ArrayList newList = new ArrayList(new LinkedHashSet(list));
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+
 
 
         //List of the instantiated attributes for web
@@ -207,7 +213,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
-
 
                                     // getting current location
                                     LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -401,7 +406,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     try {
 
-
                                         // getting current location
                                         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                                         Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -548,13 +552,13 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                         }
 
                                         String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-//                                Log.d(TAG, document.getId() + " => " + document.getData());
-//                                Log.d(TAG, name);
-//                                Log.d(TAG, address);
-//                                Log.d(TAG, schedule);
-//                                Log.d(TAG, services);
-//                                Log.d(TAG, String.valueOf(distance));
-//                                document.getString("city");
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, name);
+                                Log.d(TAG, address);
+                                Log.d(TAG, schedule);
+                                Log.d(TAG, services);
+                                Log.d(TAG, String.valueOf(distance));
+                                document.getString("city");
 
 //                                Log.d(TAG, "City: " + document.getString("city"));
 
@@ -593,7 +597,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     try {
-
+                                        Log.d("ARRAYSTARTTRY: ", results.toString());
 
                                         // getting current location
                                         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -741,13 +745,13 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                         }
 
                                         String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-//                                Log.d(TAG, document.getId() + " => " + document.getData());
-//                                Log.d(TAG, name);
-//                                Log.d(TAG, address);
-//                                Log.d(TAG, schedule);
-//                                Log.d(TAG, services);
-//                                Log.d(TAG, String.valueOf(distance));
-//                                document.getString("city");
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, name);
+                                Log.d(TAG, address);
+                                Log.d(TAG, schedule);
+                                Log.d(TAG, services);
+                                Log.d(TAG, String.valueOf(distance));
+                                document.getString("city");
 
 //                                Log.d(TAG, "City: " + document.getString("city"));
 
@@ -756,14 +760,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //                                treeMap.get(distance).add(resultsObject);
 
                                         results.add(resultsObject);
-
-                                        if(hasDuplicatesInArrayList(results)) {
-                                            Log.w(TAG, "Error getting documents.CHOL", task.getException());
-
-
-                                        } else {
-
-                                        }
+                                        Log.d("ARRAYEND: ", results.toString());
 
 
 
@@ -774,12 +771,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     }
                                 }
 
-//                                if(hasDuplicatesInArrayList(results)) {
-//                                    Log.w(TAG, "Error getting documents.CHOL", task.getException());
-////                                    results.clear();
-//                                } else {
                                 send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
-//                                }
 
                             } else {
                                 Log.w(TAG, "Error getting documents.", task.getException());
@@ -1186,7 +1178,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     try {
 
-
                                         // getting current location
                                         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                                         Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -1369,213 +1360,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                     });
         }
 
-//            db.collection("Locations").orderBy("latitude") // orders largest to smallest
-//            .get()
-//            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                    if (task.isSuccessful()) {
-//                        for (QueryDocumentSnapshot document : task.getResult()) {
-//                            try {
-//                                // getting current location
-//                                LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                                Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//
-//                                isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//
-////                                if(locationGPS == null) {
-////                                    locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-////                                }
-////
-//////                                if(locationGPS!= null){
-//////                                    longitudeGPS = locationGPS.getLongitude();
-//////                                    latitudeGPS = locationGPS.getLatitude();
-//////                                } else {
-//////                                    showDataError();
-//////                                    launchPrevActivity();
-//////                                }
-////
-////                                if(locationGPS == null) {
-////                                    lm.requestLocationUpdates(
-////                                            LocationManager.GPS_PROVIDER,
-////                                            MIN_TIME_BW_UPDATES,
-////                                            MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-////                                    if(lm != null) {
-////                                        locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-////
-////                                        if(locationGPS != null) {
-////                                            latitudeGPS = locationGPS.getLatitude();
-////                                            longitudeGPS = locationGPS.getLongitude();
-////                                        }
-////                                    }
-////                                }
-//
-//                                if (isNetworkEnabled) {
-//
-//                                    lm.requestLocationUpdates(
-//                                            LocationManager.NETWORK_PROVIDER,
-//                                            MIN_TIME_BW_UPDATES,
-//                                            MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//
-//                                    if (lm != null) {
-//                                        locationGPS = lm
-//                                                .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                                        if (locationGPS != null) {
-//
-//                                            latitudeGPS = locationGPS.getLatitude();
-//                                            longitudeGPS = locationGPS.getLongitude();
-//                                        }
-//                                    }
-//
-//                                }
-//
-//                                if(isGPSEnabled) {
-//                                    if(locationGPS == null) {
-//                                        lm.requestLocationUpdates(
-//                                                LocationManager.GPS_PROVIDER,
-//                                                MIN_TIME_BW_UPDATES,
-//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//
-//                                        if(lm != null) {
-//                                            locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                            if(locationGPS != null) {
-//                                                latitudeGPS = locationGPS.getLatitude();
-//                                                longitudeGPS = locationGPS.getLongitude();
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//
-//                                Location locationService = new Location("");
-//
-//
-//                                String name = document.getId();
-//                                String city = document.getString("city");
-//                                double latitude = document.getGeoPoint("latitude").getLatitude();
-//                                double longitude = document.getGeoPoint("latitude").getLongitude();
-//                                String phone = document.getString("phone");
-//                                String schedule = document.getString("scheduleMonFri");
-//                                String services = "No Services";
-//                                String bloodPressure = "";
-//                                String bloodSugar = "";
-//                                String cholesterol = "";
-//                                String fluShot = "";
-//                                String pneumonia = "";
-//                                String shingles = "";
-//                                locationService.setLatitude(latitude);
-//                                locationService.setLongitude(longitude);
-//
-//                                if (dayOfWeek == 7) {
-//                                    schedule = document.getString("scheduleSat");
-//                                } else if (dayOfWeek == 0) {
-//                                    schedule = document.getString("scheduleSun");
-//                                }
-//
-//                                boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
-//                                boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
-//                                boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
-//                                boolean serviceFlu = document.getBoolean("serviceFlu");
-//                                boolean servicePneumonia = document.getBoolean("servicePneumonia");
-//                                boolean serviceShingles = document.getBoolean("serviceShingles");
-//
-//                                if (serviceBloodPressure == true) {
-//                                    bloodPressure = "Blood Pressure";
-//                                }
-//                                if (serviceBloodSugar == true) {
-//                                    bloodSugar = "Blood Sugar";
-//                                }
-//                                if (serviceCholesterol == true) {
-//                                    cholesterol = "Cholesterol";
-//                                }
-//                                if (serviceFlu == true) {
-//                                    fluShot = "Flu Shot";
-//                                }
-//                                if (servicePneumonia == true) {
-//                                    pneumonia = "Pneumonia";
-//                                }
-//                                if (serviceShingles == true) {
-//                                    shingles = "Shingles";
-//                                }
-//
-//                                if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
-//                                        && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
-//                                    services = "All Services Available";
-//                                } else {
-//                                    services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
-//                                }
-//
-//                                double distance = 0.0;
-//                                String state = document.getString("state");
-//                                String streetAddress = document.getString("streetAddress");
-//                                String url = document.getString("url");
-//                                String zip = document.getString("zip");
-//
-//                                if (locationGPS!= null) {
-//                                    distance = locationGPS.distanceTo(locationService) / 1000;
-//                                } else {
-//                                    showDataError();
-//                                    launchPrevActivity();
-//                                }
-//
-//                                String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-////                                Log.d(TAG, document.getId() + " => " + document.getData());
-////                                Log.d(TAG, name);
-////                                Log.d(TAG, address);
-////                                Log.d(TAG, schedule);
-////                                Log.d(TAG, services);
-////                                Log.d(TAG, String.valueOf(distance));
-////                                document.getString("city");
-//
-////                                Log.d(TAG, "City: " + document.getString("city"));
-//
-//                                // make all possiblities of button selections and corresponding database values; put the object creation and results.add ************
-//
-//
-//                                SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-////                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
-////                                treeMap.get(distance).add(resultsObject);
-//
-////                               hasDuplicatesInArrayList(results);
-//
-//
-//                                   results.add(resultsObject);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//                            } catch (SecurityException e) {
-//                                e.printStackTrace();
-//                                showDataError();
-////                                launchPrevActivity();
-//                            }
-//                        }
-//
-//                        if(hasDuplicatesInArrayList(results)) {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        } else {
-//                            send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
-//                        }
-//
-//
-//
-//                    } else {
-//                        Log.w(TAG, "Error getting documents.", task.getException());
-//                    }
-//                }
-//            });
-
-//        send(results);
-
-
         this.home = (ImageButton) findViewById(R.id.Home);
         this.home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1589,6 +1373,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     @Override
     public void onBackPressed() {
         launchPrevActivity();
+
     }
 
     private void launchMainActivity()
@@ -1602,6 +1387,15 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
     private void launchPrevActivity()
     {
+//        results.clear();
+//        mRecyclerView.getRecycledViewPool().clear();
+//        mRecyclerView.setAdapter(null);
+//        mRecyclerView.getAdapter().notifyDataSetChanged();
+//        mRecyclerView.setLayoutManager(null);
+//        mRecyclerView.setAdapter(null);
+//        mRecyclerView.removeAllViewsInLayout();
+        Log.d("ARRAY: ", results.toString());
+//        Log.d("ARRAY: ", mRecyclerView.toString());
         Intent intent = new Intent(this, SearchServiceActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -1648,41 +1442,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         toast.show();
     }
 
-    // Function to remove duplicates from an ArrayList
-    public static ArrayList<SearchServiceDataObject> removeDuplicates(ArrayList<SearchServiceDataObject> list)
-    {
-
-        // Create a new ArrayList
-        ArrayList<SearchServiceDataObject> newList = new ArrayList<>();
-
-        // Traverse through the first list
-//        for (T element : list) {
-//
-//            // If this element is not present in newList
-//            // then add it
-//            if (!newList.contains(element)) {
-//
-//                newList.add(element);
-//            }
-//
-//
-//        }
-
-        for (int i = 0; i < list.size(); i++) {
-            for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i).getName().equals(list.get(j).getName())) {
-                    list.remove(j);
-                }
-            }
-        }
-        return list;
-    }
-
-        // return the new list
-//        return newList;
-
-//    }
-
     public boolean hasDuplicatesInArrayList(ArrayList<SearchServiceDataObject> list) {
         for (int i = 0; i < list.size(); i++) {
             for (int j = i + 1; j < list.size(); j++) {
@@ -1694,7 +1453,29 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         return false;
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
 
+        // first clear the recycler view so items are not populated twice
+//        results.clear();
+//        mRecyclerView.removeAllViewsInLayout();
+
+        results.removeAll(results);
+        mAdapter.notifyDataSetChanged();
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.clear();
+
+        // etc.
+    }
 
 
 
@@ -1703,7 +1484,4 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
     }
 
-    public boolean compareTo(double distanceOne, double distanceTwo) {
-        return distanceOne < distanceTwo;
-    }
 }

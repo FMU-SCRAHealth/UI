@@ -16,6 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MySearchResultRecyclerViewAdapter extends RecyclerView
         .Adapter<MySearchResultRecyclerViewAdapter
@@ -79,7 +80,6 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
 
     public MySearchResultRecyclerViewAdapter(ArrayList<SearchServiceDataObject> myDataset) {
 
-
         mDataset = removeDuplicates(myDataset);
     }
 
@@ -129,6 +129,7 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
         notifyItemRemoved(index);
     }
 
+
     @Override
     public int getItemCount() {
         return mDataset.size();
@@ -142,14 +143,20 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
     // Function to remove duplicates from an ArrayList
     public static ArrayList<SearchServiceDataObject> removeDuplicates(ArrayList<SearchServiceDataObject> list)
     {
-
         for (int i = 0; i < list.size(); i++) {
             for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i).getPhone().equals(list.get(j).getPhone())) {
+                if (list.get(i).getName().equals(list.get(j).getName())) {
                     list.remove(j);
                 }
             }
+
         }
         return list;
+    }
+
+    public void clear() {
+        int size = mDataset.size();
+        mDataset.clear();
+        notifyItemRangeRemoved(0, size);
     }
 }
