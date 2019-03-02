@@ -95,6 +95,9 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1;
 
+    boolean isGPSEnabled = false;
+    boolean isNetworkEnabled = false;
+
     // this of way to select values you want by selection
     SearchServiceActivity valuesClicked = new SearchServiceActivity();
 
@@ -204,21 +207,81 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 try {
+
+
                                     // getting current location
                                     LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                                     Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                                    if(locationGPS == null) {
-                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                                    isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+                                    isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+//                                    if(locationGPS == null) {
+//                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//                                    }
+
+//                                    if(locationGPS!= null){
+//                                        longitudeGPS = locationGPS.getLongitude();
+//                                        latitudeGPS = locationGPS.getLatitude();
+//                                    } else {
+//                                        showDataError();
+//                                        launchPrevActivity();
+//                                    }
+
+
+                                    if (isNetworkEnabled) {
+
+                                        lm.requestLocationUpdates(
+                                                LocationManager.NETWORK_PROVIDER,
+                                                MIN_TIME_BW_UPDATES,
+                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
+
+                                        if (lm != null) {
+                                            locationGPS = lm
+                                                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                                            if (locationGPS != null) {
+
+                                                latitudeGPS = locationGPS.getLatitude();
+                                                longitudeGPS = locationGPS.getLongitude();
+                                            }
+                                        }
+
                                     }
 
-                                    if(locationGPS!= null){
-                                        longitudeGPS = locationGPS.getLongitude();
-                                        latitudeGPS = locationGPS.getLatitude();
-                                    } else {
-                                        showDataError();
-                                        launchPrevActivity();
+                                    if(isGPSEnabled) {
+                                        if(locationGPS == null) {
+                                            lm.requestLocationUpdates(
+                                                    LocationManager.GPS_PROVIDER,
+                                                    MIN_TIME_BW_UPDATES,
+                                                    MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
+                                            if(lm != null) {
+                                                locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                                                if(locationGPS != null) {
+                                                    latitudeGPS = locationGPS.getLatitude();
+                                                    longitudeGPS = locationGPS.getLongitude();
+                                                }
+                                            }
+                                        }
                                     }
+
+
+//                                    if(locationGPS == null) {
+//                                        lm.requestLocationUpdates(
+//                                                LocationManager.GPS_PROVIDER,
+//                                                MIN_TIME_BW_UPDATES,
+//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
+//                                        if(lm != null) {
+//                                            locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//
+//                                            if(locationGPS != null) {
+//                                                latitudeGPS = locationGPS.getLatitude();
+//                                                longitudeGPS = locationGPS.getLongitude();
+//                                            }
+//                                        }
+//                                    }
 
                                     Location locationService = new Location("");
 
@@ -288,6 +351,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                         distance = locationGPS.distanceTo(locationService) / 1000;
                                     } else {
                                         showDataError();
+                                        launchPrevActivity();
                                     }
 
                                     String address = streetAddress + ", " + city + ", " + state + ", " + zip;
@@ -311,10 +375,11 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 } catch (SecurityException e) {
                                     e.printStackTrace();
                                     showDataError();
+//                                    launchPrevActivity();
                                 }
                             }
 
-                            send(); // this sends the results list to the RecyclerViewAdapter for the Card Views
+//                            send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
 
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
@@ -335,29 +400,71 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                                 Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                                if(locationGPS == null) {
-                                    locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                                }
+                                isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-                                if(locationGPS!= null){
-                                    longitudeGPS = locationGPS.getLongitude();
-                                    latitudeGPS = locationGPS.getLatitude();
-                                } else {
-                                    showDataError();
-                                    launchPrevActivity();
-                                }
+                                isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-                                if(locationGPS == null) {
+//                                if(locationGPS == null) {
+//                                    locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//                                }
+//
+////                                if(locationGPS!= null){
+////                                    longitudeGPS = locationGPS.getLongitude();
+////                                    latitudeGPS = locationGPS.getLatitude();
+////                                } else {
+////                                    showDataError();
+////                                    launchPrevActivity();
+////                                }
+//
+//                                if(locationGPS == null) {
+//                                    lm.requestLocationUpdates(
+//                                            LocationManager.GPS_PROVIDER,
+//                                            MIN_TIME_BW_UPDATES,
+//                                            MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
+//                                    if(lm != null) {
+//                                        locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//
+//                                        if(locationGPS != null) {
+//                                            latitudeGPS = locationGPS.getLatitude();
+//                                            longitudeGPS = locationGPS.getLongitude();
+//                                        }
+//                                    }
+//                                }
+
+                                if (isNetworkEnabled) {
+
                                     lm.requestLocationUpdates(
-                                            LocationManager.GPS_PROVIDER,
+                                            LocationManager.NETWORK_PROVIDER,
                                             MIN_TIME_BW_UPDATES,
                                             MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-                                    if(lm != null) {
-                                        locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                                        if(locationGPS != null) {
+                                    if (lm != null) {
+                                        locationGPS = lm
+                                                .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                                        if (locationGPS != null) {
+
                                             latitudeGPS = locationGPS.getLatitude();
                                             longitudeGPS = locationGPS.getLongitude();
+                                        }
+                                    }
+
+                                }
+
+                                if(isGPSEnabled) {
+                                    if(locationGPS == null) {
+                                        lm.requestLocationUpdates(
+                                                LocationManager.GPS_PROVIDER,
+                                                MIN_TIME_BW_UPDATES,
+                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
+
+                                        if(lm != null) {
+                                            locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                                            if(locationGPS != null) {
+                                                latitudeGPS = locationGPS.getLatitude();
+                                                longitudeGPS = locationGPS.getLongitude();
+                                            }
                                         }
                                     }
                                 }
@@ -430,6 +537,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     distance = locationGPS.distanceTo(locationService) / 1000;
                                 } else {
                                     showDataError();
+                                    launchPrevActivity();
                                 }
 
                                 String address = streetAddress + ", " + city + ", " + state + ", " + zip;
@@ -459,16 +567,19 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                             } catch (SecurityException e) {
                                 e.printStackTrace();
                                 showDataError();
+//                                launchPrevActivity();
                             }
                         }
 
-                       send(); // this sends the results list to the RecyclerViewAdapter for the Card Views
+//                       send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
 
                     } else {
                         Log.w(TAG, "Error getting documents.", task.getException());
                     }
                 }
             });
+
+        send(results);
 
 
         this.home = (ImageButton) findViewById(R.id.Home);
@@ -514,14 +625,15 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     }
 
     /* This method is for sending the objects to the Recycler Adapter after all have been loaded into the ArrayList from Firebase*/
-    public void send(){
+    public void send(ArrayList<SearchServiceDataObject> list){
         SearchLocationActivity test = new SearchLocationActivity();
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_search_services);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        ArrayList<SearchServiceDataObject> listTwo = removeDuplicates(results);
-        Collections.reverse(listTwo); // flip to show shortest distance first.
+        Collections.reverse(list); // flip to show shortest distance first.
+        ArrayList<SearchServiceDataObject> listTwo = removeDuplicates(list);
+//        Collections.reverse(listTwo); // flip to show shortest distance first.
         mAdapter = new MySearchResultRecyclerViewAdapter(listTwo); // make sure to change this up copied
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator( new DefaultItemAnimator());
@@ -532,7 +644,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     private void showDataError()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Can't Find Location", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Can't Find Location. Check If Location Is On!", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
