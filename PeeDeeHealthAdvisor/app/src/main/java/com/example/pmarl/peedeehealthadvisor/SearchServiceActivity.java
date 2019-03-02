@@ -111,12 +111,12 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 
 
 
-    boolean clickedBP = false;
-    boolean clickedBS = false;
-    boolean clickedCholesterol = false;
-    boolean clickedFlu = false;
-    boolean clickedShingles = false;
-    boolean clickedPneumonia = false;
+    private static boolean clickedBP = false;
+    private static boolean clickedBS = false;
+    private static boolean clickedCholesterol = false;
+    private static boolean clickedFlu = false;
+    private static boolean clickedShingles = false;
+    private static boolean clickedPneumonia = false;
     private String TAG = "TESTING: ";
 //    String city;
 //    String latitude;
@@ -145,10 +145,10 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     public SearchServiceActivity() {
         boolean clickedBP = isClickedBP();
         boolean clickedBS = isClickedBS();
-        boolean clickedCholesterol = isClickedCholesterol();
-        boolean clickedFlu = isClickedFlu();
-        boolean clickedShingles = isClickedShingles();
-        boolean clickedPneumonia = isClickedPneumonia();
+        clickedCholesterol = isClickedCholesterol();
+        clickedFlu = isClickedFlu();
+        clickedShingles = isClickedShingles();
+        clickedPneumonia = isClickedPneumonia();
 //        getLocation();
 
     }
@@ -184,27 +184,6 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         mLongitudeLabel = getResources().getString(R.string.description);
         mLatitudeText = (TextView) findViewById((R.id.date_of_birth));
         mLongitudeText = (TextView) findViewById((R.id.ldlCardTextLabel));
-
-
-//        myRef.setValue("Hello, World!");
-
-        // Read from the database
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                String value = dataSnapshot.getValue(String.class);
-//                Log.d(TAG, "Value is: " + value);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.w(TAG, "Failed to read value.", error.toException());
-//            }
-//        });
-
 
         this.home = (ImageButton) findViewById(R.id.Home);
 
@@ -260,7 +239,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar_selected);
                     // make method for query call it here
                     clickedBS = true;
-                } else if (!clickedBS) {
+                } else if (clickedBS) {
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar);
                     clickedBS = false;
                 }
@@ -277,7 +256,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                     cholesterolSearch.setBackgroundResource(R.drawable.ic_cholesterol_icon_selected);
 
                     clickedCholesterol = true;
-                } else if (!clickedCholesterol) {
+                } else if (clickedCholesterol) {
                     cholesterolSearch.setBackgroundResource(R.drawable.ic_cholesterol_icon);
                     clickedCholesterol = false;
                 }
@@ -294,7 +273,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
                     clickedFlu = true;
-                } else if (!clickedFlu) {
+                } else if (clickedFlu) {
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations);
                     clickedFlu = false;
                 }
@@ -311,7 +290,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
                     clickedShingles = true;
-                } else if (!clickedShingles) {
+                } else if (clickedShingles) {
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations);
                     clickedShingles = false;
                 }
@@ -328,7 +307,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
                     clickedPneumonia = true;
-                } else if (!clickedPneumonia) {
+                } else if (clickedPneumonia) {
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations);
                     clickedPneumonia = false;
                 }
@@ -704,6 +683,22 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 
         // PRIORITY_HIGH_ACCURACY option uses your GPS
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+//        savedInstanceState.putBoolean("clickedBP", isClickedBP());
+//        savedInstanceState.putBoolean("clickedBS", isClickedBS());
+//        savedInstanceState.putBoolean("clickedCholesterol", isClickedCholesterol());
+//        savedInstanceState.putBoolean("clickedFlu", isClickedFlu());
+//        savedInstanceState.putBoolean("clickedPneumonia", isClickedPneumonia());
+//        savedInstanceState.putBoolean("clickedShingles", isClickedShingles());
+
+        // etc.
     }
 
 }

@@ -198,7 +198,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        locations.put("zip", zip);
 
 
-    if (valuesClicked.clickedBP) {
+    if (valuesClicked.isClickedBP()) {
         db.collection("Locations").whereEqualTo("serviceBloodPressure", true).orderBy("latitude") // orders largest to smallest
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -584,7 +584,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                     });
         }
 
-        if (!valuesClicked.isClickedCholesterol()) {
+        if (valuesClicked.isClickedCholesterol()) {
             db.collection("Locations").whereEqualTo("serviceCholesterol", true).orderBy("latitude") // orders largest to smallest
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -1693,6 +1693,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         }
         return false;
     }
+
+
 
 
 
