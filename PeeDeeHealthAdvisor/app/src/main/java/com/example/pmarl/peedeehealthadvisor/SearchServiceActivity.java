@@ -109,12 +109,14 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     protected LocationManager locationManager;
 
 
-    boolean notClickedBP = true;
-    boolean notClickedBS = true;
-    boolean notClickedCholesterol = true;
-    boolean notClickedFlu = true;
-    boolean notClickedShingles = true;
-    boolean notClickedPneumonia = true;
+
+
+    boolean clickedBP = false;
+    boolean clickedBS = false;
+    boolean clickedCholesterol = false;
+    boolean clickedFlu = false;
+    boolean clickedShingles = false;
+    boolean clickedPneumonia = false;
     private String TAG = "TESTING: ";
 //    String city;
 //    String latitude;
@@ -141,12 +143,12 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 //
 //    }
     public SearchServiceActivity() {
-        boolean notClickedBP = isNotClickedBP();
-        boolean notClickedBS = isNotClickedBS();
-        boolean notClickedCholesterol = isNotClickedCholesterol();
-        boolean notClickedFlu = isNotClickedFlu();
-        boolean notClickedShingles = isNotClickedShingles();
-        boolean notClickedPneumonia = isNotClickedPneumonia();
+        boolean clickedBP = isClickedBP();
+        boolean clickedBS = isClickedBS();
+        boolean clickedCholesterol = isClickedCholesterol();
+        boolean clickedFlu = isClickedFlu();
+        boolean clickedShingles = isClickedShingles();
+        boolean clickedPneumonia = isClickedPneumonia();
 //        getLocation();
 
     }
@@ -218,7 +220,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notClickedBP == true && notClickedBS == true && notClickedCholesterol == true && notClickedFlu == true && notClickedPneumonia == true && notClickedShingles == true) {
+                if (clickedBP == false && clickedBS == false && clickedCholesterol == false && clickedFlu == false && clickedPneumonia == false && clickedShingles == false) {
                     showDataIncorrectRange();
                 } else {
                     launchSearchActivity();
@@ -237,13 +239,13 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.bloodPressureSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notClickedBP) {
+                if (!clickedBP) {
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure_checked);
                     // make method for query call it here
-                    notClickedBP = false;
-                } else if (!notClickedBP) {
+                    clickedBP = true;
+                } else {
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure);
-                    notClickedBP = true;
+                    clickedBP = false;
                 }
 
             }
@@ -254,13 +256,13 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.bloodSugarSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notClickedBS) {
+                if (!clickedBS) {
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar_selected);
                     // make method for query call it here
-                    notClickedBS = false;
-                } else if (!notClickedBS) {
+                    clickedBS = true;
+                } else if (!clickedBS) {
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar);
-                    notClickedBS = true;
+                    clickedBS = false;
                 }
 
             }
@@ -271,13 +273,13 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.cholesterolSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notClickedCholesterol) {
+                if (!clickedCholesterol) {
                     cholesterolSearch.setBackgroundResource(R.drawable.ic_cholesterol_icon_selected);
-                    // make method for query call it here
-                    notClickedCholesterol = false;
-                } else if (!notClickedCholesterol) {
+
+                    clickedCholesterol = true;
+                } else if (!clickedCholesterol) {
                     cholesterolSearch.setBackgroundResource(R.drawable.ic_cholesterol_icon);
-                    notClickedCholesterol = true;
+                    clickedCholesterol = false;
                 }
 
             }
@@ -288,13 +290,13 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.fluShotSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notClickedFlu) {
+                if (!clickedFlu) {
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
-                    notClickedFlu = false;
-                } else if (!notClickedFlu) {
+                    clickedFlu = true;
+                } else if (!clickedFlu) {
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations);
-                    notClickedFlu = true;
+                    clickedFlu = false;
                 }
 
             }
@@ -305,13 +307,13 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.ShinglesSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notClickedShingles) {
+                if (!clickedShingles) {
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
-                    notClickedShingles = false;
-                } else if (!notClickedShingles) {
+                    clickedShingles = true;
+                } else if (!clickedShingles) {
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations);
-                    notClickedShingles = true;
+                    clickedShingles = false;
                 }
 
             }
@@ -322,13 +324,13 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.PneumoniaSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (notClickedPneumonia) {
+                if (!clickedPneumonia) {
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
                     // make method for query call it here
-                    notClickedPneumonia = false;
-                } else if (!notClickedPneumonia) {
+                    clickedPneumonia = true;
+                } else if (!clickedPneumonia) {
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations);
-                    notClickedPneumonia = true;
+                    clickedPneumonia = false;
                 }
 
             }
@@ -338,53 +340,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 
     }
 
-    public boolean isNotClickedBP() {
-        return notClickedBP;
-    }
 
-    public void setNotClickedBP(boolean notClickedBP) {
-        this.notClickedBP = notClickedBP;
-    }
-
-    public boolean isNotClickedBS() {
-        return notClickedBS;
-    }
-
-    public void setNotClickedBS(boolean notClickedBS) {
-        this.notClickedBS = notClickedBS;
-    }
-
-    public boolean isNotClickedCholesterol() {
-        return notClickedCholesterol;
-    }
-
-    public void setNotClickedCholesterol(boolean notClickedCholesterol) {
-        this.notClickedCholesterol = notClickedCholesterol;
-    }
-
-    public boolean isNotClickedFlu() {
-        return notClickedFlu;
-    }
-
-    public void setNotClickedFlu(boolean notClickedFlu) {
-        this.notClickedFlu = notClickedFlu;
-    }
-
-    public boolean isNotClickedShingles() {
-        return notClickedShingles;
-    }
-
-    public void setNotClickedShingles(boolean notClickedShingles) {
-        this.notClickedShingles = notClickedShingles;
-    }
-
-    public boolean isNotClickedPneumonia() {
-        return notClickedPneumonia;
-    }
-
-    public void setNotClickedPneumonia(boolean notClickedPneumonia) {
-        this.notClickedPneumonia = notClickedPneumonia;
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
@@ -687,7 +643,53 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 //
 //    }
 
+    public boolean isClickedBP() {
+        return clickedBP;
+    }
 
+    public void setClickedBP(boolean clickedBP) {
+        this.clickedBP = clickedBP;
+    }
+
+    public boolean isClickedBS() {
+        return clickedBS;
+    }
+
+    public void setClickedBS(boolean clickedBS) {
+        this.clickedBS = clickedBS;
+    }
+
+    public boolean isClickedCholesterol() {
+        return clickedCholesterol;
+    }
+
+    public void setClickedCholesterol(boolean clickedCholesterol) {
+        this.clickedCholesterol = clickedCholesterol;
+    }
+
+    public boolean isClickedFlu() {
+        return clickedFlu;
+    }
+
+    public void setClickedFlu(boolean clickedFlu) {
+        this.clickedFlu = clickedFlu;
+    }
+
+    public boolean isClickedShingles() {
+        return clickedShingles;
+    }
+
+    public void setClickedShingles(boolean clickedShingles) {
+        this.clickedShingles = clickedShingles;
+    }
+
+    public boolean isClickedPneumonia() {
+        return clickedPneumonia;
+    }
+
+    public void setClickedPneumonia(boolean clickedPneumonia) {
+        this.clickedPneumonia = clickedPneumonia;
+    }
 
 
     private void createLocationRequest(){

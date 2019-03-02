@@ -78,7 +78,9 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
     }
 
     public MySearchResultRecyclerViewAdapter(ArrayList<SearchServiceDataObject> myDataset) {
-        mDataset = myDataset;
+
+
+        mDataset = removeDuplicates(myDataset);
     }
 
     @Override
@@ -107,6 +109,10 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
         holder.urlButton.setOnClickListener(mDataset.get(position).openURL());
         Log.d("TESTINGCARD: ", mDataset.get(position).getServices());
 
+
+
+
+
 //        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
 //        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
 
@@ -131,5 +137,19 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
     public interface MyClickListener {
         public void onItemClick(int position, View v);
 
+    }
+
+    // Function to remove duplicates from an ArrayList
+    public static ArrayList<SearchServiceDataObject> removeDuplicates(ArrayList<SearchServiceDataObject> list)
+    {
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i).getPhone().equals(list.get(j).getPhone())) {
+                    list.remove(j);
+                }
+            }
+        }
+        return list;
     }
 }
