@@ -80,6 +80,8 @@ import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 
+import java.util.Comparator;
+
 
 public class SearchLocationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private RecyclerView mRecyclerView;
@@ -376,7 +378,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         ArrayList<SearchServiceDataObject> newList = new ArrayList<>();
-        
+
         for(int i = 0; i < list.size(); i++) {
             if(valuesClicked.isClickedBP() && (list.get(i).getServices().contains("Blood Pressure") || list.get(i).getServices().contains("All Services Available"))) {
                 newList.add(list.get(i));
@@ -412,8 +414,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
         }
 
-
-
+        // this sorts the ArrayList by distance in the app.
+        newList = getSortedLocationByDistance(newList);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         Collections.reverse(newList); // flip to show shortest distance first.
@@ -467,5 +469,27 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+//    @Override
+//    public int compareTo(SearchServiceDataObject location) {
+//        return (location.getDistance() < candidate.getAge() ? -1 :
+//                (this.getAge() == candidate.getAge() ? 0 : 1));
+//    }
+
+
+    // this method sorts the locations by distance.
+    public static Comparator<SearchServiceDataObject> ageComparator = new Comparator<SearchServiceDataObject>() {
+        @Override
+        public int compare(SearchServiceDataObject jc1, SearchServiceDataObject jc2) {
+            return (jc2.getDistance() < jc1.getDistance() ? -1 :
+                    (jc2.getDistance() == jc1.getDistance() ? 0 : 1));
+        }
+    };
+
+    // this method sorts the list itself by calling the above method
+    public ArrayList<SearchServiceDataObject> getSortedLocationByDistance(ArrayList<SearchServiceDataObject> list) {
+        Collections.sort(list, SearchLocationActivity.ageComparator);
+        return list;
     }
 }
