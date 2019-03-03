@@ -143,12 +143,12 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 //
 //    }
     public SearchServiceActivity() {
-        boolean clickedBP = isClickedBP();
-        boolean clickedBS = isClickedBS();
-        clickedCholesterol = isClickedCholesterol();
-        clickedFlu = isClickedFlu();
-        clickedShingles = isClickedShingles();
-        clickedPneumonia = isClickedPneumonia();
+//        boolean clickedBP = isClickedBP();
+//        boolean clickedBS = isClickedBS();
+//        clickedCholesterol = isClickedCholesterol();
+//        clickedFlu = isClickedFlu();
+//        clickedShingles = isClickedShingles();
+//        clickedPneumonia = isClickedPneumonia();
 //        getLocation();
 
     }
@@ -222,7 +222,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure_checked);
                     // make method for query call it here
                     clickedBP = true;
-                } else {
+                } else if (clickedBP) {
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure);
                     clickedBP = false;
                 }
@@ -687,6 +687,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 
 
 
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
@@ -696,6 +697,26 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 //        savedInstanceState.clear()
 
         // etc.
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        clickedBP = false;
+        clickedBS = false;
+        clickedCholesterol = false;
+        clickedFlu = false;
+        clickedPneumonia = false;
+        clickedShingles = false;
+
+        // first clear the recycler view so items are not populated twice
+//        results.clear();
+//        mRecyclerView.removeAllViewsInLayout();
+
+//        results.removeAll(results);
+//        mAdapter.notifyDataSetChanged();
+//        mRecyclerView.setAdapter(mAdapter); this will clear the CardView if go inot Mpas the hit back button
     }
 
 }
