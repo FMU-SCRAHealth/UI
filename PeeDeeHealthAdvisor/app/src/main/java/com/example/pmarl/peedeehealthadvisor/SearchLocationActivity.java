@@ -62,6 +62,7 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -80,7 +81,7 @@ import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 
 
-public class SearchLocationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, Comparator<SearchServiceDataObject> {
+public class SearchLocationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -183,19 +184,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                     isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-//                                    if(locationGPS == null) {
-//                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//                                    }
-
-//                                    if(locationGPS!= null){
-//                                        longitudeGPS = locationGPS.getLongitude();
-//                                        latitudeGPS = locationGPS.getLatitude();
-//                                    } else {
-//                                        showDataError();
-//                                        launchPrevActivity();
-//                                    }
-
-
                                     if (isNetworkEnabled) {
 
                                         lm.requestLocationUpdates(
@@ -233,24 +221,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                         }
                                     }
 
-
-//                                    if(locationGPS == null) {
-//                                        lm.requestLocationUpdates(
-//                                                LocationManager.GPS_PROVIDER,
-//                                                MIN_TIME_BW_UPDATES,
-//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//                                        if(lm != null) {
-//                                            locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                            if(locationGPS != null) {
-//                                                latitudeGPS = locationGPS.getLatitude();
-//                                                longitudeGPS = locationGPS.getLongitude();
-//                                            }
-//                                        }
-//                                    }
-
                                     Location locationService = new Location("");
-
 
                                     String name = document.getId();
                                     String city = document.getString("city");
@@ -270,8 +241,10 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                     if (dayOfWeek == 7) {
                                         schedule = document.getString("scheduleSat");
-                                    } else if (dayOfWeek == 0) {
+                                    } else if (dayOfWeek == 1) {
                                         schedule = document.getString("scheduleSun");
+                                    } else {
+                                        schedule = document.getString("scheduleMonFri");
                                     }
 
                                     boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
@@ -322,15 +295,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                     String address = streetAddress + ", " + city + ", " + state + ", " + zip;
                                 Log.d("TESTING", document.getId() + " => " + document.getData());
-//                                Log.d(TAG, name);
-//                                Log.d(TAG, address);
-//                                Log.d(TAG, schedule);
-//                                Log.d(TAG, services);
-//                                Log.d(TAG, String.valueOf(distance));
-//                                document.getString("city");
-
-//                                Log.d(TAG, "City: " + document.getString("city"));
-
+                                Log.d("TESTING", String.valueOf(calendar.get(Calendar.DAY_OF_WEEK)));
                                     SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
 //                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
 //                                treeMap.get(distance).add(resultsObject);
@@ -356,944 +321,13 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                     }
                 });
 
-//    if (valuesClicked.isClickedBS()) {
-//        db.collection("Locations").whereEqualTo("serviceBloodSugar", true).orderBy("latitude") // orders largest to smallest
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                try {
-//
-//                                    // getting current location
-//                                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                                    Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                    isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//
-//                                    isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//
-////                                    if(locationGPS == null) {
-////                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-////                                    }
-//
-////                                    if(locationGPS!= null){
-////                                        longitudeGPS = locationGPS.getLongitude();
-////                                        latitudeGPS = locationGPS.getLatitude();
-////                                    } else {
-////                                        showDataError();
-////                                        launchPrevActivity();
-////                                    }
-//
-//
-//                                    if (isNetworkEnabled) {
-//
-//                                        lm.requestLocationUpdates(
-//                                                LocationManager.NETWORK_PROVIDER,
-//                                                MIN_TIME_BW_UPDATES,
-//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//
-//                                        if (lm != null) {
-//                                            locationGPS = lm
-//                                                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                                            if (locationGPS != null) {
-//
-//                                                latitudeGPS = locationGPS.getLatitude();
-//                                                longitudeGPS = locationGPS.getLongitude();
-//                                            }
-//                                        }
-//
-//                                    }
-//
-//                                    if(isGPSEnabled) {
-//                                        if(locationGPS == null) {
-//                                            lm.requestLocationUpdates(
-//                                                    LocationManager.GPS_PROVIDER,
-//                                                    MIN_TIME_BW_UPDATES,
-//                                                    MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//                                            if(lm != null) {
-//                                                locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                                if(locationGPS != null) {
-//                                                    latitudeGPS = locationGPS.getLatitude();
-//                                                    longitudeGPS = locationGPS.getLongitude();
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//
-//                                    Location locationService = new Location("");
-//
-//
-//                                    String name = document.getId();
-//                                    String city = document.getString("city");
-//                                    double latitude = document.getGeoPoint("latitude").getLatitude();
-//                                    double longitude = document.getGeoPoint("latitude").getLongitude();
-//                                    String phone = document.getString("phone");
-//                                    String schedule = document.getString("scheduleMonFri");
-//                                    String services = "No Services";
-//                                    String bloodPressure = "";
-//                                    String bloodSugar = "";
-//                                    String cholesterol = "";
-//                                    String fluShot = "";
-//                                    String pneumonia = "";
-//                                    String shingles = "";
-//                                    locationService.setLatitude(latitude);
-//                                    locationService.setLongitude(longitude);
-//
-//                                    if (dayOfWeek == 7) {
-//                                        schedule = document.getString("scheduleSat");
-//                                    } else if (dayOfWeek == 0) {
-//                                        schedule = document.getString("scheduleSun");
-//                                    }
-//
-//                                    boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
-//                                    boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
-//                                    boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
-//                                    boolean serviceFlu = document.getBoolean("serviceFlu");
-//                                    boolean servicePneumonia = document.getBoolean("servicePneumonia");
-//                                    boolean serviceShingles = document.getBoolean("serviceShingles");
-//
-//                                    if (serviceBloodPressure == true) {
-//                                        bloodPressure = "Blood Pressure";
-//                                    }
-//                                    if (serviceBloodSugar == true) {
-//                                        bloodSugar = "Blood Sugar";
-//                                    }
-//                                    if (serviceCholesterol == true) {
-//                                        cholesterol = "Cholesterol";
-//                                    }
-//                                    if (serviceFlu == true) {
-//                                        fluShot = "Flu Shot";
-//                                    }
-//                                    if (servicePneumonia == true) {
-//                                        pneumonia = "Pneumonia";
-//                                    }
-//                                    if (serviceShingles == true) {
-//                                        shingles = "Shingles";
-//                                    }
-//
-//                                    if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
-//                                            && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
-//                                        services = "All Services Available";
-//                                    } else {
-//                                        services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
-//                                    }
-//
-//                                    double distance = 0.0;
-//                                    String state = document.getString("state");
-//                                    String streetAddress = document.getString("streetAddress");
-//                                    String url = document.getString("url");
-//                                    String zip = document.getString("zip");
-//
-//                                    if (locationGPS!= null) {
-//                                        distance = locationGPS.distanceTo(locationService) / 1000;
-//                                    } else {
-//                                        showDataError();
-//                                        launchPrevActivity();
-//                                    }
-//
-//                                    String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-//                            Log.d(TAG, document.getId() + " => " + document.getData());
-//                            Log.d(TAG, name);
-//                            Log.d(TAG, address);
-//                            Log.d(TAG, schedule);
-//                            Log.d(TAG, services);
-//                            Log.d(TAG, String.valueOf(distance));
-//                            document.getString("city");
-//
-////                                Log.d(TAG, "City: " + document.getString("city"));
-//
-//                                    SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-////                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
-////                                treeMap.get(distance).add(resultsObject);
-//
-//
-//
-//                                    results.add(resultsObject);
-//
-//                                } catch (SecurityException e) {
-//                                    e.printStackTrace();
-//                                    showDataError();
-////                                    launchPrevActivity();
-//                                }
-//                            }
-//
-//
-//                            send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
-//
-//
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                    }
-//                });
-//    }
-//
-//    if (valuesClicked.isClickedCholesterol()) {
-//        db.collection("Locations").whereEqualTo("serviceCholesterol", true).orderBy("latitude") // orders largest to smallest
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                try {
-//                                    Log.d("ARRAYSTARTTRY: ", results.toString());
-//
-//                                    // getting current location
-//                                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                                    Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                    isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//
-//                                    isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//
-////                                    if(locationGPS == null) {
-////                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-////                                    }
-//
-////                                    if(locationGPS!= null){
-////                                        longitudeGPS = locationGPS.getLongitude();
-////                                        latitudeGPS = locationGPS.getLatitude();
-////                                    } else {
-////                                        showDataError();
-////                                        launchPrevActivity();
-////                                    }
-//
-//
-//                                    if (isNetworkEnabled) {
-//
-//                                        lm.requestLocationUpdates(
-//                                                LocationManager.NETWORK_PROVIDER,
-//                                                MIN_TIME_BW_UPDATES,
-//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//
-//                                        if (lm != null) {
-//                                            locationGPS = lm
-//                                                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                                            if (locationGPS != null) {
-//
-//                                                latitudeGPS = locationGPS.getLatitude();
-//                                                longitudeGPS = locationGPS.getLongitude();
-//                                            }
-//                                        }
-//
-//                                    }
-//
-//                                    if(isGPSEnabled) {
-//                                        if(locationGPS == null) {
-//                                            lm.requestLocationUpdates(
-//                                                    LocationManager.GPS_PROVIDER,
-//                                                    MIN_TIME_BW_UPDATES,
-//                                                    MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//                                            if(lm != null) {
-//                                                locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                                if(locationGPS != null) {
-//                                                    latitudeGPS = locationGPS.getLatitude();
-//                                                    longitudeGPS = locationGPS.getLongitude();
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//
-//
-//                                    Location locationService = new Location("");
-//
-//
-//                                    String name = document.getId();
-//                                    String city = document.getString("city");
-//                                    double latitude = document.getGeoPoint("latitude").getLatitude();
-//                                    double longitude = document.getGeoPoint("latitude").getLongitude();
-//                                    String phone = document.getString("phone");
-//                                    String schedule = document.getString("scheduleMonFri");
-//                                    String services = "No Services";
-//                                    String bloodPressure = "";
-//                                    String bloodSugar = "";
-//                                    String cholesterol = "";
-//                                    String fluShot = "";
-//                                    String pneumonia = "";
-//                                    String shingles = "";
-//                                    locationService.setLatitude(latitude);
-//                                    locationService.setLongitude(longitude);
-//
-//                                    if (dayOfWeek == 7) {
-//                                        schedule = document.getString("scheduleSat");
-//                                    } else if (dayOfWeek == 0) {
-//                                        schedule = document.getString("scheduleSun");
-//                                    }
-//
-//                                    boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
-//                                    boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
-//                                    boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
-//                                    boolean serviceFlu = document.getBoolean("serviceFlu");
-//                                    boolean servicePneumonia = document.getBoolean("servicePneumonia");
-//                                    boolean serviceShingles = document.getBoolean("serviceShingles");
-//
-//                                    if (serviceBloodPressure == true) {
-//                                        bloodPressure = "Blood Pressure";
-//                                    }
-//                                    if (serviceBloodSugar == true) {
-//                                        bloodSugar = "Blood Sugar";
-//                                    }
-//                                    if (serviceCholesterol == true) {
-//                                        cholesterol = "Cholesterol";
-//                                    }
-//                                    if (serviceFlu == true) {
-//                                        fluShot = "Flu Shot";
-//                                    }
-//                                    if (servicePneumonia == true) {
-//                                        pneumonia = "Pneumonia";
-//                                    }
-//                                    if (serviceShingles == true) {
-//                                        shingles = "Shingles";
-//                                    }
-//
-//                                    if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
-//                                            && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
-//                                        services = "All Services Available";
-//                                    } else {
-//                                        services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
-//                                    }
-//
-//                                    double distance = 0.0;
-//                                    String state = document.getString("state");
-//                                    String streetAddress = document.getString("streetAddress");
-//                                    String url = document.getString("url");
-//                                    String zip = document.getString("zip");
-//
-//                                    if (locationGPS!= null) {
-//                                        distance = locationGPS.distanceTo(locationService) / 1000;
-//                                    } else {
-//                                        showDataError();
-//                                        launchPrevActivity();
-//                                    }
-//
-//                                    String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-//                            Log.d("TESTINGCHOL", document.getId() + " => " + document.getData());
-//                            Log.d(TAG, name);
-//                            Log.d(TAG, address);
-//                            Log.d(TAG, schedule);
-//                            Log.d(TAG, services);
-//                            Log.d(TAG, String.valueOf(distance));
-//                            document.getString("city");
-//
-////                                Log.d(TAG, "City: " + document.getString("city"));
-//
-//                                    SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-//
-//                                    results.add(resultsObject);
-//                                    Log.d("ARRAYEND: ", results.toString());
-//
-//
-//
-//                                } catch (SecurityException e) {
-//                                    e.printStackTrace();
-//                                    showDataError();
-////                                    launchPrevActivity();
-//                                }
-//                            }
-//
-//                            send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
-//
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                    }
-//                });
-//    }
-//
-//    if (valuesClicked.isClickedFlu()) {
-//        db.collection("Locations").whereEqualTo("serviceFlu", true).orderBy("latitude") // orders largest to smallest
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                try {
-//
-//
-//                                    // getting current location
-//                                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                                    Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                    isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//
-//                                    isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//
-////                                    if(locationGPS == null) {
-////                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-////                                    }
-//
-////                                    if(locationGPS!= null){
-////                                        longitudeGPS = locationGPS.getLongitude();
-////                                        latitudeGPS = locationGPS.getLatitude();
-////                                    } else {
-////                                        showDataError();
-////                                        launchPrevActivity();
-////                                    }
-//
-//
-//                                    if (isNetworkEnabled) {
-//
-//                                        lm.requestLocationUpdates(
-//                                                LocationManager.NETWORK_PROVIDER,
-//                                                MIN_TIME_BW_UPDATES,
-//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//
-//                                        if (lm != null) {
-//                                            locationGPS = lm
-//                                                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                                            if (locationGPS != null) {
-//
-//                                                latitudeGPS = locationGPS.getLatitude();
-//                                                longitudeGPS = locationGPS.getLongitude();
-//                                            }
-//                                        }
-//
-//                                    }
-//
-//                                    if(isGPSEnabled) {
-//                                        if(locationGPS == null) {
-//                                            lm.requestLocationUpdates(
-//                                                    LocationManager.GPS_PROVIDER,
-//                                                    MIN_TIME_BW_UPDATES,
-//                                                    MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//                                            if(lm != null) {
-//                                                locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                                if(locationGPS != null) {
-//                                                    latitudeGPS = locationGPS.getLatitude();
-//                                                    longitudeGPS = locationGPS.getLongitude();
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//
-//
-////                                    if(locationGPS == null) {
-////                                        lm.requestLocationUpdates(
-////                                                LocationManager.GPS_PROVIDER,
-////                                                MIN_TIME_BW_UPDATES,
-////                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-////                                        if(lm != null) {
-////                                            locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-////
-////                                            if(locationGPS != null) {
-////                                                latitudeGPS = locationGPS.getLatitude();
-////                                                longitudeGPS = locationGPS.getLongitude();
-////                                            }
-////                                        }
-////                                    }
-//
-//                                    Location locationService = new Location("");
-//
-//
-//                                    String name = document.getId();
-//                                    String city = document.getString("city");
-//                                    double latitude = document.getGeoPoint("latitude").getLatitude();
-//                                    double longitude = document.getGeoPoint("latitude").getLongitude();
-//                                    String phone = document.getString("phone");
-//                                    String schedule = document.getString("scheduleMonFri");
-//                                    String services = "No Services";
-//                                    String bloodPressure = "";
-//                                    String bloodSugar = "";
-//                                    String cholesterol = "";
-//                                    String fluShot = "";
-//                                    String pneumonia = "";
-//                                    String shingles = "";
-//                                    locationService.setLatitude(latitude);
-//                                    locationService.setLongitude(longitude);
-//
-//                                    if (dayOfWeek == 7) {
-//                                        schedule = document.getString("scheduleSat");
-//                                    } else if (dayOfWeek == 0) {
-//                                        schedule = document.getString("scheduleSun");
-//                                    }
-//
-//                                    boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
-//                                    boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
-//                                    boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
-//                                    boolean serviceFlu = document.getBoolean("serviceFlu");
-//                                    boolean servicePneumonia = document.getBoolean("servicePneumonia");
-//                                    boolean serviceShingles = document.getBoolean("serviceShingles");
-//
-//                                    if (serviceBloodPressure == true) {
-//                                        bloodPressure = "Blood Pressure";
-//                                    }
-//                                    if (serviceBloodSugar == true) {
-//                                        bloodSugar = "Blood Sugar";
-//                                    }
-//                                    if (serviceCholesterol == true) {
-//                                        cholesterol = "Cholesterol";
-//                                    }
-//                                    if (serviceFlu == true) {
-//                                        fluShot = "Flu Shot";
-//                                    }
-//                                    if (servicePneumonia == true) {
-//                                        pneumonia = "Pneumonia";
-//                                    }
-//                                    if (serviceShingles == true) {
-//                                        shingles = "Shingles";
-//                                    }
-//
-//                                    if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
-//                                            && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
-//                                        services = "All Services Available";
-//                                    } else {
-//                                        services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
-//                                    }
-//
-//                                    double distance = 0.0;
-//                                    String state = document.getString("state");
-//                                    String streetAddress = document.getString("streetAddress");
-//                                    String url = document.getString("url");
-//                                    String zip = document.getString("zip");
-//
-//                                    if (locationGPS!= null) {
-//                                        distance = locationGPS.distanceTo(locationService) / 1000;
-//                                    } else {
-//                                        showDataError();
-//                                        launchPrevActivity();
-//                                    }
-//
-//                                    String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-////                                Log.d(TAG, document.getId() + " => " + document.getData());
-////                                Log.d(TAG, name);
-////                                Log.d(TAG, address);
-////                                Log.d(TAG, schedule);
-////                                Log.d(TAG, services);
-////                                Log.d(TAG, String.valueOf(distance));
-////                                document.getString("city");
-//
-////                                Log.d(TAG, "City: " + document.getString("city"));
-//
-//                                    SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-////                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
-////                                treeMap.get(distance).add(resultsObject);
-//
-//
-//
-//                                    results.add(resultsObject);
-//
-//                                } catch (SecurityException e) {
-//                                    e.printStackTrace();
-//                                    showDataError();
-////                                    launchPrevActivity();
-//                                }
-//                            }
-//
-//
-//                            send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
-//
-//
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                    }
-//                });
-//    }
-//
-//    if (valuesClicked.isClickedPneumonia()) {
-//        db.collection("Locations").whereEqualTo("servicePneumonia", true).orderBy("latitude") // orders largest to smallest
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                try {
-//                                    // getting current location
-//                                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                                    Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                    isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//
-//                                    isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//
-////                                    if(locationGPS == null) {
-////                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-////                                    }
-//
-////                                    if(locationGPS!= null){
-////                                        longitudeGPS = locationGPS.getLongitude();
-////                                        latitudeGPS = locationGPS.getLatitude();
-////                                    } else {
-////                                        showDataError();
-////                                        launchPrevActivity();
-////                                    }
-//
-//
-//                                    if (isNetworkEnabled) {
-//
-//                                        lm.requestLocationUpdates(
-//                                                LocationManager.NETWORK_PROVIDER,
-//                                                MIN_TIME_BW_UPDATES,
-//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//
-//                                        if (lm != null) {
-//                                            locationGPS = lm
-//                                                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                                            if (locationGPS != null) {
-//
-//                                                latitudeGPS = locationGPS.getLatitude();
-//                                                longitudeGPS = locationGPS.getLongitude();
-//                                            }
-//                                        }
-//
-//                                    }
-//
-//                                    if(isGPSEnabled) {
-//                                        if(locationGPS == null) {
-//                                            lm.requestLocationUpdates(
-//                                                    LocationManager.GPS_PROVIDER,
-//                                                    MIN_TIME_BW_UPDATES,
-//                                                    MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//                                            if(lm != null) {
-//                                                locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                                if(locationGPS != null) {
-//                                                    latitudeGPS = locationGPS.getLatitude();
-//                                                    longitudeGPS = locationGPS.getLongitude();
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//
-//
-////                                    if(locationGPS == null) {
-////                                        lm.requestLocationUpdates(
-////                                                LocationManager.GPS_PROVIDER,
-////                                                MIN_TIME_BW_UPDATES,
-////                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-////                                        if(lm != null) {
-////                                            locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-////
-////                                            if(locationGPS != null) {
-////                                                latitudeGPS = locationGPS.getLatitude();
-////                                                longitudeGPS = locationGPS.getLongitude();
-////                                            }
-////                                        }
-////                                    }
-//
-//                                    Location locationService = new Location("");
-//
-//
-//                                    String name = document.getId();
-//                                    String city = document.getString("city");
-//                                    double latitude = document.getGeoPoint("latitude").getLatitude();
-//                                    double longitude = document.getGeoPoint("latitude").getLongitude();
-//                                    String phone = document.getString("phone");
-//                                    String schedule = document.getString("scheduleMonFri");
-//                                    String services = "No Services";
-//                                    String bloodPressure = "";
-//                                    String bloodSugar = "";
-//                                    String cholesterol = "";
-//                                    String fluShot = "";
-//                                    String pneumonia = "";
-//                                    String shingles = "";
-//                                    locationService.setLatitude(latitude);
-//                                    locationService.setLongitude(longitude);
-//
-//                                    if (dayOfWeek == 7) {
-//                                        schedule = document.getString("scheduleSat");
-//                                    } else if (dayOfWeek == 0) {
-//                                        schedule = document.getString("scheduleSun");
-//                                    }
-//
-//                                    boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
-//                                    boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
-//                                    boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
-//                                    boolean serviceFlu = document.getBoolean("serviceFlu");
-//                                    boolean servicePneumonia = document.getBoolean("servicePneumonia");
-//                                    boolean serviceShingles = document.getBoolean("serviceShingles");
-//
-//                                    if (serviceBloodPressure == true) {
-//                                        bloodPressure = "Blood Pressure";
-//                                    }
-//                                    if (serviceBloodSugar == true) {
-//                                        bloodSugar = "Blood Sugar";
-//                                    }
-//                                    if (serviceCholesterol == true) {
-//                                        cholesterol = "Cholesterol";
-//                                    }
-//                                    if (serviceFlu == true) {
-//                                        fluShot = "Flu Shot";
-//                                    }
-//                                    if (servicePneumonia == true) {
-//                                        pneumonia = "Pneumonia";
-//                                    }
-//                                    if (serviceShingles == true) {
-//                                        shingles = "Shingles";
-//                                    }
-//
-//                                    if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
-//                                            && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
-//                                        services = "All Services Available";
-//                                    } else {
-//                                        services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
-//                                    }
-//
-//                                    double distance = 0.0;
-//                                    String state = document.getString("state");
-//                                    String streetAddress = document.getString("streetAddress");
-//                                    String url = document.getString("url");
-//                                    String zip = document.getString("zip");
-//
-//                                    if (locationGPS!= null) {
-//                                        distance = locationGPS.distanceTo(locationService) / 1000;
-//                                    } else {
-//                                        showDataError();
-//                                        launchPrevActivity();
-//                                    }
-//
-//                                    String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-////                                Log.d(TAG, document.getId() + " => " + document.getData());
-////                                Log.d(TAG, name);
-////                                Log.d(TAG, address);
-////                                Log.d(TAG, schedule);
-////                                Log.d(TAG, services);
-////                                Log.d(TAG, String.valueOf(distance));
-////                                document.getString("city");
-//
-////                                Log.d(TAG, "City: " + document.getString("city"));
-//
-//                                    SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-////                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
-////                                treeMap.get(distance).add(resultsObject);
-//
-//
-//                                    results.add(resultsObject);
-//
-//
-//
-//                                } catch (SecurityException e) {
-//                                    e.printStackTrace();
-//                                    showDataError();
-////                                    launchPrevActivity();
-//                                }
-//                            }
-//
-////                                if(hasDuplicatesInArrayList(results)) {
-//////                                    results.clear();
-////                                    Log.w(TAG, "Error getting documents.PNEU", task.getException());
-////                                } else {
-//                            send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
-////                                }
-//
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                    }
-//                });
-//    }
-//
-//    if (valuesClicked.isClickedShingles()) {
-//        db.collection("Locations").whereEqualTo("serviceShingles", true).orderBy("latitude") // orders largest to smallest
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                try {
-//
-//                                    // getting current location
-//                                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//                                    Location locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                    isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//
-//                                    isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//
-////                                    if(locationGPS == null) {
-////                                        locationGPS = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-////                                    }
-//
-////                                    if(locationGPS!= null){
-////                                        longitudeGPS = locationGPS.getLongitude();
-////                                        latitudeGPS = locationGPS.getLatitude();
-////                                    } else {
-////                                        showDataError();
-////                                        launchPrevActivity();
-////                                    }
-//
-//
-//                                    if (isNetworkEnabled) {
-//
-//                                        lm.requestLocationUpdates(
-//                                                LocationManager.NETWORK_PROVIDER,
-//                                                MIN_TIME_BW_UPDATES,
-//                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//
-//                                        if (lm != null) {
-//                                            locationGPS = lm
-//                                                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                                            if (locationGPS != null) {
-//
-//                                                latitudeGPS = locationGPS.getLatitude();
-//                                                longitudeGPS = locationGPS.getLongitude();
-//                                            }
-//                                        }
-//
-//                                    }
-//
-//                                    if(isGPSEnabled) {
-//                                        if(locationGPS == null) {
-//                                            lm.requestLocationUpdates(
-//                                                    LocationManager.GPS_PROVIDER,
-//                                                    MIN_TIME_BW_UPDATES,
-//                                                    MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-//                                            if(lm != null) {
-//                                                locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                                                if(locationGPS != null) {
-//                                                    latitudeGPS = locationGPS.getLatitude();
-//                                                    longitudeGPS = locationGPS.getLongitude();
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//
-//
-////                                    if(locationGPS == null) {
-////                                        lm.requestLocationUpdates(
-////                                                LocationManager.GPS_PROVIDER,
-////                                                MIN_TIME_BW_UPDATES,
-////                                                MIN_DISTANCE_CHANGE_FOR_UPDATES, listener);
-////                                        if(lm != null) {
-////                                            locationGPS = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-////
-////                                            if(locationGPS != null) {
-////                                                latitudeGPS = locationGPS.getLatitude();
-////                                                longitudeGPS = locationGPS.getLongitude();
-////                                            }
-////                                        }
-////                                    }
-//
-//                                    Location locationService = new Location("");
-//
-//
-//                                    String name = document.getId();
-//                                    String city = document.getString("city");
-//                                    double latitude = document.getGeoPoint("latitude").getLatitude();
-//                                    double longitude = document.getGeoPoint("latitude").getLongitude();
-//                                    String phone = document.getString("phone");
-//                                    String schedule = document.getString("scheduleMonFri");
-//                                    String services = "No Services";
-//                                    String bloodPressure = "";
-//                                    String bloodSugar = "";
-//                                    String cholesterol = "";
-//                                    String fluShot = "";
-//                                    String pneumonia = "";
-//                                    String shingles = "";
-//                                    locationService.setLatitude(latitude);
-//                                    locationService.setLongitude(longitude);
-//
-//                                    if (dayOfWeek == 7) {
-//                                        schedule = document.getString("scheduleSat");
-//                                    } else if (dayOfWeek == 0) {
-//                                        schedule = document.getString("scheduleSun");
-//                                    }
-//
-//                                    boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
-//                                    boolean serviceBloodSugar = document.getBoolean("serviceBloodSugar");
-//                                    boolean serviceCholesterol = document.getBoolean("serviceCholesterol");
-//                                    boolean serviceFlu = document.getBoolean("serviceFlu");
-//                                    boolean servicePneumonia = document.getBoolean("servicePneumonia");
-//                                    boolean serviceShingles = document.getBoolean("serviceShingles");
-//
-//                                    if (serviceBloodPressure == true) {
-//                                        bloodPressure = "Blood Pressure";
-//                                    }
-//                                    if (serviceBloodSugar == true) {
-//                                        bloodSugar = "Blood Sugar";
-//                                    }
-//                                    if (serviceCholesterol == true) {
-//                                        cholesterol = "Cholesterol";
-//                                    }
-//                                    if (serviceFlu == true) {
-//                                        fluShot = "Flu Shot";
-//                                    }
-//                                    if (servicePneumonia == true) {
-//                                        pneumonia = "Pneumonia";
-//                                    }
-//                                    if (serviceShingles == true) {
-//                                        shingles = "Shingles";
-//                                    }
-//
-//                                    if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
-//                                            && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
-//                                        services = "All Services Available";
-//                                    } else {
-//                                        services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
-//                                    }
-//
-//                                    double distance = 0.0;
-//                                    String state = document.getString("state");
-//                                    String streetAddress = document.getString("streetAddress");
-//                                    String url = document.getString("url");
-//                                    String zip = document.getString("zip");
-//
-//                                    if (locationGPS!= null) {
-//                                        distance = locationGPS.distanceTo(locationService) / 1000;
-//                                    } else {
-//                                        showDataError();
-//                                        launchPrevActivity();
-//                                    }
-//
-//                                    String address = streetAddress + ", " + city + ", " + state + ", " + zip;
-////                                Log.d(TAG, document.getId() + " => " + document.getData());
-////                                Log.d(TAG, name);
-////                                Log.d(TAG, address);
-////                                Log.d(TAG, schedule);
-////                                Log.d(TAG, services);
-////                                Log.d(TAG, String.valueOf(distance));
-////                                document.getString("city");
-//
-////                                Log.d(TAG, "City: " + document.getString("city"));
-//
-//                                    SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-////                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
-////                                treeMap.get(distance).add(resultsObject);
-//
-//
-//
-//                                    results.add(resultsObject);
-//
-//                                } catch (SecurityException e) {
-//                                    e.printStackTrace();
-//                                    showDataError();
-////                                    launchPrevActivity();
-//                                }
-//                            }
-//
-//
-//                                send(results); // this sends the results list to the RecyclerViewAdapter for the Card Views
-//
-//
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                    }
-//                });
-//    }
-
-    this.home = (ImageButton) findViewById(R.id.Home);
-    this.home.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            launchMainActivity();
-        }
-    });
+        this.home = (ImageButton) findViewById(R.id.Home);
+        this.home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchMainActivity();
+            }
+        });
 
 }
 
@@ -1303,8 +337,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
     }
 
-    private void launchMainActivity()
-    {
+    private void launchMainActivity() {
         Intent intent = new Intent (this, MainActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -1312,23 +345,16 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
     }
 
-    private void launchPrevActivity()
-    {
-//        results.clear();
-//        mRecyclerView.getRecycledViewPool().clear();
-//        mRecyclerView.setAdapter(null);
-//        mRecyclerView.getAdapter().notifyDataSetChanged();
-//        mRecyclerView.setLayoutManager(null);
-//        mRecyclerView.setAdapter(null);
-//        mRecyclerView.removeAllViewsInLayout();
+    private void launchPrevActivity() {
 
+        // this will reset the boolean values of the selection buttons **IMPORTANT**
         valuesClicked.onRestart();
 
-        results.removeAll(results);
-        mAdapter.notifyDataSetChanged();
-        mRecyclerView.setAdapter(mAdapter); // this does clear the list but it still shows up
-        Log.d("ARRAY: ", results.toString());
-//        Log.d("ARRAY: ", mRecyclerView.toString());
+        // This will reset the adapter each time so it is freshly updated on each query.
+//        results.removeAll(results);
+//        mAdapter.notifyDataSetChanged();
+//        mRecyclerView.setAdapter(mAdapter);
+
         Intent intent = new Intent(this, SearchServiceActivity.class);
         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
@@ -1336,8 +362,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
-    {
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
         if(position != 0)
         {
             String text = parent.getItemAtPosition(position).toString();
@@ -1351,21 +376,21 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         ArrayList<SearchServiceDataObject> newList = new ArrayList<>();
-
+        
         for(int i = 0; i < list.size(); i++) {
             if(valuesClicked.isClickedBP() && (list.get(i).getServices().contains("Blood Pressure") || list.get(i).getServices().contains("All Services Available"))) {
                 newList.add(list.get(i));
-                Log.d("TESTBP", String.valueOf(valuesClicked.isClickedBP()));
+                Log.d("TESTBP", list.get(i).getName());
             }
 
             if(valuesClicked.isClickedBS() && (list.get(i).getServices().contains("Blood Sugar") || list.get(i).getServices().contains("All Services Available"))) {
                 newList.add(list.get(i));
-                Log.d("TESTBS", list.get(0).services);
+                Log.d("TESTBS", list.get(i).name);
             }
 
             if(valuesClicked.isClickedCholesterol() && (list.get(i).getServices().contains("Cholesterol") || list.get(i).getServices().contains("All Services Available"))) {
                 newList.add(list.get(i));
-                Log.d("TESTCHOL", list.get(0).services);
+                Log.d("TESTCHOL", list.get(i).name);
             }
 
             if(valuesClicked.isClickedFlu() && (list.get(i).getServices().contains("Flu Shot") || list.get(i).getServices().contains("All Services Available"))) {
@@ -1383,25 +408,22 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                 Log.d("TESTSHING", list.get(0).services);
             }
 
+            Log.d("TESTLOOP",list.get(i).getName());
+
         }
 
 
 
+
         mRecyclerView.setLayoutManager(mLayoutManager);
-//        compareObjects(results);
-//        Collections.sort(compareObjects(results));
         Collections.reverse(newList); // flip to show shortest distance first.
-//        ArrayList<SearchServiceDataObject> listTwo = removeDuplicates(list);
-//        Collections.reverse(listTwo); // flip to show shortest distance first.
         mAdapter = new MySearchResultRecyclerViewAdapter(newList); // make sure to change this up copied. This is where the list is passed to the other class
         mRecyclerView.setAdapter(mAdapter);
-//        mRecyclerView.setItemAnimator( new DefaultItemAnimator());
 
-    }
+    } // end of send method
 
     // Show images in Toast prompt.
-    private void showDataError()
-    {
+    private void showDataError() {
 
         Toast toast = Toast.makeText(getApplicationContext(), "Can't Find Location. Make Sure Location Is On!", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -1412,24 +434,10 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         toast.show();
     }
 
-    public boolean hasDuplicatesInArrayList(ArrayList<SearchServiceDataObject> list) {
-        for (int i = 0; i < list.size(); i++) {
-            for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i).getName().equals(list.get(j).getName())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     @Override
     protected void onRestart() {
         super.onRestart();
 
-        // first clear the recycler view so items are not populated twice
-//        results.clear();
-//        mRecyclerView.removeAllViewsInLayout();
         valuesClicked.setClickedBP(false);
         valuesClicked.setClickedBS(false);
         valuesClicked.setClickedCholesterol(false);
@@ -1437,10 +445,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         valuesClicked.setClickedPneumonia(false);
         valuesClicked.setClickedShingles(false);
 
-
-//        results.removeAll(results);
-//        mAdapter.notifyDataSetChanged();
-//        mRecyclerView.setAdapter(mAdapter); this will clear the CardView if go inot Mpas the hit back button
     }
 
     @Override
@@ -1460,72 +464,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         // etc.
     }
 
-//    public ArrayList<SearchServiceDataObject> compareObjects(ArrayList<SearchServiceDataObject> list) {
-//        // write comparison logic here like below , it's just a sample
-//        ArrayList<SearchServiceDataObject> list2 = new ArrayList<>();
-//        for (int i = 0; i < list.size(); i++) {
-//            for (int j = i + 1; j < list.size(); j++) {
-//                if (list.get(i).getDistance() > list.get(j).getDistance()) {
-//                    list2.add(list.get(j));
-//                } else if(list.get(i).getDistance() < list.get(j).getDistance()) {
-//                    list2.add(list.get(i));
-//                }
-//            }
-//
-//        }
-//        return list2;
-//    }
-
-
-
-
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-
-    @Override
-    public int compare(SearchServiceDataObject o1, SearchServiceDataObject o2) {
-        return 0;
-    }
-
-    @Override
-    public Comparator<SearchServiceDataObject> reversed() {
-        return null;
-    }
-
-    @Override
-    public Comparator<SearchServiceDataObject> thenComparing(Comparator<? super SearchServiceDataObject> other) {
-        return null;
-    }
-
-    @Override
-    public <U> Comparator<SearchServiceDataObject> thenComparing(Function<? super SearchServiceDataObject, ? extends U> keyExtractor, Comparator<? super U> keyComparator) {
-        return null;
-    }
-
-    @Override
-    public <U extends Comparable<? super U>> Comparator<SearchServiceDataObject> thenComparing(Function<? super SearchServiceDataObject, ? extends U> keyExtractor) {
-        return null;
-    }
-
-    @Override
-    public Comparator<SearchServiceDataObject> thenComparingInt(ToIntFunction<? super SearchServiceDataObject> keyExtractor) {
-        return null;
-    }
-
-    @Override
-    public Comparator<SearchServiceDataObject> thenComparingLong(ToLongFunction<? super SearchServiceDataObject> keyExtractor) {
-        return null;
-    }
-
-    @Override
-    public Comparator<SearchServiceDataObject> thenComparingDouble(ToDoubleFunction<? super SearchServiceDataObject> keyExtractor) {
-        return null;
-    }
-
-    public static void bloodPressureQuery() {
 
     }
 }

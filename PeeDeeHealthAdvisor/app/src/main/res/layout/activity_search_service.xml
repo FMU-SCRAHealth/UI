@@ -245,13 +245,13 @@
                     <!--android:layout_marginBottom="10dp"-->
                     <!--android:textColor="@color/BlueHuesDark"/>-->
 
-                <Spinner
-                    android:id="@+id/radiusSpinner"
-                    android:layout_width="170dp"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:visibility="visible"
-                    android:textColor="@color/GreenHuesMedium"/>
+                <!--<Spinner-->
+                    <!--android:id="@+id/radiusSpinner"-->
+                    <!--android:layout_width="170dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:visibility="visible"-->
+                    <!--android:textColor="@color/GreenHuesMedium"/>-->
 
                 <!--<android.support.design.widget.TextInputLayout-->
                     <!--android:id="@+id/medNameText"-->

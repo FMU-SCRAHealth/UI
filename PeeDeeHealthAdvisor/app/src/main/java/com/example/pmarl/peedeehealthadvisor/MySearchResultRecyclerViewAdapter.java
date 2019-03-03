@@ -80,8 +80,9 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
 
     public MySearchResultRecyclerViewAdapter(ArrayList<SearchServiceDataObject> myDataset) {
 
+        // called twice because it has to go through the method twice to get the dups out. Need to keep eye on.
         myDataset = removeDuplicates(myDataset);
-        mDataset = myDataset;
+        mDataset = removeDuplicates(myDataset);
         Log.d("mDataset: ", mDataset.toString());
     }
 
@@ -109,7 +110,7 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
         holder.mapsButton.setOnClickListener(mDataset.get(position).openMap());
         holder.urlButton.setOnClickListener(mDataset.get(position).openURL());
-        Log.d("TESTINGCARD: ", mDataset.get(position).getServices());
+        Log.d("TESTINGCARD: ", mDataset.get(position).getName());
 
 
 
@@ -147,8 +148,9 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
     {
         for (int i = 0; i < list.size(); i++) {
             for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i).getPhone().equals(list.get(j).getPhone())) {
+                if (list.get(i).getName().equals(list.get(j).getName())) {
                     list.remove(j);
+//                    Log.d("TESTINGREMOVE: ", String.valueOf(list.get(j).name));
                 }
             }
 

@@ -207,11 +207,17 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             }
         });
 
-        spinnerRadius = findViewById(R.id.radiusSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.distances, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerRadius.setAdapter(adapter);
-        spinnerRadius.setOnItemSelectedListener(this);
+//        spinnerRadius = findViewById(R.id.radiusSpinner);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.distances, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerRadius.setAdapter(adapter);
+//        spinnerRadius.setOnItemSelectedListener(this);
+
+        /* BELOW * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        *  The following below change the selection icons on the buttons for searching.            *
+        *  false will be the default and the onRestart() at the bottom is crucial to query results.*
+        *  make sure that you follow the format and get them switching values.                     *
+        * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
         this.bloodPressureSearch = (ImageButton) findViewById(R.id.bloodPressureTEST1);
 
@@ -315,7 +321,6 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             }
         });
 
-//        SearchServiceActivity.context = getApplicationContext();
 
     }
 
@@ -671,34 +676,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     }
 
 
-    private void createLocationRequest(){
-        mLocationRequest = new LocationRequest();
-
-        // 0 means here receive location as soon as possible
-        mLocationRequest.setInterval(0);
-        mLocationRequest.setFastestInterval(0);
-
-        // setNumUpdates(1); stops location requests after receiving 1 location
-        mLocationRequest.setNumUpdates(1);
-
-        // PRIORITY_HIGH_ACCURACY option uses your GPS
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-    }
-
-
-
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        // Save UI state changes to the savedInstanceState.
-        // This bundle will be passed to onCreate if the process is
-        // killed and restarted.
-//        savedInstanceState.clear()
-
-        // etc.
-    }
-
+    // this method is called in SearchLocationActivity to reset the boolean values each time the screen is reloaded
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -710,13 +688,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         clickedPneumonia = false;
         clickedShingles = false;
 
-        // first clear the recycler view so items are not populated twice
-//        results.clear();
-//        mRecyclerView.removeAllViewsInLayout();
 
-//        results.removeAll(results);
-//        mAdapter.notifyDataSetChanged();
-//        mRecyclerView.setAdapter(mAdapter); this will clear the CardView if go inot Mpas the hit back button
     }
 
 }
