@@ -68,7 +68,7 @@
                 android:layout_marginTop="40dp"
                 android:text="@string/bloodSugarLevel"
                 android:textColor="@color/PurpleHuesDark"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/BloodSugarInput"
@@ -85,32 +85,8 @@
                     android:inputType="number"
                     android:singleLine="true"
                     android:textColor="@color/PurpleHuesMedium"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
             </android.support.design.widget.TextInputLayout>
-
-            <!--<CheckBox-->
-                <!--android:id="@+id/BloodSugarCheckBoxFasting"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginStart="10dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/fasting"-->
-                <!--android:textColor="@color/colorPrimaryDark"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />-->
-
-            <!--<CheckBox-->
-                <!--android:id="@+id/BloodSugarCheckBoxNonFasting"-->
-                <!--android:layout_width="170dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginStart="10dp"-->
-                <!--android:textSize="20dp"-->
-                <!--android:text="@string/nonfasting"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:textColor="@color/colorPrimaryDark"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/SearchForThese" />-->
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
@@ -129,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fasting"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textColor="@color/PurpleHuesMedium"
                     android:layout_marginEnd="20dp"
                     android:onClick="onRadioButtonClicked"/>
@@ -137,7 +113,7 @@
                 <RadioButton android:id="@+id/nonfastingToggle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:text="@string/nonfasting"
                     android:textColor="@color/PurpleHuesMedium"
                     android:onClick="onRadioButtonClicked"/>
@@ -155,7 +131,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/selectDateBelow"
                 android:textColor="@color/PurpleHuesDark"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/editDate"
@@ -168,14 +144,14 @@
                 android:inputType="date"
                 android:longClickable="false"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/selectTimeBelow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="@string/selectTimeBelow"
                 android:textColor="@color/PurpleHuesDark"/>
 
@@ -190,7 +166,7 @@
                 android:inputType="date"
                 android:longClickable="false"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"

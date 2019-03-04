@@ -41,7 +41,7 @@
                 android:text="@string/setupUser"
                 android:textColor="@color/colorPrimaryDark"
                 android:gravity="center_vertical"
-                android:textSize="24sp"
+                android:textSize="24dp"
                 android:textStyle="bold"
                 android:layout_weight="0"/>
             <View
@@ -62,7 +62,7 @@
                 android:id="@+id/welcomeNameEntryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="@string/genderAndName"
                 android:textColor="@color/colorPrimaryDark"/>
 
@@ -124,7 +124,7 @@
                 <RadioButton android:id="@+id/maleToggle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:text="@string/male"
                     android:textColor="@color/colorPrimaryDark"
                     android:onClick="onRadioButtonClicked"/>
@@ -137,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/female"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_marginEnd="0dp"
                     android:onClick="onRadioButtonClicked"/>
@@ -151,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/other"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_marginEnd="0dp"
                     android:onClick="onRadioButtonClicked"/>
@@ -168,7 +168,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/selectBirthDateBelow"
                 android:textColor="@color/colorPrimaryDark"/>
