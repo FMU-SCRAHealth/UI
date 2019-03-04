@@ -119,6 +119,8 @@
     <string name="medPharmacyName">Pharmacy Name</string>
     <string name="medPharmacyOPhoneNumber">Number</string>
     <string name="medFrequency">Times Taken Per Day</string>
+    <string name="medFrequencyInput">Frequency</string>
+    <string name="medFrequencyCard">Frequency:</string>
 
     <string name="medDose">Dosage: </string>
     <string name="medDelivery">Delivery: </string>
