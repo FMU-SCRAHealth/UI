@@ -37,6 +37,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.Manifest;
@@ -104,6 +105,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     boolean isGPSEnabled = false;
     boolean isNetworkEnabled = false;
 
+    private ProgressBar spinner;
+
     // this of way to select values you want by selection
     SearchServiceActivity valuesClicked = new SearchServiceActivity();
 
@@ -120,6 +123,12 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
         //Sets the layout to the activity_search_location layout
         setContentView(R.layout.activity_card_view_search_services);
+
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+
+        spinner.setVisibility(View.VISIBLE);
+
 
         FirebaseApp.initializeApp(this);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -421,6 +430,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         Collections.reverse(newList); // flip to show shortest distance first.
         mAdapter = new MySearchResultRecyclerViewAdapter(newList); // make sure to change this up copied. This is where the list is passed to the other class
         mRecyclerView.setAdapter(mAdapter);
+        spinner.setVisibility(View.GONE);
 
     } // end of send method
 
