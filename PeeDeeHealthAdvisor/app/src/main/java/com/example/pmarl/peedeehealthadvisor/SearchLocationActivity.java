@@ -178,7 +178,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 //        locations.put("zip", zip);
 
 
-        db.collection("Locations").orderBy("latitude") // orders largest to smallest
+        db.collection("Locations").orderBy("location") // orders largest to smallest
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -234,12 +234,12 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                     Location locationService = new Location("");
 
-                                    String name = document.getId();
+                                    String name = document.getString("clinicName");
                                     String city = document.getString("city");
-                                    double latitude = document.getGeoPoint("latitude").getLatitude();
-                                    double longitude = document.getGeoPoint("latitude").getLongitude();
+                                    double latitude = document.getGeoPoint("location").getLatitude();
+                                    double longitude = document.getGeoPoint("location").getLongitude();
                                     String phone = document.getString("phone");
-                                    String schedule = document.getString("scheduleMonFri");
+                                    String schedule = document.getString("hoursNormal");
                                     String services = "No Services";
                                     String bloodPressure = "";
                                     String bloodSugar = "";
@@ -251,11 +251,11 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     locationService.setLongitude(longitude);
 
                                     if (dayOfWeek == 7) {
-                                        schedule = document.getString("scheduleSat");
+                                        schedule = document.getString("hoursSat");
                                     } else if (dayOfWeek == 1) {
-                                        schedule = document.getString("scheduleSun");
+                                        schedule = document.getString("hoursSun");
                                     } else {
-                                        schedule = document.getString("scheduleMonFri");
+                                        schedule = document.getString("hoursNormal");
                                     }
 
                                     boolean serviceBloodPressure = document.getBoolean("serviceBloodPressure");
@@ -293,8 +293,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                     double distance = 0.0;
                                     String state = document.getString("state");
-                                    String streetAddress = document.getString("streetAddress");
-                                    String url = document.getString("url");
+                                    String streetAddress = document.getString("address");
+                                    String url = document.getString("website");
                                     String zip = document.getString("zip");
 
                                     if (locationGPS!= null) {
