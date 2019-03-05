@@ -289,8 +289,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 Log.d("TESTING", document.getId() + " => " + document.getData());
                                 Log.d("TESTING", String.valueOf(calendar.get(Calendar.DAY_OF_WEEK)));
                                     SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-//                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
-//                                treeMap.get(distance).add(resultsObject);
 
 
 
