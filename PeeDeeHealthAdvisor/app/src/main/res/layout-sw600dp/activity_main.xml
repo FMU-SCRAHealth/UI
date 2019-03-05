@@ -62,27 +62,27 @@
         >
         <GridLayout
             android:id="@+id/appScreens2"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="100dp"
             android:layout_marginStart="0dp"
             android:layout_width="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_height="450dp"
+            android:layout_height="550dp"
             android:columnCount="1"
             android:rowCount="2"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/MyHealthData"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:background="@drawable/ic_journaltop"
                 />
 
             <Button
                 android:id="@+id/HealthResources"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/ic_resources"
                 />
