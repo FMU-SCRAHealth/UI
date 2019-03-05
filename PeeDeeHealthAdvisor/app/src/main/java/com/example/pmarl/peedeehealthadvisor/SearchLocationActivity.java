@@ -156,7 +156,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
             }
         };
-        
+
 
         db.collection("Locations").orderBy("location") // orders largest to smallest
                 .get()
@@ -214,6 +214,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                     Location locationService = new Location("");
 
+                                    // pulling the location values
                                     String name = document.getString("clinicName");
                                     String city = document.getString("city");
                                     double latitude = document.getGeoPoint("location").getLatitude();
