@@ -69,14 +69,25 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/medFreqCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/medDoseCardText"
+                android:textColor="@color/white"
+                android:text="@string/medFrequencyCard"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
                 android:id="@+id/medFreqCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medNameCardText"
-                android:textSize="20dp"
+                android:layout_below="@+id/medDoseCardText"
+                android:textSize="14dp"
                 android:textColor="@color/white"
-                android:layout_marginStart="200dp"
-                android:layout_marginTop="17dp"/>
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/medDoseCardText"
@@ -104,21 +115,21 @@
                 android:id="@+id/medDeliveryCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medDoseCardText"
+                android:layout_below="@+id/medFreqCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="66dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="9dp"/>
 
             <TextView
                 android:id="@+id/medDeliveryCardTextLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/medDoseCardText"
+                android:layout_below="@+id/medFreqCardText"
                 android:textColor="@color/white"
                 android:text="@string/medDelivery"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
-                android:layout_marginTop="9dp"/>
+                android:layout_marginTop="8dp"/>
 
             <TextView
                 android:id="@+id/medRXNumCardText"

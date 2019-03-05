@@ -40,7 +40,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="4dp"
                 android:layout_marginTop="5dp"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -56,7 +56,7 @@
                 android:id="@+id/allergyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="@string/allergyName"
                 android:textColor="@color/PollenHuesDark"/>
 
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="@string/allergyDescription"
                 android:textColor="@color/PollenHuesDark"/>
 
@@ -106,28 +106,6 @@
                     android:textColor="@color/colorPrimaryDark"/>
 
             </android.support.design.widget.TextInputLayout>
-
-            <!--<TextView-->
-                <!--android:id="@+id/textView2"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="20sp"-->
-                <!--android:layout_marginTop="15dp"-->
-                <!--android:text="@string/selectBirthDateBelow"-->
-                <!--android:textColor="@color/colorPrimaryDark"/>-->
-
-            <!--<EditText-->
-                <!--android:id="@+id/editDate"-->
-                <!--android:layout_width="228dp"-->
-                <!--android:layout_height="46dp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:ems="10"-->
-                <!--android:focusable="false"-->
-                <!--android:hint="@string/selectDate"-->
-                <!--android:inputType="date"-->
-                <!--android:longClickable="false"-->
-                <!--android:textAlignment="center"-->
-                <!--android:textColor="@color/colorPrimaryDark"/>-->
 
             <LinearLayout
                 android:paddingLeft="4.0dip"

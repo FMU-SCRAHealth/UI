@@ -38,7 +38,7 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/enterBodyWeight"
                 android:textColor="@color/BodyWeightHuesDark"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 android:textStyle="bold"/>
 
         </RelativeLayout>
@@ -56,7 +56,7 @@
                 android:layout_height="24dp"
                 android:layout_marginTop="25dp"
                 android:gravity="center_horizontal"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="@string/weight"
                 android:textColor="@color/BodyWeightHuesDark"/>
 
@@ -74,7 +74,7 @@
                     android:hint="@string/weightInPounds"
                     android:inputType="numberDecimal"
                     android:textColor="@color/BodyWeightHuesDark"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="@string/selectDateBelow"
                 android:textColor="@color/BodyWeightHuesDark"/>
 
@@ -100,7 +100,7 @@
                 android:inputType="date"
                 android:longClickable="false"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <LinearLayout
                 android:paddingLeft="4.0dip"

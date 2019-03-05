@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutSearchCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/BGWhite">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="25dp"
+        card_view:contentPadding="10dp"
+        card_view:cardBackgroundColor="@color/BlueHuesMedium"
+        android:background="@color/BGWhite">
+
+        <RelativeLayout
+            android:id="@+id/card_view_background"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/BlueHuesMedium">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_compass"
+                />
+
+            <ImageButton
+                android:id="@+id/mapButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="185dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_maps_round_launcher_color_48"
+                />
+
+            <ImageButton
+                android:id="@+id/urlButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="65dp"
+                android:layout_marginEnd="11dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_appicns_chrome"
+                />
+
+            <ImageButton
+                android:id="@+id/phoneCallButtonSearch"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_phonecall"
+                />
+
+            <TextView
+                android:id="@+id/locationNameCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"/>
+
+            <!--<TextView-->
+                <!--android:id="@+id/medFreqCardText"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/medNameCardText"-->
+                <!--android:textSize="20dp"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:layout_marginStart="200dp"-->
+                <!--android:layout_marginTop="17dp"/>-->
+
+            <TextView
+                android:id="@+id/searchDistanceCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/locationNameCardText"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/searchDistanceCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/locationNameCardText"
+                android:textColor="@color/white"
+                android:text="@string/searchDistance"
+                android:textSize="20dp"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/searchHoursCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchDistanceCardText"
+                android:textColor="@color/white"
+                android:layout_marginStart="55dp"
+                android:textSize="14dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/searchHoursCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchDistanceCardText"
+                android:textColor="@color/white"
+                android:text="@string/searchHours"
+                android:layout_marginStart="6dp"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/searchServicesCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchHoursCardText"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/searchServicesCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchHoursCardText"
+                android:textColor="@color/white"
+                android:text="@string/searchService"
+                android:textSize="14dp"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/searchAddressCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchServicesCardText"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:layout_marginStart="67dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/searchAddressCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchServicesCardText"
+                android:textColor="@color/white"
+                android:text="@string/searchAddress"
+                android:layout_marginStart="6dp"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/searchWebsiteNumCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchAddressCardText"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:layout_marginStart="67dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/searchWebsiteNumCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchAddressCardText"
+                android:textColor="@color/white"
+                android:text="@string/searchWebsite"
+                android:layout_marginStart="6dp"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/searchPhoneCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchWebsiteNumCardText"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/searchPhoneCardTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchWebsiteNumCardText"
+                android:textColor="@color/white"
+                android:text="@string/searchPhone"
+                android:textSize="14dp"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <!--<Switch-->
+            <!--android:id="@+id/switchTaking"-->
+            <!--android:layout_below="@+id/medPharmNumCardTextLabel"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:theme="@style/SCBSwitch"-->
+            <!--android:layout_marginStart="6dp"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:text="@string/taking" />-->
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

@@ -49,24 +49,28 @@
                 android:layout_marginEnd="3dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/healthAdvisor"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"/>
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="65dp"
-            android:gravity="center_horizontal"
-            >
-            <!-- Styling for the ovals and colors -->
-
-            <!--android:textColor="@color/white"-->
-            <!--android:textSize="20sp"-->
-            <!--android:text="@string/myHealthData"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <GridLayout
+            android:id="@+id/appScreens2"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="0dp"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_height="450dp"
+            android:columnCount="1"
+            android:rowCount="2"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/MyHealthData"
@@ -75,14 +79,6 @@
                 android:background="@drawable/ic_journaltop"
                 />
 
-            <!-- Styling for the ovals and colors -->
-            <!--android:backgroundTint="@color/colorPrimaryDark"-->
-            <!--android:background="@drawable/mybutton"-->
-            <!--android:fontFamily="@font/catamaran_bold"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:textSize="20sp"-->
-            <!--android:text="@string/myHealthResources"-->
-            <!--android:textColor="@color/white"-->
             <Button
                 android:id="@+id/HealthResources"
                 android:layout_width="200dp"
@@ -90,6 +86,18 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/ic_resources"
                 />
+
+        </GridLayout>
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginTop="65dp"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--&gt;-->
+
+            <!---->
 
         </LinearLayout>
 

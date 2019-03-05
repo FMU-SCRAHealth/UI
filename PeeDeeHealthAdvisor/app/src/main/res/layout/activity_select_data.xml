@@ -16,50 +16,27 @@
     android:orientation="vertical"
     android:background="@color/BGWhite"
     >
-  
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
         >
 
-        <!--<RelativeLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:orientation="horizontal"-->
-            <!--&gt;-->
 
-            <!--<View-->
-                <!--android:id="@+id/HomeFiller"-->
-                <!--android:layout_width="50dp"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_marginStart="5dp"-->
-                <!--android:layout_alignParentStart="true"-->
-                <!--android:background="@android:color/transparent" />-->
+    </RelativeLayout>
 
-            <!--<View-->
-                <!--android:id="@+id/SelectDataEnterScreenFiller"-->
-                <!--android:layout_width="205dp"-->
-                <!--android:layout_height="80dp"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:layout_marginEnd="10dp"-->
-                <!--android:text="@string/myHealthData"-->
-                <!--android:textColor="@color/colorPrimaryDark"-->
-                <!--android:textSize="30sp"-->
-                <!--android:textStyle="bold"-->
-                <!--android:layout_alignParentRight="true"/>-->
 
-        <!--</RelativeLayout>-->
 
         <GridLayout
             android:id="@+id/appScreens"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="100dp"
             android:layout_marginStart="0dp"
             android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_height="450dp"
             android:columnCount="2"
             android:rowCount="2"
-            android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
             <ImageButton
@@ -103,7 +80,5 @@
                 android:background="@android:color/transparent"
                  />
         </GridLayout>
-
-    </LinearLayout>
 
 </RelativeLayout>

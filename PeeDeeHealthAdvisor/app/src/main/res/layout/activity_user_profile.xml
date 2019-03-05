@@ -38,7 +38,7 @@
                 android:layout_marginEnd="7dp"
                 android:text="@string/user"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -71,7 +71,7 @@
                 android:layout_marginStart="2dp"
                 android:textColor="@color/white"
                 android:gravity="center_horizontal"
-                android:textSize="24sp" />
+                android:textSize="24dp" />
 
             <TextView
                 android:id="@+id/date_of_birth"
@@ -84,7 +84,7 @@
                 android:textColor="@color/white"
                 android:layout_marginStart="2dp"
                 android:gravity="center_horizontal"
-                android:textSize="24sp" />
+                android:textSize="24dp" />
 
             <TextView
                 android:id="@+id/gender"
@@ -97,18 +97,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="2dp"
                 android:gravity="center_horizontal"
-                android:textSize="24sp" />
-
-            <!--<TextView-->
-                <!--android:id="@+id/weight"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:gravity="center_horizontal"-->
-                <!--android:textSize="24sp" />-->
+                android:textSize="24dp" />
 
             <Button
                 android:id="@+id/editUserButton"

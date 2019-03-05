@@ -57,11 +57,11 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
         spinnerType.setOnItemSelectedListener(this);
 
         // spinner for frequency
-        spinnerFrequency =  findViewById(R.id.medicationFrequencySpinner);
-        ArrayAdapter<CharSequence> adapterFreq = ArrayAdapter.createFromResource(this, R.array.frequency,android.R.layout.simple_spinner_item);
-        adapterFreq.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFrequency.setAdapter(adapterFreq);
-        spinnerFrequency.setOnItemSelectedListener(this);
+//        spinnerFrequency =  findViewById(R.id.medicationFrequencySpinner);
+//        ArrayAdapter<CharSequence> adapterFreq = ArrayAdapter.createFromResource(this, R.array.frequency,android.R.layout.simple_spinner_item);
+//        adapterFreq.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerFrequency.setAdapter(adapterFreq);
+//        spinnerFrequency.setOnItemSelectedListener(this);
 
         // radio buttons
         yesToggle = (RadioButton) findViewById(R.id.takingYes);
@@ -69,6 +69,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
 
         medNameInput = (TextInputEditText) findViewById(R.id.medicationNameInput);
         medDoseInput = (TextInputEditText) findViewById(R.id.medDoseInput);
+        medDelivery = (TextInputEditText) findViewById(R.id.medFreqInput);
         medRxNum = (TextInputEditText) findViewById(R.id.medRXInput);
         medPharmName = (TextInputEditText) findViewById(R.id.medPharmNameInput);
         medPhoneNum = (TextInputEditText) findViewById(R.id.medPharmNumberInput);
@@ -83,9 +84,9 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
                 final String medInputString = medNameInput.getText().toString() + " " +
                         " " + medNameInput.getText().toString() +  " " + spinnerType.getSelectedItem().toString() + " " +
                         medRxNum.getText().toString() +  " " + medPharmName.getText().toString() +
-                        " " + medPhoneNum.getText().toString() + spinnerFrequency.getSelectedItem().toString();
+                        " " + medPhoneNum.getText().toString() + medDelivery.toString();
                 if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")
-                        || spinnerType.getSelectedItemPosition()==0 || spinnerFrequency.getSelectedItemPosition()==0 || medRxNum.getText().toString().equals("")
+                        || spinnerType.getSelectedItemPosition()==0 || medDelivery.getText().toString().equals("") || medRxNum.getText().toString().equals("")
                         || medPharmName.getText().toString().equals("") || medPhoneNum.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
 
@@ -101,7 +102,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
                     boolean isInserted =
                             MainActivity.myDB.insertMedication(medNameInput.getText().toString(),
                                     medDoseInput.getText().toString(), spinnerType.getSelectedItem().toString(),
-                                    medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.getText().toString(), spinnerFrequency.getSelectedItem().toString(), currentlyTaking);
+                                    medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.getText().toString(), medDelivery.getText().toString(), currentlyTaking);
 
                     if (isInserted = true)
                         showDataEntryCheckmark();
