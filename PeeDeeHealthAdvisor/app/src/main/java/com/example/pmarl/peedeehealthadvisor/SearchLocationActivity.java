@@ -156,27 +156,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
             }
         };
-
-//      Create a new user with a first and last name EXAMPLE FOR ADDING WEBSITE
-//        Map<String, Object> locations = new TreeMap<>();
-//        locations.put("city", city);
-//        locations.put("latitude", latitude);
-//        locations.put("longitude", longitude);
-//        locations.put("phone", phone);
-//        locations.put("scheduleMonFri", scheduleMonFri);
-//        locations.put("scheduleSat", scheduleSat);
-//        locations.put("scheduleSun", scheduleSun);
-//        locations.put("serviceBloodPressure", serviceBloodPressure);
-//        locations.put("serviceBloodSugar", serviceBloodSugar);
-//        locations.put("serviceCholesterol", serviceCholesterol);
-//        locations.put("serviceFlu", serviceFlu);
-//        locations.put("servicePneumonia", servicePneumonia);
-//        locations.put("serviceShingles", serviceShingles);
-//        locations.put("state", state);
-//        locations.put("streetAddress", streetAddress);
-//        locations.put("url", url);
-//        locations.put("zip", zip);
-
+        
 
         db.collection("Locations").orderBy("location") // orders largest to smallest
                 .get()
