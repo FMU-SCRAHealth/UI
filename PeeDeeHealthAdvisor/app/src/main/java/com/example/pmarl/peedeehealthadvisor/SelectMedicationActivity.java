@@ -79,7 +79,7 @@ public class SelectMedicationActivity extends AppCompatActivity {
     private void showDataError()
     {
 
-        Toast toast = Toast.makeText(getApplicationContext(), "ERROR: There are no values to display.", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "There are no values to display.", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
