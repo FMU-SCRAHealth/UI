@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BGWhite"
-    tools:context=".SelectBloodPressureActivity">
+    tools:context=".SelectCholesterolActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,13 +31,13 @@
             >
 
             <TextView
-                android:id="@+id/allergiesSelect"
-                android:layout_width="135dp"
-                android:layout_height="80dp"
-                android:text="@string/allergies"
-                android:textColor="@color/PollenHuesMedium"
+                android:id="@+id/cholesterolTitle"
+                android:layout_width="160dp"
+                android:layout_height="75dp"
+                android:text="@string/cholesterol"
+                android:textColor="@color/YellowHuesLight"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="11dp"
                 android:textSize="30dp"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"/>
@@ -48,12 +48,12 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/ic_allergieshome" />
+                android:background="@drawable/ic_cholesterol_home" />
 
         </RelativeLayout>
 
         <GridLayout
-            android:id="@+id/bpSelect"
+            android:id="@+id/cholSelect"
             android:layout_marginTop="70dp"
             android:layout_marginStart="0dp"
             android:layout_width="wrap_content"
@@ -64,24 +64,25 @@
             android:rowCount="2"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/ViewAllergyData"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-
-                android:background="@drawable/ic_viewtableallergies"
-                />
 
             <Button
-                android:id="@+id/EnterAllergyData"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:id="@+id/ViewData"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/ic_viewgraphcholesterol"
+               />
+
+
+            <Button
+                android:id="@+id/EnterData"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:layout_marginTop="30dp"
                 app:layout_constraintTop_toBottomOf="@+id/ViewData"
-                android:background="@drawable/ic_allergiesjournalentry"
+                android:background="@drawable/ic_cholesterol_entry"
                 />
 
-        </GridLayout>
+        </GridLayout><!--End of bottom LinearLayout-->
 
     </LinearLayout> <!--End of larger LinearLayout-->
 

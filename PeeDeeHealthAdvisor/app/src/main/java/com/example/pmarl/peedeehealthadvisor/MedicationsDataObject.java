@@ -74,7 +74,7 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         medRxNum = rxNum;
         medPharmName = pharmName;
         medPharmNum = pharmNum;
-        medFreq = freq + " Per Day";
+        medFreq = freq;
         medTaking = taking;
 
     }
