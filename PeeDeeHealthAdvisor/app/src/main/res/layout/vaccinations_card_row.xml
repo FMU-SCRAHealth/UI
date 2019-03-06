@@ -25,10 +25,10 @@
             android:background="@color/GreenHuesMedium">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="6dp"
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_vaccinations"
                 />

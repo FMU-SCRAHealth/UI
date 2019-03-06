@@ -73,7 +73,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_width="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_height="380dp"
+                    android:layout_height="500dp"
                     android:columnCount="3"
                     android:rowCount="4"
                     android:layout_gravity="center_vertical"
@@ -82,8 +82,8 @@
 
                     <ImageButton
                         android:id="@+id/bloodPressureTEST1"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
                         android:layout_marginBottom="10dp"
@@ -95,21 +95,21 @@
 
                     <ImageButton
                         android:id="@+id/bloodSugarSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
                         android:layout_marginBottom="15dp"
                         android:layout_marginTop="50dp"
-                        android:layout_marginStart="3dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="fitCenter"
                         android:padding="4dp"
                         android:background="@drawable/ic_blood_sugar"/>
 
                     <ImageButton
                         android:id="@+id/cholesterolSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
                         android:layout_marginBottom="15dp"
@@ -136,7 +136,7 @@
                         android:layout_gravity="center_horizontal"
                         android:textSize="16dp"
                         android:text="@string/bloodSugar"
-                        android:layout_marginStart="6dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/BlueHuesDark"/>
 
@@ -153,8 +153,8 @@
 
                     <ImageButton
                         android:id="@+id/fluShotSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
                         android:layout_marginTop="30dp"
@@ -166,21 +166,21 @@
 
                     <ImageButton
                         android:id="@+id/shinglesSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="30dp"
                         android:layout_gravity="top"
                         android:layout_marginBottom="10dp"
-                        android:layout_marginStart="3dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="fitCenter"
                         android:padding="4dp"
                         android:background="@drawable/ic_vaccinations"/>
 
                     <ImageButton
                         android:id="@+id/pneumoniaSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="30dp"
                         android:layout_gravity="top"
@@ -208,7 +208,7 @@
                         android:layout_gravity="center_horizontal"
                         android:textSize="16dp"
                         android:text="@string/tableShingle"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/BlueHuesDark"/>
 
@@ -237,8 +237,8 @@
 
                     <Button
                         android:id="@+id/Search"
-                        android:layout_width="125dp"
-                        android:layout_height="62dp"
+                        android:layout_width="162dp"
+                        android:layout_height="81dp"
                         android:layout_marginTop="30dp"
                         android:textSize="15dp"
                         android:text="@string/search"
