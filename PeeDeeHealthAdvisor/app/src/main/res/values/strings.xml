@@ -66,6 +66,7 @@
     <string name="startSetup">Start Setup</string>
     <string name="setupUser">Setup User</string>
     <string name="tableTitleVaccinations">Vaccinations</string>
+    <string name="vaccinationsReport">Vaccination Type</string>
     <string name="tableName">Name</string>
     <string name="tableTaken">Taken:</string>
     <string name="tableDate">Date:</string>

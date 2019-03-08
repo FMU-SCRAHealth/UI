@@ -202,7 +202,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="1.0dip"
+                android:paddingBottom="15dp"
                 android:paddingLeft="4.0dip"
                 android:paddingRight="4.0dip"
                 android:paddingTop="5.0dip">
