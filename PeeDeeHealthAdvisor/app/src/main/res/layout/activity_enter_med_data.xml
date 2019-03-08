@@ -76,13 +76,14 @@
                         android:id="@+id/medicationNameInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
                         android:gravity="center_horizontal"
                         android:hint="@string/name"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryDark" />
 
                 </android.support.design.widget.TextInputLayout>
-
 
                 <TextView
                     android:id="@+id/medDose"
@@ -121,13 +122,6 @@
                     android:text="@string/medFrequency"
                     android:textColor="@color/PinkHuesMedium"
                     android:textSize="20dp" />
-
-                <!--<Spinner-->
-                    <!--android:id="@+id/medicationFrequencySpinner"-->
-                    <!--android:layout_width="170dp"-->
-                    <!--android:layout_height="40dp"-->
-                    <!--android:visibility="visible"-->
-                    <!--android:textColor="@color/GreenHuesMedium"/>-->
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/medFreqTextInput"

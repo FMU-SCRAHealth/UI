@@ -75,9 +75,10 @@
                         android:id="@+id/allergyNameInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
                         android:singleLine="true"
                         android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
                         android:hint="@string/name"
                         android:textColor="@color/colorPrimaryDark"/>
 
@@ -98,7 +99,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/allergyDescriptionInput"
@@ -166,10 +168,6 @@
                     android:layout_weight="1"/>
 
             </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 

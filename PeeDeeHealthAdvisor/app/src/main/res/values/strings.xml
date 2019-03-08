@@ -123,7 +123,7 @@
     <string name="medFrequencyInput">Frequency</string>
     <string name="medFrequencyCard">Frequency:</string>
 
-    <string name="medDose">Dosage: </string>
+    <string name="medDose">Dosage Per Day: </string>
     <string name="medDelivery">Delivery: </string>
     <string name="medRxNum">RX Number:</string>
     <string name="medPharmName">Pharmacy: </string>

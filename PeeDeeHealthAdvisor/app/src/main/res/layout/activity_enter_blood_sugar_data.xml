@@ -91,6 +91,7 @@
                         android:singleLine="true"
                         android:textColor="@color/PurpleHuesMedium"
                         android:textSize="16dp" />
+
                 </android.support.design.widget.TextInputLayout>
 
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"

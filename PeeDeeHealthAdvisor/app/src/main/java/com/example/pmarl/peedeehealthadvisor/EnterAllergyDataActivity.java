@@ -54,51 +54,8 @@ public class EnterAllergyDataActivity extends AppCompatActivity
             }
         });
 
-//        editDate = (EditText) findViewById(R.id.editDate);
-
-        // init - set date to current date
-//        long currentdate = System.currentTimeMillis();
-//        String dateString = sdf.format(currentdate);
-//        editDate.setText(dateString);
-
-        // set calendar date and update editDate
-//        date = new DatePickerDialog.OnDateSetListener()
-//        {
-//
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int monthOfYear,
-//                                  int dayOfMonth)
-//            {
-//                // TODO Auto-generated method stub
-//                myCalendar.set(Calendar.YEAR, year);
-//                myCalendar.set(Calendar.MONTH, monthOfYear);
-//                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//                updateDate();
-//            }
-//
-//        };
-
-        // onclick - popup datepicker
-//        editDate.setOnClickListener(new View.OnClickListener()
-//        {
-//
-//            @Override
-//            public void onClick(View v)
-//            {
-//                // TODO Auto-generated method stub
-//                new DatePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
-//                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-//                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-//            }
-//        });
-
-
-
         allergyNameInput = (TextInputEditText) findViewById(R.id.allergyNameInput);
         allergyDescriptionInput = (TextInputEditText) findViewById(R.id.allergyDescriptionInput);
-//        maleToggle = (RadioButton) findViewById(R.id.maleToggle);
-//        femaleToggle = (RadioButton) findViewById(R.id.femaleToggle);
-//        otherToggle = (RadioButton) findViewById((R.id.otherToggle));
 
 
 
@@ -140,7 +97,6 @@ public class EnterAllergyDataActivity extends AppCompatActivity
             {
                 allergyNameInput.setText("");
                 allergyDescriptionInput.setText("");
-//                editDate.setText("");
 
 
             }
