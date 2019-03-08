@@ -137,12 +137,14 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
                 }
 
-                else if (Integer.parseInt(ldlInput.getText().toString()) >= 400
-                        && Integer.parseInt(hdlInput.getText().toString()) <= 0
-                        && Integer.parseInt(TRIGinput.getText().toString()) >= 700
+                else if (Integer.parseInt(ldlInput.getText().toString()) >= 250
                         || Integer.parseInt(ldlInput.getText().toString()) <= 0
-                        && Integer.parseInt(hdlInput.getText().toString()) >= 100
-                        && Integer.parseInt(TRIGinput.getText().toString()) <= 0) {
+                        || Integer.parseInt(TRIGinput.getText().toString()) >= 500
+                        || Integer.parseInt(hdlInput.getText().toString()) <= 0
+                        || Integer.parseInt(hdlInput.getText().toString()) >= 100
+                        || Integer.parseInt(TRIGinput.getText().toString()) <= 0
+                        || Integer.parseInt(TCinput.getText().toString()) <= 0
+                        || Integer.parseInt(TCinput.getText().toString()) >= 400) {
 
                     showDataIncorrectRange();
                 }
