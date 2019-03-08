@@ -54,50 +54,59 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="100dp">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.0">
 
-            <TextView
-                android:id="@+id/VaccName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textSize="20dp"
-                android:text="@string/vaccinationName"
-                android:textColor="@color/colorPrimaryDark"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="100dp">
 
-            <Spinner
-                android:id="@+id/vaccinationSpinner"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:visibility="visible"
-                android:textColor="@color/GreenHuesMedium"
-                app:layout_constraintTop_toBottomOf="@+id/VaccName" />
+                <TextView
+                    android:id="@+id/VaccName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:text="@string/vaccinationName"
+                    android:textColor="@color/colorPrimaryDark"/>
 
-            <TextView
-                android:id="@+id/selectDateBelow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/selectDateBelow"
-                android:textColor="@color/GreenHuesDark"
-                android:textSize="20dp" />
+                <Spinner
+                    android:id="@+id/vaccinationSpinner"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:visibility="visible"
+                    android:textColor="@color/GreenHuesMedium"
+                    app:layout_constraintTop_toBottomOf="@+id/VaccName" />
 
-            <EditText
-                android:id="@+id/editDate"
-                android:layout_width="267dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="15dp"
-                android:ems="10"
-                android:focusable="false"
-                android:hint="@string/selectDate"
-                android:inputType="date"
-                android:longClickable="false"
-                android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/selectDateBelow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/selectDateBelow"
+                    android:textColor="@color/GreenHuesDark"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/editDate"
+                    android:layout_width="267dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="@string/selectDate"
+                    android:inputType="date"
+                    android:longClickable="false"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </ScrollView>
 
             <LinearLayout
                 android:paddingLeft="4.0dip"
@@ -153,8 +162,6 @@
                     android:layout_weight="1"/>
 
             </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 
