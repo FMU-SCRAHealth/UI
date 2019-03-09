@@ -91,7 +91,7 @@
                 android:textColor="@color/white"
                 android:layout_weight="0"
                 android:paddingTop="4dp"
-                android:paddingEnd="10dp"
+                android:paddingEnd="12dp"
                 android:textSize="20dp"
                 android:layout_height="50dp"/>
 
