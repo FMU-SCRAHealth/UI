@@ -54,7 +54,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="55dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -63,23 +63,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/medName"
+                    android:layout_marginTop="45dp"
                     android:textColor="@color/PinkHuesDark"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/medNameText"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="10dp">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/medicationNameInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
                         android:inputType="textCapWords"
                         android:gravity="center_horizontal"
                         android:hint="@string/name"
+                        android:textSize="20dp"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -92,24 +93,25 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/medicationDosage"
                     android:textColor="@color/PinkHuesMedium"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/medDoseDesc"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/medDoseInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/medDose"
                         android:singleLine="true"
+                        android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -121,24 +123,25 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/medFrequency"
                     android:textColor="@color/PinkHuesMedium"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/medFreqTextInput"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/medFreqInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/medFrequencyInput"
                         android:singleLine="true"
+                        android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -150,12 +153,12 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/medDeliveryOne"
                     android:textColor="@color/PinkHuesMedium"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <Spinner
                     android:id="@+id/medicationDeliverySpinner"
-                    android:layout_width="170dp"
-                    android:layout_height="40dp"
+                    android:layout_width="221dp"
+                    android:layout_height="53dp"
                     android:visibility="visible"
                     android:textColor="@color/GreenHuesMedium"/>
 
@@ -166,7 +169,7 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/currentlyTaking"
                     android:textColor="@color/PinkHuesMedium"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
@@ -184,7 +187,7 @@
                     <RadioButton android:id="@+id/takingYes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16dp"
+                        android:textSize="20dp"
                         android:text="@string/yes"
                         android:textColor="@color/colorPrimaryDark"
                         android:onClick="onRadioButtonClicked"/>
@@ -197,7 +200,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/no"
-                        android:textSize="16dp"
+                        android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark"
                         android:layout_marginEnd="0dp"
                         android:onClick="onRadioButtonClicked"/>
@@ -216,23 +219,24 @@
                     android:layout_marginTop="15dp"
                     android:text="@string/medRxNumOne"
                     android:textColor="@color/PinkHuesMedium"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/medRXNum"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/medRXInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:inputType="number"
+                        android:textSize="20dp"
                         android:hint="@string/medPrescriptionNumber"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryDark" />
@@ -244,27 +248,28 @@
                     android:id="@+id/medPharmName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/medPharmNameOne"
                     android:textColor="@color/PinkHuesMedium"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/medPharmNameDesc"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="8dp">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/medPharmNameInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/medPharmacyName"
                         android:singleLine="true"
+                        android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -274,17 +279,17 @@
                     android:id="@+id/medPharmNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/medPhoneNumOne"
                     android:textColor="@color/PinkHuesMedium"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/medPharmNumberDesc"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="50dp"
                     android:layout_marginEnd="8dp">
 
@@ -292,10 +297,11 @@
                         android:id="@+id/medPharmNumberInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/medPharmacyOPhoneNumber"
                         android:singleLine="true"
+                        android:textSize="20dp"
                         android:inputType="number"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -324,13 +330,14 @@
             <!--android:textColor="@color/white"-->
             <Button
                 android:id="@+id/clearData"
-                android:layout_width="125dp"
-                android:layout_height="62dp"
+                android:layout_width="162dp"
+                android:layout_height="81dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/mybutton"
                 android:backgroundTint="@color/PinkHuesMedium"
                 android:text="@string/clear"
+                android:textSize="15dp"
                 android:textColor="@color/white" />
 
             <View
@@ -345,13 +352,14 @@
             <!--android:textColor="@color/white"-->
             <Button
                 android:id="@+id/enterData"
-                android:layout_width="125dp"
-                android:layout_height="62dp"
+                android:layout_width="162dp"
+                android:layout_height="81dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/mybutton"
                 android:backgroundTint="@color/PinkHuesMedium"
                 android:text="@string/enter"
+                android:textSize="15dp"
                 android:textColor="@color/white" />
             <View
                 android:layout_width="1dp"

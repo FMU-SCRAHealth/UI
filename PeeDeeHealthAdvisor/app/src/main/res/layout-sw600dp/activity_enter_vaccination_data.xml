@@ -64,24 +64,24 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="100dp">
+                android:layout_marginTop="55dp">
 
                 <TextView
                     android:id="@+id/VaccName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20dp"
+                    android:layout_marginTop="45dp"
+                    android:textSize="26dp"
                     android:text="@string/vaccinationName"
                     android:textColor="@color/BlueHuesDark"/>
 
                 <Spinner
                     android:id="@+id/vaccinationSpinner"
-                    android:layout_width="150dp"
+                    android:layout_width="221dp"
                     android:layout_height="50dp"
                     android:visibility="visible"
                     android:textColor="@color/GreenHuesMedium"
-                    app:layout_constraintTop_toBottomOf="@+id/VaccName"/>
+                    app:layout_constraintTop_toBottomOf="@+id/VaccName" />
 
                 <TextView
                     android:id="@+id/selectDateBelow"
@@ -90,17 +90,18 @@
                     android:layout_marginTop="40dp"
                     android:text="@string/selectDateBelow"
                     android:textColor="@color/BlueHuesDark"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <EditText
                     android:id="@+id/editDate"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="42dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:ems="10"
                     android:focusable="false"
                     android:hint="@string/selectDate"
                     android:inputType="date"
+                    android:textSize="20dp"
                     android:longClickable="false"
                     android:textAlignment="center" />
 
@@ -127,10 +128,11 @@
                 <!--android:textColor="@color/white"-->
                 <Button
                     android:id="@+id/clearData"
-                    android:layout_width="125dp"
-                    android:layout_height="62dp"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
+                    android:textSize="15dp"
                     android:background="@drawable/mybutton"
                     android:backgroundTint="@color/GreenHuesMedium"
                     android:text="@string/clear"
@@ -148,10 +150,11 @@
                 <!--android:textColor="@color/white"-->
                 <Button
                     android:id="@+id/enterData"
-                    android:layout_width="125dp"
-                    android:layout_height="62dp"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
+                    android:textSize="15dp"
                     android:background="@drawable/mybutton"
                     android:backgroundTint="@color/GreenHuesMedium"
                     android:text="@string/enter"

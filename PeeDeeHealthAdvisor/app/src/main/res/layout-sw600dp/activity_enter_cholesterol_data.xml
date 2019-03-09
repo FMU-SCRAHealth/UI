@@ -71,14 +71,14 @@
                     android:id="@+id/TCtext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="55dp"
                     android:text="@string/TC"
                     android:textColor="@color/YellowHuesDark"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/TC"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
 
@@ -90,7 +90,7 @@
                         android:hint="@string/tc"
                         android:inputType="number"
                         android:textColor="@color/YellowHuesMedium"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
@@ -98,14 +98,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
-                    android:textSize="20dp"
+                    android:textSize="26dp"
                     android:text="@string/hDLTop"
                     android:textColor="@color/YellowHuesDark"/>
 
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/HDLInput"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
 
@@ -117,7 +117,7 @@
                         android:hint="@string/highDensityLipoprotein"
                         android:inputType="number"
                         android:textColor="@color/YellowHuesMedium"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -128,11 +128,11 @@
                     android:layout_marginTop="5dp"
                     android:text="@string/TRIG"
                     android:textColor="@color/YellowHuesDark"
-                    android:textSize="20dp" />
+                    android:textSize="26dp" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/TRIG"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
 
@@ -144,7 +144,7 @@
                         android:hint="@string/trig"
                         android:inputType="number"
                         android:textColor="@color/YellowHuesMedium"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
@@ -152,13 +152,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textSize="20dp"
+                    android:textSize="26dp"
                     android:text="@string/lDLBottom"
                     android:textColor="@color/YellowHuesDark"/>
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/LDLInput"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
 
@@ -170,7 +170,7 @@
                         android:hint="@string/lowDensityLBottom"
                         android:inputType="number"
                         android:textColor="@color/YellowHuesMedium"
-                        android:textSize="16dp" />
+                        android:textSize="20dp" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -179,17 +179,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textSize="20dp"
+                    android:textSize="26dp"
                     android:text="@string/selectDateBelow"
                     android:textColor="@color/YellowHuesDark"/>
 
                 <EditText
                     android:id="@+id/editDate"
-                    android:layout_width="230dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:focusable="false"
-                    android:textSize="16dp"
+                    android:textSize="20dp"
                     android:hint="@string/selectDate"
                     android:layout_marginBottom="40dp"
                     android:inputType="date"
@@ -215,10 +215,11 @@
 
                 <Button
                     android:id="@+id/clearData"
-                    android:layout_width="125dp"
-                    android:layout_height="62dp"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
+                    android:textSize="15dp"
                     android:background="@drawable/mybutton"
                     android:backgroundTint="@color/YellowHuesLight"
                     android:text="@string/clear"
@@ -231,11 +232,12 @@
 
                 <Button
                     android:id="@+id/enterData"
-                    android:layout_width="125dp"
-                    android:layout_height="62dp"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginStart="9dp"
                     android:layout_marginTop="10dp"
+                    android:textSize="15dp"
                     android:background="@drawable/mybutton"
                     android:backgroundTint="@color/YellowHuesLight"
                     android:text="@string/enter"
