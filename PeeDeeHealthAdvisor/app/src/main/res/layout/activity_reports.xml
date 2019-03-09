@@ -89,9 +89,10 @@
                 android:layout_width="wrap_content"
                 android:background="@color/GreenHuesDark"
                 android:textColor="@color/white"
-                android:layout_weight="0.50"
+                android:layout_weight="0"
                 android:paddingTop="4dp"
-                android:paddingStart="37dp"
+                android:paddingEnd="12dp"
+                android:layout_alignParentEnd="true"
                 android:textSize="20dp"
                 android:layout_height="50dp"/>
 
@@ -159,6 +160,7 @@
                         android:layout_weight="1.0"
                         android:textColor="@color/white"
                         android:paddingStart="3dp"
+                        android:textSize="13dp"
                         android:autoText="true"
                         android:background="@color/RedHuesLight"
                         android:text="@string/tableDate" />
@@ -169,6 +171,7 @@
                         android:layout_height="fill_parent"
                         android:textColor="@color/white"
                         android:text="@string/diastolic"
+                        android:textSize="13dp"
                         android:layout_weight="1.0"
                         android:background="@color/RedHuesLight"
                         />
@@ -180,6 +183,7 @@
                         android:layout_weight="1.0"
                         android:textColor="@color/white"
                         android:text="@string/systolic"
+                        android:textSize="13dp"
                         android:background="@color/RedHuesLight"
                         />
 
@@ -203,7 +207,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:textSize="25dp"
-                        android:text="Blood Sugar"
+                        android:text="@string/bloodSugar"
                         android:textColor="@color/white"
                         android:background="@color/PurpleHuesLight"/>
 
@@ -220,6 +224,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="@string/tableDate"
+                        android:textSize="13dp"
                         android:layout_weight="1.0"
                         android:paddingStart="3dp"
                         android:textColor="@color/white"
@@ -230,9 +235,10 @@
                         android:id="@+id/BloodSugarFastingBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Fasting"
+                        android:text="@string/fasting"
                         android:textColor="@color/white"
                         android:layout_weight="1.0"
+                        android:textSize="13dp"
                         android:background="@color/PurpleHuesLight"
 
                         />
@@ -241,9 +247,10 @@
                         android:id="@+id/BloodSugarBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Blood Sugar"
+                        android:text="@string/bloodSugarLevel"
                         android:textColor="@color/white"
                         android:layout_weight="1.0"
+                        android:textSize="13dp"
                         android:background="@color/PurpleHuesLight"
                         />
 
@@ -267,7 +274,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:textSize="25dp"
-                        android:text="Cholesterol"
+                        android:text="@string/cholesterol"
                         android:textColor="@color/white"
                         android:background="@color/YellowHuesLight"/>
 
@@ -284,6 +291,7 @@
                         android:layout_height="fill_parent"
                         android:text="@string/tableDate"
                         android:layout_weight="1.0"
+                        android:textSize="13dp"
                         android:paddingStart="3dp"
                         android:textColor="@color/white"
                         android:background="@color/YellowHuesLight"
@@ -293,8 +301,9 @@
                         android:id="@+id/CholesterolLDLBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="LDL"
+                        android:text="@string/lDLBottom"
                         android:textColor="@color/white"
+                        android:textSize="13dp"
                         android:layout_weight="1.1"
                         android:background="@color/YellowHuesLight"
                         />
@@ -303,8 +312,9 @@
                         android:id="@+id/CholesterolHDLBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="HDL"
+                        android:text="@string/hDLTop"
                         android:textColor="@color/white"
+                        android:textSize="13dp"
                         android:layout_weight="1.1"
                         android:background="@color/YellowHuesLight"
                         />
@@ -313,8 +323,9 @@
                         android:id="@+id/CholesterolTrigBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Trig"
+                        android:text="@string/trig"
                         android:textColor="@color/white"
+                        android:textSize="13dp"
                         android:layout_weight="1.1"
                         android:background="@color/YellowHuesLight"
                         />
@@ -322,8 +333,9 @@
                         android:id="@+id/CholesterolTCBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="TC"
+                        android:text="@string/tc"
                         android:textColor="@color/white"
+                        android:textSize="13dp"
                         android:layout_weight="1.2"
                         android:background="@color/YellowHuesLight"
                         />
@@ -365,6 +377,7 @@
                         android:layout_height="fill_parent"
                         android:text="@string/tableDate"
                         android:layout_weight="1.2"
+                        android:textSize="13dp"
                         android:paddingStart="3dp"
                         android:textColor="@color/white"
                         android:background="@color/BlueHuesLight"
@@ -374,8 +387,9 @@
                         android:id="@+id/VaxNameBox"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:text="Vaccination"
+                        android:text="@string/vaccinationsReport"
                         android:textColor="@color/white"
+                        android:textSize="13dp"
                         android:layout_weight="1.0"
                         android:background="@color/BlueHuesLight"
                         />
@@ -386,6 +400,7 @@
                         android:layout_height="fill_parent"
                         android:text="@string/reportStatusVax"
                         android:textColor="@color/white"
+                        android:textSize="13dp"
                         android:layout_weight="1.3"
                         android:background="@color/BlueHuesLight"
                         />
@@ -427,6 +442,7 @@
                         android:layout_height="fill_parent"
                         android:text="@string/tableDate"
                         android:layout_weight="1.2"
+                        android:textSize="13dp"
                         android:paddingStart="3dp"
                         android:textColor="@color/white"
                         android:background="@color/BodyWeightHuesLight"
@@ -437,6 +453,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:text="@string/bodyWeight"
+                        android:textSize="13dp"
                         android:textColor="@color/white"
                         android:layout_weight="1.7"
                         android:background="@color/BodyWeightHuesLight"

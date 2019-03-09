@@ -148,7 +148,7 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
     {
         for (int i = 0; i < list.size(); i++) {
             for (int j = i + 1; j < list.size(); j++) {
-                if (list.get(i).getName().equals(list.get(j).getName())) {
+                if (list.get(i).getPhone().equals(list.get(j).getPhone())) {
                     list.remove(j);
 //                    Log.d("TESTINGREMOVE: ", String.valueOf(list.get(j).name));
                 }

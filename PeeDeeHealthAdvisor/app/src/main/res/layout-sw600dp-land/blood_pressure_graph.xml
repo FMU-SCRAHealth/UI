@@ -76,6 +76,7 @@
                     android:scrollbars="vertical"
                     android:background="@color/BGWhite"
                     />
+
             </RelativeLayout>
 
             <RelativeLayout

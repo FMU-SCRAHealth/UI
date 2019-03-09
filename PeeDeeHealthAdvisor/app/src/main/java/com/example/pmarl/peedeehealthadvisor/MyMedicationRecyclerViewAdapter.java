@@ -57,7 +57,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
             medFreqView= (TextView) itemView.findViewById(R.id.medFreqCardText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
-            takenButton = (ImageButton) itemView.findViewById(R.id.updateTakingButton);
+//            takenButton = (ImageButton) itemView.findViewById(R.id.updateTakingButton);
             medTaken = (TextView) itemView.findViewById(R.id.medTakingCardText);
 //            background = (Switch) itemView.findViewById(R.id.switchTaking);
 
@@ -105,7 +105,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medFreqView.setText(mDataset.get(position).getMedFreq());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
         holder.medTaken.setText(mDataset.get(position).getMedTaking());
-        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
+//        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
 //        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
 
 

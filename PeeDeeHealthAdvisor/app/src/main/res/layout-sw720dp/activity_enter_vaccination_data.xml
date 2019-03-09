@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author: Patrick Marlowe
+    Email Address: pmarlowe782@gmail.com
+    Written: June 22, 2018
+    Last Updated: July 9, 2018
+
+    Compilation:
+    Execution:
+
+    Description of Execution:
+-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BGWhite">
+
+    <LinearLayout
+        android:id="@+id/vaccinationEntryLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_vaccination_home_teal" />
+
+            <TextView
+                android:id="@+id/EnterVaccinationScreen"
+                android:layout_width="185dp"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="7dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/enterVaccination"
+                android:textColor="@color/GreenHuesMedium"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="55dp">
+
+                <TextView
+                    android:id="@+id/VaccName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:textSize="26dp"
+                    android:text="@string/vaccinationName"
+                    android:textColor="@color/BlueHuesMedium"/>
+
+                <Spinner
+                    android:id="@+id/vaccinationSpinner"
+                    android:layout_width="221dp"
+                    android:layout_height="50dp"
+                    android:visibility="visible"
+                    android:textColor="@color/GreenHuesMedium"
+                    app:layout_constraintTop_toBottomOf="@+id/VaccName" />
+
+                <TextView
+                    android:id="@+id/selectDateBelow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/selectDateBelow"
+                    android:textColor="@color/BlueHuesMedium"
+                    android:textSize="26dp" />
+
+                <EditText
+                    android:id="@+id/editDate"
+                    android:layout_width="260dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="15dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="@string/selectDate"
+                    android:inputType="date"
+                    android:textSize="20dp"
+                    android:longClickable="false"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+            <LinearLayout
+                android:paddingLeft="4.0dip"
+                android:paddingTop="5.0dip"
+                android:paddingRight="4.0dip"
+                android:paddingBottom="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+            >
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <!--android:background="@drawable/mybutton"-->
+                <!--android:fontFamily="@font/catamaran_bold"-->
+                <!--android:backgroundTint="@color/colorPrimaryDark"-->
+                <!--android:textColor="@color/white"-->
+                <Button
+                    android:id="@+id/clearData"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/GreenHuesMedium"
+                    android:text="@string/clear"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+
+                <!--android:background="@drawable/mybutton"-->
+                <!--android:fontFamily="@font/catamaran_bold"-->
+                <!--android:backgroundTint="@color/colorPrimaryDark"-->
+                <!--android:textColor="@color/white"-->
+                <Button
+                    android:id="@+id/enterData"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15dp"
+                    android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/GreenHuesMedium"
+                    android:text="@string/enter"
+                    android:textColor="@color/white" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

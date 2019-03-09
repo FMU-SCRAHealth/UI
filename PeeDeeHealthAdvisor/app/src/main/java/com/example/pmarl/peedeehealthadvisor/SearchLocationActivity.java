@@ -246,30 +246,35 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     boolean servicePneumonia = document.getBoolean("servicePneumonia");
                                     boolean serviceShingles = document.getBoolean("serviceShingles");
 
-                                    if (serviceBloodPressure == true) {
+                                    if (serviceBloodPressure == true && serviceBloodSugar == false && serviceCholesterol == false && serviceFlu == false && servicePneumonia == false && serviceShingles == false) {
                                         bloodPressure = "Blood Pressure";
                                     }
+
+                                    else if (serviceBloodPressure == true && (serviceBloodSugar == true || serviceCholesterol == true || serviceFlu == true || servicePneumonia == true || serviceShingles == true)) {
+                                        bloodPressure = "Blood Pressure,";
+                                    }
+
                                     if (serviceBloodSugar == true) {
-                                        bloodSugar = "Blood Sugar";
+                                        bloodSugar = " Blood Sugar,";
                                     }
                                     if (serviceCholesterol == true) {
-                                        cholesterol = "Cholesterol";
+                                        cholesterol = " Cholesterol,";
                                     }
                                     if (serviceFlu == true) {
-                                        fluShot = "Flu Shot";
+                                        fluShot = " Flu Shot,";
                                     }
                                     if (servicePneumonia == true) {
-                                        pneumonia = "Pneumonia";
+                                        pneumonia = " Pneumonia,";
                                     }
                                     if (serviceShingles == true) {
-                                        shingles = "Shingles";
+                                        shingles = " Shingles";
                                     }
 
                                     if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
                                             && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
                                         services = "All Services Available";
                                     } else {
-                                        services = bloodPressure + " " + bloodSugar + " " + cholesterol + " " + fluShot + " " + pneumonia + " " + shingles;
+                                        services = bloodPressure + "" + bloodSugar + "" + cholesterol + "" + fluShot + "" + pneumonia + "" + shingles;
                                     }
 
                                     double distance = 0.0;
@@ -289,8 +294,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                 Log.d("TESTING", document.getId() + " => " + document.getData());
                                 Log.d("TESTING", String.valueOf(calendar.get(Calendar.DAY_OF_WEEK)));
                                     SearchServiceDataObject resultsObject = new SearchServiceDataObject(name, address, distance, phone, schedule, services, url, latitude, longitude);
-//                                treeMap.put(distance, new ArrayList<SearchServiceDataObject>());
-//                                treeMap.get(distance).add(resultsObject);
 
 
 

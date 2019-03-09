@@ -55,145 +55,155 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="45dp">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.0">
 
-            <TextView
-                android:id="@+id/TCtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/TC"
-                android:textColor="@color/YellowHuesDark"
-                android:textSize="20dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="40dp">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/TC"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/TCinputThisOne"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/TCtext"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/tc"
-                    android:inputType="number"
-                    android:textColor="@color/YellowHuesMedium"
-                    android:textSize="16dp" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_marginTop="0dp"
+                    android:text="@string/TC"
+                    android:textColor="@color/YellowHuesDark"
+                    android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/HDLtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:textSize="20dp"
-                android:text="@string/hDLTop"
-                android:textColor="@color/YellowHuesDark"/>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/HDLInput"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/hdlInput"
-                    android:layout_width="match_parent"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/TC"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/highDensityLipoprotein"
-                    android:inputType="number"
-                    android:textColor="@color/YellowHuesMedium"
-                    android:textSize="16dp" />
+                    android:layout_marginTop="5dp">
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/TCinputThisOne"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/tc"
+                        android:inputType="number"
+                        android:textColor="@color/YellowHuesMedium"
+                        android:textSize="16dp" />
+                </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/TRIGtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/TRIG"
-                android:textColor="@color/YellowHuesDark"
-                android:textSize="20dp" />
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/TRIG"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/TRIGinput"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/HDLtext"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/trig"
-                    android:inputType="number"
-                    android:textColor="@color/YellowHuesMedium"
-                    android:textSize="16dp" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_marginTop="0dp"
+                    android:textSize="20dp"
+                    android:text="@string/hDLTop"
+                    android:textColor="@color/YellowHuesDark"/>
 
-            <TextView
-                android:id="@+id/LDLtext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="20dp"
-                android:text="@string/lDLBottom"
-                android:textColor="@color/YellowHuesDark"/>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/LDLInput"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/ldlInput"
-                    android:layout_width="match_parent"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/HDLInput"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:hint="@string/lowDensityLBottom"
-                    android:inputType="number"
-                    android:textColor="@color/YellowHuesMedium"
-                    android:textSize="16dp" />
+                    android:layout_marginTop="5dp">
 
-            </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/hdlInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/highDensityLipoprotein"
+                        android:inputType="number"
+                        android:textColor="@color/YellowHuesMedium"
+                        android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/selectDateBelow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="20dp"
-                android:text="@string/selectDateBelow"
-                android:textColor="@color/YellowHuesDark"/>
+                </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/editDate"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:focusable="false"
-                android:textSize="16dp"
-                android:hint="@string/selectDate"
-                android:inputType="date"
-                android:longClickable="false"
-                android:textAlignment="center"/>
+                <TextView
+                    android:id="@+id/TRIGtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/TRIG"
+                    android:textColor="@color/YellowHuesDark"
+                    android:textSize="20dp" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/TRIG"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/TRIGinput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/trig"
+                        android:inputType="number"
+                        android:textColor="@color/YellowHuesMedium"
+                        android:textSize="16dp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/LDLtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:text="@string/lDLBottom"
+                    android:textColor="@color/YellowHuesDark"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/LDLInput"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/ldlInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/lowDensityLBottom"
+                        android:inputType="number"
+                        android:textColor="@color/YellowHuesMedium"
+                        android:textSize="16dp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/selectDateBelow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20dp"
+                    android:text="@string/selectDateBelow"
+                    android:textColor="@color/YellowHuesDark"/>
+
+                <EditText
+                    android:id="@+id/editDate"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:textSize="16dp"
+                    android:hint="@string/selectDate"
+                    android:layout_marginBottom="40dp"
+                    android:inputType="date"
+                    android:longClickable="false"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+        </ScrollView>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="1.0dip"
+                android:paddingBottom="15dp"
                 android:paddingLeft="4.0dip"
                 android:paddingRight="4.0dip"
                 android:paddingTop="5.0dip">
@@ -237,8 +247,6 @@
                     android:layout_weight="1" />
 
             </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 

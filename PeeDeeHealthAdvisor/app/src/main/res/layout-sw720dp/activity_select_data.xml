@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author: Patrick Marlowe
+    Email Address: pmarlowe782@gmail.com
+    Written: June 22, 2018
+    Last Updated: January 13th, 2019 by Matt Harrington
+    Compilation:
+    Execution:
+    Description of Execution:
+-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/BGWhite"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        >
+
+
+    </RelativeLayout>
+
+        <GridLayout
+            android:id="@+id/appScreens"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="0dp"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="675dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/topLeft"
+                android:layout_width="275dp"
+                android:layout_height="275dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="left|top"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="40dp"
+                android:padding="4dp"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/bottomLeft"
+                android:layout_width="275dp"
+                android:layout_height="275dp"
+                android:layout_gravity="left|top"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+                android:background="@android:color/transparent"
+                 />
+
+            <ImageButton
+                android:id="@+id/topRight"
+                android:layout_width="275dp"
+                android:layout_height="275dp"
+                android:layout_gravity="left|top"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+                android:background="@android:color/transparent"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/bottomRight"
+                android:layout_width="275dp"
+                android:layout_height="275dp"
+                android:layout_gravity="left|top"
+                android:scaleType="fitCenter"
+                android:padding="4dp"
+                android:background="@android:color/transparent"
+                 />
+        </GridLayout>
+
+</RelativeLayout>

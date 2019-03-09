@@ -43,11 +43,11 @@
             <!--android:textColor="@color/colorPrimaryDark"-->
             <TextView
                 android:id="@+id/AppName"
-                android:layout_width="265dp"
-                android:layout_height="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="3dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginTop="3dp"
                 android:text="@string/healthAdvisor"
                 android:textSize="30dp"
                 android:textStyle="bold"
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_height="450dp"
+            android:layout_height="wrap_content"
             android:columnCount="1"
             android:rowCount="2"
             android:orientation="vertical">

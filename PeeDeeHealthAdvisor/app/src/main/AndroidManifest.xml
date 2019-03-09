@@ -246,7 +246,7 @@
             >
         </activity>
 
-        // DECLARING EDIT PROFILE
+        // DECLARING SELECT MEDICATION
         <activity
             android:name=".SelectMedicationActivity"
             android:label="@string/app_name"

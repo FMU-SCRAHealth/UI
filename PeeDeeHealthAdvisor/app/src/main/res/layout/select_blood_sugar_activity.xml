@@ -51,13 +51,19 @@
                 android:background="@drawable/ic_sugar_home" />
 
         </RelativeLayout>
+        
+            <GridLayout
+                android:id="@+id/bsSelect"
+                android:layout_marginTop="70dp"
+                android:layout_marginStart="0dp"
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:columnCount="1"
+                android:rowCount="2"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="65dp">
 
             <Button
                 android:id="@+id/ViewData"
@@ -77,8 +83,9 @@
                 android:background="@drawable/ic_blood_sugar_entry"
                 />
 
-        </LinearLayout> <!--End of bottom LinearLayout-->
+            </GridLayout>
 
-    </LinearLayout> <!--End of larger LinearLayout-->
+        </LinearLayout> <!--End of bottom LinearLayout-->
+    <!--End of larger LinearLayout-->
 
 </android.support.constraint.ConstraintLayout>

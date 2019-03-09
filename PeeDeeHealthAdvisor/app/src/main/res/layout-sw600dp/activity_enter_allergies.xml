@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BGWhite">
+
+    <LinearLayout
+        android:id="@+id/allergyEntry"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/Home"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/ic_allergieshome" />
+
+            <TextView
+                android:id="@+id/MyHealthGraph"
+                android:layout_width="135dp"
+                android:layout_height="75dp"
+                android:text="@string/allergies"
+                android:textColor="@color/PollenHuesDark"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="5dp"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="50dp">
+
+                <TextView
+                    android:id="@+id/allergyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="26dp"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/allergyName"
+                    android:textColor="@color/PollenHuesDark"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/allergyNameText"
+                    android:layout_width="260dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/allergyNameInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:hint="@string/name"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorPrimaryDark"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/allergyDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:textSize="26dp"
+                    android:text="@string/allergyDescription"
+                    android:textColor="@color/PollenHuesDark"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/allergyDescriptions"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/allergyDescriptionInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="false"
+                        android:gravity="center_horizontal"
+                        android:layout_marginBottom="15dp"
+                        android:hint="@string/description"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorPrimaryDark"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+            <LinearLayout
+                android:paddingLeft="4.0dip"
+                android:layout_marginTop="15dp"
+                android:paddingTop="5.0dip"
+                android:paddingRight="4.0dip"
+                android:paddingBottom="15dp"
+                android:layout_gravity="bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/clearData"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/clear"
+                    android:textSize="15dp"
+                    android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/PollenHuesMedium"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/enterData"
+                    android:layout_width="162dp"
+                    android:layout_height="81dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/enter"
+                    android:textSize="15dp"
+                    android:background="@drawable/mybutton"
+                    android:backgroundTint="@color/PollenHuesMedium"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
