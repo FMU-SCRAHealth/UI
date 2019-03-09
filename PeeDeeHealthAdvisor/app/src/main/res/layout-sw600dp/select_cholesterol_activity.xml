@@ -54,7 +54,7 @@
 
         <GridLayout
             android:id="@+id/cholSelect"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="100dp"
             android:layout_marginStart="0dp"
             android:layout_width="wrap_content"
             android:layout_centerInParent="true"

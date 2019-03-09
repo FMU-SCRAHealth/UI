@@ -114,7 +114,7 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
 
                 }
 
-                else if (Double.parseDouble(bodyWeightInput.getText().toString()) < 0 )
+                else if (Double.parseDouble(bodyWeightInput.getText().toString()) < 0  || Double.parseDouble(bodyWeightInput.getText().toString()) >= 500)
                 {
                     showDataIncorrectRange(); // if data is outside of reasonable range of entry
                 }

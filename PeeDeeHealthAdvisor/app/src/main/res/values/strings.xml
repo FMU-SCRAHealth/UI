@@ -119,10 +119,11 @@
     <string name="medPrescriptionNumber">Prescription Number</string>
     <string name="medPharmacyName">Pharmacy Name</string>
     <string name="medPharmacyOPhoneNumber">Number</string>
-    <string name="medFrequency">Times Taken Per Day</string>
+    <string name="medFrequency">Dosage Frequency</string>
     <string name="medFrequencyInput">Frequency</string>
     <string name="medFrequencyCard">Frequency:</string>
 
+    <string name="medDoseTwo">Dosage:</string>
     <string name="medDose">Dosage Per Day: </string>
     <string name="medDelivery">Delivery: </string>
     <string name="medRxNum">RX Number:</string>

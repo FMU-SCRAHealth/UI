@@ -64,16 +64,16 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="100dp">
+                android:layout_marginTop="40dp">
 
                 <TextView
                     android:id="@+id/VaccName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="0dp"
                     android:textSize="20dp"
                     android:text="@string/vaccinationName"
-                    android:textColor="@color/BlueHuesDark"/>
+                    android:textColor="@color/BlueHuesMedium"/>
 
                 <Spinner
                     android:id="@+id/vaccinationSpinner"
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:text="@string/selectDateBelow"
-                    android:textColor="@color/BlueHuesDark"
+                    android:textColor="@color/BlueHuesMedium"
                     android:textSize="20dp" />
 
                 <EditText

@@ -90,9 +90,9 @@
                 android:background="@color/GreenHuesDark"
                 android:textColor="@color/white"
                 android:layout_alignParentEnd="true"
-                android:layout_weight=".2"
+                android:layout_weight="0"
                 android:paddingTop="4dp"
-                android:paddingStart="350dp"
+                android:paddingEnd="13dp"
                 android:textSize="20dp"
                 android:layout_height="50dp"/>
 

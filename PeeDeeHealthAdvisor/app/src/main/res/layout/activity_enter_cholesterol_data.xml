@@ -65,13 +65,13 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="45dp">
+                android:layout_marginTop="40dp">
 
                 <TextView
                     android:id="@+id/TCtext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="0dp"
                     android:text="@string/TC"
                     android:textColor="@color/YellowHuesDark"
                     android:textSize="20dp" />

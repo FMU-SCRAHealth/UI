@@ -53,13 +53,13 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="55dp">
+                android:layout_marginTop="40dp">
 
                 <TextView
                     android:id="@+id/body_weight"
                     android:layout_width="78dp"
                     android:layout_height="24dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="0dp"
                     android:gravity="center_horizontal"
                     android:textSize="20dp"
                     android:text="@string/weight"
