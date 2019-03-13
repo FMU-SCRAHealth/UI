@@ -86,6 +86,16 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     Date userBirthday;
     Date todayDate;
 
+    /*
+     * HOW TO ADD VACCINATION
+     * STEP 1: add the new vaccination name to the string array in the strings.xml file.
+     * STEP 2: add new VaccinationsDataObject object with name in VaccinationGraph.java using results.add()
+     * STEP 3: test to make sure the vaccination's card is showing up.
+     * STEP 4: make new if-statements inside of while-loop with cursor for finding if new vaccination added to results list.
+     * STEP 5: make new if-statements for notifications if they apply.
+     * STEP 6: test to make sure the vaccination's card is updating if taken.
+     * */
+
 
 
     @Override
@@ -248,6 +258,16 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
                             if(vaccinationName.equals("Shingle") && age >= 60) {
                                 scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Shingrix (RZV)") && checkShingles < -1000 && age >= 60) {
+                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
+                                break;
+                            }
+
+                            if(vaccinationName.equals("Shingrix (RZV)") && age >= 60) {
+                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 

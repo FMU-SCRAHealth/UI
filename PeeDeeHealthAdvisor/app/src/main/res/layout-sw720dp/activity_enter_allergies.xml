@@ -78,10 +78,8 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:gravity="center_horizontal"
-                        android:imeOptions="actionNext"
                         android:inputType="textCapWords"
                         android:hint="@string/name"
-                        android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -108,11 +106,10 @@
                         android:id="@+id/allergyDescriptionInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="false"
                         android:gravity="center_horizontal"
-                        android:layout_marginBottom="15dp"
                         android:hint="@string/description"
-                        android:textSize="20dp"
+                        android:inputType="textCapSentences"
+                        android:layout_marginBottom="20dp"
                         android:textColor="@color/colorPrimaryDark"/>
 
                 </android.support.design.widget.TextInputLayout>

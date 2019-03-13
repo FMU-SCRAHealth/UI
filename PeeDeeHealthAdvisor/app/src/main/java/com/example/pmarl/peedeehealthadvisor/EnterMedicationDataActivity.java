@@ -145,7 +145,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
         });
 
         // this stops the screen from opening the keyboard on open, allowing the user to look.
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
     }
 
