@@ -41,6 +41,16 @@ public class VaccinationGraph extends AppCompatActivity
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    /*
+     * HOW TO ADD VACCINATION
+     * STEP 1: add the new vaccination name to the string array in the strings.xml file.
+     * STEP 2: add new VaccinationsDataObject object with name in VaccinationGraph.java using results.add()
+     * STEP 3: test to make sure the vaccination's card is showing up.
+     * STEP 4: make new if-statements inside of while-loop with cursor for finding if new vaccination added to results list.
+     * STEP 5: make new if-statements for notifications if they apply.
+     * STEP 6: test to make sure the vaccination's card is updating if taken.
+     * */
+
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)
@@ -69,6 +79,7 @@ public class VaccinationGraph extends AppCompatActivity
         ArrayList results = new ArrayList<VaccinationsDataObject>();
         VaccinationsDataObject fluShotCardDefault = new VaccinationsDataObject("Flu Shot", "No", "Not Taken");
         VaccinationsDataObject shinglesCardDefault = new VaccinationsDataObject("Shingles", "No", "Not Taken");
+        VaccinationsDataObject shingrixCardDefault = new VaccinationsDataObject("Shingrix (RZV)", "No", "Not Taken");
         VaccinationsDataObject prevnar13Default = new VaccinationsDataObject("Prevnar 13", "No", "Not Taken");
         VaccinationsDataObject pneumovax23Default = new VaccinationsDataObject("Pneumovax 23", "No", "Not Taken");
 
@@ -108,8 +119,9 @@ public class VaccinationGraph extends AppCompatActivity
         // these are the indexes to the ArrayList added for default values
         results.add(fluShotCardDefault); // 0
         results.add(shinglesCardDefault); // 1
-        results.add(prevnar13Default); // 2
-        results.add(pneumovax23Default); // 3
+        results.add(shingrixCardDefault); // 2
+        results.add(prevnar13Default); // 3
+        results.add(pneumovax23Default); // 4
 
 
 
@@ -151,18 +163,24 @@ public class VaccinationGraph extends AppCompatActivity
                 results.set(1, shingles);
 
             }
+            else if (vaccinationName.equals("Shingrix (RZV)"))
+            {
+                VaccinationsDataObject shingles = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
+                results.set(2, shingles);
+
+            }
             else if (vaccinationName.equals("Prevnar 13"))
             {
                 VaccinationsDataObject prevnar13 = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
 
-                results.set(2, prevnar13);
+                results.set(3, prevnar13);
             }
 
             else if (vaccinationName.equals("Pneumovax 23"))
             {
                 VaccinationsDataObject pneumovax23 = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
 
-                results.set(3, pneumovax23);
+                results.set(4, pneumovax23);
             }
             else {
 

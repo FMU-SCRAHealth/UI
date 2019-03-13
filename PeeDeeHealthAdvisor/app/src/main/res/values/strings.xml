@@ -159,6 +159,8 @@
     <string-array name="vaccinations">
         <item>Select</item>
         <item>Flu Shot</item>
+        <item>Shingle</item>
+        <item>Shingrix (RZV)</item>
         <item>Prevnar 13</item>
         <item>Pneumovax 23</item>
         <item>Shingle</item>
