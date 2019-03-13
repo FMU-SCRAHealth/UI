@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -31,7 +32,8 @@ public class EnterAllergyDataActivity extends AppCompatActivity
     //DatabaseHelper myDB;
     private Button enterData;
     private Button clearData;
-    private TextInputEditText allergyNameInput, allergyDescriptionInput;
+    private TextInputEditText allergyNameInput;
+    private TextInputEditText allergyDescriptionInput;
     private Context context = this;
 //    private EditText editDate;
 //    private Calendar myCalendar = Calendar.getInstance();
@@ -54,21 +56,21 @@ public class EnterAllergyDataActivity extends AppCompatActivity
             }
         });
 
+        // allergy inputs
         allergyNameInput = (TextInputEditText) findViewById(R.id.allergyNameInput);
         allergyDescriptionInput = (TextInputEditText) findViewById(R.id.allergyDescriptionInput);
 
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.showSoftInput(allergyNameInput, InputMethodManager.SHOW_IMPLICIT);
 
 
-
-
+        // enter button
         enterData = (Button) findViewById(R.id.enterData);
 
         enterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                final String userFullName = allergyNameInput.getText().toString() + " " +
-                        allergyNameInput.getText().toString();
                 if (allergyNameInput.getText().toString().equals("") || allergyDescriptionInput.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
 
@@ -88,6 +90,8 @@ public class EnterAllergyDataActivity extends AppCompatActivity
             }
         });
 
+
+        // clear button
         clearData = (Button) findViewById(R.id.clearData);
 
         clearData.setOnClickListener(new View.OnClickListener()
