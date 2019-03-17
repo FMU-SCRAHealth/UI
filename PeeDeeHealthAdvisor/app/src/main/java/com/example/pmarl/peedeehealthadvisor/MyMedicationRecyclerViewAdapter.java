@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,8 +64,10 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         }
 
         @Override
-        // TAKING TOGGLE
+        // DELETE CARDS
         public void onClick(View v) {
+
+            context = itemView.getContext();
 
             Log.i(LOG_TAG, "POS: " + position);
             Log.i(LOG_TAG, "confirmed");
@@ -79,6 +82,9 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             MainActivity.myDB.delete_byID(medNameView.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, SelectMedicationActivity.class);
+                            context.startActivity(intent);
                         }
                     }
             );
