@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class MyMedicationRecyclerViewAdapter extends RecyclerView
         .Adapter<MyMedicationRecyclerViewAdapter
         .DataObjectHolder> {
-//    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<MedicationsDataObject> mDataset;
     private static MyClickListener myClickListener;
     static String phoneNumber;
@@ -37,7 +36,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         TextView medPharmNumView;
         TextView medFreqView;
         ImageButton callButton;
-        ImageButton takenButton;
+        ImageButton deleteButton;
         RelativeLayout background;
         TextView taking;
         int position;
@@ -53,18 +52,20 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
             medFreqView= (TextView) itemView.findViewById(R.id.medFreqCardText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
 
 
-            itemView.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
 
         }
 
         @Override
         // TAKING TOGGLE
         public void onClick(View v) {
-            Log.i(LOG_TAG, "POS: " + position);
-            MainActivity.myDB.delete_byID(medNameView.getText().toString());
 
+            Log.i(LOG_TAG, "POS: " + position);
+            Log.i(LOG_TAG, "confirmed");
+            MainActivity.myDB.delete_byID(medNameView.getText().toString());
 
         }
 
@@ -73,6 +74,10 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
+    }
+
+    public void onLongClick(View view){
+
     }
 
     public MyMedicationRecyclerViewAdapter(ArrayList<MedicationsDataObject> myDataset) {
