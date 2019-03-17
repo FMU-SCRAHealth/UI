@@ -3,13 +3,12 @@ package com.example.pmarl.peedeehealthadvisor;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 
@@ -183,6 +182,14 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         long result = db.update(medTable, contentValues, "name="+med_name, null);
         return result != -1;
+
+    }
+
+    public void delete_byID(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("Medications", "name=?", new String[]{name});
 
     }
 

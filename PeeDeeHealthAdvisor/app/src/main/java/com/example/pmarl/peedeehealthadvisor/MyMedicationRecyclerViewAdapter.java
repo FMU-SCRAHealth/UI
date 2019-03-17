@@ -1,18 +1,13 @@
 package com.example.pmarl.peedeehealthadvisor;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.Switch;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,7 +20,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
     private static MyClickListener myClickListener;
     static String phoneNumber;
     private Context context;
-
+    static final String LOG_TAG = "TEST";
 
     public MyMedicationRecyclerViewAdapter(Context context) {
         this.context = context;
@@ -41,10 +36,11 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         TextView medPharmNameView;
         TextView medPharmNumView;
         TextView medFreqView;
-        TextView medTaken;
         ImageButton callButton;
         ImageButton takenButton;
-        Switch background;
+        RelativeLayout background;
+        TextView taking;
+        int position;
 
 
         public DataObjectHolder(View itemView) {
@@ -57,17 +53,19 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
             medFreqView= (TextView) itemView.findViewById(R.id.medFreqCardText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
-//            takenButton = (ImageButton) itemView.findViewById(R.id.updateTakingButton);
-//            medTaken = (TextView) itemView.findViewById(R.id.medTakingCardText);
-//            background = (Switch) itemView.findViewById(R.id.switchTaking);
 
-//            Log.i(LOG_TAG, "Adding Listener");
+
             itemView.setOnClickListener(this);
 
         }
 
         @Override
+        // TAKING TOGGLE
         public void onClick(View v) {
+            Log.i(LOG_TAG, "POS: " + position);
+            MainActivity.myDB.delete_byID(medNameView.getText().toString());
+
+
         }
 
     } // end of class
@@ -102,9 +100,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
         holder.medFreqView.setText(mDataset.get(position).getMedFreq());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
-//        holder.medTaken.setText(mDataset.get(position).getMedTaking());
-//        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
-//        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
+        holder.position = position + 1;
 
 
     }

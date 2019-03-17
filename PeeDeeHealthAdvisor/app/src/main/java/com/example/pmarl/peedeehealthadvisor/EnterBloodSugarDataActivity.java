@@ -20,27 +20,22 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -69,7 +64,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
     protected void  onCreate(Bundle saveInstanceState)
      {
          super.onCreate(saveInstanceState);
-         setContentView(R.layout.acativty_enter_blood_sugar_data);
+         setContentView(R.layout.activty_enter_blood_sugar_data);
 
          editTime = (EditText) findViewById(R.id.editTime);
          editDate = (EditText) findViewById(R.id.editDate);
