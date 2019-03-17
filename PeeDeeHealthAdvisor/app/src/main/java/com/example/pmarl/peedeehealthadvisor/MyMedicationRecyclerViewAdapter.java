@@ -1,6 +1,9 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +28,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         this.context = context;
     }
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
         TextView medNameView;
@@ -65,10 +68,24 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
 
             Log.i(LOG_TAG, "POS: " + position);
             Log.i(LOG_TAG, "confirmed");
-            MainActivity.myDB.delete_byID(medNameView.getText().toString());
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Delete this item?");
+            alertDialog.setMessage("Are you sure you want to delete this?");
+
+            alertDialog.setPositiveButton(
+                    "Delete",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.delete_byID(medNameView.getText().toString());
+                        }
+                    }
+            );
+
+            alertDialog.show();
 
         }
-
     } // end of class
 
 
@@ -83,6 +100,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
     public MyMedicationRecyclerViewAdapter(ArrayList<MedicationsDataObject> myDataset) {
         mDataset = myDataset;
     }
+
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
@@ -105,9 +123,6 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
         holder.medFreqView.setText(mDataset.get(position).getMedFreq());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
-        holder.position = position + 1;
-
-
     }
 
     public void addItem(MedicationsDataObject dataObj, int index) {
