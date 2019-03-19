@@ -1,11 +1,16 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,14 +21,21 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
     //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<BloodPressureDataObject> mDataset; // make sure this is BPDO
     private static MyClickListener myClickListener;
+    private Context context;
+    static final String LOG_TAG = "Blood Pressure";
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public MyBloodPressureRecyclerViewAdapter(Context context) {
+        this.context = context;
+    }
+
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
 
         TextView bpTopView;
         TextView bpBottomView;
         TextView bpDateView;
+        ImageView deleteButton;
 
 
         public DataObjectHolder(View itemView) {
@@ -31,12 +43,40 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
             bpTopView = (TextView) itemView.findViewById(R.id.topValueBPCardText);
             bpBottomView = (TextView) itemView.findViewById(R.id.bottomValueBPCardText);
             bpDateView = (TextView) itemView.findViewById(R.id.bpDateCardText);
+            deleteButton = (ImageView) itemView.findViewById(R.id.deleteButton);
 
-            itemView.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
         }
 
         @Override
+        // DELETE CARDS
         public void onClick(View v) {
+
+            Log.i(LOG_TAG, bpDateView.getText().toString());
+
+            context = itemView.getContext();
+
+            Log.i(LOG_TAG, "confirmed");
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Delete this item?");
+            alertDialog.setMessage("Are you sure you want to delete this?");
+
+            alertDialog.setPositiveButton(
+                    "Delete",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.deleteBloodPressure(bpDateView.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, BloodPressureGraph.class);
+                            context.startActivity(intent);
+                        }
+                    }
+            );
+
+            alertDialog.show();
+
         }
     }
 

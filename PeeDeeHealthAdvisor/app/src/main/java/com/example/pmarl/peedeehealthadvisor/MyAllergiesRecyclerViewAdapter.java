@@ -1,5 +1,10 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,26 +21,60 @@ public class MyAllergiesRecyclerViewAdapter extends RecyclerView
     //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<AllergiesDataObject> mDataset;
     private static MyClickListener myClickListener;
+    private Context context;
+    static final String LOG_TAG = "ALLERGIES";
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public MyAllergiesRecyclerViewAdapter(Context context) {
+        this.context = context;
+    }
+
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
 
         TextView allergyNameView;
         TextView allergyDescriptionView;
-
+        ImageButton deleteButton;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             allergyNameView = (TextView) itemView.findViewById(R.id.allergyNameCardText);
             allergyDescriptionView = (TextView) itemView.findViewById(R.id.allergyDescriptionCardText);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
 
-            itemView.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
+
         }
 
         @Override
+        // DELETE CARDS
         public void onClick(View v) {
+
+            context = itemView.getContext();
+
+            Log.i(LOG_TAG, "confirmed");
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Delete this item?");
+            alertDialog.setMessage("Are you sure you want to delete this?");
+
+            alertDialog.setPositiveButton(
+                    "Delete",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.deleteAllergy(allergyNameView.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, AllergiesTable.class);
+                            context.startActivity(intent);
+                        }
+                    }
+            );
+
+            alertDialog.show();
+
         }
+
     }
 
     public void setOnItemClickListener(MyClickListener myClickListener) {

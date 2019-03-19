@@ -185,7 +185,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    public void delete_byID(String name){
+    //Delete Medications
+    public void deleteMed(String name){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -193,7 +194,61 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
+    //Delete Allergies
+    public void deleteAllergy(String name){
 
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "allergy=?", new String[]{name});
+
+    }
+
+    //Delete Blood Pressure
+    public void deleteBloodPressure(String date){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND date=?", new String[]{"Blood Pressure", date});
+
+    }
+
+    //Delete Blood Sugar
+    public void deleteBloodSugar(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "allergy=?", new String[]{name});
+
+    }
+
+    //Delete Weight
+    public void deleteWeight(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "allergy=?", new String[]{name});
+
+    }
+
+    //Delete Cholesterol
+    public void deleteCholesterol(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "allergy=?", new String[]{name});
+
+    }
+
+    //Delete Vaccination
+    public void deleteVaccination(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "allergy=?", new String[]{name});
+
+    }
+
+    //Delete Allergies
     public boolean insertBloodPressure(String date, String time, int systolic, int diastolic)
     {
 

@@ -23,7 +23,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
     private static MyClickListener myClickListener;
     static String phoneNumber;
     private Context context;
-    static final String LOG_TAG = "TEST";
+    static final String LOG_TAG = "MEDICATION";
 
     public MyMedicationRecyclerViewAdapter(Context context) {
         this.context = context;
@@ -69,21 +69,20 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
 
             context = itemView.getContext();
 
-            Log.i(LOG_TAG, "POS: " + position);
             Log.i(LOG_TAG, "confirmed");
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
-            alertDialog.setTitle("Delete this item?");
-            alertDialog.setMessage("Are you sure you want to delete this?");
+            alertDialog.setTitle("Delete Medication Card?");
+            alertDialog.setMessage("Are you sure you want to delete this medication?");
 
             alertDialog.setPositiveButton(
                     "Delete",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.myDB.delete_byID(medNameView.getText().toString());
+                            MainActivity.myDB.deleteMed(medNameView.getText().toString());
                             final Intent intent;
-                            intent = new Intent(context, SelectMedicationActivity.class);
+                            intent = new Intent(context, MedicationTable.class);
                             context.startActivity(intent);
                         }
                     }
