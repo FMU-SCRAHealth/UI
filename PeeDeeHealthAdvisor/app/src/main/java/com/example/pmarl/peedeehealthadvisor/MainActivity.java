@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
             //do your one time code here
             launchFirstTimeLogIn();
             // this is send a reminder about the vaccinations after the initial boot up time.
-            scheduleNotification(getNotification("Remember to get your vaccination!", "Vaccination Reminder"), 86400000);
+//            scheduleNotification(getNotification("Remember to get your vaccination!", "Vaccination Reminder"), 86400000);
             //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
 
         }
