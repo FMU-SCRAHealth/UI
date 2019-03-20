@@ -207,8 +207,10 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 }
                 else
                 {
+
+                    Long currentdateEpoch = System.currentTimeMillis();
                     // needs implementations
-                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), Spinner.getSelectedItem().toString());
+                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), currentdateEpoch.toString(), Spinner.getSelectedItem().toString());
 
                     if (isInserted = true) {
 

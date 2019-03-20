@@ -273,7 +273,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    public boolean insertVaccination(String date, String virus)
+    public boolean insertVaccination(String date, String epoch, String virus)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -291,6 +291,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch,epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementImmunized,immunized);
@@ -416,7 +417,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     public Cursor readVaccinationRecords()
     {
-        String[] columns = {measurementDate,measurementTime,measurementImmunized, measurementVirus};
+        String[] columns = {measurementDate,measurementTime,measurementEpoch,measurementImmunized, measurementVirus};
 
         String selection = measurementType +" = ?";
 
