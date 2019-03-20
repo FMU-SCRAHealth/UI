@@ -17,17 +17,22 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.Date;
+
 public class BloodPressureDataObject {
 
     private String bpTop;
     private String bpBottom;
     private String bpDate;
+    private String bpTime;
 
 
-    BloodPressureDataObject(Integer top, Integer bottom, String date) {
+
+    BloodPressureDataObject(Integer top, Integer bottom, String date, Long time) {
         bpTop = top.toString() + " (Systolic)";
         bpBottom = bottom.toString() + " (Diastolic)";
         bpDate = date;
+        bpTime = time.toString();
 
     }
 
@@ -53,6 +58,14 @@ public class BloodPressureDataObject {
 
     public void setBpDate(String bpDate) {
         this.bpDate = bpDate;
+    }
+
+    public String getBpTime() {
+        return bpTime;
+    }
+
+    public void setBpTime(String bpTime) {
+        this.bpTime = bpTime;
     }
 
 }

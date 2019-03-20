@@ -26,6 +26,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String measurementTable = "measurement";
     private static final String measurementDate = "date";
     private static final String measurementTime = "time";
+    private static final String measurementEpoch = "epoch";
     private static final String measurementUserName = "user_name";
     private static final String measurementType = "meas_type";
 
@@ -78,7 +79,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 userDOB+" TEXT, "+userGender+" TEXT, "+measurementTypeUser+" TEXT)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + measurementTable + "("+measurementDate+" TEXT, "
-                +measurementTime+" TEXT, "+measurementUserName+" TEXT, "+measurementType+" TEXT, "
+                +measurementTime+" TEXT, "+measurementEpoch+" TEXT, "+measurementUserName+" TEXT, "+measurementType+" TEXT, "
                 +measurementFasting+" INTEGER, "+measurementBloodSugar+" INTEGER, "
                 +measurementImmunized+" INTEGER, "+measurementVirus+" TEXT, "+measurementLDL
                 +" INTEGER, "+measurementHDL+" INTEGER, "+measurementTRIG+" INTEGER, "
@@ -187,7 +188,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     }
 
 
-    public boolean insertBloodPressure(String date, String time, int systolic, int diastolic)
+    public boolean insertBloodPressure(String date, String time, String epoch, int systolic, int diastolic)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -204,6 +205,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch, epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementSystolic,systolic);
@@ -464,5 +466,14 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 columns,null,null,null,null,null);
 
         return medCursor;
+    }
+
+    //Delete Blood Pressure
+    public void deleteBloodPressure(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Blood Pressure", epoch});
+
     }
 }
