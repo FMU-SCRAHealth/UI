@@ -40,7 +40,9 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class EnterBloodPressureDataActivity extends AppCompatActivity //github test
 {
@@ -56,6 +58,9 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
     private String dateFormat = "MMM dd yyyy ";
     private String timeFormat = "HH:mm:ss.SSS zzz";
     private DatePickerDialog.OnDateSetListener date;
+    private String dateEpoch;
+    private Date dateInsertion;
+    private Long epoch;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
     private NotificationManagerCompat notificationManager;
 
@@ -115,6 +120,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
 
+
             @Override
             public void onClick(View view)
             {
@@ -125,6 +131,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                         editTime.setText(hourOfDay + ":" + minuteOfHour);
                     }
                 }, hour, minute, false);
+
                 timePickerDialog.show();
             }
         });
@@ -144,46 +151,49 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
             @Override
             public void onClick(View view)
             {
+                try {
 
-                if (systolicInput.getText().toString().equals("")||
-                        diastolicInput.getText().toString().equals("") ||
-                        editTime.getText().toString().equals(""))
-                {
-                    showDataNotEnteredWarning();
+                    if (systolicInput.getText().toString().equals("") ||
+                            diastolicInput.getText().toString().equals("") ||
+                            editTime.getText().toString().equals("")) {
+                        showDataNotEnteredWarning();
 
-                }
-
-                else if (Integer.parseInt(systolicInput.getText().toString()) >= 275 ||
-                        Integer.parseInt(diastolicInput.getText().toString()) >= 150 ||
-                        Integer.parseInt(systolicInput.getText().toString()) <= 0 ||
-                        Integer.parseInt(diastolicInput.getText().toString()) <= 0)
-                {
-                    showDataIncorrectRange(); // if data is outside of reasonable range of entry
-                }
-
-                else
-                {
-                    boolean isInserted =
-                            MainActivity.myDB.insertBloodPressure(
-                                    editDate.getText().toString(),
-                                    editTime.getText().toString()+ ":00.000 EST",
-                                    Integer.parseInt(systolicInput.getText().toString()),
-                                    Integer.parseInt(diastolicInput.getText().toString()));
-
-                    if (isInserted = true) {
-
-                        showDataEntryCheckmark();
-
-//                        if (Integer.parseInt(systolicInput.getText().toString()) >= 120 && Integer.parseInt(diastolicInput.getText().toString()) >= 90 || Integer.parseInt(systolicInput.getText().toString()) <= 90 && Integer.parseInt(diastolicInput.getText().toString()) <= 60) {
-//                            sendOnChannel1();
-//                        } // statement to show if both systolic and diastolic are high
-
+                    } else if (Integer.parseInt(systolicInput.getText().toString()) >= 275 ||
+                            Integer.parseInt(diastolicInput.getText().toString()) >= 150 ||
+                            Integer.parseInt(systolicInput.getText().toString()) <= 0 ||
+                            Integer.parseInt(diastolicInput.getText().toString()) <= 0) {
+                            showDataIncorrectRange(); // if data is outside of reasonable range of entry
                     } else {
+                        dateEpoch = editDate.getText().toString() + editTime.getText().toString();
+                        dateInsertion = new SimpleDateFormat("MMM dd yyyy HH:mm").parse(dateEpoch);
+                        epoch = dateInsertion.getTime();
+                        boolean isInserted =
 
-                        showDataError();
+                                MainActivity.myDB.insertBloodPressure(
+                                editDate.getText().toString(),
+
+                                editTime.getText().toString() + ":00.000 EST",
+                                        epoch.toString(),
+                                Integer.parseInt(systolicInput.getText().toString()),
+                                Integer.parseInt(diastolicInput.getText().toString()));
+
+                        if (isInserted = true) {
+
+                            showDataEntryCheckmark();
+
+                            //                        if (Integer.parseInt(systolicInput.getText().toString()) >= 120 && Integer.parseInt(diastolicInput.getText().toString()) >= 90 || Integer.parseInt(systolicInput.getText().toString()) <= 90 && Integer.parseInt(diastolicInput.getText().toString()) <= 60) {
+                            //                            sendOnChannel1();
+                            //                        } // statement to show if both systolic and diastolic are high
+
+                        } else {
+
+                            showDataError();
+                        }
+
+                        launchPrevActivity();
                     }
-
-                    launchPrevActivity();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

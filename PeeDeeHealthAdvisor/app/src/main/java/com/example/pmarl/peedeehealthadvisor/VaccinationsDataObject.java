@@ -33,13 +33,15 @@ public class VaccinationsDataObject {
     private String vaccinationName;
     private String vaccinationTaken;
     private String vaccinationDate;
+    private String vaccineEpoch;
 
 
 
-    VaccinationsDataObject(String name, String taken, String date) {
+    VaccinationsDataObject(String name, String taken, String date, String epoch) {
         vaccinationName = name;
         vaccinationTaken = taken;
         vaccinationDate = date;
+        vaccineEpoch = epoch;
 
     }
 
@@ -66,6 +68,14 @@ public class VaccinationsDataObject {
 
     public void setVaccinationDate(String vaccinationDate) {
         this.vaccinationDate = vaccinationDate;
+    }
+
+    public String getVaccineEpoch() {
+        return vaccineEpoch;
+    }
+
+    public void setVaccineEpoch(String vaccineEpoch) {
+        this.vaccineEpoch = vaccineEpoch;
     }
 
 }

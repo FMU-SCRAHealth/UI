@@ -22,9 +22,10 @@ public class BloodSugarDataObject {
     private String bsValue;
     private String bsFasting;
     private String bsDate;
+    private String bsTime;
 
 
-    BloodSugarDataObject(Float top, Boolean fasting, String date) {
+    BloodSugarDataObject(Float top, Boolean fasting, String date, Long time) {
 
         bsValue = top.toString() + " mg/dL";
         if(fasting.equals(true)) {
@@ -35,6 +36,8 @@ public class BloodSugarDataObject {
         }
 
         bsDate = date;
+
+        bsTime = time.toString();
 
     }
 
@@ -60,6 +63,14 @@ public class BloodSugarDataObject {
 
     public void setBsDate(String bsDate) {
         this.bsDate = bsDate;
+    }
+
+    public String getBsTime() {
+        return bsTime;
+    }
+
+    public void setBsTime(String bsTime) {
+        this.bsTime = bsTime;
     }
 
 

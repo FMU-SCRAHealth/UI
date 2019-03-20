@@ -26,6 +26,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     private static final String measurementTable = "measurement";
     private static final String measurementDate = "date";
     private static final String measurementTime = "time";
+    private static final String measurementEpoch = "epoch";
     private static final String measurementUserName = "user_name";
     private static final String measurementType = "meas_type";
 
@@ -78,7 +79,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 userDOB+" TEXT, "+userGender+" TEXT, "+measurementTypeUser+" TEXT)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + measurementTable + "("+measurementDate+" TEXT, "
-                +measurementTime+" TEXT, "+measurementUserName+" TEXT, "+measurementType+" TEXT, "
+                +measurementTime+" TEXT, "+measurementEpoch+" TEXT, "+measurementUserName+" TEXT, "+measurementType+" TEXT, "
                 +measurementFasting+" INTEGER, "+measurementBloodSugar+" INTEGER, "
                 +measurementImmunized+" INTEGER, "+measurementVirus+" TEXT, "+measurementLDL
                 +" INTEGER, "+measurementHDL+" INTEGER, "+measurementTRIG+" INTEGER, "
@@ -187,7 +188,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     }
 
 
-    public boolean insertBloodPressure(String date, String time, int systolic, int diastolic)
+    public boolean insertBloodPressure(String date, String time, String epoch, int systolic, int diastolic)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -204,6 +205,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch, epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementSystolic,systolic);
@@ -213,7 +215,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
-    public boolean insertBloodSugar(String date, String time, int fasting, int blood_sugar)
+    public boolean insertBloodSugar(String date, String time, String epoch, int fasting, int blood_sugar)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -229,6 +231,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch, epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
 
@@ -239,13 +242,13 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
-    public boolean insertCholesterol(String date, int LDL, int HDL, int TRIG, double TC)
+    public boolean insertCholesterol(String date, String time, String epoch, int LDL, int HDL, int TRIG, double TC)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Calendar calendar = Calendar.getInstance();
-        String time = simpleDateFormat.format(calendar.getTime());
+//        Calendar calendar = Calendar.getInstance();
+//        String time = simpleDateFormat.format(calendar.getTime());
 
 
 
@@ -255,6 +258,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch,epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementLDL,LDL);
@@ -269,7 +273,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    public boolean insertVaccination(String date, String virus)
+    public boolean insertVaccination(String date, String epoch, String virus)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -287,6 +291,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch,epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementImmunized,immunized);
@@ -324,12 +329,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    public boolean insertBodyWeight(String date, double weight)
+    public boolean insertBodyWeight(String date, String time, String epoch, double weight)
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Calendar calendar = Calendar.getInstance();
-        String time = simpleDateFormat.format(calendar.getTime());
+//        Calendar calendar = Calendar.getInstance();
+//        String time = simpleDateFormat.format(calendar.getTime());
 
 
 
@@ -339,6 +344,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch, epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementBodyWeight,weight);
@@ -411,7 +417,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     public Cursor readVaccinationRecords()
     {
-        String[] columns = {measurementDate,measurementTime,measurementImmunized, measurementVirus};
+        String[] columns = {measurementDate,measurementTime,measurementEpoch,measurementImmunized, measurementVirus};
 
         String selection = measurementType +" = ?";
 
@@ -464,5 +470,68 @@ public class DatabaseHelper  extends SQLiteOpenHelper
                 columns,null,null,null,null,null);
 
         return medCursor;
+    }
+
+    //Delete Blood Pressure
+    public void deleteBloodPressure(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Blood Pressure", epoch});
+
+    }
+
+    //Delete Medications
+    public void deleteMed(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("Medications", "name=?", new String[]{name});
+
+    }
+
+    //Delete Allergies
+    public void deleteAllergy(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "allergy=?", new String[]{name});
+
+    }
+
+    //Delete Blood Sugar
+    public void deleteBloodSugar(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Blood Sugar", epoch});
+
+    }
+
+    //Delete Weight
+    public void deleteWeight(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Body Weight", epoch});
+
+    }
+
+    //Delete Cholesterol
+    public void deleteCholesterol(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Cholesterol", epoch});
+
+    }
+
+    //Delete Vaccination
+    public void deleteVaccination(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Vaccination", epoch});
+
     }
 }

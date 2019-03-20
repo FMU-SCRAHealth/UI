@@ -1,5 +1,10 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,25 +21,56 @@ public class MyBodyWeightRecyclerViewAdapter extends RecyclerView
     //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<BodyWeightDataObject> mDataset; // make sure this is Blood Sugar Data Object
     private static MyClickListener myClickListener;
+    private Context context;
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public MyBodyWeightRecyclerViewAdapter(Context context) {
+        this.context = context;
+    }
+
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
 
         TextView weightValueView;
         TextView weightDateView;
+        TextView weightTimeView;
+        ImageButton deleteButton;
 
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             weightValueView = (TextView) itemView.findViewById(R.id.bodyWeightValueCardText);
             weightDateView = (TextView) itemView.findViewById(R.id.bodyWeightDateCardText);
+            weightTimeView = (TextView) itemView.findViewById(R.id.bodyWeightTimeCardText);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButtonBodyWeight);
+            weightTimeView.setVisibility(View.GONE);
 
-            itemView.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            context = itemView.getContext();
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Delete this item?");
+            alertDialog.setMessage("Are you sure you want to delete this?");
+
+            alertDialog.setPositiveButton(
+                    "Delete",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.deleteWeight(weightTimeView.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, BodyWeightGraph.class);
+                            context.startActivity(intent);
+
+                        }
+                    }
+            );
+
+            alertDialog.show();
         }
     }
 
@@ -61,6 +97,7 @@ public class MyBodyWeightRecyclerViewAdapter extends RecyclerView
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.weightValueView.setText(mDataset.get(position).getWeightValue());
         holder.weightDateView.setText(mDataset.get(position).getWeightDate());
+        holder.weightTimeView.setText(mDataset.get(position).getBodyWeightTime());
 
     }
 

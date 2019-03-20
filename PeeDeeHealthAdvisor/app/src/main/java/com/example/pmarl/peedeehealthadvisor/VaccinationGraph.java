@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -73,42 +74,17 @@ public class VaccinationGraph extends AppCompatActivity
 
         // Strings
         String date = "Not Taken";
+        String time = "Not Taken";
         int immunized;
         String tableImmunized ="No";
         String vaccinationName ="";
         ArrayList results = new ArrayList<VaccinationsDataObject>();
-        VaccinationsDataObject fluShotCardDefault = new VaccinationsDataObject("Flu Shot", "No", "Not Taken");
-        VaccinationsDataObject shinglesCardDefault = new VaccinationsDataObject("Shingles", "No", "Not Taken");
-        VaccinationsDataObject shingrixCardDefault = new VaccinationsDataObject("Shingrix (RZV)", "No", "Not Taken");
-        VaccinationsDataObject prevnar13Default = new VaccinationsDataObject("Prevnar 13", "No", "Not Taken");
-        VaccinationsDataObject pneumovax23Default = new VaccinationsDataObject("Pneumovax 23", "No", "Not Taken");
+        VaccinationsDataObject fluShotCardDefault = new VaccinationsDataObject("Flu Shot", "No", "Not Taken", "0");
+//        VaccinationsDataObject shinglesCardDefault = new VaccinationsDataObject("Shingles", "No", "Not Taken", "0");
+        VaccinationsDataObject shingrixCardDefault = new VaccinationsDataObject("Shingrix (RZV)", "No", "Not Taken", "0");
+        VaccinationsDataObject prevnar13Default = new VaccinationsDataObject("Prevnar 13", "No", "Not Taken", "0");
+        VaccinationsDataObject pneumovax23Default = new VaccinationsDataObject("Pneumovax 23", "No", "Not Taken", "0");
 
-//        // Flu Shot Row
-//        TextView fluShotTableNameView = findViewById(R.id.fluShotTable);
-//        TextView fluShotTakenView = findViewById(R.id.fluShotTaken);
-//        TextView fluShotDateView = findViewById(R.id.fluShotDate);
-//
-//        // Shingles Row
-//        TextView shingleTaken = findViewById(R.id.shingleTaken);
-//        TextView shingleDate = findViewById(R.id.shingleDate);
-//
-//        // Pneumonia Row
-//        TextView pneumonia13Taken = findViewById(R.id.pneumoniaTaken13);
-//        TextView pneumonia13Date = findViewById(R.id.pneumoniaDate13);
-//        TextView pneumonia23Taken = findViewById(R.id.pneumoniaTaken23);
-//        TextView pneumonia23Date = findViewById(R.id.pneumoniaDate23);
-
-        // default table text
-//        fluShotTakenView.setText(tableImmunized);
-//        fluShotDateView.setText(date);
-//
-//        shingleTaken.setText(tableImmunized);
-//        shingleDate.setText(date);
-//
-//        pneumonia13Taken.setText(tableImmunized);
-//        pneumonia13Date.setText(date);
-//        pneumonia23Taken.setText(tableImmunized);
-//        pneumonia23Date.setText(date);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_vaccinations);
         mRecyclerView.setHasFixedSize(true);
@@ -118,10 +94,10 @@ public class VaccinationGraph extends AppCompatActivity
         mRecyclerView.setAdapter(mAdapter);
         // these are the indexes to the ArrayList added for default values
         results.add(fluShotCardDefault); // 0
-        results.add(shinglesCardDefault); // 1
-        results.add(shingrixCardDefault); // 2
-        results.add(prevnar13Default); // 3
-        results.add(pneumovax23Default); // 4
+//        results.add(shinglesCardDefault); // 1
+        results.add(shingrixCardDefault); // 1
+        results.add(prevnar13Default); // 2
+        results.add(pneumovax23Default); // 3
 
 
 
@@ -134,11 +110,13 @@ public class VaccinationGraph extends AppCompatActivity
 
             date = cursorVaccinations.getString(0);
 
-//            time = cursorVaccinations.getString(1);
+            time = cursorVaccinations.getString(2);
 
-            immunized = cursorVaccinations.getInt(2);
+            immunized = cursorVaccinations.getInt(3);
 
-            vaccinationName = cursorVaccinations.getString(3);
+            vaccinationName = cursorVaccinations.getString(4);
+
+            Log.d("DATABASETEST", time);
 
 
 
@@ -154,33 +132,27 @@ public class VaccinationGraph extends AppCompatActivity
 
             if (vaccinationName.equals("Flu Shot"))
             {
-                VaccinationsDataObject fluShot = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
+                VaccinationsDataObject fluShot = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
                 results.set(0, fluShot);
-            }
-            else if (vaccinationName.equals("Shingle"))
-            {
-                VaccinationsDataObject shingles = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
-                results.set(1, shingles);
-
             }
             else if (vaccinationName.equals("Shingrix (RZV)"))
             {
-                VaccinationsDataObject shingles = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
-                results.set(2, shingles);
+                VaccinationsDataObject shingles = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+                results.set(1, shingles);
 
             }
             else if (vaccinationName.equals("Prevnar 13"))
             {
-                VaccinationsDataObject prevnar13 = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
+                VaccinationsDataObject prevnar13 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
 
-                results.set(3, prevnar13);
+                results.set(2, prevnar13);
             }
 
             else if (vaccinationName.equals("Pneumovax 23"))
             {
-                VaccinationsDataObject pneumovax23 = new VaccinationsDataObject(vaccinationName, tableImmunized, date);
+                VaccinationsDataObject pneumovax23 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
 
-                results.set(4, pneumovax23);
+                results.set(3, pneumovax23);
             }
             else {
 

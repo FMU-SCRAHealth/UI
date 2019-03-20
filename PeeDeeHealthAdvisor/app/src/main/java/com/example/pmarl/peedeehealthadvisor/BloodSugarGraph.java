@@ -33,17 +33,22 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.TreeMap;
 
 public class BloodSugarGraph extends AppCompatActivity
 {
     LineChart lineChart;
     LineChart lineChartLand;
+    Date now = new Date();
+    TimeZone tz = Calendar.getInstance().getTimeZone();
+//    String name = tz.getDisplayName(tz.inDaylightTime(now), TimeZone.SHORT);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -107,14 +112,24 @@ public class BloodSugarGraph extends AppCompatActivity
 
             try
             {
+                if(cursor.getCount() > 0) {
                 date = cursor.getString(0) + cursor.getString(1);
                 date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
-                epoch = date1.getTime();
+
+                if(tz.inDaylightTime(date1)) {
+                    epoch = date1.getTime() - 3600000;
+                } else {
+                    epoch = date1.getTime();
+                }
+
 
                 fasting = Integer.parseInt(cursor.getString(2)) == 1;
 
                 treeMap.put(epoch, new BloodSugarValue(fasting,Float.parseFloat(cursor.getString(3))));
 
+                } else {
+                    launchPrevActivity();
+                }
 
 
             } catch (ParseException e)
@@ -146,7 +161,7 @@ public class BloodSugarGraph extends AppCompatActivity
 
             xLabels.add(new SimpleDateFormat("MMM dd hh:mm a").format(date2));
 
-            BloodSugarDataObject bloodSugarEntry = new BloodSugarDataObject(bloodSugarValue.getBloodSugar(), bloodSugarValue.getFasting(), dateCard);
+            BloodSugarDataObject bloodSugarEntry = new BloodSugarDataObject(bloodSugarValue.getBloodSugar(), bloodSugarValue.getFasting(), dateCard, epoch1);
 
             results.add(bloodSugarEntry);
 

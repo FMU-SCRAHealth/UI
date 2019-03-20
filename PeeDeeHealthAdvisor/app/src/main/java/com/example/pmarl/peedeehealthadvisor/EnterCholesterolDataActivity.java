@@ -17,6 +17,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,10 +35,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class EnterCholesterolDataActivity extends AppCompatActivity
@@ -46,9 +49,13 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
     private NotificationManagerCompat notificationManager;
 
     private Context context = this;
-    private EditText editDate;
+    private EditText editDate, editTime;
     private Calendar myCalendar = Calendar.getInstance();
     private String dateFormat = "MMM dd yyyy ";
+    private String timeFormat = "HH:mm:ss.SSS zzz";
+    private String dateEpoch;
+    private Date dateInsertion;
+    private Long epoch;
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 
@@ -66,6 +73,7 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_enter_cholesterol_data);
 
+        editTime = (EditText) findViewById(R.id.editTime);
         editDate = findViewById(R.id.editDate);
         Button enterData = findViewById(R.id.enterData);
         Button clearData = findViewById(R.id.clearData);
@@ -111,6 +119,27 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
             }
         });
 
+        // Edit Time popup
+        editTime.setOnClickListener(new View.OnClickListener() {
+            Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+            @Override
+            public void onClick(View view)
+            {
+                TimePickerDialog timePickerDialog =
+                        new TimePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker timePicker,
+                                                  int hourOfDay,
+                                                  int minuteOfHour) {
+                                editTime.setText(hourOfDay + ":" + minuteOfHour);
+                            }
+                        }, hour, minute,false);
+                timePickerDialog.show();
+            }
+        });
+
 
         ImageButton home = findViewById(R.id.Home);
 
@@ -126,51 +155,60 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
         enterData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ldlInput.getText().toString().equals("")
-                        || hdlInput.getText().toString().equals("")
-                        || TRIGinput.getText().toString().equals("")
-                        || TCinput.getText().toString().equals(""))
-                {
-//                    Toast.makeText(EnterCholesterolDataActivity.this,
-//                            "Please enter all fields.", Toast.LENGTH_LONG).show();
-                    showDataNotEnteredWarning();
 
-                }
+                try {
+                    if (ldlInput.getText().toString().equals("")
+                            || hdlInput.getText().toString().equals("")
+                            || TRIGinput.getText().toString().equals("")
+                            || TCinput.getText().toString().equals("")
+                            || editTime.getText().toString().equals("")) {
 
-                else if (Integer.parseInt(ldlInput.getText().toString()) >= 250
-                        || Integer.parseInt(ldlInput.getText().toString()) <= 0
-                        || Integer.parseInt(TRIGinput.getText().toString()) >= 500
-                        || Integer.parseInt(hdlInput.getText().toString()) <= 0
-                        || Integer.parseInt(hdlInput.getText().toString()) >= 100
-                        || Integer.parseInt(TRIGinput.getText().toString()) <= 0
-                        || Integer.parseInt(TCinput.getText().toString()) <= 0
-                        || Integer.parseInt(TCinput.getText().toString()) >= 400) {
+                        showDataNotEnteredWarning();
 
-                    showDataIncorrectRange();
-                }
+                    } else if (Integer.parseInt(ldlInput.getText().toString()) >= 250
+                            || Integer.parseInt(ldlInput.getText().toString()) <= 0
+                            || Integer.parseInt(TRIGinput.getText().toString()) >= 500
+                            || Integer.parseInt(hdlInput.getText().toString()) <= 0
+                            || Integer.parseInt(hdlInput.getText().toString()) >= 100
+                            || Integer.parseInt(TRIGinput.getText().toString()) <= 0
+                            || Integer.parseInt(TCinput.getText().toString()) <= 0
+                            || Integer.parseInt(TCinput.getText().toString()) >= 400) {
 
-                else
-                {
-                    boolean isInserted = MainActivity.myDB.insertCholesterol(
-                            editDate.getText().toString(),
-                            Integer.parseInt(ldlInput.getText().toString()),
-                            Integer.parseInt(hdlInput.getText().toString()),
-                            Integer.parseInt(TRIGinput.getText().toString()),
-                            Double.parseDouble(TCinput.getText().toString()));
-                    if (isInserted = true) {
+                        showDataIncorrectRange();
 
-                        showDataEntryCheckmark();
+                    } else {
+
+                        dateEpoch = editDate.getText().toString() + editTime.getText().toString();
+                        dateInsertion = new SimpleDateFormat("MMM dd yyyy HH:mm").parse(dateEpoch);
+                        epoch = dateInsertion.getTime();
+
+                        boolean isInserted = MainActivity.myDB.insertCholesterol(
+                                editDate.getText().toString(),
+                                editTime.getText().toString() + ":00.000 EST",
+                                epoch.toString(),
+                                Integer.parseInt(ldlInput.getText().toString()),
+                                Integer.parseInt(hdlInput.getText().toString()),
+                                Integer.parseInt(TRIGinput.getText().toString()),
+                                Double.parseDouble(TCinput.getText().toString()));
+
+                        if (isInserted = true) {
+
+                            showDataEntryCheckmark();
 
 //                        if (Integer.parseInt(ldlInput.getText().toString()) >= 130 || Integer.parseInt(hdlInput.getText().toString()) <= 40 // add total and male/female support
 //                                || Integer.parseInt(TRIGinput.getText().toString()) >= 150 || Integer.parseInt(TCinput.getText().toString()) >= 200) {
 //                            sendOnChannel3();
 //                        }
-                    } else {
+                        } else {
 
-                        showDataError();
+                            showDataError();
+                        }
+
+                        launchPrevActivity();
                     }
 
-                    launchPrevActivity();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

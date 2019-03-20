@@ -191,10 +191,32 @@
                     android:focusable="false"
                     android:textSize="16dp"
                     android:hint="@string/selectDate"
-                    android:layout_marginBottom="40dp"
                     android:inputType="date"
                     android:longClickable="false"
                     android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/selectTimeBelow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:textSize="20dp"
+                    android:text="@string/selectTimeBelow"
+                    android:textColor="@color/YellowHuesDark"/>
+
+                <EditText
+                    android:id="@+id/editTime"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/selectTime"
+                    android:inputType="date"
+                    android:longClickable="false"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="40dp"
+                    android:textSize="16dp" />
 
             </LinearLayout>
 

@@ -207,8 +207,10 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 }
                 else
                 {
+
+                    Long currentdateEpoch = System.currentTimeMillis();
                     // needs implementations
-                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), Spinner.getSelectedItem().toString());
+                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), currentdateEpoch.toString(), Spinner.getSelectedItem().toString());
 
                     if (isInserted = true) {
 
@@ -251,23 +253,23 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 break;
                             }
 
-                            if(vaccinationName.equals("Shingle") && checkShingles < -1000 && age >= 60) {
-                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
-                                break;
-                            }
-
-                            if(vaccinationName.equals("Shingle") && age >= 60) {
-                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
-                                break;
-                            }
+//                            if(vaccinationName.equals("Shingle") && checkShingles < -1000 && age >= 60) {
+//                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
+//                                break;
+//                            }
+//
+//                            if(vaccinationName.equals("Shingle") && age >= 60) {
+//                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
+//                                break;
+//                            }
 
                             if(vaccinationName.equals("Shingrix (RZV)") && checkShingles < -1000 && age >= 60) {
-                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
+                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) Booster vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 
                             if(vaccinationName.equals("Shingrix (RZV)") && age >= 60) {
-                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
+                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) Booster vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 

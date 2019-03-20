@@ -67,6 +67,16 @@
                 android:layout_marginTop="9dp"/>
 
             <TextView
+                android:id="@+id/vaccinationTimeCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/takenTextLabel"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
                 android:id="@+id/vaccinationDateCardText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,6 +97,17 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
+
+            <ImageButton
+                android:id="@+id/deleteButtonVaccinations"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_delete"
+                />
 
         </RelativeLayout>
 

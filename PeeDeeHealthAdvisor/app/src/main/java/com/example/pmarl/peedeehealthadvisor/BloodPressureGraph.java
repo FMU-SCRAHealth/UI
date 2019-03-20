@@ -32,17 +32,21 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.TreeMap;
 
 public class BloodPressureGraph extends AppCompatActivity
 {
     LineChart lineChart;
     LineChart lineChartLand;
+    Date now = new Date();
+    TimeZone tz = Calendar.getInstance().getTimeZone();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -109,10 +113,15 @@ public class BloodPressureGraph extends AppCompatActivity
 
                 try
                 {
-                    date = cursor.getString(0) + cursor.getString(1);
-                    date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
+                    if(cursor.getCount() > 0) {
+                        date = cursor.getString(0) + cursor.getString(1);
+                        date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
 
-                    epoch = date1.getTime();
+                        if(tz.inDaylightTime(date1)) {
+                            epoch = date1.getTime() - 3600000;
+                        } else {
+                            epoch = date1.getTime();
+                        }
 //
 
                     treeMap.put(epoch, new ArrayList<Integer>());
@@ -120,14 +129,18 @@ public class BloodPressureGraph extends AppCompatActivity
                     treeMap.get(epoch).add(Integer.parseInt(cursor.getString(2)));
                     /*Diastolic added*/
                     treeMap.get(epoch).add(Integer.parseInt(cursor.getString(3)));
+                    } else {
+                        launchPrevActivity();
+                    }
 
-                } catch (ParseException e)
-                {
+
+                } catch (ParseException e) {
+
                     e.printStackTrace();
+
                 }
 
             } while (cursor.moveToPrevious());
-
 
 
         Set<Map.Entry<Long, ArrayList<Integer>>> set = treeMap.entrySet();
@@ -155,7 +168,7 @@ public class BloodPressureGraph extends AppCompatActivity
 
             xLabels.add(new SimpleDateFormat("MMM dd hh:mm a").format(date2));
 
-            BloodPressureDataObject bloodPressureEntry = new BloodPressureDataObject(arrayList.get(0), arrayList.get(1), dateCard);
+            BloodPressureDataObject bloodPressureEntry = new BloodPressureDataObject(arrayList.get(0), arrayList.get(1), dateCard, epoch1);
 
             results.add(bloodPressureEntry);
 

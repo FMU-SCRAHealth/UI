@@ -1,29 +1,45 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static com.github.mikephil.charting.charts.Chart.LOG_TAG;
 
 public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
         .Adapter<MyBloodPressureRecyclerViewAdapter
         .DataObjectHolder> {
     //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
-    private ArrayList<BloodPressureDataObject> mDataset; // make sure this is BPDO
+    private ArrayList<BloodPressureDataObject> mDataset; // make sure this is BP
+    private Context context;
     private static MyClickListener myClickListener;
+    static final String LOG_TAG = "Blood Pressure";
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public MyBloodPressureRecyclerViewAdapter(Context context) {
+        this.context = context;
+    }
+
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
 
         TextView bpTopView;
         TextView bpBottomView;
         TextView bpDateView;
+        TextView bpTimeView;
+        ImageButton deleteButton;
 
 
         public DataObjectHolder(View itemView) {
@@ -31,12 +47,46 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
             bpTopView = (TextView) itemView.findViewById(R.id.topValueBPCardText);
             bpBottomView = (TextView) itemView.findViewById(R.id.bottomValueBPCardText);
             bpDateView = (TextView) itemView.findViewById(R.id.bpDateCardText);
+            bpTimeView = (TextView) itemView.findViewById(R.id.bpTimeCardText);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButtonBP);
+            bpTimeView.setVisibility(View.GONE);
 
-            itemView.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            Log.i(LOG_TAG, bpTimeView.getText().toString());
+
+            context = itemView.getContext();
+
+            Log.i(LOG_TAG, "confirmed");
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Delete this item?");
+            alertDialog.setMessage("Are you sure you want to delete this?");
+
+            alertDialog.setPositiveButton(
+                    "Delete",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.deleteBloodPressure(bpTimeView.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, BloodPressureGraph.class);
+                            if(mDataset.size() == 0) {
+                                final Intent intentMain;
+                                intentMain = new Intent(context, MainActivity.class);
+                                context.startActivity(intentMain);
+                            }
+                            context.startActivity(intent);
+
+
+                        }
+                    }
+            );
+
+            alertDialog.show();
         }
     }
 
@@ -64,6 +114,7 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
         holder.bpTopView.setText(mDataset.get(position).getBpTop());
         holder.bpBottomView.setText(mDataset.get(position).getBpBottom());
         holder.bpDateView.setText(mDataset.get(position).getBpDate());
+        holder.bpTimeView.setText(mDataset.get(position).getBpTime());
 
     }
 
@@ -85,4 +136,6 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }
+
+
 }
