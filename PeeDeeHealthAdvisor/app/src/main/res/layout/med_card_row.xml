@@ -58,6 +58,17 @@
                 />
 
             <ImageButton
+                android:id="@+id/changeTakingButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="75dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_phonecall"
+                />
+
+            <ImageButton
                 android:id="@+id/deleteButton"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -189,6 +200,28 @@
                 android:textColor="@color/white"
                 android:text="@string/medPhoneNum"
                 android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/medTakingTextLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/medPharmNumCardText"
+                android:textColor="@color/white"
+                android:text="Taking"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:layout_marginTop="9dp"/>
+
+            <TextView
+                android:id="@+id/medTakingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/medPharmNumCardText"
+                android:textColor="@color/white"
+                android:text=""
+                android:layout_marginStart="80dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
 

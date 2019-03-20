@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,8 +41,10 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         TextView medPharmNameView;
         TextView medPharmNumView;
         TextView medFreqView;
+        TextView medTaking;
         ImageButton callButton;
         ImageButton deleteButton;
+        ImageButton changeButton;
         RelativeLayout background;
         TextView taking;
         int position;
@@ -55,13 +59,17 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medPharmNameView = (TextView) itemView.findViewById(R.id.medPharmNameCardText);
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
             medFreqView= (TextView) itemView.findViewById(R.id.medFreqCardText);
+            medTaking = (TextView) itemView.findViewById(R.id.medTakingText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
+            changeButton = (ImageButton) itemView.findViewById(R.id.changeTakingButton);
+            background = (RelativeLayout) itemView.findViewById(R.id.card_view_background);
 
-
-            deleteButton.setOnClickListener(this);
+//          deleteButton.setOnClickListener(this);
+            changeButton.setOnClickListener(this);
 
         }
+
 
         @Override
         // DELETE CARDS
@@ -73,14 +81,30 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
-            alertDialog.setTitle("Delete Medication Card?");
-            alertDialog.setMessage("Are you sure you want to delete this medication?");
+            alertDialog.setTitle("Medication Status: ");
+            alertDialog.setMessage("Are you still taking this medication?");
 
+            //TAKING
             alertDialog.setPositiveButton(
-                    "Delete",
+                    "Taking",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.myDB.deleteMed(medNameView.getText().toString());
+                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "TAKING");
+                            Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, MedicationTable.class);
+                            context.startActivity(intent);
+                        }
+                    }
+            );
+
+            //NOT TAKING
+            alertDialog.setNegativeButton(
+                    "Not Taking",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "NOT TAKING");
+                            Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
                             final Intent intent;
                             intent = new Intent(context, MedicationTable.class);
                             context.startActivity(intent);
@@ -89,8 +113,8 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             );
 
             alertDialog.show();
-
         }
+
     } // end of class
 
 
@@ -127,7 +151,9 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medPharmNameView.setText(mDataset.get(position).getPharmName());
         holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
         holder.medFreqView.setText(mDataset.get(position).getMedFreq());
+        holder.medTaking.setText(mDataset.get(position).getMedTaking());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
+
     }
 
     public void addItem(MedicationsDataObject dataObj, int index) {

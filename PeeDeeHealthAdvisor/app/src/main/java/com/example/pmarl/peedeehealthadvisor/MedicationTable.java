@@ -55,9 +55,9 @@ public class MedicationTable extends AppCompatActivity {
             }
         });
 
-        // ALLERGY BOX UPDATE
+        // MED BOX UPDATE
 
-        // Check for values (ALLERGIES)
+        // Check for values (MEDICATIONS)
         if (cursorMed != null) {
             cursorMed.moveToFirst();
         }

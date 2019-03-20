@@ -194,6 +194,18 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
+    public void changeMed(String name, String taking){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(medTaking, taking);
+
+        db.update("Medications", contentValues,"name=?", new String[]{name});
+
+    }
+
     //Delete Allergies
     public void deleteAllergy(String name){
 
