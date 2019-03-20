@@ -49,6 +49,7 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
             bpDateView = (TextView) itemView.findViewById(R.id.bpDateCardText);
             bpTimeView = (TextView) itemView.findViewById(R.id.bpTimeCardText);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
+            bpTimeView.setVisibility(View.GONE);
 
             deleteButton.setOnClickListener(this);
             itemView.setOnClickListener(this);
