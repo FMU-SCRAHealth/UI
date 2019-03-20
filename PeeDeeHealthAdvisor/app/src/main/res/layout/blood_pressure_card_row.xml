@@ -99,10 +99,10 @@
                 android:layout_marginTop="9dp"/>
 
             <ImageButton
-                android:id="@+id/deleteButton"
+                android:id="@+id/deleteButtonBP"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"

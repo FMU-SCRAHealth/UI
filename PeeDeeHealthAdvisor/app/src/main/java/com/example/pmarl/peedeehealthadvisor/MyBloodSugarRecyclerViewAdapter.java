@@ -1,5 +1,10 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,14 +21,21 @@ public class MyBloodSugarRecyclerViewAdapter extends RecyclerView
     //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<BloodSugarDataObject> mDataset; // make sure this is Blood Sugar Data Object
     private static MyClickListener myClickListener;
+    private Context context;
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public MyBloodSugarRecyclerViewAdapter(Context context) {
+        this.context = context;
+    }
+
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
 
         TextView bsValueView;
         TextView bsFastingView;
         TextView bsDateView;
+        TextView bsTimeView;
+        ImageButton deleteButton;
 
 
         public DataObjectHolder(View itemView) {
@@ -31,12 +43,38 @@ public class MyBloodSugarRecyclerViewAdapter extends RecyclerView
             bsValueView = (TextView) itemView.findViewById(R.id.bloodSugarValueCardText);
             bsFastingView = (TextView) itemView.findViewById(R.id.fastingCardText);
             bsDateView = (TextView) itemView.findViewById(R.id.bsDateCardText);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButtonBS);
+            bsTimeView = (TextView) itemView.findViewById(R.id.bsTimeCardText);
+            bsTimeView.setVisibility(View.GONE);
 
-            itemView.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+
+            context = itemView.getContext();
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Delete this item?");
+            alertDialog.setMessage("Are you sure you want to delete this?");
+
+            alertDialog.setPositiveButton(
+                    "Delete",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.deleteBloodSugar(bsTimeView.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, BloodSugarGraph.class);
+                            context.startActivity(intent);
+
+
+                        }
+                    }
+            );
+
+            alertDialog.show();
         }
     }
 
@@ -64,6 +102,7 @@ public class MyBloodSugarRecyclerViewAdapter extends RecyclerView
         holder.bsValueView.setText(mDataset.get(position).getBsValue());
         holder.bsFastingView.setText(mDataset.get(position).getBsFasting());
         holder.bsDateView.setText(mDataset.get(position).getBsDate());
+        holder.bsTimeView.setText(mDataset.get(position).getBsTime());
 
     }
 

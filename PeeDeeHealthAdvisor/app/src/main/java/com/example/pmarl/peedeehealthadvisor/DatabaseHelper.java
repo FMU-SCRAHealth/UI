@@ -215,7 +215,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
-    public boolean insertBloodSugar(String date, String time, int fasting, int blood_sugar)
+    public boolean insertBloodSugar(String date, String time, String epoch, int fasting, int blood_sugar)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -231,6 +231,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch, epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
 
@@ -474,6 +475,60 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Blood Pressure", epoch});
+
+    }
+
+    //Delete Medications
+    public void deleteMed(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("Medications", "name=?", new String[]{name});
+
+    }
+
+    //Delete Allergies
+    public void deleteAllergy(String name){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "allergy=?", new String[]{name});
+
+    }
+
+    //Delete Blood Sugar
+    public void deleteBloodSugar(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Blood Sugar", epoch});
+
+    }
+
+    //Delete Weight
+    public void deleteWeight(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Body Weight", epoch});
+
+    }
+
+    //Delete Cholesterol
+    public void deleteCholesterol(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Cholesterol", epoch});
+
+    }
+
+    //Delete Vaccination
+    public void deleteVaccination(String epoch){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete("measurement", "meas_type=? AND epoch=?", new String[]{"Vaccination", epoch});
 
     }
 }

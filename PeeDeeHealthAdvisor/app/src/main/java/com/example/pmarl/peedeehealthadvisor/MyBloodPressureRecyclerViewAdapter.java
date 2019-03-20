@@ -22,7 +22,7 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
         .Adapter<MyBloodPressureRecyclerViewAdapter
         .DataObjectHolder> {
     //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
-    private ArrayList<BloodPressureDataObject> mDataset; // make sure this is BPDO
+    private ArrayList<BloodPressureDataObject> mDataset; // make sure this is BP
     private Context context;
     private static MyClickListener myClickListener;
     static final String LOG_TAG = "Blood Pressure";
@@ -48,7 +48,7 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
             bpBottomView = (TextView) itemView.findViewById(R.id.bottomValueBPCardText);
             bpDateView = (TextView) itemView.findViewById(R.id.bpDateCardText);
             bpTimeView = (TextView) itemView.findViewById(R.id.bpTimeCardText);
-            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButtonBP);
             bpTimeView.setVisibility(View.GONE);
 
             deleteButton.setOnClickListener(this);

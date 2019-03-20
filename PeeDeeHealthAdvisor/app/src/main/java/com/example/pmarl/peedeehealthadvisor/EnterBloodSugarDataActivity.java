@@ -41,6 +41,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class EnterBloodSugarDataActivity extends AppCompatActivity
@@ -53,6 +54,9 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
     private Calendar myCalendar = Calendar.getInstance();
     private String dateFormat = "MMM dd yyyy ";
     private String timeFormat = "HH:mm:ss.SSS zzz";
+    private String dateEpoch;
+    private Date dateInsertion;
+    private Long epoch;
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat, Locale.US);
     private NotificationManagerCompat notificationManager;
@@ -146,30 +150,29 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
          enterData.setOnClickListener(new View.OnClickListener()
          {
              @Override
-             public void onClick(View view)
-             {
+             public void onClick(View view) {
+                 try {
 
-                 if(bloodSugarInput.getText().toString().equals("") || editTime.getText().toString().equals(""))
-                 {
+                     if (bloodSugarInput.getText().toString().equals("") || editTime.getText().toString().equals("")) {
 
-                     showDataNotEnteredWarning();
-                 }
+                         showDataNotEnteredWarning();
+                     } else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600 ||
+                             Integer.parseInt(bloodSugarInput.getText().toString()) <= 0) {
+                         showDataIncorrectRange();
+                     } else {
+                         dateEpoch = editDate.getText().toString() + editTime.getText().toString();
+                         dateInsertion = new SimpleDateFormat("MMM dd yyyy HH:mm").parse(dateEpoch);
+                         epoch = dateInsertion.getTime();
+                         boolean isInserted = MainActivity.myDB.insertBloodSugar(
+                                 editDate.getText().toString(),
+                                 editTime.getText().toString() + ":00.000 EST",
+                                 epoch.toString(),
+                                 Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
+                                 Integer.parseInt(bloodSugarInput.getText().toString()));
 
-                 else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600 ||
-                         Integer.parseInt(bloodSugarInput.getText().toString()) <= 0) {
-                     showDataIncorrectRange();
-                 }
+                         if (isInserted = true) {
 
-                 else {
-                     boolean isInserted = MainActivity.myDB.insertBloodSugar(
-                             editDate.getText().toString(),
-                             editTime.getText().toString()+ ":00.000 EST",
-                             Integer.parseInt((fastingToggle.isChecked() ? "1" : "0")),
-                             Integer.parseInt(bloodSugarInput.getText().toString()));
-
-                     if (isInserted = true) {
-
-                         showDataEntryCheckmark();
+                             showDataEntryCheckmark();
 
 //                             if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 && fastingToggle.isChecked() ==  true) {
 //                                 sendOnChannel2();
@@ -181,15 +184,19 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 //                                 sendOnChannel2();
 //                             }
 
-                     } else {
+                         } else {
 
-                         showDataError();
+                             showDataError();
 
+                         }
+                         launchPrevActivity();
                      }
-                     launchPrevActivity();
+                 } catch (Exception e) {
+                     e.printStackTrace();
                  }
              }
          });
+
 
          clearData.setOnClickListener(new View.OnClickListener()
          {
