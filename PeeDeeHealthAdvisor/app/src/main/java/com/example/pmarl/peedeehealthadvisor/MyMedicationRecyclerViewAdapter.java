@@ -45,7 +45,6 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         ImageButton callButton;
         ImageButton deleteButton;
         ImageButton changeButton;
-        RelativeLayout background;
         TextView taking;
         int position;
 
@@ -63,7 +62,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
             changeButton = (ImageButton) itemView.findViewById(R.id.changeTakingButton);
-            background = (RelativeLayout) itemView.findViewById(R.id.card_view_background);
+
 
 //          deleteButton.setOnClickListener(this);
             changeButton.setOnClickListener(this);
@@ -76,8 +75,6 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         public void onClick(View v) {
 
             context = itemView.getContext();
-
-            Log.i(LOG_TAG, "confirmed");
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
@@ -154,6 +151,16 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medTaking.setText(mDataset.get(position).getMedTaking());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
 
+
+        if (holder.medTaking.getText().toString().equals("TAKING")){
+            //Pink BG
+            holder.itemView.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#fd91e7"));
+            holder.itemView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#fd91e7"));
+        } else if (holder.medTaking.getText().toString().equals("NOT TAKING")) {
+            //Gray BG
+            holder.itemView.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#D3D3D3"));
+            holder.itemView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#D3D3D3"));
+        }
     }
 
     public void addItem(MedicationsDataObject dataObj, int index) {

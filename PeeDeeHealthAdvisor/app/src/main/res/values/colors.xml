@@ -39,7 +39,6 @@
     <color name="RedHuesMedium">#ee2d4e</color>
     <color name="RedHuesDark">#b11f26</color>
 
-    <color name="PinkHuesCardBackground">#fd91e7</color>
     <color name="PinkHuesLight">#fd7ce3</color>
     <color name="PinkHuesMedium">#f05cd2</color>
     <color name="PinkHuesDark">#db48bd</color>
@@ -56,6 +55,9 @@
     <color name="BodyWeightHuesMedium">#f68236</color>
     <color name="BodyWeightHuesDark">#f3711b</color>
 
+
+    <color name="PinkHuesCardBackground">#fd91e7</color>
+    <color name="GrayHuesCardBackground">#D3D3D3</color>
 
 
 

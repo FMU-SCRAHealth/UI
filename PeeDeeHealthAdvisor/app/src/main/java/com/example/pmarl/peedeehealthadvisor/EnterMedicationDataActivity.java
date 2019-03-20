@@ -91,11 +91,11 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
                 } else {
 
                     if (yesToggle.isChecked()) {
-                        currentlyTaking = "Yes";
+                        currentlyTaking = "TAKING";
                     }
 
                     else if (noToggle.isChecked()) {
-                        currentlyTaking = "No";
+                        currentlyTaking = "NOT TAKING";
                     }
                     boolean isInserted =
                             MainActivity.myDB.insertMedication(medNameInput.getText().toString(),
