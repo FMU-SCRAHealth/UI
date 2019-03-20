@@ -150,6 +150,8 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
 
                         boolean isInserted = MainActivity.myDB.insertBodyWeight(
                                 editDate.getText().toString(),
+                                editTime.getText().toString() + ":00.000 EST",
+                                epoch.toString(),
                                 Double.parseDouble(bodyWeightInput.getText().toString()));
 
                         if (isInserted = true) {

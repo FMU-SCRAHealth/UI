@@ -126,6 +126,7 @@ public class BloodSugarGraph extends AppCompatActivity
                 fasting = Integer.parseInt(cursor.getString(2)) == 1;
 
                 treeMap.put(epoch, new BloodSugarValue(fasting,Float.parseFloat(cursor.getString(3))));
+
                 } else {
                     launchPrevActivity();
                 }

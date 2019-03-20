@@ -327,12 +327,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    public boolean insertBodyWeight(String date, double weight)
+    public boolean insertBodyWeight(String date, String time, String epoch, double weight)
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Calendar calendar = Calendar.getInstance();
-        String time = simpleDateFormat.format(calendar.getTime());
+//        Calendar calendar = Calendar.getInstance();
+//        String time = simpleDateFormat.format(calendar.getTime());
 
 
 
@@ -342,6 +342,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch, epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementBodyWeight,weight);
