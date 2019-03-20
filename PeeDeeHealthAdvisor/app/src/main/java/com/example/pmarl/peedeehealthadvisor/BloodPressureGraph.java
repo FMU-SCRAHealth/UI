@@ -133,25 +133,9 @@ public class BloodPressureGraph extends AppCompatActivity
                         launchPrevActivity();
                     }
 
-//                    date = cursor.getString(0) + cursor.getString(1);
-//                    date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
-//
-//                    if(tz.inDaylightTime(date1)) {
-//                        epoch = date1.getTime() - 3600000;
-//                    } else {
-//                        epoch = date1.getTime();
-//                    }
-////
-//
-//                    treeMap.put(epoch, new ArrayList<Integer>());
-//                    /*Systolic Added*/
-//                    treeMap.get(epoch).add(Integer.parseInt(cursor.getString(2)));
-//                    /*Diastolic added*/
-//                    treeMap.get(epoch).add(Integer.parseInt(cursor.getString(3)));
 
-                } catch (ParseException e)
-                {
-//                    launchMainActivity();
+                } catch (ParseException e) {
+
                     e.printStackTrace();
 
                 }
