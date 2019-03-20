@@ -242,13 +242,13 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         return result != -1;
 
     }
-    public boolean insertCholesterol(String date, int LDL, int HDL, int TRIG, double TC)
+    public boolean insertCholesterol(String date, String time, String epoch, int LDL, int HDL, int TRIG, double TC)
     {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Calendar calendar = Calendar.getInstance();
-        String time = simpleDateFormat.format(calendar.getTime());
+//        Calendar calendar = Calendar.getInstance();
+//        String time = simpleDateFormat.format(calendar.getTime());
 
 
 
@@ -258,6 +258,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
         contentValues.put(measurementDate,date);
         contentValues.put(measurementTime,time);
+        contentValues.put(measurementEpoch,epoch);
         contentValues.put(measurementUserName,this.user_name);
         contentValues.put(measurementType,meas_type);
         contentValues.put(measurementLDL,LDL);

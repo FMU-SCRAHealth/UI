@@ -1,5 +1,10 @@
 package com.example.pmarl.peedeehealthadvisor;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,8 +21,13 @@ public class MyCholesterolRecyclerViewAdapter extends RecyclerView
     //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<CholesterolDataObject> mDataset; // make sure this is Blood Sugar Data Object
     private static MyClickListener myClickListener;
+    private Context context;
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public MyCholesterolRecyclerViewAdapter(Context context) {
+        this.context = context;
+    }
+
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
 
@@ -26,6 +36,8 @@ public class MyCholesterolRecyclerViewAdapter extends RecyclerView
         TextView cholesterolTrigView;
         TextView cholesterolLDLView;
         TextView cholesterolDateView;
+        TextView cholesterolTimeView;
+        ImageButton deleteButton;
 
 
         public DataObjectHolder(View itemView) {
@@ -35,12 +47,38 @@ public class MyCholesterolRecyclerViewAdapter extends RecyclerView
             cholesterolTrigView = (TextView) itemView.findViewById(R.id.trigCardViewText);
             cholesterolLDLView = (TextView) itemView.findViewById(R.id.ldlCardViewText);
             cholesterolDateView = (TextView) itemView.findViewById(R.id.cholesterolDateCardText);
+            cholesterolTimeView = (TextView) itemView.findViewById(R.id.cholesterolTimeCardText);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButtonCholesterol);
+            cholesterolTimeView.setVisibility(View.GONE);
 
-            itemView.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+
+            context = itemView.getContext();
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Delete this item?");
+            alertDialog.setMessage("Are you sure you want to delete this?");
+
+            alertDialog.setPositiveButton(
+                    "Delete",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.deleteCholesterol(cholesterolTimeView.getText().toString());
+                            final Intent intent;
+                            intent = new Intent(context, CholesterolGraph.class);
+                            context.startActivity(intent);
+
+                        }
+                    }
+            );
+
+            alertDialog.show();
+
         }
     }
 
@@ -70,6 +108,7 @@ public class MyCholesterolRecyclerViewAdapter extends RecyclerView
         holder.cholesterolTrigView.setText(mDataset.get(position).getTrigValue());
         holder.cholesterolLDLView.setText(mDataset.get(position).getLdlValue());
         holder.cholesterolDateView.setText(mDataset.get(position).getCholesterolDate());
+        holder.cholesterolTimeView.setText(mDataset.get(position).getCholEpoch());
 
     }
 

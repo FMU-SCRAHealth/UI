@@ -33,17 +33,20 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.TreeMap;
 
 public class CholesterolGraph extends AppCompatActivity
 {
     LineChart lineChart;
     LineChart lineChartLand;
+    TimeZone tz = Calendar.getInstance().getTimeZone();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -110,29 +113,35 @@ public class CholesterolGraph extends AppCompatActivity
          * cursor.moveToNext() returns a boolean value and performs an action to move to the
          * next cursor*/
         cursor.moveToLast();
-        do
-        {
+        do {
 
 
             try
             {
-                date = cursor.getString(0) + cursor.getString(1);
-                date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
-                epoch = date1.getTime();
+                if(cursor.getCount() > 0) {
+                    date = cursor.getString(0) + cursor.getString(1);
+                    date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(date);
+
+                    if (tz.inDaylightTime(date1)) {
+                        epoch = date1.getTime() - 3600000;
+                    } else {
+                        epoch = date1.getTime();
+                    }
 
 
-                treeMap.put(epoch, new CholesterolValues(Float.parseFloat(cursor.getString(2)),
-                        Float.parseFloat(cursor.getString(3)),
-                        Float.parseFloat(cursor.getString(4)),
-                        Float.parseFloat(cursor.getString(5))));
+                    treeMap.put(epoch, new CholesterolValues(Float.parseFloat(cursor.getString(2)),
+                            Float.parseFloat(cursor.getString(3)),
+                            Float.parseFloat(cursor.getString(4)),
+                            Float.parseFloat(cursor.getString(5))));
+                } else {
+                    launchPrevActivity();
+                }
 
-
-            } catch (ParseException e)
-            {
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
 
-        }while (cursor.moveToPrevious());
+        } while (cursor.moveToPrevious());
 
 
 
@@ -165,7 +174,7 @@ public class CholesterolGraph extends AppCompatActivity
 
             xLabels.add(new SimpleDateFormat("MMM dd").format(date2));
 
-            CholesterolDataObject cholesterolEntry = new CholesterolDataObject(cholesterolValues.getTc(), cholesterolValues.getHdl(), cholesterolValues.getTrig(), cholesterolValues.getLdl(),dateCard);
+            CholesterolDataObject cholesterolEntry = new CholesterolDataObject(cholesterolValues.getTc(), cholesterolValues.getHdl(), cholesterolValues.getTrig(), cholesterolValues.getLdl(),dateCard, epoch1);
 
             results.add(cholesterolEntry);
 

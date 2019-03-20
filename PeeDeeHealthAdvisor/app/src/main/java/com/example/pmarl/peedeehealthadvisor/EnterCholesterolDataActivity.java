@@ -184,6 +184,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
 
                         boolean isInserted = MainActivity.myDB.insertCholesterol(
                                 editDate.getText().toString(),
+                                editTime.getText().toString() + ":00.000 EST",
+                                epoch.toString(),
                                 Integer.parseInt(ldlInput.getText().toString()),
                                 Integer.parseInt(hdlInput.getText().toString()),
                                 Integer.parseInt(TRIGinput.getText().toString()),
