@@ -118,6 +118,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
              }
          });
 
+         // Edit Time popup
          editTime.setOnClickListener(new View.OnClickListener() {
              Calendar c = Calendar.getInstance();
              int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -156,13 +157,17 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                      if (bloodSugarInput.getText().toString().equals("") || editTime.getText().toString().equals("")) {
 
                          showDataNotEnteredWarning();
+
                      } else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 600 ||
                              Integer.parseInt(bloodSugarInput.getText().toString()) <= 0) {
+
                          showDataIncorrectRange();
+
                      } else {
                          dateEpoch = editDate.getText().toString() + editTime.getText().toString();
                          dateInsertion = new SimpleDateFormat("MMM dd yyyy HH:mm").parse(dateEpoch);
                          epoch = dateInsertion.getTime();
+
                          boolean isInserted = MainActivity.myDB.insertBloodSugar(
                                  editDate.getText().toString(),
                                  editTime.getText().toString() + ":00.000 EST",
@@ -174,25 +179,20 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
 
                              showDataEntryCheckmark();
 
-//                             if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 140 && fastingToggle.isChecked() ==  true) {
-//                                 sendOnChannel2();
-//                             } else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && nonfastingToggle.isChecked() == true) {
-//                                 sendOnChannel2();
-//                             }
-
-//                             else if (Integer.parseInt(bloodSugarInput.getText().toString()) >= 100 && fastingToggle.getText() == "0") {
-//                                 sendOnChannel2();
-//                             }
 
                          } else {
 
                              showDataError();
 
                          }
+
                          launchPrevActivity();
                      }
+
                  } catch (Exception e) {
+
                      e.printStackTrace();
+
                  }
              }
          });
@@ -207,6 +207,7 @@ public class EnterBloodSugarDataActivity extends AppCompatActivity
                 editDate.setText("");
                 fastingToggle.setChecked(true);
                 nonfastingToggle.setChecked(false);
+                editTime.setText("");
 
              }
          });

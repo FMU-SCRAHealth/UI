@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,10 +23,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class EnterBodyWeightDataActivity extends AppCompatActivity
@@ -34,9 +37,13 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
     private ImageButton home;
     private TextInputEditText bodyWeightInput;
     private Context context = this;
-    private EditText editDate;
+    private EditText editDate, editTime;
     private Calendar myCalendar = Calendar.getInstance();
     private String dateFormat = "MMM dd yyyy ";
+    private String timeFormat = "HH:mm:ss.SSS zzz";
+    private String dateEpoch;
+    private Date dateInsertion;
+    private Long epoch;
     private DatePickerDialog.OnDateSetListener date;
     private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
     private NotificationManagerCompat notificationManager ;
@@ -46,6 +53,7 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_enter_body_weight_data);
 
+        editTime = (EditText) findViewById(R.id.editTimeBodyWeight);
         editDate = (EditText) findViewById(R.id.editDate);
         home = (ImageButton) findViewById(R.id.Home);
         enterData = (Button) findViewById(R.id.EnterData);
@@ -91,6 +99,27 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
             }
         });
 
+        // Edit Time popup
+        editTime.setOnClickListener(new View.OnClickListener() {
+            Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+            @Override
+            public void onClick(View view)
+            {
+                TimePickerDialog timePickerDialog =
+                        new TimePickerDialog(context, AlertDialog.THEME_HOLO_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker timePicker,
+                                                  int hourOfDay,
+                                                  int minuteOfHour) {
+                                editTime.setText(hourOfDay + ":" + minuteOfHour);
+                            }
+                        }, hour, minute,false);
+                timePickerDialog.show();
+            }
+        });
+
 
 
         home.setOnClickListener(new View.OnClickListener() {
@@ -105,35 +134,37 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
         enterData.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
+                try {
 
-                if (bodyWeightInput.getText().toString().equals(""))
-                {
-                    showDataNotEnteredWarning();
+                    if (bodyWeightInput.getText().toString().equals("") || editTime.getText().toString().equals("")) {
+                        showDataNotEnteredWarning();
 
-                }
-
-                else if (Double.parseDouble(bodyWeightInput.getText().toString()) < 0  || Double.parseDouble(bodyWeightInput.getText().toString()) >= 500)
-                {
-                    showDataIncorrectRange(); // if data is outside of reasonable range of entry
-                }
-
-                else
-                {
-                    boolean isInserted = MainActivity.myDB.insertBodyWeight(
-                            editDate.getText().toString(),
-                            Double.parseDouble(bodyWeightInput.getText().toString()));
-
-                    if (isInserted = true) {
-
-                        showDataEntryCheckmark();
+                    } else if (Double.parseDouble(bodyWeightInput.getText().toString()) < 0 || Double.parseDouble(bodyWeightInput.getText().toString()) >= 500) {
+                        showDataIncorrectRange(); // if data is outside of reasonable range of entry
                     } else {
 
-                        showDataError();
+                        dateEpoch = editDate.getText().toString() + editTime.getText().toString();
+                        dateInsertion = new SimpleDateFormat("MMM dd yyyy HH:mm").parse(dateEpoch);
+                        epoch = dateInsertion.getTime();
+
+                        boolean isInserted = MainActivity.myDB.insertBodyWeight(
+                                editDate.getText().toString(),
+                                Double.parseDouble(bodyWeightInput.getText().toString()));
+
+                        if (isInserted = true) {
+
+                            showDataEntryCheckmark();
+                        } else {
+
+                            showDataError();
+                        }
+
+                        launchPrevActivity();
                     }
 
-                    launchPrevActivity();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -145,6 +176,7 @@ public class EnterBodyWeightDataActivity extends AppCompatActivity
             {
                 bodyWeightInput.setText("");
                 editDate.setText("");
+                editTime.setText("");
             }
         });
 
