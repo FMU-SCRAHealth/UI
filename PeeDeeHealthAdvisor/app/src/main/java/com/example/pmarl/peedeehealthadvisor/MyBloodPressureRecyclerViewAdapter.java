@@ -52,7 +52,6 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
             bpTimeView.setVisibility(View.GONE);
 
             deleteButton.setOnClickListener(this);
-            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -75,7 +74,14 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
                             MainActivity.myDB.deleteBloodPressure(bpTimeView.getText().toString());
                             final Intent intent;
                             intent = new Intent(context, BloodPressureGraph.class);
+                            if(mDataset.size() == 0) {
+                                final Intent intentMain;
+                                intentMain = new Intent(context, MainActivity.class);
+                                context.startActivity(intentMain);
+                            }
                             context.startActivity(intent);
+
+
                         }
                     }
             );
@@ -130,4 +136,6 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }
+
+
 }
