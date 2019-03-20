@@ -107,6 +107,30 @@
                     android:textAlignment="center"
                     android:textSize="16dp" />
 
+                <TextView
+                    android:id="@+id/selectTimeBelow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:textSize="20dp"
+                    android:text="@string/selectTimeBelow"
+                    android:textColor="@color/BodyWeightHuesDark"/>
+
+                <EditText
+                    android:id="@+id/editTimeBodyWeight"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/selectTime"
+                    android:inputType="date"
+                    android:longClickable="false"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="40dp"
+                    android:textSize="16dp" />
+
+
             </LinearLayout>
 
         </ScrollView>

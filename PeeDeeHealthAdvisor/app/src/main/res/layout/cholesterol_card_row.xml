@@ -121,6 +121,15 @@
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
+            <TextView
+                android:id="@+id/cholesterolTimeCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ldlCardTextLabel"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:layout_marginStart="76dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/cholesterolDateCardText"
@@ -143,6 +152,17 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
+
+            <ImageButton
+                android:id="@+id/deleteButtonCholesterol"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_delete"
+                />
 
         </RelativeLayout>
 
