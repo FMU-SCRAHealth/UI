@@ -75,6 +75,7 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         medFreq = freq + " Per Day";
         medTaking = taking;
 
+
     }
 
 
@@ -157,7 +158,6 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
     }
 
     public void changeBackgroundToGrey() {
-
 //        getBackground().setCardBackgroundColor(Color.parseColor("#afdfe3"));
 //        getBackgroundRel().setBackgroundColor(Color.parseColor("#afdfe3"));
 //        MainActivity.myDB.updateMedicationData(medName, medTaking);

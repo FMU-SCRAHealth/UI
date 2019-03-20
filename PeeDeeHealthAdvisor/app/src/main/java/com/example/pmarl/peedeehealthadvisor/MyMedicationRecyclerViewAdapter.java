@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +47,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         ImageButton callButton;
         ImageButton deleteButton;
         ImageButton changeButton;
+        CardView background;
         TextView taking;
         int position;
 
@@ -131,6 +134,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.med_card_row, parent, false);
 
@@ -138,6 +142,8 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         return dataObjectHolder;
 
     }
+
+
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
@@ -151,17 +157,17 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medTaking.setText(mDataset.get(position).getMedTaking());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
 
-
-        if (holder.medTaking.getText().toString().equals("TAKING")){
+        //CHANGE COLORS
+       if (holder.medTaking.getText().toString().equals("TAKING")){
             //Pink BG
-            holder.itemView.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#fd91e7"));
-            holder.itemView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#fd91e7"));
-        } else if (holder.medTaking.getText().toString().equals("NOT TAKING")) {
+           holder.itemView.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#fd91e7"));
+       } else if (holder.medTaking.getText().toString().equals("NOT TAKING")) {
             //Gray BG
             holder.itemView.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#D3D3D3"));
-            holder.itemView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#D3D3D3"));
         }
     }
+
+
 
     public void addItem(MedicationsDataObject dataObj, int index) {
         mDataset.add(index, dataObj);

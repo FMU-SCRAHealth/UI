@@ -105,6 +105,8 @@ public class MedicationTable extends AppCompatActivity {
         launchPrevActivity();
     }
 
+
+
     private void launchMainActivity()
     {
         Intent intent = new Intent (this, MainActivity.class);

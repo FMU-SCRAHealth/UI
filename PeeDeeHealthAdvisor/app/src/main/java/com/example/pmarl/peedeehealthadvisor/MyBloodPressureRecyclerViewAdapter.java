@@ -52,31 +52,6 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
         // DELETE CARDS
         public void onClick(View v) {
 
-            Log.i(LOG_TAG, bpDateView.getText().toString());
-
-            context = itemView.getContext();
-
-            Log.i(LOG_TAG, "confirmed");
-
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
-
-            alertDialog.setTitle("Delete this item?");
-            alertDialog.setMessage("Are you sure you want to delete this?");
-
-            alertDialog.setPositiveButton(
-                    "Delete",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.myDB.deleteBloodPressure(bpDateView.getText().toString());
-                            final Intent intent;
-                            intent = new Intent(context, BloodPressureGraph.class);
-                            context.startActivity(intent);
-                        }
-                    }
-            );
-
-            alertDialog.show();
-
         }
     }
 

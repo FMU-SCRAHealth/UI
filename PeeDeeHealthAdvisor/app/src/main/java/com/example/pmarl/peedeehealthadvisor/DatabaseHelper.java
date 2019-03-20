@@ -168,32 +168,6 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    public boolean updateMedicationData(String name, String taking)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        String meas_type = "Medications";
-
-        this.med_name = name;
-
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put(medTaking, taking);
-
-        long result = db.update(medTable, contentValues, "name="+med_name, null);
-        return result != -1;
-
-    }
-
-    //Delete Medications
-    public void deleteMed(String name){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete("Medications", "name=?", new String[]{name});
-
-    }
-
     public void changeMed(String name, String taking){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -208,51 +182,6 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     //Delete Allergies
     public void deleteAllergy(String name){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete("measurement", "allergy=?", new String[]{name});
-
-    }
-
-    //Delete Blood Pressure
-    public void deleteBloodPressure(String date){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete("measurement", "meas_type=? AND date=?", new String[]{"Blood Pressure", date});
-
-    }
-
-    //Delete Blood Sugar
-    public void deleteBloodSugar(String name){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete("measurement", "allergy=?", new String[]{name});
-
-    }
-
-    //Delete Weight
-    public void deleteWeight(String name){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete("measurement", "allergy=?", new String[]{name});
-
-    }
-
-    //Delete Cholesterol
-    public void deleteCholesterol(String name){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete("measurement", "allergy=?", new String[]{name});
-
-    }
-
-    //Delete Vaccination
-    public void deleteVaccination(String name){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
