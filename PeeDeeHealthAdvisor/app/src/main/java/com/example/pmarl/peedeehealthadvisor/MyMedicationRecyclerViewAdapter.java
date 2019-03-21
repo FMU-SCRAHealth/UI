@@ -70,7 +70,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
 
 
 
-//          deleteButton.setOnClickListener(this);
+            deleteButton.setOnClickListener(this);
             changeButton.setOnClickListener(this);
 
         }
@@ -80,44 +80,76 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         // DELETE CARDS
         public void onClick(View v) {
 
+            if (itemView.findViewById(R.id.deleteButton).isPressed()) {
+
+                Log.i(LOG_TAG, "MEDICAL TOGGLE");
+                context = itemView.getContext();
+
+                Log.i(LOG_TAG, "confirmed");
+
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+                alertDialog.setTitle("Delete this item?");
+                alertDialog.setMessage("Are you sure you want to delete this?");
+
+                alertDialog.setPositiveButton(
+                        "Delete",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.myDB.deleteMed(medNameView.getText().toString());
+                                final Intent intent2;
+                                intent2 = new Intent(context, MedicationTable.class);
+                                context.startActivity(intent2);
+                            }
+                        }
+                );
+
+                alertDialog.show();
+
+            } else if (itemView.findViewById(R.id.changeTakingButton).isPressed()) {
+
+                Log.i(LOG_TAG, "MEDICAL TOGGLE");
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+                alertDialog.setTitle("Medication Status: ");
+                alertDialog.setMessage("Are you still taking this medication?");
+
+                //TAKING
+                alertDialog.setPositiveButton(
+                        "Taking",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.myDB.changeMed(medNameView.getText().toString(), "Yes");
+                                Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
+                                itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_medicationsintro);
+                                final Intent intent;
+                                intent = new Intent(context, MedicationTable.class);
+                                context.startActivity(intent);
+                            }
+                        }
+                );
+
+                //NOT TAKING
+                alertDialog.setNegativeButton(
+                        "Not Taking",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                MainActivity.myDB.changeMed(medNameView.getText().toString(), "No");
+                                Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
+                                itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_greyrxicon);
+                                final Intent intent;
+                                intent = new Intent(context, MedicationTable.class);
+                                context.startActivity(intent);
+                            }
+                        }
+                );
+
+                alertDialog.show();
+
+            }
+
             context = itemView.getContext();
 
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
-
-            alertDialog.setTitle("Medication Status: ");
-            alertDialog.setMessage("Are you still taking this medication?");
-
-            //TAKING
-            alertDialog.setPositiveButton(
-                    "Taking",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "Yes");
-                            Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
-                            itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_medicationsintro);
-                            final Intent intent;
-                            intent = new Intent(context, MedicationTable.class);
-                            context.startActivity(intent);
-                        }
-                    }
-            );
-
-            //NOT TAKING
-            alertDialog.setNegativeButton(
-                    "Not Taking",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "No");
-                            Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
-                            itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_greyrxicon);
-                            final Intent intent;
-                            intent = new Intent(context, MedicationTable.class);
-                            context.startActivity(intent);
-                        }
-                    }
-            );
-
-            alertDialog.show();
         }
 
     } // end of class
