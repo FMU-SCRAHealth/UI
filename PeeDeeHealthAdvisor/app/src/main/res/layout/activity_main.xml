@@ -31,12 +31,12 @@
             >
 
             <ImageView
-                android:id="@+id/AppLogo"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="10dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_homeicon"/>
+            android:id="@+id/AppLogo"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_homeicon"/>
 
             <TextView
                 android:id="@+id/AppName"

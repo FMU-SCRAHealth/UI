@@ -11,7 +11,7 @@
     <string name="enterData">Update Journal</string>
     <string name="nearBy">Near By</string>
     <string name="cityName">City Name</string>
-    <string name="healthAdvisor">SCHealth+Me</string>
+    <string name="healthAdvisor">Health Companion</string>
     <string name="selectBirthDateBelow">Select Birth Date Below</string>
     <string name="myHealthData">Health Journal</string>
     <string name="serviceSearch">Health Resources</string>
@@ -96,6 +96,7 @@
     <string name="no">No</string>
     <string name="taking">Taking</string>
     <string name="currentlyTaking">Currently Taking</string>
+    <string name="currentlyTakingCard">Currently Taking:</string>
 
     <!--Card Views-->
     <string name="TC2">TC:</string>

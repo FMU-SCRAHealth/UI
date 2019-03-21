@@ -29,6 +29,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
     private Context context;
     static final String LOG_TAG = "MEDICATION";
 
+
     public MyMedicationRecyclerViewAdapter(Context context) {
         this.context = context;
     }
@@ -52,6 +53,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         int position;
 
 
+
         public DataObjectHolder(View itemView) {
             super(itemView);
             medNameView = (TextView) itemView.findViewById(R.id.medNameCardText);
@@ -65,6 +67,7 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
             changeButton = (ImageButton) itemView.findViewById(R.id.changeTakingButton);
+
 
 
 //          deleteButton.setOnClickListener(this);
@@ -89,8 +92,9 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
                     "Taking",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "TAKING");
+                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "Yes");
                             Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
+                            itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_medicationsintro);
                             final Intent intent;
                             intent = new Intent(context, MedicationTable.class);
                             context.startActivity(intent);
@@ -103,8 +107,9 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
                     "Not Taking",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "NOT TAKING");
+                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "No");
                             Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
+                            itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_greyrxicon);
                             final Intent intent;
                             intent = new Intent(context, MedicationTable.class);
                             context.startActivity(intent);
@@ -157,13 +162,14 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medTaking.setText(mDataset.get(position).getMedTaking());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
 
+
         //CHANGE COLORS
-        if (holder.medTaking.getText().toString().equals("TAKING")){
+        if (holder.medTaking.getText().toString().equals("Yes")){
             //Pink BG
-            holder.itemView.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#fd91e7"));
-        } else if (holder.medTaking.getText().toString().equals("NOT TAKING")) {
+            holder.itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_medicationsintro);
+        } else if (holder.medTaking.getText().toString().equals("No")) {
             //Gray BG
-            holder.itemView.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#D3D3D3"));
+            holder.itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_greyrxicon);
         }
     }
 
