@@ -96,6 +96,7 @@
     <string name="no">No</string>
     <string name="taking">Taking</string>
     <string name="currentlyTaking">Currently Taking</string>
+    <string name="currentlyTakingCard">Currently Taking:</string>
 
     <!--Card Views-->
     <string name="TC2">TC:</string>

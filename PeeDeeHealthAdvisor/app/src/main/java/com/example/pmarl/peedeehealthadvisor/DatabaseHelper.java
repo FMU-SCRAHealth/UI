@@ -170,24 +170,20 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    public boolean updateMedicationData(String name, String taking)
-    {
+
+    public void changeMed(String name, String taking){
+
         SQLiteDatabase db = this.getWritableDatabase();
-
-        String meas_type = "Medications";
-
-        this.med_name = name;
 
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(medTaking, taking);
 
-        long result = db.update(medTable, contentValues, "name="+med_name, null);
-        return result != -1;
+        db.update("Medications", contentValues,"name=?", new String[]{name});
 
     }
 
-
+    //Delete Allergies
     public boolean insertBloodPressure(String date, String time, String epoch, int systolic, int diastolic)
     {
 

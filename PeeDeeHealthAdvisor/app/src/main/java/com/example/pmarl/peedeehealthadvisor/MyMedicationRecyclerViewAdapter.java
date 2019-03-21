@@ -1,18 +1,21 @@
 package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.Switch;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,18 +23,18 @@ import java.util.ArrayList;
 public class MyMedicationRecyclerViewAdapter extends RecyclerView
         .Adapter<MyMedicationRecyclerViewAdapter
         .DataObjectHolder> {
-//    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<MedicationsDataObject> mDataset;
     private static MyClickListener myClickListener;
     static String phoneNumber;
     private Context context;
+    static final String LOG_TAG = "MEDICATION";
 
 
     public MyMedicationRecyclerViewAdapter(Context context) {
         this.context = context;
     }
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
+    public class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
         TextView medNameView;
@@ -41,10 +44,14 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         TextView medPharmNameView;
         TextView medPharmNumView;
         TextView medFreqView;
-        TextView medTaken;
+        TextView medTaking;
         ImageButton callButton;
-        ImageButton takenButton;
-        Switch background;
+        ImageButton deleteButton;
+        ImageButton changeButton;
+        CardView background;
+        TextView taking;
+        int position;
+
 
 
         public DataObjectHolder(View itemView) {
@@ -56,18 +63,61 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
             medPharmNameView = (TextView) itemView.findViewById(R.id.medPharmNameCardText);
             medPharmNumView = (TextView) itemView.findViewById(R.id.medPharmNumCardText);
             medFreqView= (TextView) itemView.findViewById(R.id.medFreqCardText);
+            medTaking = (TextView) itemView.findViewById(R.id.medTakingText);
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButton);
-//            takenButton = (ImageButton) itemView.findViewById(R.id.updateTakingButton);
-            medTaken = (TextView) itemView.findViewById(R.id.medTakingCardText);
-//            background = (Switch) itemView.findViewById(R.id.switchTaking);
+            deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButton);
+            changeButton = (ImageButton) itemView.findViewById(R.id.changeTakingButton);
 
-//            Log.i(LOG_TAG, "Adding Listener");
-            itemView.setOnClickListener(this);
+
+
+//          deleteButton.setOnClickListener(this);
+            changeButton.setOnClickListener(this);
 
         }
 
+
         @Override
+        // DELETE CARDS
         public void onClick(View v) {
+
+            context = itemView.getContext();
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
+
+            alertDialog.setTitle("Medication Status: ");
+            alertDialog.setMessage("Are you still taking this medication?");
+
+            //TAKING
+            alertDialog.setPositiveButton(
+                    "Taking",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "Yes");
+                            Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
+                            itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_medicationsintro);
+                            final Intent intent;
+                            intent = new Intent(context, MedicationTable.class);
+                            context.startActivity(intent);
+                        }
+                    }
+            );
+
+            //NOT TAKING
+            alertDialog.setNegativeButton(
+                    "Not Taking",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.myDB.changeMed(medNameView.getText().toString(), "No");
+                            Log.i(LOG_TAG, "TAKING STATUS: " + medTaking.getText().toString());
+                            itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_greyrxicon);
+                            final Intent intent;
+                            intent = new Intent(context, MedicationTable.class);
+                            context.startActivity(intent);
+                        }
+                    }
+            );
+
+            alertDialog.show();
         }
 
     } // end of class
@@ -77,13 +127,19 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         this.myClickListener = myClickListener;
     }
 
+    public void onLongClick(View view){
+
+    }
+
     public MyMedicationRecyclerViewAdapter(ArrayList<MedicationsDataObject> myDataset) {
         mDataset = myDataset;
     }
 
+
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.med_card_row, parent, false);
 
@@ -103,13 +159,21 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         holder.medPharmNameView.setText(mDataset.get(position).getPharmName());
         holder.medPharmNumView.setText(mDataset.get(position).getMedPharmNum());
         holder.medFreqView.setText(mDataset.get(position).getMedFreq());
+        holder.medTaking.setText(mDataset.get(position).getMedTaking());
         holder.callButton.setOnClickListener(mDataset.get(position).createCall());
-        holder.medTaken.setText(mDataset.get(position).getMedTaking());
-//        holder.takenButton.setOnClickListener(mDataset.get(position).updateTaken());
-//        holder.background.setOnCheckedChangeListener(mDataset.get(position).createSwitch());
 
 
+        //CHANGE COLORS
+        if (holder.medTaking.getText().toString().equals("Yes")){
+            //Pink BG
+            holder.itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_medicationsintro);
+        } else if (holder.medTaking.getText().toString().equals("No")) {
+            //Gray BG
+            holder.itemView.findViewById(R.id.rXToggleLogo).setBackgroundResource(R.drawable.ic_greyrxicon);
+        }
     }
+
+
 
     public void addItem(MedicationsDataObject dataObj, int index) {
         mDataset.add(index, dataObj);
