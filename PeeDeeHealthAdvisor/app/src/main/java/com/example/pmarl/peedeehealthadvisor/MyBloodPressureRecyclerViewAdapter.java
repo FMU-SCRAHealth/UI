@@ -64,8 +64,8 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
-            alertDialog.setTitle("Delete this item?");
-            alertDialog.setMessage("Are you sure you want to delete this?");
+            alertDialog.setTitle("Delete this Blood Pressure Entry?");
+            alertDialog.setMessage("Are you sure you want to delete this Blood Pressure Entry?");
 
             alertDialog.setPositiveButton(
                     "Delete",

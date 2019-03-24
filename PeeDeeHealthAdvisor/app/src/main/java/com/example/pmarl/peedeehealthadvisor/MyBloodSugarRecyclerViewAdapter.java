@@ -57,8 +57,8 @@ public class MyBloodSugarRecyclerViewAdapter extends RecyclerView
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
-            alertDialog.setTitle("Delete this item?");
-            alertDialog.setMessage("Are you sure you want to delete this?");
+            alertDialog.setTitle("Delete this Blood Sugar Entry?");
+            alertDialog.setMessage("Are you sure you want to delete this Blood Sugar Entry?");
 
             alertDialog.setPositiveButton(
                     "Delete",

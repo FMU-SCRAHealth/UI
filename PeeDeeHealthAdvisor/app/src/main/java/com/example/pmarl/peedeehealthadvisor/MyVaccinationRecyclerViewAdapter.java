@@ -59,8 +59,8 @@ public class MyVaccinationRecyclerViewAdapter extends RecyclerView
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder((Activity) v.getContext());
 
-            alertDialog.setTitle("Remove this entry?");
-            alertDialog.setMessage("Are you sure you want to delete this entry?");
+            alertDialog.setTitle("Remove this Vaccination Entry?");
+            alertDialog.setMessage("Are you sure you want to delete this Vaccination Entry?");
 
             alertDialog.setPositiveButton(
                     "Delete",
