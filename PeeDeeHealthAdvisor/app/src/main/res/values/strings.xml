@@ -95,6 +95,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="taking">Taking</string>
+    <string name="taking2">Taking:</string>
     <string name="currentlyTaking">Currently Taking</string>
     <string name="currentlyTakingCard">Currently Taking:</string>
 
