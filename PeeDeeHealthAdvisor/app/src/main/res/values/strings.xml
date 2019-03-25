@@ -122,7 +122,7 @@
     <string name="medPharmacyName">Pharmacy Name</string>
     <string name="medPharmacyOPhoneNumber">Number</string>
     <string name="medFrequency">Dosage Frequency</string>
-    <string name="medFrequencyInput">Frequency</string>
+    <string name="medFrequencyInput">Times Taken/How Often</string>
     <string name="medFrequencyCard">Frequency:</string>
 
     <string name="medDoseTwo">Dosage:</string>
