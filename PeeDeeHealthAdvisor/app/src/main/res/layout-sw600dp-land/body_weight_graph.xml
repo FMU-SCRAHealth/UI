@@ -44,7 +44,7 @@
 
             <TextView
                 android:id="@+id/MyHealthGraph"
-                android:layout_width="220dp"
+                android:layout_width="180dp"
                 android:layout_height="75dp"
                 android:text="@string/bodyWeightGraph"
                 android:textColor="@color/BodyWeightHuesDark"

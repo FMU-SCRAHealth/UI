@@ -35,17 +35,27 @@
             android:layout_alignParentStart="true"
             android:background="@drawable/ic_homebutton_copy" />
 
-        <TextView
-            android:id="@+id/SelectDataEnterScreen"
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/myHealthData"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_alignParentRight="true"/>
+
+        <ImageView
+            android:id="@+id/AppLogo2"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="19dp"
+            android:src="@drawable/healthjournal"/>
+
+        <!--<TextView-->
+            <!--android:id="@+id/SelectDataEnterScreen"-->
+            <!--android:layout_width="170dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:layout_marginEnd="10dp"-->
+            <!--android:text="alth Journal"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="30dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_alignParentRight="true"/>-->
 
     </RelativeLayout>
 
