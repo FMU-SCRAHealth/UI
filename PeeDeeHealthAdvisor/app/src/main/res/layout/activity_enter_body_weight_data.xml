@@ -58,7 +58,7 @@
                 <TextView
                     android:id="@+id/body_weight"
                     android:layout_width="78dp"
-                    android:layout_height="24dp"
+                    android:layout_height="28dp"
                     android:layout_marginTop="0dp"
                     android:gravity="center_horizontal"
                     android:textSize="20dp"
@@ -68,7 +68,7 @@
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/bodyWeight"
                     android:layout_width="200dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="1dp"
                     android:layout_height="wrap_content">
 
                     <android.support.design.widget.TextInputEditText

@@ -179,14 +179,14 @@ public class FirstTimeLogin extends AppCompatActivity
         switch(view.getId()) {
             case R.id.femaleToggle:
                 if (checked)
-                    // Pirates are the best
+
                     break;
             case R.id.maleToggle:
                 if (checked)
-                    // Ninjas rule
+
                     break;
             case R.id.otherToggle:
-                if(checked)
+                if (checked)
                     break;
         }
     }
@@ -210,7 +210,7 @@ public class FirstTimeLogin extends AppCompatActivity
     private void showDataEntryCheckmarkUser()
     {
 
-        String welcomeText = "Welcome To Health Companion " + firstNameText.getText().toString() + "!";
+        String welcomeText = "Welcome To SCHealthPlusMe " + firstNameText.getText().toString() + "!";
         Toast toast = Toast.makeText(getApplicationContext(), welcomeText, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
