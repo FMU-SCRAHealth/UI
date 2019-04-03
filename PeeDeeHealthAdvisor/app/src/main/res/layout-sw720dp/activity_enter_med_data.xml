@@ -80,6 +80,7 @@
                         android:inputType="textCapWords"
                         android:gravity="center_horizontal"
                         android:hint="@string/name"
+                        android:maxLength="14"
                         android:textSize="20dp"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryDark" />
@@ -110,6 +111,7 @@
                         android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/medDoseOne"
+                        android:maxLength="19"
                         android:singleLine="true"
                         android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark" />
@@ -141,6 +143,7 @@
                         android:gravity="center_horizontal"
                         android:hint="@string/medFrequencyInput"
                         android:singleLine="true"
+                        android:maxLength="20"
                         android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -238,6 +241,7 @@
                         android:inputType="number"
                         android:textSize="20dp"
                         android:hint="@string/medPrescriptionNumber"
+                        android:maxLength="20"
                         android:singleLine="true"
                         android:textColor="@color/colorPrimaryDark" />
 
@@ -268,6 +272,7 @@
                         android:layout_marginBottom="10dp"
                         android:gravity="center_horizontal"
                         android:hint="@string/medPharmacyName"
+                        android:maxLength="15"
                         android:singleLine="true"
                         android:textSize="20dp"
                         android:textColor="@color/colorPrimaryDark" />
@@ -302,6 +307,7 @@
                         android:hint="@string/medPharmacyOPhoneNumber"
                         android:singleLine="true"
                         android:textSize="20dp"
+                        android:maxLength="12"
                         android:inputType="number"
                         android:textColor="@color/colorPrimaryDark" />
 

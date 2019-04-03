@@ -81,6 +81,7 @@
                         android:singleLine="true"
                         android:gravity="center_horizontal"
                         android:inputType="textCapWords"
+                        android:maxLength="12"
                         android:hint="@string/name"
                         android:textColor="@color/colorPrimaryDark"/>
 
@@ -107,6 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+
                         android:hint="@string/description"
                         android:inputType="textCapSentences"
                         android:layout_marginBottom="20dp"
