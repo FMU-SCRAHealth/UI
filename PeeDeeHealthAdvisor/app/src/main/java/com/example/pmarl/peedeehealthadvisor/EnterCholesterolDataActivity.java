@@ -166,12 +166,12 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                         showDataNotEnteredWarning();
 
                     } else if (Integer.parseInt(ldlInput.getText().toString()) >= 250
-                            || Integer.parseInt(ldlInput.getText().toString()) <= 0
+                            || Integer.parseInt(ldlInput.getText().toString()) <= 25
                             || Integer.parseInt(TRIGinput.getText().toString()) >= 500
                             || Integer.parseInt(hdlInput.getText().toString()) <= 0
                             || Integer.parseInt(hdlInput.getText().toString()) >= 100
-                            || Integer.parseInt(TRIGinput.getText().toString()) <= 0
-                            || Integer.parseInt(TCinput.getText().toString()) <= 0
+                            || Integer.parseInt(TRIGinput.getText().toString()) <= 25
+                            || Integer.parseInt(TCinput.getText().toString()) <= 25
                             || Integer.parseInt(TCinput.getText().toString()) >= 400) {
 
                         showDataIncorrectRange();
@@ -220,6 +220,8 @@ public class EnterCholesterolDataActivity extends AppCompatActivity
                 ldlInput.setText("");
                 TRIGinput.setText("");
                 editDate.setText("");
+                editTime.setText("");
+                TCinput.setText("");
             }
         });
 

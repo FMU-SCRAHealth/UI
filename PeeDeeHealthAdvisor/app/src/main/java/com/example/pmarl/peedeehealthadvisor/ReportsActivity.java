@@ -187,7 +187,7 @@ public class ReportsActivity extends AppCompatActivity {
 
             reportVaxDate = cursorVax.getString(0);
             reportImmunized = cursorVax.getString(2);
-            reportVaccine = cursorVax.getString(3);
+            reportVaccine = cursorVax.getString(4);
 
             if (reportImmunized.equals("1")) {
                 vaxDateBox.setText(vaxDateBox.getText() + "\n" + reportVaxDate);

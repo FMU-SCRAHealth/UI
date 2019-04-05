@@ -223,7 +223,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                         // finds the correct notification to send
                         do {
 
-                            vaccinationName = cursorVaccinations.getString(3);
+                            vaccinationName = cursorVaccinations.getString(4);
 
                             try {
 

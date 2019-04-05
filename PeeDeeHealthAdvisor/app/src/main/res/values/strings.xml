@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Health Companion</string>
-    <string name="welcomeToHealthAdvisor">Welcome To Health Companion</string>
+    <string name="app_name">SCHealthPlusMe</string>
+    <string name="welcomeToHealthAdvisor">Welcome To SCHealthPlusMe</string>
     <string name="genderAndName">Please Enter Your Name And Gender</string>
     <string name="searchForTheseServices">Search for These Services:</string>
     <string name="firstName">First Name</string>
@@ -11,7 +11,7 @@
     <string name="enterData">Update Journal</string>
     <string name="nearBy">Near By</string>
     <string name="cityName">City Name</string>
-    <string name="healthAdvisor">Health Companion</string>
+    <string name="healthAdvisor">SCHealthPlusMe</string>
     <string name="selectBirthDateBelow">Select Birth Date Below</string>
     <string name="myHealthData">Health Journal</string>
     <string name="serviceSearch">Health Resources</string>

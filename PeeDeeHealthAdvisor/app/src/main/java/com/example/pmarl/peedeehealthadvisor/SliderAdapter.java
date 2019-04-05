@@ -36,7 +36,7 @@ public class SliderAdapter extends PagerAdapter {
 
         public String[] slide_headings = {
 
-                "Welcome To Health Companion",
+                "Welcome To SCHealthPlusMe",
                 "Blood Pressure",
                 "Blood Sugar",
                 "Cholesterol",
@@ -52,16 +52,16 @@ public class SliderAdapter extends PagerAdapter {
 
         public String[] slide_descriptions = {
 
-                "Health Companion will help you keep up with your health information.\n\n\n"
+                "SCHealthPlusMe will help you keep up with your health information.\n\n\n"
                     + "Swipe to see what is offered.",
-                "Enter your blood pressure numbers.",
-                "Enter your blood sugar numbers.",
-                "Enter your cholesterol numbers.",
-                "Enter your vaccination dates.",
+                " Enter your blood pressure numbers.",
+                "  Enter your blood sugar numbers.",
+                "   Enter your cholesterol numbers.",
+                "  Enter your vaccination dates.",
                 "   Enter your body weight.",
                 "   Enter your allergies. ",
                 "  Enter your medications.",
-                "Find your local health resources!",
+                " Find your local health resources!",
                 "Let's get started by clicking the button below!"
 
         };

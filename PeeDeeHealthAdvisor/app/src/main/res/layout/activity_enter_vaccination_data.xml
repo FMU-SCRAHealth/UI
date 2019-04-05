@@ -73,7 +73,7 @@
                     android:layout_marginTop="0dp"
                     android:textSize="20dp"
                     android:text="@string/vaccinationName"
-                    android:textColor="@color/BlueHuesMedium"/>
+                    android:textColor="@color/GreenHuesMedium"/>
 
                 <Spinner
                     android:id="@+id/vaccinationSpinner"
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:text="@string/selectDateBelow"
-                    android:textColor="@color/BlueHuesMedium"
+                    android:textColor="@color/GreenHuesMedium"
                     android:textSize="20dp" />
 
                 <EditText

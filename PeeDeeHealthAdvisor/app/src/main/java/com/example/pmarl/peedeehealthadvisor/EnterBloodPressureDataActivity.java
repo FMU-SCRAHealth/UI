@@ -206,6 +206,7 @@ public class EnterBloodPressureDataActivity extends AppCompatActivity //github t
                 systolicInput.setText("");
                 diastolicInput.setText("");
                 editDate.setText("");
+                editTime.setText("");
             }
         });
 
