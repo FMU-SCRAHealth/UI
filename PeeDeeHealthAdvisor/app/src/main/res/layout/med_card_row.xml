@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/medDoseCardText"
                 android:textColor="@color/white"
-                android:layout_marginStart="86dp"
+                android:layout_marginStart="87dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -108,7 +108,7 @@
                 android:layout_below="@+id/medNameCardText"
                 android:textSize="25dp"
                 android:textColor="@color/white"
-                android:layout_marginStart="105dp"
+                android:layout_marginStart="102dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -130,7 +130,7 @@
                 android:layout_below="@+id/medFreqCardText"
                 android:textColor="@color/white"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="9dp"/>
 
             <TextView
                 android:id="@+id/medDeliveryCardTextLabel"
