@@ -19,6 +19,7 @@ import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ import android.widget.ImageButton;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -49,6 +51,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Notification;
 
@@ -154,11 +157,53 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             }
         });
 
-        Spinner =  findViewById(R.id.vaccinationSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.vaccinations,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner.setAdapter(adapter);
-        Spinner.setOnItemSelectedListener(this);
+//        Spinner =  findViewById(R.id.vaccinationSpinner);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.vaccinations,android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        Spinner.setAdapter(adapter);
+//        Spinner.setOnItemSelectedListener(this);
+
+
+
+        Button button;
+        final TextView textview;
+        final String[] value = new String[]{
+                "Flu Shot",
+                "Shingrix (RZV)",
+                "Prevnar 13",
+                "Pneumovax 23"
+
+        };
+
+        button = (Button)findViewById(R.id.selectVaccinationButton);
+        textview = (TextView)findViewById(R.id.vaccinationName);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(EnterVaccinationDataActivity.this);
+
+
+                alertdialogbuilder.setTitle("Select A Vaccination To Enter");
+
+                alertdialogbuilder.setItems(value, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = Arrays.asList(value).get(which);
+
+                        textview.setText(selectedText);
+
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+
+                dialog.show();
+            }
+        });
+
+
 
 
         clearData = (Button) findViewById(R.id.clearData);
@@ -167,9 +212,9 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             @Override
             public void onClick(View view)
             {
-                // needs implementations
-                Spinner.setSelection(0);
+//                Spinner.setSelection(0);
                 editDate.setText("");
+                textview.setText("Vaccination Name");
             }
         });
 
@@ -201,7 +246,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             @Override
             public void onClick(View view)
             {
-                if(Spinner.getSelectedItemPosition()==0)
+                if(textview.getText().toString().equals("Vaccination Name"))
                 {
                     showDataNotEnteredWarning();
                 }
@@ -210,7 +255,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 
                     Long currentdateEpoch = System.currentTimeMillis();
                     // needs implementations
-                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), currentdateEpoch.toString(), Spinner.getSelectedItem().toString());
+                    boolean isInserted = MainActivity.myDB.insertVaccination(editDate.getText().toString(), currentdateEpoch.toString(), textview.getText().toString());
 
                     if (isInserted = true) {
 
@@ -230,13 +275,13 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 dateQuery = cursorVaccinations.getString(0) + cursorVaccinations.getString(1);
                                 date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(dateQuery);
                                 epoch = date1.getTime();
-                                futureInMillisFlu = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types
+                                futureInMillisFlu = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 10000); // makes three for four of these for the different types
                                 checkFlu = futureInMillisFlu-System.currentTimeMillis();
                                 futureInMillisShingles = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 156556800000L); // makes three for four of these for the different types
                                 checkShingles = futureInMillisShingles-System.currentTimeMillis();
                                 futureInMillisPneumonia = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types 30326400000L
                                 checkPneumonia = futureInMillisPneumonia-System.currentTimeMillis();
-                                // 86400000 is one day in our time we need epoch milliseconds this is in nanoseconds
+                                // 86400000 is one day in our time we need epoch milliseconds this is in nanoseconds 30326400000L
 
                             } catch (ParseException e) {
                                 e.printStackTrace();

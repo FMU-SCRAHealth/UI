@@ -98,6 +98,10 @@
     <string name="taking2">Taking:</string>
     <string name="currentlyTaking">Currently Taking</string>
     <string name="currentlyTakingCard">Currently Taking:</string>
+    <string name="selectVaccination">Vaccination Name</string>
+    <string name="clickToSelectVaccination">Click To Select Vaccination Type</string>
+
+
 
     <!--Card Views-->
     <string name="TC2">TC:</string>
@@ -148,15 +152,6 @@
     <string name="radius">Radius</string>
     <string name="radiusSearch">Enter Radius In Miles</string>
 
-
-    <!--String Arrays-->
-    <string-array name="distances">
-        <item>Select Radius</item>
-        <item>10 Miles</item>
-        <item>25 Miles</item>
-        <item>50 Miles</item>
-        <item>100 Miles</item>
-    </string-array>
 
     <string-array name="vaccinations">
         <item>Select</item>
