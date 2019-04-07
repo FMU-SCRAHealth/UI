@@ -1,7 +1,9 @@
 package com.example.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -19,7 +21,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class EnterMedicationDataActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
@@ -50,11 +55,54 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
         });
 
         // spinner for delivery
-        spinnerType =  findViewById(R.id.medicationDeliverySpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.delivery,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerType.setAdapter(adapter);
-        spinnerType.setOnItemSelectedListener(this);
+//        spinnerType =  findViewById(R.id.medicationDeliverySpinner);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.delivery,android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerType.setAdapter(adapter);
+//        spinnerType.setOnItemSelectedListener(this);
+
+        Button button;
+        final TextView textview;
+        final String[] value = new String[]{
+                "Oral (Tablet)",
+                "Oral (Liquid)",
+                "Sublingual",
+                "Rectal",
+                "Topical (Cream)",
+                "Topical (Eye Drop)",
+                "Topical (Ear Drop)",
+                "Intramuscular",
+                "Subcutaneous"
+
+        };
+
+        button = (Button)findViewById(R.id.selectMedicationDeliveryButton);
+        textview = (TextView)findViewById(R.id.medicationDeliveryName);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(EnterMedicationDataActivity.this);
+
+
+                alertdialogbuilder.setTitle("Select Medication Delivery");
+
+                alertdialogbuilder.setItems(value, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = Arrays.asList(value).get(which);
+
+                        textview.setText(selectedText);
+
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+
+                dialog.show();
+            }
+        });
 
         // spinner for frequency
 //        spinnerFrequency =  findViewById(R.id.medicationFrequencySpinner);
@@ -82,11 +130,11 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             public void onClick(View view) {
 
                 final String medInputString = medNameInput.getText().toString() + " " +
-                        " " + medNameInput.getText().toString() +  " " + spinnerType.getSelectedItem().toString() + " " +
+                        " " + medNameInput.getText().toString() +  " " + textview.getText().toString() + " " +
                         medRxNum.getText().toString() +  " " + medPharmName.getText().toString() +
                         " " + medPhoneNum.getText().toString() + medDelivery.toString();
                 if (medNameInput.getText().toString().equals("") || medDoseInput.getText().toString().equals("")
-                        || spinnerType.getSelectedItemPosition()==0 || medDelivery.getText().toString().equals("") || medRxNum.getText().toString().equals("")
+                        || textview.getText().toString().equals("Delivery") || medDelivery.getText().toString().equals("") || medRxNum.getText().toString().equals("")
                         || medPharmName.getText().toString().equals("") || medPhoneNum.getText().toString().equals("")) {
                     showDataNotEnteredWarning();
 
@@ -101,7 +149,7 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
                     }
                     boolean isInserted =
                             MainActivity.myDB.insertMedication(medNameInput.getText().toString(),
-                                    medDoseInput.getText().toString(), spinnerType.getSelectedItem().toString(),
+                                    medDoseInput.getText().toString(), textview.getText().toString(),
                                     medRxNum.getText().toString(), medPharmName.getText().toString(), medPhoneNum.getText().toString(), medDelivery.getText().toString(), currentlyTaking);
 
                     if (isInserted = true)
@@ -123,10 +171,11 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             {
                 medNameInput.setText("");
                 medDoseInput.setText("");
-                spinnerType.setSelection(0);
+//                spinnerType.setSelection(0);
                 medRxNum.setText("");
                 medPharmName.setText("");
                 medPhoneNum.setText("");
+                textview.setText("Delivery");
 
             }
         });

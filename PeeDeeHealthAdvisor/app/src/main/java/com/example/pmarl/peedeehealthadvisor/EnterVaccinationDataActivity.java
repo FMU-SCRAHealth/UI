@@ -163,7 +163,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
 //        Spinner.setAdapter(adapter);
 //        Spinner.setOnItemSelectedListener(this);
 
-
+    // Below is the code componant for the button and text view for selecting the vaccination.
 
         Button button;
         final TextView textview;

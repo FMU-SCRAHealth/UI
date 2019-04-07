@@ -73,15 +73,40 @@
                     android:layout_marginTop="45dp"
                     android:textSize="26dp"
                     android:text="@string/vaccinationName"
-                    android:textColor="@color/BlueHuesMedium"/>
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/GreenHuesMedium"/>
 
-                <Spinner
-                    android:id="@+id/vaccinationSpinner"
-                    android:layout_width="221dp"
-                    android:layout_height="50dp"
-                    android:visibility="visible"
-                    android:textColor="@color/GreenHuesMedium"
-                    app:layout_constraintTop_toBottomOf="@+id/VaccName" />
+                <!--<Spinner-->
+                    <!--android:id="@+id/vaccinationSpinner"-->
+                    <!--android:layout_width="221dp"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:visibility="visible"-->
+                    <!--android:textColor="@color/GreenHuesMedium"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/VaccName" />-->
+
+                <Button
+                    android:id="@+id/selectVaccinationButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/GreenHuesMedium"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:padding="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/clickToSelectVaccination" />
+
+                <TextView
+                    android:id="@+id/vaccinationName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/selectVaccinationButton"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="25dp"
+                    android:text="@string/selectVaccination"
+                    android:textSize="20dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
                     android:id="@+id/selectDateBelow"
@@ -89,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:text="@string/selectDateBelow"
-                    android:textColor="@color/BlueHuesMedium"
+                    android:textColor="@color/GreenHuesMedium"
                     android:textSize="26dp" />
 
                 <EditText

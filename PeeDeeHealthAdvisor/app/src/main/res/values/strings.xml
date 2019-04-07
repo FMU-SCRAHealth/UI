@@ -128,6 +128,8 @@
     <string name="medFrequency">Dosage Frequency</string>
     <string name="medFrequencyInput">Times Taken/How Often</string>
     <string name="medFrequencyCard">Frequency:</string>
+    <string name="selectMedicationDelivery">Delivery</string>
+    <string name="clickToSelectMedicationDelivery">Click To Select Medication Delivery</string>
 
     <string name="medDoseTwo">Dosage:</string>
     <string name="medDose">Dosage Per Day: </string>
