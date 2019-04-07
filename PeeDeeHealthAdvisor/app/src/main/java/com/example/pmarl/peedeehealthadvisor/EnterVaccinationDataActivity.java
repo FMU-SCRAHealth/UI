@@ -275,13 +275,13 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 dateQuery = cursorVaccinations.getString(0) + cursorVaccinations.getString(1);
                                 date1 = new SimpleDateFormat("MMM dd yyyy HH:mm:ss.SSS zzz").parse(dateQuery);
                                 epoch = date1.getTime();
-                                futureInMillisFlu = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 10000); // makes three for four of these for the different types
+                                futureInMillisFlu = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types
                                 checkFlu = futureInMillisFlu-System.currentTimeMillis();
                                 futureInMillisShingles = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 156556800000L); // makes three for four of these for the different types
                                 checkShingles = futureInMillisShingles-System.currentTimeMillis();
                                 futureInMillisPneumonia = new EnterVaccinationDataActivity().futureMillisTimeCalculator(epoch, 30326400000L); // makes three for four of these for the different types 30326400000L
                                 checkPneumonia = futureInMillisPneumonia-System.currentTimeMillis();
-                                // 86400000 is one day in our time we need epoch milliseconds this is in nanoseconds 30326400000L
+                                // 86400000 is one day in our time we need epoch milliseconds this is in nanoseconds
 
                             } catch (ParseException e) {
                                 e.printStackTrace();
