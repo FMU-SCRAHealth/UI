@@ -186,7 +186,7 @@ public class ReportsActivity extends AppCompatActivity {
         while (!cursorVax.isAfterLast()) {
 
             reportVaxDate = cursorVax.getString(0);
-            reportImmunized = cursorVax.getString(2);
+            reportImmunized = cursorVax.getString(3);
             reportVaccine = cursorVax.getString(4);
 
             if (reportImmunized.equals("1")) {
