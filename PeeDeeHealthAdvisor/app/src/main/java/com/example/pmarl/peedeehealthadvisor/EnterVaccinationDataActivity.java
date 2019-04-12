@@ -246,12 +246,10 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             @Override
             public void onClick(View view)
             {
-                if(textview.getText().toString().equals("Vaccination Name"))
-                {
+                if(textview.getText().toString().equals("Vaccination Name")) {
                     showDataNotEnteredWarning();
                 }
-                else
-                {
+                else {
 
                     Long currentdateEpoch = System.currentTimeMillis();
                     // needs implementations
@@ -268,7 +266,8 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                         // finds the correct notification to send
                         do {
 
-                            vaccinationName = cursorVaccinations.getString(4);
+//                            vaccinationName = cursorVaccinations.getString(4);
+                            vaccinationName = textview.getText().toString();
 
                             try {
 
@@ -283,58 +282,55 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                                 checkPneumonia = futureInMillisPneumonia-System.currentTimeMillis();
                                 // 86400000 is one day in our time we need epoch milliseconds this is in nanoseconds
 
+                                /*30326400000L  Flu
+                                *
+                                * 156556800000L Shingles
+                                *
+                                * 30326400000L Pneumonia
+                                * */
+
                             } catch (ParseException e) {
                                 e.printStackTrace();
                                 showDataError();
                             }
 
                             if(vaccinationName.equals("Flu Shot") && checkFlu < -1000) {
-                                scheduleNotification(getNotification("It is time for you to get your flu vaccination!", "Flu Shot Reminder"), futureInMillisFlu);
+                                scheduleNotificationFlu(getNotificationFlu("It is time for you to get your flu vaccination!", "Flu Shot Reminder"), futureInMillisFlu);
                                 break;
                             }
 
                             if(vaccinationName.equals("Flu Shot")) {
-                                scheduleNotification(getNotification("It is time for you to get your flu vaccination!", "Flu Shot Reminder"), futureInMillisFlu);
+                                scheduleNotificationFlu(getNotificationFlu("It is time for you to get your flu vaccination!", "Flu Shot Reminder"), futureInMillisFlu);
                                 break;
                             }
 
-//                            if(vaccinationName.equals("Shingle") && checkShingles < -1000 && age >= 60) {
-//                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
-//                                break;
-//                            }
-//
-//                            if(vaccinationName.equals("Shingle") && age >= 60) {
-//                                scheduleNotification(getNotification("It is time for you to get your shingle vaccination!", "Shingle Vaccination Reminder"), futureInMillisShingles);
-//                                break;
-//                            }
-
                             if(vaccinationName.equals("Shingrix (RZV)") && checkShingles < -1000 && age >= 60) {
-                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) Booster vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
+                                scheduleNotificationShingrix(getNotificationShingrix("It is time for you to get your Shingrix (RZV) Booster vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 
                             if(vaccinationName.equals("Shingrix (RZV)") && age >= 60) {
-                                scheduleNotification(getNotification("It is time for you to get your Shingrix (RZV) Booster vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
+                                scheduleNotificationShingrix(getNotificationShingrix("It is time for you to get your Shingrix (RZV) Booster vaccination!", "Shingrix (RZV) Vaccination Reminder"), futureInMillisShingles);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Pneumonia PPSV23") && checkPneumonia < -1000 && age >= 65) {
-                                scheduleNotification(getNotification("It is time for you to get your pneumonia PVC13 vaccination!", "Pneumonia PVC13 Reminder"), futureInMillisPneumonia);
+                            if(vaccinationName.equals("Pneumovax 23") && checkPneumonia < -1000 && age >= 65) {
+                                scheduleNotificationPPSV23(getNotificationPPSV23("It is time for you to get your pneumonia PVC13 vaccination!", "Pneumonia PVC13 Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Pneumonia PPSV23") && age >= 65) {
-                                scheduleNotification(getNotification("It is time for you to get your pneumonia PVC13 vaccination!", "Pneumonia PVC13 Reminder"), futureInMillisPneumonia);
+                            if(vaccinationName.equals("Pneumovax 23") && age >= 65) {
+                                scheduleNotificationPPSV23(getNotificationPPSV23("It is time for you to get your pneumonia PVC13 vaccination!", "Pneumonia PVC13 Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Pneumonia PVC13") && age >= 65 ) {
-                                scheduleNotification(getNotification("It is time for you to get your pneumonia PPSV23 vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
+                            if(vaccinationName.equals("Prevnar 13") && age >= 65 ) {
+                                scheduleNotificationPVC13(getNotificationPVC13("It is time for you to get your pneumonia PPSV23 vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
-                            if(vaccinationName.equals("Pneumonia PVC13") && checkPneumonia < -1000 && age >= 65 ) {
-                                scheduleNotification(getNotification("It is time for you to get your pneumonia PPSV23 vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
+                            if(vaccinationName.equals("Prevnar 13") && checkPneumonia < -1000 && age >= 65 ) {
+                                scheduleNotificationPVC13(getNotificationPVC13("It is time for you to get your pneumonia PPSV23 vaccination!", "Pneumonia Reminder"), futureInMillisPneumonia);
                                 break;
                             }
 
@@ -386,8 +382,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
     {
-        if(position != 0)
-        {
+        if(position != 0) {
             String text = parent.getItemAtPosition(position).toString();
         }
     }
@@ -399,8 +394,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     }
 
     // Show images in Toast prompt.
-    private void showDataEntryCheckmark()
-    {
+    private void showDataEntryCheckmark() {
 
         Toast toast = Toast.makeText(getApplicationContext(), "Vaccination Entered", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -413,8 +407,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     }
 
     // Show images in Toast prompt.
-    private void showDataNotEnteredWarning()
-    {
+    private void showDataNotEnteredWarning() {
 
         Toast toast = Toast.makeText(getApplicationContext(), "Please Complete All Fields", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -426,8 +419,7 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
     }
 
     // Show images in Toast prompt.
-    private void showDataError()
-    {
+    private void showDataError() {
 
         Toast toast = Toast.makeText(getApplicationContext(), "ERROR: Please Try Again", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -438,14 +430,44 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         toast.show();
     }
 
-    private long futureMillisTimeCalculator(long epoch, long delay){
+    private long futureMillisTimeCalculator(long epoch, long delay) {
 
         long futureInMillis = epoch + delay;
 
         return futureInMillis;
     }
 
-    private void scheduleNotification(Notification notification, long futureInMillis) {
+    private void scheduleNotificationFlu(Notification notification, long futureInMillis) {
+
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, futureInMillis, pendingIntent); // can use a repeating method to make notifications repeat after time or hard code
+    }
+
+    private void scheduleNotificationShingrix(Notification notification, long futureInMillis) {
+
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 2);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, futureInMillis, pendingIntent); // can use a repeating method to make notifications repeat after time or hard code
+    }
+
+    private void scheduleNotificationPPSV23(Notification notification, long futureInMillis) {
+
+        Intent notificationIntent = new Intent(this, NotificationPublisher.class);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 3);
+        notificationIntent.putExtra(NotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, futureInMillis, pendingIntent); // can use a repeating method to make notifications repeat after time or hard code
+    }
+
+    private void scheduleNotificationPVC13(Notification notification, long futureInMillis) {
 
         Intent notificationIntent = new Intent(this, NotificationPublisher.class);
         notificationIntent.putExtra(NotificationPublisher.NOTIFICATION_ID, 4);
@@ -455,7 +477,67 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
         alarmManager.set(AlarmManager.RTC_WAKEUP, futureInMillis, pendingIntent); // can use a repeating method to make notifications repeat after time or hard code
     }
 
-    private Notification getNotification(String content, String title) {
+    private Notification getNotificationFlu(String content, String title) {
+
+        // this is for making the app open on this screen if the notification is clicked.
+        Intent intent = new Intent(this, EnterVaccinationDataActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_1_ID")
+                .setContentTitle(title)
+                .setSmallIcon(R.drawable.ic_vaccinations)
+                .setContentText(content)
+                // can be used to make the notifications longer. Just add another parameter to the getNotification() and add it in.
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+                .setContentIntent(pendingIntent)
+                .build();
+
+        return notification;
+    }
+
+    private Notification getNotificationShingrix(String content, String title) {
+
+        // this is for making the app open on this screen if the notification is clicked.
+        Intent intent = new Intent(this, EnterVaccinationDataActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_2_ID")
+                .setContentTitle(title)
+                .setSmallIcon(R.drawable.ic_vaccinations)
+                .setContentText(content)
+                // can be used to make the notifications longer. Just add another parameter to the getNotification() and add it in.
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+                .setContentIntent(pendingIntent)
+                .build();
+
+        return notification;
+    }
+
+    private Notification getNotificationPPSV23(String content, String title) {
+
+        // this is for making the app open on this screen if the notification is clicked.
+        Intent intent = new Intent(this, EnterVaccinationDataActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        Notification notification = new NotificationCompat.Builder(this, "CHANNEL_3_ID")
+                .setContentTitle(title)
+                .setSmallIcon(R.drawable.ic_vaccinations)
+                .setContentText(content)
+                // can be used to make the notifications longer. Just add another parameter to the getNotification() and add it in.
+//                .setStyle(new NotificationCompat.BigTextStyle()
+//                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
+                .setContentIntent(pendingIntent)
+                .build();
+
+        return notification;
+    }
+
+    private Notification getNotificationPVC13(String content, String title) {
 
         // this is for making the app open on this screen if the notification is clicked.
         Intent intent = new Intent(this, EnterVaccinationDataActivity.class);
@@ -466,7 +548,6 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 .setContentTitle(title)
                 .setSmallIcon(R.drawable.ic_vaccinations)
                 .setContentText(content)
-                .setPriority(1)
                 // can be used to make the notifications longer. Just add another parameter to the getNotification() and add it in.
 //                .setStyle(new NotificationCompat.BigTextStyle()
 //                        .bigText("Remember to get your vaccinations in the recommended time-frame."))
