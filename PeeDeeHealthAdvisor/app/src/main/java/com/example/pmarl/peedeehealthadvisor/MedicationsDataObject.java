@@ -122,69 +122,10 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         return callClickListener;
     }
 
-    public View.OnClickListener updateTaken() {
-        listenerClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (medTaking.equals("Yes")){
-                    medTaking = "No";
-                    v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
-                } else
-                {
-                    medTaking = "Yes";
-                    v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
-                }
-
-                v.findViewById(R.id.card_view_background).setBackgroundColor(Color.parseColor("#afdfe3"));
-
-
-            }
-        };
-
-        return listenerClickListener;
-    }
-
-
-//    public CompoundButton.OnCheckedChangeListener createSwitch() {
-//        usingSwitchListener = new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-////                    changeBackgroundToPink();
-//                    buttonView.findViewById(R.id.card_view).setBackgroundColor(Color.parseColor("#afdfe3"));
-//
-//                } else {
-////                    changeBackgroundToGrey();
-//                }
-//
-//
-//            }
-//        };
-//
-//        return usingSwitchListener;
-//    }
-
-    public void changeBackgroundToGrey() {
-
-//        getBackground().setCardBackgroundColor(Color.parseColor("#afdfe3"));
-//        getBackgroundRel().setBackgroundColor(Color.parseColor("#afdfe3"));
-//        MainActivity.myDB.updateMedicationData(medName, medTaking);
-    }
-
-    public void changeBackgroundToPink() {
-//        backgroundRel.setBackgroundColor(Color.parseColor("#fd91e7"));
-//        background.setCardBackgroundColor(Color.parseColor("#fd91e7"));
-//        MainActivity.myDB.updateMedicationData(medName, medTaking);
-
-    }
-
-
-
 
     public String getName() {
         return medName;
     }
-
 
     public String getDose() {
         return medDose;

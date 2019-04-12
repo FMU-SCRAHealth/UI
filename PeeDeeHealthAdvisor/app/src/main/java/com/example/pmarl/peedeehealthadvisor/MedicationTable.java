@@ -74,6 +74,7 @@ public class MedicationTable extends AppCompatActivity {
             this.medFreq = cursorMed.getString(6);
             this.medTaking = cursorMed.getString(7);
 
+
             // creates a data object to hold the card's contents
             MedicationsDataObject newData = new MedicationsDataObject(medName, medDose, medDelivery, medRxNum,
                     medPharmName, medPharmNum, medFreq, medTaking);

@@ -104,6 +104,10 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
                         }
                 );
 
+                if (MainActivity.myDB.readMedData() == null) {
+
+                }
+
                 alertDialog.show();
 
             } else if (itemView.findViewById(R.id.changeTakingButton).isPressed()) {
@@ -226,4 +230,6 @@ public class MyMedicationRecyclerViewAdapter extends RecyclerView
         public void onItemClick(int position, View v);
 
     }
+
+
 }
