@@ -286,8 +286,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     if (locationGPS!= null) {
                                         distance = locationGPS.distanceTo(locationService) / 1000;
                                     } else {
-                                        showDataError();
                                         launchPrevActivity();
+                                        showDataError();
                                     }
 
                                     String address = streetAddress + ", " + city + ", " + state + ", " + zip;
