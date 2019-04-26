@@ -214,8 +214,19 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
                                     Location locationService = new Location("");
 
-                                    // pulling the location values
+                                    /*Pulling the location values to display on card row*/
+
+                                    // if name of value is larger than max field, it will put three dots (...)
                                     String name = document.getString("clinicName");
+                                        String ellip = "...";
+                                        int maxLength = 23;
+                                        if (name == null || name.length() <= maxLength
+                                                || name.length() < ellip.length()) {
+                                            name = document.getString("clinicName");
+                                        } else {
+                                            name = name.substring(0, maxLength - ellip.length()).concat(ellip);
+                                        }
+
                                     String city = document.getString("city");
                                     double latitude = document.getGeoPoint("location").getLatitude();
                                     double longitude = document.getGeoPoint("location").getLongitude();
@@ -286,8 +297,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     if (locationGPS!= null) {
                                         distance = locationGPS.distanceTo(locationService) / 1000;
                                     } else {
-                                        showDataError();
                                         launchPrevActivity();
+                                        showDataError();
                                     }
 
                                     String address = streetAddress + ", " + city + ", " + state + ", " + zip;

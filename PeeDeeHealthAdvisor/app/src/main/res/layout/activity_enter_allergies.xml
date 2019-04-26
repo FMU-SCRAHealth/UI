@@ -81,7 +81,7 @@
                         android:singleLine="true"
                         android:gravity="center_horizontal"
                         android:inputType="textCapWords"
-                        android:maxLength="12"
+                        android:maxLength="24"
                         android:hint="@string/name"
                         android:textColor="@color/colorPrimaryDark"/>
 
