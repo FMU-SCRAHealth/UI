@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutMedCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -75,10 +76,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:textSize="40dp"
+                android:textSize="29dp"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:layout_marginStart="6dp"
+                android:layout_marginTop="3dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -106,9 +108,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/medNameCardText"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textColor="@color/white"
-                android:layout_marginStart="102dp"
+                android:layout_marginStart="85dp"
                 android:layout_marginTop="10dp"/>
 
             <TextView
@@ -118,7 +120,7 @@
                 android:layout_below="@+id/medNameCardText"
                 android:textColor="@color/white"
                 android:text="@string/medDoseTwo"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:layout_marginStart="6dp"
                 android:textStyle="bold"
                 android:layout_marginTop="9dp"/>
