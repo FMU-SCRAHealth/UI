@@ -219,7 +219,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     // if name of value is larger than max field, it will put three dots (...)
                                     String name = document.getString("clinicName");
                                         String ellip = "...";
-                                        int maxLength = 24;
+                                        int maxLength = 23;
                                         if (name == null || name.length() <= maxLength
                                                 || name.length() < ellip.length()) {
                                             name = document.getString("clinicName");
