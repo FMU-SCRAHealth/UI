@@ -9,7 +9,7 @@
 
     Description of Execution:
  */
-package com.example.pmarl.peedeehealthadvisor;
+package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;

@@ -1,4 +1,4 @@
-package com.example.pmarl.peedeehealthadvisor;
+package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

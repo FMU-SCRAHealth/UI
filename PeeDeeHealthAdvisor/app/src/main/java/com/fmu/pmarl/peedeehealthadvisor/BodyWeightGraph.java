@@ -1,4 +1,4 @@
-package com.example.pmarl.peedeehealthadvisor;
+package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

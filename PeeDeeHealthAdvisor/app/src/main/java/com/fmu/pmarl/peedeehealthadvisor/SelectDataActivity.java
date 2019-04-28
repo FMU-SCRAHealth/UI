@@ -6,7 +6,7 @@
 
 
  */
-package com.example.pmarl.peedeehealthadvisor;
+package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
 import android.os.Bundle;

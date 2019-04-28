@@ -1,4 +1,4 @@
-package com.example.pmarl.peedeehealthadvisor
+package com.fmu.pmarl.peedeehealthadvisor
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

@@ -10,7 +10,7 @@
  Description of Execution:
  This Class brings up the Home Screen in the App
  */
-package com.example.pmarl.peedeehealthadvisor;
+package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.app.AlarmManager;
 import android.app.Notification;

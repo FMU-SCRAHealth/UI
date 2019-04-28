@@ -10,7 +10,7 @@
     Description of Execution:
     On executing the class creates the activity for the entering of cholesterol data
  */
-package com.example.pmarl.peedeehealthadvisor;
+package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.app.Activity;
 import android.app.AlertDialog;
