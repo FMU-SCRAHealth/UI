@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pmarl.peedeehealthadvisor">
+    package="com.fmu.pmarl.peedeehealthadvisor">
     <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,7 +18,7 @@
         android:theme=”@style/AppTheme.Launcher”
 
         // DECLARING THE ENTRANCE OF THE APP
-        <activity android:name=".MainActivity"
+        <activity android:name="com.fmu.pmarl.peedeehealthadvisor.MainActivity"
             android:screenOrientation="portrait"
             android:label="Health"
             android:theme="@style/AppTheme.Launcher"
@@ -34,7 +34,7 @@
 
 
         // DECLARING THE ENTRANCE OF THE APP
-        <activity android:name=".SliderStart"
+        <activity android:name="com.fmu.pmarl.peedeehealthadvisor.SliderStart"
             android:screenOrientation="portrait"
             android:label="PD HC"
             >
@@ -43,28 +43,28 @@
 
         // DECLARING THE ENTER BLOOD PRESSURE DATA ACTIVITY
         <activity
-            android:name=".EnterBloodPressureDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EnterBloodPressureDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE ENTER BLOOD SUGAR DATA ACTIVITY
         <activity
-            android:name=".EnterBloodSugarDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EnterBloodSugarDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE ENTER CHOLESTEROL DATA ACTIVITY
         <activity
-            android:name=".EnterCholesterolDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EnterCholesterolDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE ENTER VACCINATION DATA ACTIVITY
         <activity
-            android:name=".EnterVaccinationDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EnterVaccinationDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
@@ -72,13 +72,13 @@
 
         // DECLARING THE GRAPH ACTIVITY
         <activity
-            android:name=".GraphActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.GraphActivity"
             android:label="@string/app_name">
         </activity>
 
         // DECLARING THE MY HEALTH DATA ACTIVITY
         <activity
-            android:name=".MyHealthDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.MyHealthDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
 
@@ -86,27 +86,27 @@
 
         // DECLARING THE SEARCH LOCATION ACTIVITY
         <activity
-            android:name=".SearchLocationActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SearchLocationActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE SEARCH SERVICE ACTIVITY
         <activity
-            android:name=".SearchServiceActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SearchServiceActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE SELECT DATA ACTIVITY
         <activity
-            android:name=".SelectDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE FIRST TIME LOGIN ACTIVITY
-        <activity android:name=".FirstTimeLogin"
+        <activity android:name="com.fmu.pmarl.peedeehealthadvisor.FirstTimeLogin"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
@@ -116,73 +116,73 @@
 
         // DECLARING THE SELECT DATA ACTIVITY
         <activity
-            android:name=".SelectBloodPressureActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectBloodPressureActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE BLOOD SUGAR ACTIVITY
         <activity
-            android:name=".SelectBloodSugarActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectBloodSugarActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING THE VACCINATION ACTIVITY
         <activity
-            android:name=".SelectVaccinationActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectVaccinationActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING CHOLESTEROL ACTIVITY
         <activity
-            android:name=".SelectCholesterolActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectCholesterolActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING BLOOD PRESSURE GRAPH ACTIVITY
         <activity
-            android:name=".BloodPressureGraph"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.BloodPressureGraph"
             android:label="@string/app_name">
         </activity>
 
         // DECLARING BLOOD SUGAR GRAPH ACTIVITY
         <activity
-            android:name=".BloodSugarGraph"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.BloodSugarGraph"
             android:label="@string/app_name">
         </activity>
 
         // DECLARING VACCINATION GRAPH ACTIVITY
         <activity
-            android:name=".VaccinationGraph"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.VaccinationGraph"
             android:label="@string/app_name">
         </activity>
 
         // DECLARING CHOLESTEROL GRAPH ACTIVITY
         <activity
-            android:name=".CholesterolGraph"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.CholesterolGraph"
             android:label="@string/app_name">
         </activity>
 
         // DECLARING APP SWITCHER
         <activity
-            android:name=".AppSwitcher"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.AppSwitcher"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING APP CARDVIEW
         <activity
-            android:name=".CardView"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.CardView"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
         </activity>
 
         // DECLARING REPORTS
         <activity
-            android:name=".ReportsActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.ReportsActivity"
             android:label="@string/app_name"
 
             >
@@ -190,7 +190,7 @@
 
         // DECLARING ALLERGY INPUT
         <activity
-            android:name=".EnterAllergyDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EnterAllergyDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
@@ -198,14 +198,14 @@
 
         // DECLARING ALLERGIES TABLE
         <activity
-            android:name=".AllergiesTable"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.AllergiesTable"
             android:label="@string/app_name"
             >
         </activity>
 
         // DECLARING ALLERGIES SELECT
         <activity
-            android:name=".SelectAllergiesActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectAllergiesActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
@@ -213,7 +213,7 @@
 
         // DECLARING USER PROFILE
         <activity
-            android:name=".UserProfile"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.UserProfile"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
@@ -221,7 +221,7 @@
 
         // DECLARING SELECT BODY WEIGHT
         <activity
-            android:name=".SelectBodyWeightActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectBodyWeightActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
 
@@ -229,14 +229,14 @@
 
         // DECLARING WEIGHT GRAPH
         <activity
-            android:name=".BodyWeightGraph"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.BodyWeightGraph"
             android:label="@string/app_name">
 
         </activity>
 
         // DECLARING BODY WEIGHT ENTRY
         <activity
-            android:name=".EnterBodyWeightDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EnterBodyWeightDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
 
@@ -244,7 +244,7 @@
 
         // DECLARING EDIT PROFILE
         <activity
-            android:name=".EditUserProfile"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EditUserProfile"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
@@ -252,30 +252,30 @@
 
         // DECLARING SELECT MEDICATION
         <activity
-            android:name=".SelectMedicationActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.SelectMedicationActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
         </activity>
 
         <activity
-            android:name=".EnterMedicationDataActivity"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.EnterMedicationDataActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             >
         </activity>
 
-        <receiver android:name=".NotificationPublisher" />
+        <receiver android:name="com.fmu.pmarl.peedeehealthadvisor.NotificationPublisher" />
 
         <activity
-            android:name=".MedicationTable"
+            android:name="com.fmu.pmarl.peedeehealthadvisor.MedicationTable"
             android:label="@string/app_name"
 
             >
         </activity>
         <activity android:name=".CardViewActivity" />
 
-        <receiver android:name=".NotificationPublisher" />
+        <receiver android:name="com.fmu.pmarl.peedeehealthadvisor.NotificationPublisher" />
 
 
     </application>
