@@ -13,6 +13,7 @@ package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -50,6 +51,7 @@ public class UserProfile extends AppCompatActivity
         TextView textBoxGender = findViewById(R.id.gender);
         TextView textBoxAge = findViewById(R.id.date_of_birth);
         Button editUser = findViewById(R.id.editUserButton);
+        TextView privacyPolicy = findViewById(R.id.privacyPolicyText);
 
         this.home = (ImageButton) findViewById(R.id.Home);
         this.home.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +95,18 @@ public class UserProfile extends AppCompatActivity
             public void onClick(View view) {
                 launchEditUserActivity();
             }
+        });
+
+        privacyPolicy.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+
+            public void onClick(View view)
+            {
+                Intent browser= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.schealthplusme.com/privacy"));
+                startActivity(browser);
+            }
+
         });
 
 
