@@ -60,6 +60,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
     Location locationGPS;
     Location locationService;
     boolean sendVar = false;
+    Toast toast;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 miles
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; //
 
@@ -260,6 +261,7 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     } else {
                                         launchPrevActivity();
                                         showDataError();
+
                                     }
 
                                     String address = streetAddress + ", " + city + ", " + state + ", " + zip;
@@ -392,14 +394,22 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
     // Show images in Toast prompt.
     private void showDataError() {
+        // check for other toasts from the loop. IF there is another toast, it will cancel it.
+        if (toast != null) {
+            toast.cancel();
+        }
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Can't Find Location. Make Sure Location Is On!", Toast.LENGTH_SHORT);
+        toast = Toast.makeText(getApplicationContext(), "Can't Find Location. Make Sure Location Is On!", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         LinearLayout toastContentView = (LinearLayout) toast.getView();
         ImageView imageView = new ImageView(getApplicationContext());
         imageView.setImageResource(R.drawable.ic_error);
         toastContentView.addView(imageView, 0);
+//            toast = Toast.makeText(getApplicationContext(), "Can't Find Location. Make Sure Location Is On!", Toast.LENGTH_SHORT);
         toast.show();
+
+//        toast = Toast.makeText(this, "Can't Find Location. Make Sure Location Is On!", Toast.LENGTH_SHORT);
+
     }
 
     @Override
