@@ -22,15 +22,10 @@ public class AllergiesTable extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_card_view_allergies);
 
-
-        //CursorInstantiation (VACCINATIONSs)
         Cursor cursorAllergies = MainActivity.myDB.readAllergyRecords();
         String allergyTitle = "No Allergies";
         String allergyDescription = "No Allergies";
-//        TextView allergyName = findViewById(R.id.allergies_name);
-//        TextView allergyDescriptionView = findViewById(R.id.allergies_reactions);
         ImageButton home = findViewById(R.id.Home);
-//        TableLayout tableLayout = findViewById(R.id.allergiesTable);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_allergies);
         mRecyclerView.setHasFixedSize(true);
@@ -52,16 +47,6 @@ public class AllergiesTable extends AppCompatActivity {
             allergyTitle = cursorAllergies.getString(0);
             allergyDescription = cursorAllergies.getString(1);
 
-
-//            TableLayout table = (TableLayout)AllergiesTable.this.findViewById(R.id.allergiesTable);
-//
-//                // Inflate your row "template" and fill out the fields.
-//                TableRow row = (TableRow)LayoutInflater.from(AllergiesTable.this).inflate(R.layout.allergies_row, null);
-//                ((TextView)row.findViewById(R.id.attrib_name)).setText(allergyTitle);
-//                ((TextView)row.findViewById(R.id.attrib_value)).setText(allergyDescription);
-//                table.addView(row);
-//
-//            table.requestLayout();
 
             AllergiesDataObject allergyEntry = new AllergiesDataObject(allergyTitle, allergyDescription);
 

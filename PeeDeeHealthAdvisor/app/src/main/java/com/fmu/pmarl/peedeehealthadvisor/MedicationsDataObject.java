@@ -41,10 +41,8 @@ public class MedicationsDataObject extends AppCompatActivity implements View.OnC
         View activity = findViewById(R.layout.med_card_row);
         backgroundRel = (RelativeLayout) findViewById(R.id.card_view_background);
         background = (CardView) findViewById(R.id.card_view);
-//        mySwitch = (Switch) findViewById(R.id.switchTaking);
         backgroundMed = (LinearLayout) findViewById(R.id.layoutMedCard);
         cursorMed = MainActivity.myDB.readMedData();
-//        mySwitch = (Switch) findViewById(R.id.switchTaking);
         mySwitch.setOnCheckedChangeListener(usingSwitchListener);
 
 

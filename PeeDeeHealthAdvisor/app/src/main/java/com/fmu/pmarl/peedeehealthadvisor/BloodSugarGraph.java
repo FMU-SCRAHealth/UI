@@ -48,7 +48,6 @@ public class BloodSugarGraph extends AppCompatActivity
     LineChart lineChartLand;
     Date now = new Date();
     TimeZone tz = Calendar.getInstance().getTimeZone();
-//    String name = tz.getDisplayName(tz.inDaylightTime(now), TimeZone.SHORT);
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;

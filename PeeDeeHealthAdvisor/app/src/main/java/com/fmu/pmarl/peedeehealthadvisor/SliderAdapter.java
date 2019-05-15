@@ -18,7 +18,7 @@ public class SliderAdapter extends PagerAdapter {
             this.context = context;
         }
 
-
+        // sets the images in the intro launch screen.
         public int[] slide_images = {
 
                 R.drawable.ic_ha_icon,
@@ -34,6 +34,7 @@ public class SliderAdapter extends PagerAdapter {
 
         };
 
+        // array of headings to be displayed on intro screen
         public String[] slide_headings = {
 
                 "Welcome To SCHealthPlusMe",
@@ -50,6 +51,7 @@ public class SliderAdapter extends PagerAdapter {
         };
 
 
+        // string array to display descriptions
         public String[] slide_descriptions = {
 
                 "SCHealthPlusMe will help you keep up with your health information.\n\n\n"

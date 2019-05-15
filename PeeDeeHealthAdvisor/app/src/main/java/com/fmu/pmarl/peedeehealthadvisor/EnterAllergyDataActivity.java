@@ -25,11 +25,6 @@ public class EnterAllergyDataActivity extends AppCompatActivity
     private TextInputEditText allergyNameInput;
     private TextInputEditText allergyDescriptionInput;
     private Context context = this;
-//    private EditText editDate;
-//    private Calendar myCalendar = Calendar.getInstance();
-//    private String dateFormat = "MM.dd.yyyy";
-//    private DatePickerDialog.OnDateSetListener date;
-//    private SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 
     @Override
     protected void  onCreate(Bundle saveInstanceState)
@@ -49,9 +44,6 @@ public class EnterAllergyDataActivity extends AppCompatActivity
         // allergy inputs
         allergyNameInput = (TextInputEditText) findViewById(R.id.allergyNameInput);
         allergyDescriptionInput = (TextInputEditText) findViewById(R.id.allergyDescriptionInput);
-
-//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//        imm.showSoftInput(allergyNameInput, InputMethodManager.SHOW_IMPLICIT);
 
 
         // enter button
@@ -133,10 +125,6 @@ public class EnterAllergyDataActivity extends AppCompatActivity
         finish();
     }
 
-//    private void updateDate()
-//    {
-//        editDate.setText(sdf.format(myCalendar.getTime()));
-//    }
 
     // Show images in Toast prompt.
     private void showDataEntryCheckmark()

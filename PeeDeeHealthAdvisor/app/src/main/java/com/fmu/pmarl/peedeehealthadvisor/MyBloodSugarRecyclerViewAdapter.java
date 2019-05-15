@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class MyBloodSugarRecyclerViewAdapter extends RecyclerView
         .Adapter<MyBloodSugarRecyclerViewAdapter
         .DataObjectHolder> {
-    //    private static String LOG_TAG = "MyMedicationRecyclerViewAdapter";
     private ArrayList<BloodSugarDataObject> mDataset; // make sure this is Blood Sugar Data Object
     private static MyClickListener myClickListener;
     private Context context;

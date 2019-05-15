@@ -23,7 +23,6 @@ public class ReportsActivity extends AppCompatActivity {
         String reportUserAge = "";
         String reportUserGender = "";
         TextView textBoxUsername = findViewById(R.id.ReportsUserBoxName);
-//        TextView textBoxGender = findViewById(R.id.ReportsUserBoxGender);
         TextView textBoxAge = findViewById(R.id.ReportsUserBoxAge);
         ImageButton home = findViewById(R.id.Home);
 
@@ -176,7 +175,7 @@ public class ReportsActivity extends AppCompatActivity {
             cursorVax.moveToFirst();
         }
 
-        //iterate
+        //iterate for vacciantion data
         while (!cursorVax.isAfterLast()) {
 
             reportVaxDate = cursorVax.getString(0);
@@ -196,12 +195,12 @@ public class ReportsActivity extends AppCompatActivity {
             cursorVax.moveToNext();
         }
 
-        // body weight
+        // body weight check for null
         if (cursorWeight != null) {
             cursorWeight.moveToFirst();
         }
 
-        //iterate
+        //iterate for body weight data.
         while (!cursorWeight.isAfterLast()) {
 
             reportWeightDate = cursorWeight.getString(0);

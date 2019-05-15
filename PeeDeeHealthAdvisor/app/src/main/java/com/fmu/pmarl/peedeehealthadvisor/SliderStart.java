@@ -76,6 +76,7 @@ public class SliderStart extends AppCompatActivity {
 
             }
 
+            // shows the dots
             @Override
             public void onPageSelected(int i) {
 

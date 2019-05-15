@@ -46,8 +46,6 @@ public class MyVaccinationRecyclerViewAdapter extends RecyclerView
             vaccinationTimeView = (TextView) itemView.findViewById(R.id.vaccinationTimeCardText);
             deleteButton = (ImageButton) itemView.findViewById(R.id.deleteButtonVaccinations);
             vaccinationTimeView.setVisibility(View.GONE);
-            Log.d("test", vaccinationTimeView.getText().toString());
-            Log.d("test", vaccinationDateView.getText().toString());
             deleteButton.setOnClickListener(this);
 
         }
