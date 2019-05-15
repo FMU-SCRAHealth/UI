@@ -67,9 +67,6 @@ public class MainActivity extends AppCompatActivity
 
             //do your one time code here
             launchFirstTimeLogIn();
-            // this is send a reminder about the vaccinations after the initial boot up time.
-//            scheduleNotification(getNotification("Remember to get your vaccination!", "Vaccination Reminder"), 86400000);
-            //Toast.makeText(this,"This is first app run!", Toast.LENGTH_LONG).show();
 
         }
 
@@ -164,6 +161,7 @@ public class MainActivity extends AppCompatActivity
         finish();
     }
 
+    // creates the four different notification channels that can be turned off in settings.
     private void createNotificationChannels() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel1 = new NotificationChannel(

@@ -24,7 +24,6 @@ public class SelectDataActivity extends AppCompatActivity
     private ImageButton enterCholesterol;
     private ImageButton enterVaccinationData;
     private LinearLayoutManager layoutManager;
-//    private List<View> listData = new ArrayList<>();
 
 
     @Override
@@ -33,17 +32,6 @@ public class SelectDataActivity extends AppCompatActivity
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_select_data);
 
-//        setupList();
-
-//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-//        recyclerView.setHasFixedSize(false);
-//        layoutManager =  new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-//        recyclerView.setLayoutManager(layoutManager);
-//        RecyclerAdapter adapter = new RecyclerAdapter(listData, this);
-//        recyclerView.setAdapter(adapter);
-
-
-//
         home = (ImageButton) findViewById(R.id.Home);
 
         home.setOnClickListener(new View.OnClickListener() {
@@ -53,41 +41,6 @@ public class SelectDataActivity extends AppCompatActivity
             }
         });
 
-//        enterBloodPressure = (ImageButton) findViewById(R.id.EnterBloodPressure);
-//
-//        enterBloodPressure.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchEnterBloodPressureActivity();
-//            }
-//        });
-//
-//        enterBloodSugar = (ImageButton) findViewById(R.id.EnterBloodSugar);
-//
-//        enterBloodSugar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchEnterBloodSugarActivity();
-//            }
-//        });
-//
-//        enterCholesterol = (ImageButton) findViewById(R.id.EnterCholesterol);
-//
-//        enterCholesterol.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchEnterCholesterolActivity();
-//            }
-//        });
-//
-//        enterVaccinationData = (ImageButton) findViewById(R.id.EnterVaccinationData);
-//
-//        enterVaccinationData.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchEnterVaccinationDataActivity();
-//            }
-//        });
     }
 
 
@@ -145,9 +98,4 @@ public class SelectDataActivity extends AppCompatActivity
         finish();
     }
 
-//    private void setupList() {
-////        listData.add(findViewById(R.layout.card_view));
-//        listData.add(findViewById(R.layout.card_view_2));
-////        listData.add(findViewById(R.layout.card_view_3));
-//    }
 }

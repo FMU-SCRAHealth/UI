@@ -19,12 +19,6 @@ public class SearchServiceDataObject {
     private View.OnClickListener urlClickListener;
 
     double distance;
-//    boolean serviceBloodPressure;
-//    boolean serviceBloodSugar;
-//    boolean serviceCholesterol;
-//    boolean serviceFlu;
-//    boolean servicePneumonia;
-//    boolean serviceShingles;
     String services;
     String url;
     double latitude;
@@ -51,22 +45,6 @@ public class SearchServiceDataObject {
         return address;
     }
 
-
-//    public double getLatitude() {
-//        return latitude;
-//    }
-//
-//    public void setLatitude(double latitude) {
-//        this.latitude = latitude;
-//    }
-
-//    public double getLongitude() {
-//        return longitude;
-//    }
-//
-//    public void setLongitude(double longitude) {
-//        this.longitude = longitude;
-//    }
 
     public View.OnClickListener createCall() {
         callClickListener = new View.OnClickListener() {

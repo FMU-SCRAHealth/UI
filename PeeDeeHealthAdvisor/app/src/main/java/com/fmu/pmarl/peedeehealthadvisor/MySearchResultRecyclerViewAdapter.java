@@ -35,11 +35,9 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
         TextView searchAddressView;
         TextView searchWebsiteView;
         TextView searchPhoneView;
-//        TextView medTaken;
         ImageButton callButton;
         ImageButton mapsButton;
         ImageButton urlButton;
-//        Switch background;
 
 
         public DataObjectHolder(View itemView) {
@@ -54,8 +52,6 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
             callButton = (ImageButton) itemView.findViewById(R.id.phoneCallButtonSearch);
             mapsButton = (ImageButton) itemView.findViewById(R.id.mapButton);
             urlButton= (ImageButton) itemView.findViewById(R.id.urlButton);
-//            background = (Switch) itemView.findViewById(R.id.switchTaking);
-//            Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
 
         }
@@ -73,7 +69,7 @@ public class MySearchResultRecyclerViewAdapter extends RecyclerView
 
     public MySearchResultRecyclerViewAdapter(ArrayList<SearchServiceDataObject> myDataset) {
 
-        // called twice because it has to go through the method twice to get the dups out. Need to keep eye on.
+        // called twice because it has to go through the method twice to get the duplicates out.
         myDataset = removeDuplicates(myDataset);
         mDataset = removeDuplicates(myDataset);
         Log.d("mDataset: ", mDataset.toString());

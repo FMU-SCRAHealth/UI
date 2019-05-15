@@ -52,12 +52,6 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             }
         });
 
-        // spinner for delivery
-//        spinnerType =  findViewById(R.id.medicationDeliverySpinner);
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.delivery,android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerType.setAdapter(adapter);
-//        spinnerType.setOnItemSelectedListener(this);
 
         Button button;
         final TextView textview;
@@ -102,12 +96,6 @@ public class EnterMedicationDataActivity extends AppCompatActivity implements Ad
             }
         });
 
-        // spinner for frequency
-//        spinnerFrequency =  findViewById(R.id.medicationFrequencySpinner);
-//        ArrayAdapter<CharSequence> adapterFreq = ArrayAdapter.createFromResource(this, R.array.frequency,android.R.layout.simple_spinner_item);
-//        adapterFreq.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerFrequency.setAdapter(adapterFreq);
-//        spinnerFrequency.setOnItemSelectedListener(this);
 
         // radio buttons
         yesToggle = (RadioButton) findViewById(R.id.takingYes);

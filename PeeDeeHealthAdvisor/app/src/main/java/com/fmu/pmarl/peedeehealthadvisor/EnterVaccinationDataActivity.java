@@ -147,11 +147,6 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             }
         });
 
-//        Spinner =  findViewById(R.id.vaccinationSpinner);
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.vaccinations,android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        Spinner.setAdapter(adapter);
-//        Spinner.setOnItemSelectedListener(this);
 
     // Below is the code componant for the button and text view for selecting the vaccination.
 
@@ -202,7 +197,6 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
             @Override
             public void onClick(View view)
             {
-//                Spinner.setSelection(0);
                 editDate.setText("");
                 textview.setText("Vaccination Name");
             }

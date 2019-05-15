@@ -62,20 +62,8 @@ public class MedicationTable extends AppCompatActivity {
             cursorMed.moveToFirst();
         }
 
-        // iterate
+        // iterate for medication data
         while (!cursorMed.isAfterLast()) {
-
-            // take in med name to check length
-//            String medName = cursorMed.getString(0);
-//            String ellip = "...";
-//            int maxLength = 17;
-//            if (medName == null || medName.length() <= maxLength
-//                    || medName.length() < ellip.length()) {
-//                // less than 3 chars, under max length, or no value (not going to occur)
-//                medName = cursorMed.getString(0);
-//            } else {
-//                medName = medName.substring(0, maxLength - ellip.length()).concat(ellip);
-//            }
 
             this.medName = cursorMed.getString(0);
             this.medDose = cursorMed.getString(1);

@@ -84,38 +84,8 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     private static boolean clickedShingles = false;
     private static boolean clickedPneumonia = false;
     private String TAG = "TESTING: ";
-//    String city;
-//    String latitude;
-//    String longitude;
-//    String phone;
-//    String scheduleMonFri;
-//    String scheduleSat;
-//    String scheduleSun;
-//    boolean serviceBloodPressure;
-//    boolean serviceBloodSugar;
-//    boolean serviceCholesterol;
-//    boolean serviceFlu;
-//    boolean servicePneumonia;
-//    boolean serviceShingles;
-//    String state;
-//    String streetAddress;
-//    String url;
-//    String zip;
 
-
-
-//    public SearchServiceActivity() {
-////        this.context = context;
-//
-//    }
     public SearchServiceActivity() {
-//        boolean clickedBP = isClickedBP();
-//        boolean clickedBS = isClickedBS();
-//        clickedCholesterol = isClickedCholesterol();
-//        clickedFlu = isClickedFlu();
-//        clickedShingles = isClickedShingles();
-//        clickedPneumonia = isClickedPneumonia();
-//        getLocation();
 
     }
 
@@ -132,17 +102,13 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
                 PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                         PackageManager.PERMISSION_GRANTED) {
-//            getLocation();
         } else {
-//            Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
             ActivityCompat.requestPermissions(this, new String[]{
                             Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.ACCESS_COARSE_LOCATION},
                     0);
 
-//            showSettingsAlert();
 
-//            launchPrevActivity();
 
         }
 
@@ -173,11 +139,6 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             }
         });
 
-//        spinnerRadius = findViewById(R.id.radiusSpinner);
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.distances, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerRadius.setAdapter(adapter);
-//        spinnerRadius.setOnItemSelectedListener(this);
 
         /* BELOW * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
         *  The following below change the selection icons on the buttons for searching.            *
