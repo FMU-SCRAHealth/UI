@@ -85,7 +85,7 @@ public class MyBloodPressureRecyclerViewAdapter extends RecyclerView
 
             alertDialog.show();
         }
-    }
+    } // end of class
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
