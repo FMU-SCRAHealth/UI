@@ -142,8 +142,9 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 
         /* BELOW * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
         *  The following below change the selection icons on the buttons for searching.            *
-        *  false will be the default and the onRestart() at the bottom is crucial to query results.*
-        *  make sure that you follow the format and get them switching values.                     *
+        *  false will be the default and the onRestart() at the bottom is crucial to query results *
+        *  by resetting the boolean values on each page restart.                                   *
+        *  Make sure that you follow the format and get them switching values.                     *
         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
         this.bloodPressureSearch = (ImageButton) findViewById(R.id.bloodPressureTEST1);
@@ -153,7 +154,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             public void onClick(View view) {
                 if (!clickedBP) {
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure_checked);
-                    // make method for query call it here
+
                     clickedBP = true;
                 } else if (clickedBP) {
                     bloodPressureSearch.setBackgroundResource(R.drawable.ic_blood_pressure);
@@ -170,7 +171,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             public void onClick(View view) {
                 if (!clickedBS) {
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar_selected);
-                    // make method for query call it here
+
                     clickedBS = true;
                 } else if (clickedBS) {
                     bloodSugarSearch.setBackgroundResource(R.drawable.ic_blood_sugar);
@@ -204,7 +205,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             public void onClick(View view) {
                 if (!clickedFlu) {
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
-                    // make method for query call it here
+
                     clickedFlu = true;
                 } else if (clickedFlu) {
                     fluShotSearch.setBackgroundResource(R.drawable.ic_vaccinations);
@@ -221,7 +222,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             public void onClick(View view) {
                 if (!clickedShingles) {
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
-                    // make method for query call it here
+
                     clickedShingles = true;
                 } else if (clickedShingles) {
                     ShinglesSearch.setBackgroundResource(R.drawable.ic_vaccinations);
@@ -238,7 +239,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             public void onClick(View view) {
                 if (!clickedPneumonia) {
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
-                    // make method for query call it here
+
                     clickedPneumonia = true;
                 } else if (clickedPneumonia) {
                     PneumoniaSearch.setBackgroundResource(R.drawable.ic_vaccinations);
@@ -318,241 +319,6 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
 
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//
-//        if (!checkPermissions()) {
-//            requestPermissions();
-//        } else {
-//            getLastLocation();
-//        }
-//    }
-//
-//    private void showSnackbar(final String text) {
-//        View container = findViewById(R.id.resourceSearch);
-//        if (container != null) {
-//            Snackbar.make(container, text, Snackbar.LENGTH_LONG).show();
-//        }
-//    }
-//
-//    private void showSnackbar(final int mainTextStringId, final int actionStringId,
-//                              View.OnClickListener listener) {
-//        Snackbar.make(findViewById(android.R.id.content),
-//                getString(mainTextStringId),
-//                Snackbar.LENGTH_INDEFINITE)
-//                .setAction(getString(actionStringId), listener).show();
-//    }
-//
-//    @SuppressWarnings("MissingPermission")
-//    private void getLastLocation() {
-//        mFusedLocationClient.getLastLocation()
-//                .addOnCompleteListener(this, new OnCompleteListener<Location>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Location> task) {
-//                        if (task.isSuccessful() && task.getResult() != null) {
-//                            mLastLocation = task.getResult();
-//
-//                            mLastLocation.getLatitude();
-//
-//                            mLastLocation.getLongitude();
-//                        } else {
-//                            Log.w(TAG, "getLastLocation:exception", task.getException());
-//                            showDataIncorrectRange();
-//                        }
-//                    }
-//                });
-//    }
-//
-//    private boolean checkPermissions() {
-//        int permissionState = ActivityCompat.checkSelfPermission(this,
-//                Manifest.permission.ACCESS_COARSE_LOCATION);
-//        return permissionState == PackageManager.PERMISSION_GRANTED;
-//    }
-//
-//    private void startLocationPermissionRequest() {
-//        ActivityCompat.requestPermissions(SearchServiceActivity.this,
-//                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-//                REQUEST_PERMISSIONS_REQUEST_CODE);
-//    }
-//
-//    private void requestPermissions() {
-//        boolean shouldProvideRationale =
-//                ActivityCompat.shouldShowRequestPermissionRationale(this,
-//                        Manifest.permission.ACCESS_COARSE_LOCATION);
-//
-//        // Provide an additional rationale to the user. This would happen if the user denied the
-//        // request previously, but didn't check the "Don't ask again" checkbox.
-//        if (shouldProvideRationale) {
-//
-//            showSnackbar(R.string.project_id, android.R.string.ok,
-//                    new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            // Request permission
-//                            startLocationPermissionRequest();
-//                        }
-//                    });
-//
-//        } else {
-//            Log.i(TAG, "Requesting permission");
-//            // Request permission. It's possible this can be auto answered if device policy
-//            // sets the permission in a given state or the user denied the permission
-//            // previously and checked "Never ask again".
-//            startLocationPermissionRequest();
-//        }
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-//                                           @NonNull int[] grantResults) {
-//        Log.i(TAG, "onRequestPermissionResult");
-//        if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE) {
-//            if (grantResults.length <= 0) {
-//                // If user interaction was interrupted, the permission request is cancelled and you
-//                // receive empty arrays.
-//                Log.i(TAG, "User interaction was cancelled.");
-//            } else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                // Permission granted.
-//                getLastLocation();
-//            } else {
-//                // Permission denied.
-//
-//                // Notify the user via a SnackBar that they have rejected a core permission for the
-//                // app, which makes the Activity useless. In a real app, core permissions would
-//                // typically be best requested during a welcome-screen flow.
-//
-//                // Additionally, it is important to remember that a permission might have been
-//                // rejected without asking the user for permission (device policy or "Never ask
-//                // again" prompts). Therefore, a user interface affordance is typically implemented
-//                // when permissions are denied. Otherwise, your app could appear unresponsive to
-//                // touches or interactions which have required permissions.
-//                showSnackbar(R.string.bottomValue, R.string.google_app_id,
-//                        new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                // Build intent that displays the App settings screen.
-//                                Intent intent = new Intent();
-//                                intent.setAction(
-//                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-//                                Uri uri = Uri.fromParts("package",
-//                                        BuildConfig.APPLICATION_ID, null);
-//                                intent.setData(uri);
-//                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                startActivity(intent);
-//                            }
-//                        });
-//            }
-//        }
-//    }
-
-//    public Location getLocation() {
-//        try {
-//            locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
-//
-//            isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//
-//            isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-//
-//            if(!isGPSEnabled && !isNetworkEnabled) {
-//
-//            } else {
-//                this.canGetLocation = true;
-//
-//                if (isNetworkEnabled) {
-//
-//                    locationManager.requestLocationUpdates(
-//                            LocationManager.NETWORK_PROVIDER,
-//                            MIN_TIME_BW_UPDATES,
-//                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-//
-//                    if (locationManager != null) {
-//                        location = locationManager
-//                                .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                        if (location != null) {
-//
-//                            latitude = location.getLatitude();
-//                            longitude = location.getLongitude();
-//                        }
-//                    }
-//
-//                }
-//
-//                if(isGPSEnabled) {
-//                    if(location == null) {
-//                        locationManager.requestLocationUpdates(
-//                                LocationManager.GPS_PROVIDER,
-//                                MIN_TIME_BW_UPDATES,
-//                                MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-//                        if(locationManager != null) {
-//                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//
-//                            if(location != null) {
-//                                latitude = location.getLatitude();
-//                                longitude = location.getLongitude();
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//        } catch (SecurityException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return location;
-//    }
-//
-//    public double getLatitude() {
-//        if(location != null) {
-//            latitude = location.getLatitude();
-//        }
-//        return latitude;
-//    }
-//
-//    public double getLongitude() {
-//        if(location != null) {
-//            longitude = location.getLongitude();
-//        }
-//
-//        return longitude;
-//    }
-//
-//    public void showSettingsAlert() {
-//        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-//
-//        alertDialog.setTitle("GPS is settings");
-//
-//        alertDialog.setMessage("Turn on your GPS to find nearby helpers");
-//
-//        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-//                context.startActivity(intent);
-//            }
-//        });
-//
-//        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                dialog.cancel();
-//            }
-//        });
-//
-//        alertDialog.show();
-//    }
-//
-//    public static Context getAppContext() {
-//        return SearchServiceActivity.context;
-//    }
-
-//    public Location getLocation() {
-//
-//    }
 
     public boolean isClickedBP() {
         return clickedBP;

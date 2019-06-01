@@ -183,7 +183,6 @@ public class DatabaseHelper  extends SQLiteOpenHelper
 
     }
 
-    //Delete Allergies
     public boolean insertBloodPressure(String date, String time, String epoch, int systolic, int diastolic)
     {
 

@@ -447,13 +447,6 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
 
     }
 
-//    @Override
-//    public int compareTo(SearchServiceDataObject location) {
-//        return (location.getDistance() < candidate.getAge() ? -1 :
-//                (this.getAge() == candidate.getAge() ? 0 : 1));
-//    }
-
-
     // this method sorts the locations by distance.
     public static Comparator<SearchServiceDataObject> ageComparator = new Comparator<SearchServiceDataObject>() {
         @Override

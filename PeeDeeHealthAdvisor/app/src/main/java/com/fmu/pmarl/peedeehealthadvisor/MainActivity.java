@@ -54,6 +54,12 @@ public class MainActivity extends AppCompatActivity
                 .getSharedPreferences("MyPref",0);
         SharedPreferences.Editor editor = app_preferences.edit();
 
+        /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+        * The first commented out portion is not required, but I am leaving it due to learning *
+        * when and why it is put into the code. It would go to the FirstTimeLogIn.java         *
+        * before the firstStartSlider was created.                                             *
+        * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
         boolean firstStart = app_preferences.getBoolean("first_time_start", true);
 
         /*If statement to see if the app has been open before or not*/
@@ -79,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         {
 
             /*If the app hasn't been opened before, it runs the following code
-             * and sets firstStart to false*/
+             * and sets firstStartSlider to false*/
             editor.putBoolean("first_time_slider",false);
             editor.commit();
 
