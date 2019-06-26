@@ -4,15 +4,11 @@
         <color name="colorPrimary">#afdfe3</color>
         <color name="colorPrimaryDark">#1c676a</color>
         <color name="colorAccent">#1c676a</color>
-        <color name="blueFont">#80dfff</color>
         <color name="white">#ffffff</color>
 
 
     <color name="themeBlue">#303F9F</color>
-    <color name="themeGreen">#e6fff7</color>
-    <color name="themeRed">#ff9999</color>
-    <color name="themeGray">#cccccc</color>
-    <color name="BGWhite">#e6ffff</color>
+        <color name="BGWhite">#e6ffff</color>
 
 
 
@@ -44,25 +40,12 @@
     <color name="PinkHuesMedium">#f05cd2</color>
     <color name="PinkHuesDark">#db48bd</color>
 
-    <color name="LimeHuesLight">#50e793</color>
-    <color name="LimeHuesMedium">#33dd7f</color>
-    <color name="LimeHuesDark">#2bd175</color>
-
-    <color name="PollenHuesLight">#f5d34a</color>
+        <color name="PollenHuesLight">#f5d34a</color>
     <color name="PollenHuesMedium">#edc72d</color>
     <color name="PollenHuesDark">#e3bb19</color>
 
     <color name="BodyWeightHuesLight">#fa8639</color>
-    <color name="BodyWeightHuesMedium">#f68236</color>
-    <color name="BodyWeightHuesDark">#f3711b</color>
-
-
-    <color name="black">#000000</color>
-
-
-
-
-
+        <color name="BodyWeightHuesDark">#f3711b</color>
 
 
     </resources>

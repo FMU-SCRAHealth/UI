@@ -109,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:layout_marginStart="3dp"
                     android:autoLink="web"
                     android:gravity="center"
                     android:text="@string/privacyPolicy"

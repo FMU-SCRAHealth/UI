@@ -1,21 +1,14 @@
 <resources>
     <string name="app_name">SCHealthPlusMe</string>
-    <string name="welcomeToHealthAdvisor">Welcome To SCHealthPlusMe</string>
     <string name="genderAndName">Please Enter Your Name And Gender</string>
-    <string name="searchForTheseServices">Search for These Services:</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="viewData">View Graph</string>
     <string name="enterData">Update Journal</string>
-    <string name="nearBy">Near By</string>
-    <string name="cityName">City Name</string>
-    <string name="healthAdvisor">SCHealthPlusMe</string>
     <string name="selectBirthDateBelow">Select Birth Date Below</string>
     <string name="myHealthData">Health Journal</string>
-    <string name="serviceSearch">Health Resources</string>
-    <string name="healthEntry">Journal Entry</string>
     <string name="enterBloodPressure">Blood Pressure</string>
     <string name="enterBloodSugar">Blood Sugar</string>
     <string name="selectDateBelow">Select Date Below</string>
@@ -25,27 +18,18 @@
     <string name="bottomValue">Bottom Value</string>
     <string name="diastolic">Diastolic</string>
     <string name="enterCholesterol">Cholesterol</string>
-    <string name="enterCholesterolLevels">Cholesterol</string>
-    <string name="enterBloodSugarLevels">Blood Sugar</string>
-    <string name="enterVaccinationRecords">Vaccinations</string>
     <string name="cholesterol">Cholesterol</string>
     <string name="enterVaccination">Vaccinations</string>
     <string name="vaccination">Vaccinations</string>
     <string name="fluShot">Flu Shot</string>
     <string name="graph">View Graph</string>
-    <string name="nearLocation">Near Your Location</string>
     <string name="search">Search</string>
     <string name="enter">Enter</string>
     <string name="clear">Clear</string>
     <string name="mlDL">mg/dL</string>
-    <string name="myHealthResources">Health Resources</string>
     <string name="bloodPressure">Blood Pressure</string>
     <string name="bloodSugar">Blood Sugar</string>
     <string name="bloodSugarLevel">Blood Sugar Level</string>
-    <string name="city">City</string>
-    <string name="searchBy">Search by:</string>
-    <string name="go">Go</string>
-    <string name="zip">ZIP Code</string>
     <string name="highDensityLipoprotein">High Density Lipoprotein</string>
     <string name="hDLTop">HDL</string>
     <string name="lowDensityLBottom">Low Density Lipoprotein</string>
@@ -54,26 +38,18 @@
     <string name="trig">TRIG</string>
     <string name="name">Name</string>
     <string name="vaccinationName">Vaccination Type</string>
-    <string name="shinglesVaccination">Shingles Vaccination</string>
-    <string name="pneumoniaVaccination">Pneumonia Vaccination</string>
     <string name="fasting">Fasting</string>
     <string name="nonfasting">Nonfasting</string>
-    <string name="gender">Gender</string>
     <string name="bloodPressureGraph">Blood Pressure</string>
     <string name="bloodSugarGraph">Blood Sugar</string>
     <string name="cholesterolGraph">Cholesterol</string>
     <string name="vaccinationGraph">Vaccinations</string>
     <string name="startSetup">Start Setup</string>
     <string name="setupUser">Setup User</string>
-    <string name="tableTitleVaccinations">Vaccinations</string>
     <string name="vaccinationsReport">Vaccination Type</string>
-    <string name="tableName">Name</string>
     <string name="tableTaken">Taken:</string>
     <string name="tableDate">Date:</string>
-    <string name="tableFluShot">Flu Shot</string>
     <string name="tableShingle">Shingles</string>
-    <string name="tablePneumonia13">Prevnar 13</string>
-    <string name="tablePneumonia23">Pneumovax 23</string>
     <string name="other">Other</string>
     <string name="Reports">Reports</string>
     <string name="TC">Total Cholesterol</string>
@@ -91,13 +67,10 @@
     <string name="bodyWeight">Body Weight</string>
     <string name="bodyWeightGraph">Body Weight</string>
     <string name="user">User Profile</string>
-    <string name="updater">Update</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="taking">Taking</string>
     <string name="taking2">Taking:</string>
     <string name="currentlyTaking">Currently Taking</string>
-    <string name="currentlyTakingCard">Currently Taking:</string>
     <string name="selectVaccination">Vaccination Name</string>
     <string name="clickToSelectVaccination">Click To Select Vaccination Type</string>
     <string name="privacyPolicy">Privacy Policy</string>
@@ -109,7 +82,6 @@
     <string name="HDL2">HDL:</string>
     <string name="TRIG2">TRIG:</string>
     <string name="LDL2">LDL:</string>
-    <string name="lbs">lbs</string>
     <string name="pneumonia">Pneumonia</string>
 
     <!--Medication Strings-->
@@ -121,7 +93,6 @@
     <string name="medRxNumOne">RX Number</string>
     <string name="medPharmNameOne">Pharmacy</string>
     <string name="medPhoneNumOne">Phone Number</string>
-    <string name="medicationName">Medication Name</string>
     <string name="medicationDosage">Medication Dosage</string>
     <string name="medPrescriptionNumber">Prescription Number</string>
     <string name="medPharmacyName">Pharmacy Name</string>
@@ -133,14 +104,12 @@
     <string name="clickToSelectMedicationDelivery">Click To Select Medication Delivery</string>
 
     <string name="medDoseTwo">Dosage:</string>
-    <string name="medDose">Dosage Per Day: </string>
     <string name="medDelivery">Delivery: </string>
     <string name="medRxNum">RX Number:</string>
     <string name="medPharmName">Pharmacy: </string>
     <string name="medPhoneNum">Phone:</string>
 
 
-    <string name="searchResult">Location: </string>
     <string name="searchService">Services: </string>
     <string name="searchPhone">Phone:</string>
     <string name="searchAddress">Address: </string>
@@ -152,37 +121,5 @@
     <string name="selectTimeBelow">Select Time Below</string>
     <string name="selectTime">Select Time</string>
 
-    <string name="radius">Radius</string>
-    <string name="radiusSearch">Enter Radius In Miles</string>
-
-
-    <string-array name="vaccinations">
-        <item>Select</item>
-        <item>Flu Shot</item>
-        <item>Shingrix (RZV)</item>
-        <item>Prevnar 13</item>
-        <item>Pneumovax 23</item>
-    </string-array>
-
-    <string-array name="delivery">
-        <item>Choose Below</item>
-        <item>Oral (Tablet)</item>
-        <item>Oral (Liquid)</item>
-        <item>Sublingual</item>
-        <item>Rectal</item>
-        <item>Topical (Cream)</item>
-        <item>Topical (Eye Drop)</item>
-        <item>Topical (Ear Drop)</item>
-        <item>Intramuscular</item>
-        <item>Subcutaneous</item>
-    </string-array>
-
-    <string-array name="frequency">
-        <item>Choose Below</item>
-        <item>Once</item>
-        <item>Twice</item>
-        <item>Three Times</item>
-        <item>Four Times</item>
-    </string-array>
 
 </resources>
