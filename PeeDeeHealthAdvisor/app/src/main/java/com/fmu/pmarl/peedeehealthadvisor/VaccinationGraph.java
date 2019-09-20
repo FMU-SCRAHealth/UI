@@ -75,6 +75,7 @@ public class VaccinationGraph extends AppCompatActivity
         VaccinationsDataObject shingrixCardDefault = new VaccinationsDataObject("Shingrix (RZV)", "No", "Not Taken", "0");
         VaccinationsDataObject prevnar13Default = new VaccinationsDataObject("Prevnar 13", "No", "Not Taken", "0");
         VaccinationsDataObject pneumovax23Default = new VaccinationsDataObject("Pneumovax 23", "No", "Not Taken", "0");
+        VaccinationsDataObject tetanusDefault = new VaccinationsDataObject("Tetanus (TD)", "No", "Not Taken", "0");
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_vaccinations);
@@ -89,6 +90,7 @@ public class VaccinationGraph extends AppCompatActivity
         results.add(shingrixCardDefault); // 1
         results.add(prevnar13Default); // 2
         results.add(pneumovax23Default); // 3
+        results.add(tetanusDefault); // 4
 
 
 
@@ -144,6 +146,12 @@ public class VaccinationGraph extends AppCompatActivity
                 VaccinationsDataObject pneumovax23 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
 
                 results.set(3, pneumovax23);
+            }
+            else if (vaccinationName.equals("Tetanus (TD)"))
+            {
+                VaccinationsDataObject tetanusTD = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(4, tetanusTD);
             }
             else {
 
