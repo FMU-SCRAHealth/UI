@@ -50,6 +50,8 @@
     <string name="tableTaken">Taken:</string>
     <string name="tableDate">Date:</string>
     <string name="tableShingle">Shingles</string>
+    <string name="tableHepB">Hepatitus B</string>
+    <string name="tableTetanus">Tetanus</string>
     <string name="other">Other</string>
     <string name="Reports">Reports</string>
     <string name="TC">Total Cholesterol</string>

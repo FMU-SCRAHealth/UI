@@ -201,6 +201,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     String fluShot = "";
                                     String pneumonia = "";
                                     String shingles = "";
+                                    String hepB = "";
+                                    String tetanus = "";
                                     locationService.setLatitude(latitude);
                                     locationService.setLongitude(longitude);
 

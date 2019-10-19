@@ -48,6 +48,8 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     private ImageButton fluShotSearch;
     private ImageButton ShinglesSearch;
     private ImageButton PneumoniaSearch;
+    private ImageButton hepbSearch;
+    private ImageButton tetanusSearch;
     protected Location mLastLocation;
     private FusedLocationProviderClient mFusedLocationClient;
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
@@ -83,6 +85,9 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
     private static boolean clickedFlu = false;
     private static boolean clickedShingles = false;
     private static boolean clickedPneumonia = false;
+    private static boolean clickedHepB = false;
+    private static boolean clickedTetanus = false;
+
     private String TAG = "TESTING: ";
 
     public SearchServiceActivity() {
@@ -249,6 +254,38 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
             }
         });
 
+        this.hepbSearch = (ImageButton) findViewById(R.id.hepbSearch);
+
+        this.hepbSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!clickedHepB) {
+                    hepbSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
+
+                    clickedHepB = true;
+                } else if (clickedHepB) {
+                    hepbSearch.setBackgroundResource(R.drawable.ic_vaccinations);
+                    clickedHepB = false;
+                }
+            }
+        });
+
+        this.tetanusSearch = (ImageButton) findViewById(R.id.tetanusSearch);
+
+        this.tetanusSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!clickedTetanus) {
+                    tetanusSearch.setBackgroundResource(R.drawable.ic_vaccinations_selected);
+
+                    clickedTetanus = true;
+                } else if (clickedTetanus) {
+                    tetanusSearch.setBackgroundResource(R.drawable.ic_vaccinations);
+                    clickedTetanus = false;
+                }
+            }
+        });
+
 
     }
 
@@ -368,6 +405,22 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.clickedPneumonia = clickedPneumonia;
     }
 
+    public boolean isClickedHepB() {
+        return clickedHepB;
+    }
+
+    public void setClickedHepB(boolean clickedHepB) {
+        this.clickedHepB = clickedHepB;
+    }
+
+    public boolean isClickedTetanus() {
+        return clickedTetanus;
+    }
+
+    public void setClickedTetanus(boolean clickedTetanus) {
+        this.clickedTetanus = clickedTetanus;
+    }
+
 
     // this method is called in SearchLocationActivity to reset the boolean values each time the screen is reloaded
     @Override
@@ -380,6 +433,8 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         clickedFlu = false;
         clickedPneumonia = false;
         clickedShingles = false;
+        clickedHepB = false;
+        clickedTetanus = false;
 
 
     }
