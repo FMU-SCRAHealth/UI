@@ -136,7 +136,7 @@ public class SearchServiceActivity extends AppCompatActivity implements AdapterV
         this.search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (clickedBP == false && clickedBS == false && clickedCholesterol == false && clickedFlu == false && clickedPneumonia == false && clickedShingles == false) {
+                if (clickedBP == false && clickedBS == false && clickedCholesterol == false && clickedFlu == false && clickedPneumonia == false && clickedShingles == false && clickedHepB == false && clickedTetanus == false) {
                     showDataIncorrectRange();
                 } else {
                     launchSearchActivity();
