@@ -75,6 +75,17 @@ public class VaccinationGraph extends AppCompatActivity
         VaccinationsDataObject shingrixCardDefault = new VaccinationsDataObject("Shingrix (RZV)", "No", "Not Taken", "0");
         VaccinationsDataObject prevnar13Default = new VaccinationsDataObject("Prevnar 13", "No", "Not Taken", "0");
         VaccinationsDataObject pneumovax23Default = new VaccinationsDataObject("Pneumovax 23", "No", "Not Taken", "0");
+        VaccinationsDataObject tetanusDefault = new VaccinationsDataObject("Tetanus (TD)", "No", "Not Taken", "0");
+        VaccinationsDataObject hepbD1Default = new VaccinationsDataObject("Heplisav-B (Dose 1)", "No", "Not Taken", "0");
+        VaccinationsDataObject hepbD2Default = new VaccinationsDataObject("Heplisav-B (Dose 2)", "No", "Not Taken", "0");
+        VaccinationsDataObject hepbD3Default = new VaccinationsDataObject("Heplisav-B (Dose 3)", "No", "Not Taken", "0");
+        VaccinationsDataObject engrixD1Default = new VaccinationsDataObject("Engerix-B (Dose 1)", "No", "Not Taken", "0");
+        VaccinationsDataObject engrixD2Default = new VaccinationsDataObject("Engerix-B (Dose 2)", "No", "Not Taken", "0");
+        VaccinationsDataObject engrixD3Default = new VaccinationsDataObject("Engerix-B (Dose 3)", "No", "Not Taken", "0");
+        VaccinationsDataObject recomD1Default = new VaccinationsDataObject("Recombivax HB (Dose 1)", "No", "Not Taken", "0");
+        VaccinationsDataObject recomD2Default = new VaccinationsDataObject("Recombivax HB (Dose 2)", "No", "Not Taken", "0");
+        VaccinationsDataObject recomD3Default = new VaccinationsDataObject("Recombivax HB (Dose 3)", "No", "Not Taken", "0");
+
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_vaccinations);
@@ -89,6 +100,16 @@ public class VaccinationGraph extends AppCompatActivity
         results.add(shingrixCardDefault); // 1
         results.add(prevnar13Default); // 2
         results.add(pneumovax23Default); // 3
+        results.add(tetanusDefault); // 4
+        results.add(hepbD1Default); // 5
+        results.add(hepbD2Default); // 6
+        results.add(hepbD3Default); // 7
+        results.add(engrixD1Default); // 8
+        results.add(engrixD2Default); // 9
+        results.add(engrixD3Default); // 10
+        results.add(recomD1Default); // 11
+        results.add(recomD2Default); // 12
+        results.add(recomD3Default); // 13
 
 
 
@@ -144,6 +165,57 @@ public class VaccinationGraph extends AppCompatActivity
                 VaccinationsDataObject pneumovax23 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
 
                 results.set(3, pneumovax23);
+            }
+            else if (vaccinationName.equals("Tetanus (TD)"))
+            {
+                VaccinationsDataObject tetanusTD = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(4, tetanusTD);
+            }
+            else if (vaccinationName.equals("Heplisav-B (Dose 1)")){
+                VaccinationsDataObject hepbD1 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(5, hepbD1);
+            }
+            else if (vaccinationName.equals("Heplisav-B (Dose 2)")){
+                VaccinationsDataObject hepbD2 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(6, hepbD2);
+            }
+            else if (vaccinationName.equals("Heplisav-B (Dose 3)")){
+                VaccinationsDataObject hepbD3 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(7, hepbD3);
+            }
+            else if (vaccinationName.equals("Engerix-B (Dose 1)")){
+                VaccinationsDataObject engrixD1 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(8, engrixD1);
+            }
+            else if (vaccinationName.equals("Engerix-B (Dose 2)")){
+                VaccinationsDataObject engrixD2 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(9, engrixD2);
+            }
+            else if (vaccinationName.equals("Engerix-B (Dose 3)")){
+                VaccinationsDataObject engrixD3 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(10, engrixD3);
+            }
+            else if (vaccinationName.equals("Recombivax HB (Dose 1)")){
+                VaccinationsDataObject recomD1 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(11, recomD1);
+            }
+            else if (vaccinationName.equals("Recombivax HB (Dose 2)")){
+                VaccinationsDataObject recomD2 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(12, recomD2);
+            }
+            else if (vaccinationName.equals("Recombivax HB (Dose 3)")){
+                VaccinationsDataObject recomD3 = new VaccinationsDataObject(vaccinationName, tableImmunized, date, time);
+
+                results.set(13, recomD3);
             }
             else {
 
