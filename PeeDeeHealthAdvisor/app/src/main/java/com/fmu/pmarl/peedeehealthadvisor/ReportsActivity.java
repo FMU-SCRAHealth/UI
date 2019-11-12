@@ -2,12 +2,29 @@ package com.fmu.pmarl.peedeehealthadvisor;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Picture;
+import android.graphics.Rect;
+import android.graphics.pdf.PdfDocument;
+import android.graphics.pdf.PdfRenderer;
+import android.icu.util.RangeValueIterator;
+import android.media.Image;
 import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.pdf.PrintedPdfDocument;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -25,6 +42,7 @@ public class ReportsActivity extends AppCompatActivity {
         TextView textBoxUsername = findViewById(R.id.ReportsUserBoxName);
         TextView textBoxAge = findViewById(R.id.ReportsUserBoxAge);
         ImageButton home = findViewById(R.id.Home);
+        FloatingActionButton export = findViewById(R.id.fab);
 
         //CursorInstantiation (BLOOD PRESSURE)
         Cursor cursorBloodPressure = MainActivity.myDB.readBloodPressure();
@@ -219,12 +237,30 @@ public class ReportsActivity extends AppCompatActivity {
             }
         });
 
+        export.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exportReport();
+            }
+        });
+
     }
 
     //Button Functionality
     @Override
     public void onBackPressed() {
         launchPrevActivity();
+    }
+
+    private void exportReport(){
+        PdfDocument pdf = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(100, 100, 0).create();
+
+
+        PdfDocument.Page page = pdf.startPage(pageInfo);
+        ViewGroup view = (ViewGroup)getWindow().getDecorView();
+        Canvas can = page.getCanvas();
+        can.drawPicture(new Picture());
     }
 
     private void launchMainActivity()
