@@ -201,6 +201,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     String fluShot = "";
                                     String pneumonia = "";
                                     String shingles = "";
+                                    String hepB = "";
+                                    String tetanus = "";
                                     locationService.setLatitude(latitude);
                                     locationService.setLongitude(longitude);
 
@@ -218,12 +220,22 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                     boolean serviceFlu = document.getBoolean("serviceFlu");
                                     boolean servicePneumonia = document.getBoolean("servicePneumonia");
                                     boolean serviceShingles = document.getBoolean("serviceShingles");
+                                    boolean serviceHepB = false;
+                                    try {
+                                        serviceHepB = document.getBoolean("serviceHepB");
+                                    }
+                                    catch(NullPointerException e){}
+                                    boolean serviceTetanus = false;
 
-                                    if (serviceBloodPressure == true && serviceBloodSugar == false && serviceCholesterol == false && serviceFlu == false && servicePneumonia == false && serviceShingles == false) {
+                                    try {
+                                        serviceTetanus = document.getBoolean("serviceTetanus");
+                                    }
+                                    catch(NullPointerException e){}
+                                    if (serviceBloodPressure == true && serviceBloodSugar == false && serviceCholesterol == false && serviceFlu == false && servicePneumonia == false && serviceShingles == false && serviceHepB == false && serviceTetanus == false) {
                                         bloodPressure = "Blood Pressure";
                                     }
 
-                                    else if (serviceBloodPressure == true && (serviceBloodSugar == true || serviceCholesterol == true || serviceFlu == true || servicePneumonia == true || serviceShingles == true)) {
+                                    else if (serviceBloodPressure == true && (serviceBloodSugar == true || serviceCholesterol == true || serviceFlu == true || servicePneumonia == true || serviceShingles == true || serviceHepB == true || serviceTetanus == true)) {
                                         bloodPressure = "Blood Pressure,";
                                     }
 
@@ -240,14 +252,20 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                                         pneumonia = " Pneumonia,";
                                     }
                                     if (serviceShingles == true) {
-                                        shingles = " Shingles";
+                                        shingles = " Shingles,";
+                                    }
+                                    if(serviceHepB == true){
+                                        hepB = " Hepatitis B,";
+                                    }
+                                    if(serviceTetanus == true){
+                                        tetanus = " Tetanus";
                                     }
 
                                     if (serviceBloodPressure == true && serviceBloodSugar == true && serviceCholesterol == true
-                                            && serviceFlu == true && servicePneumonia == true && serviceShingles == true) {
+                                            && serviceFlu == true && servicePneumonia == true && serviceShingles == true && serviceHepB == true && serviceTetanus == true) {
                                         services = "All Services Available";
                                     } else {
-                                        services = bloodPressure + "" + bloodSugar + "" + cholesterol + "" + fluShot + "" + pneumonia + "" + shingles;
+                                        services = bloodPressure + "" + bloodSugar + "" + cholesterol + "" + fluShot + "" + pneumonia + "" + shingles + "" + hepB + "" + tetanus;
                                     }
 
                                     double distance = 0.0;
@@ -377,6 +395,16 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
                 Log.d("TESTSHING", list.get(0).services);
             }
 
+            if(valuesClicked.isClickedHepB() && (list.get(i).getServices().contains("Hepatitis B") || list.get(i).getServices().contains("All Services Available"))) {
+                newList.add(list.get(i));
+                Log.d("TESTHEPB", list.get(0).services);
+            }
+
+            if(valuesClicked.isClickedTetanus() && (list.get(i).getServices().contains("Tetanus") || list.get(i).getServices().contains("All Services Available"))) {
+                newList.add(list.get(i));
+                Log.d("TESTTET", list.get(0).services);
+            }
+
             Log.d("TESTLOOP",list.get(i).getName());
 
         }
@@ -422,6 +450,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         valuesClicked.setClickedFlu(false);
         valuesClicked.setClickedPneumonia(false);
         valuesClicked.setClickedShingles(false);
+        valuesClicked.setClickedTetanus(false);
+        valuesClicked.setClickedHepB(false);
 
     }
 
@@ -438,6 +468,8 @@ public class SearchLocationActivity extends AppCompatActivity implements Adapter
         valuesClicked.setClickedFlu(false);
         valuesClicked.setClickedPneumonia(false);
         valuesClicked.setClickedShingles(false);
+        valuesClicked.setClickedTetanus(false);
+        valuesClicked.setClickedHepB(false);
 
         // etc.
     }

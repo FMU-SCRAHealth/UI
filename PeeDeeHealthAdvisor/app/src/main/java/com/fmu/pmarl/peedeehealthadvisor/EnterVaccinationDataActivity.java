@@ -156,7 +156,17 @@ public class EnterVaccinationDataActivity extends AppCompatActivity implements A
                 "Flu Shot",
                 "Shingrix (RZV)",
                 "Prevnar 13",
-                "Pneumovax 23"
+                "Pneumovax 23",
+                "Tetanus (TD)",
+                "Heplisav-B (Dose 1)",
+                "Heplisav-B (Dose 2)",
+                "Heplisav-B (Dose 3)",
+                "Engerix-B (Dose 1)",
+                "Engerix-B (Dose 2)",
+                "Engerix-B (Dose 3)",
+                "Recombivax HB (Dose 1)",
+                "Recombivax HB (Dose 2)",
+                "Recombivax HB (Dose 3)"
 
         };
 

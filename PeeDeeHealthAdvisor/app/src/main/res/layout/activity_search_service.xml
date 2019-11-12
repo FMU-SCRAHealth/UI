@@ -3,13 +3,17 @@
     Author: Patrick Marlowe
     Email Address: pmarlowe782@gmail.com
     Written: June 22, 2018
-    Last Updated: July 9, 2018
+
+    Last Updated: October 18, 2019
+    Updated by: Aaron Fulmer
+    Email Address: aar.fulmer@gmail.com
 
     Compilation:
     Execution:
 
     Description of Execution:
 -->
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -66,169 +70,228 @@
 
                 <GridLayout
                     android:id="@+id/searchIcons"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="0dp"
                     android:layout_width="wrap_content"
+                    android:layout_height="450dp"
                     android:layout_centerInParent="true"
-                    android:layout_height="380dp"
-                    android:columnCount="3"
-                    android:rowCount="4"
                     android:layout_gravity="center_vertical"
-                    >
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginTop="0dp"
+                    android:columnCount="3"
+                    android:rowCount="6">
 
 
                     <ImageButton
                         android:id="@+id/bloodPressureTEST1"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="50dp"
-                        android:scaleType="fitCenter"
+                        android:background="@drawable/ic_blood_pressure"
                         android:padding="4dp"
-                        android:background="@drawable/ic_blood_pressure"/>
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/bloodSugarSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginBottom="15dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginStart="3dp"
-                        android:scaleType="fitCenter"
+                        android:background="@drawable/ic_blood_sugar"
                         android:padding="4dp"
-                        android:background="@drawable/ic_blood_sugar"/>
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/cholesterolSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
-                        android:layout_marginBottom="15dp"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="50dp"
-                        android:scaleType="fitCenter"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/ic_cholesterol_icon"
                         android:padding="4dp"
-                        android:background="@drawable/ic_cholesterol_icon"/>
+                        android:scaleType="fitCenter" />
 
                     <TextView
                         android:id="@+id/SearchBPText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="16dp"
+                        android:layout_marginStart="-1dp"
+                        android:layout_marginBottom="0dp"
                         android:text="@string/bloodPressure"
-                        android:layout_marginBottom="10dp"
-                        android:textColor="@color/BlueHuesDark"/>
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/SearchBSText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="16dp"
-                        android:text="@string/bloodSugar"
                         android:layout_marginStart="6dp"
-                        android:layout_marginBottom="10dp"
-                        android:textColor="@color/BlueHuesDark"/>
+                        android:layout_marginBottom="0dp"
+                        android:text="@string/bloodSugar"
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/SearchCholesterolText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="16dp"
                         android:layout_marginStart="12dp"
+                        android:layout_marginBottom="0dp"
                         android:text="@string/cholesterol"
-                        android:layout_marginBottom="10dp"
-                        android:textColor="@color/BlueHuesDark"/>
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
 
                     <ImageButton
                         android:id="@+id/fluShotSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="top"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="30dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_marginStart="0dp"
-                        android:scaleType="fitCenter"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/ic_vaccinations"
                         android:padding="4dp"
-                        android:background="@drawable/ic_vaccinations"/>
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/shinglesSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="30dp"
                         android:layout_gravity="top"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginStart="3dp"
-                        android:scaleType="fitCenter"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/ic_vaccinations"
                         android:padding="4dp"
-                        android:background="@drawable/ic_vaccinations"/>
+                        android:scaleType="fitCenter" />
 
                     <ImageButton
                         android:id="@+id/pneumoniaSearch"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="30dp"
                         android:layout_gravity="top"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginStart="11dp"
-                        android:scaleType="fitCenter"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/ic_vaccinations"
                         android:padding="4dp"
-                        android:background="@drawable/ic_vaccinations"/>
+                        android:scaleType="fitCenter" />
 
                     <TextView
                         android:id="@+id/SearchFluText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="16dp"
-                        android:text="@string/fluShot"
-                        android:layout_marginBottom="40dp"
                         android:layout_marginStart="-9dp"
-                        android:textColor="@color/BlueHuesDark"/>
+                        android:layout_marginBottom="15dp"
+                        android:text="@string/fluShot"
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/SearchShingles"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="16dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginBottom="15dp"
                         android:text="@string/tableShingle"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginBottom="10dp"
-                        android:textColor="@color/BlueHuesDark"/>
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/SearchPneumonia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:textSize="16dp"
-                        android:text="@string/pneumonia"
-                        android:layout_marginBottom="10dp"
                         android:layout_marginStart="11dp"
-                        android:textColor="@color/BlueHuesDark"/>
+                        android:layout_marginBottom="15dp"
+                        android:text="@string/pneumonia"
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
 
+                    <ImageButton
+                        android:id="@+id/hepbSearch"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/ic_vaccinations"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter" />
+
+                    <ImageButton
+                        android:id="@+id/tetanusSearch"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/ic_vaccinations"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter" />
+
+                    <ImageButton
+                        android:id="@+id/blank"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/ic_blankspacesongrid"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:id="@+id/SearchHepB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/tableHepB"
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/SearchTetanus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/tableTetanus"
+                        android:textColor="@color/BlueHuesDark"
+                        android:textSize="16dp" />
 
                 </GridLayout>
-
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2.5"
+                android:layout_weight="0.75"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
