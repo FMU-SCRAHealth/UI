@@ -56,7 +56,6 @@ dependencies {
     api 'com.google.firebase:firebase-crash:9.4.0'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     implementation 'com.google.firebase:firebase-database:16.0.1'
-    implementation files('C:/Projects 2019/UI/PeeDeeHealthAdvisor/libs/DynamicPDF.jar')
 }
 apply plugin: 'com.google.gms.google-services'
 com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
