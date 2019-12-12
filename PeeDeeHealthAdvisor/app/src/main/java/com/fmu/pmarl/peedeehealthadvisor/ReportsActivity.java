@@ -1,31 +1,47 @@
 package com.fmu.pmarl.peedeehealthadvisor;
 
+
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Picture;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
 import android.graphics.pdf.PdfRenderer;
 import android.icu.util.RangeValueIterator;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.print.PrintAttributes;
 import android.print.pdf.PrintedPdfDocument;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ReportsActivity extends AppCompatActivity {
@@ -33,6 +49,12 @@ public class ReportsActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_reports);
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,
+                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
 
         //CursorInstantiation (USER)
         Cursor cursorUser = MainActivity.myDB.readUserData();
@@ -252,15 +274,44 @@ public class ReportsActivity extends AppCompatActivity {
         launchPrevActivity();
     }
 
+
+    private PdfDocument pd = new PdfDocument();
+    private PdfDocument.PageInfo pi = new PdfDocument.PageInfo.Builder(792, 612, 1).create();
     private void exportReport(){
-        PdfDocument pdf = new PdfDocument();
-        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(100, 100, 0).create();
+        pd = new PdfDocument();
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        Calendar past = Calendar.getInstance();
+        past.setTime(date);
+        int diff = (cal.get(Calendar.MONTH) - 6) % 12;
+        past.set(Calendar.MONTH, diff);
+        if (diff > cal.get(Calendar.MONTH)) past.set(Calendar.YEAR, cal.get(Calendar.YEAR) - 1);
+        Cursor c = MainActivity.myDB.readBloodPressure();
+        bpPages(c, cal, past);
+        c = MainActivity.myDB.readBloodSugar();
+        bsPages(c, cal, past);
+        c = MainActivity.myDB.readCholesterol();
+        cholPages(c, cal, past);
+        c = MainActivity.myDB.readBodyWeight();
+        weightPages(c, cal, past);
+        c = MainActivity.myDB.readVaccinationRecords();
+        vaccPages(c, cal, past);
 
 
-        PdfDocument.Page page = pdf.startPage(pageInfo);
-        ViewGroup view = (ViewGroup)getWindow().getDecorView();
-        Canvas can = page.getCanvas();
-        can.drawPicture(new Picture());
+        try{
+            File f = new File(Environment.getExternalStorageDirectory() + "/" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH)
+                    + "-" + cal.get(Calendar.YEAR) + "_Report.pdf");
+            pd.writeTo(new FileOutputStream(f));
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException f){
+            f.printStackTrace();
+        }
+
+        pd.close();
+        Toast.makeText(this, "Success! Check " + Environment.getExternalStorageDirectory() + "/" + date + "_Report.pdf", Toast.LENGTH_LONG).show();
+
     }
 
     private void launchMainActivity()
@@ -280,6 +331,356 @@ public class ReportsActivity extends AppCompatActivity {
         finish();
     }
 
+    private void bpPages(Cursor bp, Calendar curr, Calendar past){
+        if(bp.getCount() == 0) return;
+        int pageNum = 1;
+        PdfDocument.Page p = bpPageSetup(curr, past, pageNum);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        int tableOriginX = 36;
+        int tableOriginY = 144;
+        int tableNum = 0;
+        int entryNum = 0;
+        bp.moveToFirst();
+        text.setTextSize(12);
+        while(!bp.isAfterLast()){
+            int entryOriginX = tableOriginX + tableNum * 194;
+            int entryOriginY = tableOriginY + entryNum * 33;
+            if((entryOriginX + 158) > 756){
+                pd.finishPage(p);
+                pageNum++;
+                p = bpPageSetup(curr, past, pageNum);
+                c = p.getCanvas();
+                tableNum = 0;
+                entryNum = 0;
 
+            }
+            else if((entryOriginY + 33) > 576){
+                tableNum++;
+                entryNum = 0;
+                continue;
+            }
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX + 158, entryOriginY, new Paint());
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX + 158, entryOriginY, entryOriginX+158, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX, entryOriginY+33, entryOriginX+158, entryOriginY+33, new Paint());
+            c.drawLine(entryOriginX + 74, entryOriginY, entryOriginX + 74, entryOriginY + 33, new Paint());
+            c.drawText(bp.getString(0), entryOriginX + 5, entryOriginY + 15,text);
+            c.drawText(bp.getString(1).substring(0, 5), entryOriginX + 5, entryOriginY + 30, text);
+            c.drawText("Systolic: " + bp.getString(2), entryOriginX + 77, entryOriginY+15, text);
+            c.drawText("Diastolic: " + bp.getString(3), entryOriginX + 77, entryOriginY + 30, text);
+            bp.moveToNext();
+            entryNum++;
+        }
+        pd.finishPage(p);
+    }
+
+    private PdfDocument.Page bpPageSetup(Calendar curr, Calendar past, int pageNum){
+        PdfDocument.Page p = pd.startPage(pi);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        text.setTextSize(24);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
+        c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
+        c.drawText("Report for ", 126, 66, text);
+        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
+                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+                + "/" + curr.get(Calendar.YEAR), 126, 94, text);
+
+        c.drawLine(396, 40, 396, 104, new Paint());
+        c.drawText("Blood Pressure", 414, 66, text);
+        c.drawText("Page " + pageNum, 414, 94, text);
+
+        c.drawLine(36, 124, 752, 124, new Paint());
+        c.drawLine(36, 128, 752, 128, new Paint());
+
+        text.setTextSize(8);
+        c.drawText("This report was generated by SC Health Plus Me", 36, 594, text);
+        text.setTextSize(12);
+
+        return p;
+    }
+
+    private void bsPages(Cursor bp, Calendar curr, Calendar past){
+        if(bp.getCount() == 0) return;
+        int pageNum = 1;
+        PdfDocument.Page p = bsPageSetup(curr, past, pageNum);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        int tableOriginX = 36;
+        int tableOriginY = 144;
+        int tableNum = 0;
+        int entryNum = 0;
+        bp.moveToFirst();
+        if(bp.isNull(0)) return;
+        text.setTextSize(10);
+        while(!bp.isAfterLast()){
+            int entryOriginX = tableOriginX + tableNum * 194;
+            int entryOriginY = tableOriginY + entryNum * 33;
+            if((entryOriginX + 158) > 756){
+                pd.finishPage(p);
+                pageNum++;
+                p = bsPageSetup(curr, past, pageNum);
+                c = p.getCanvas();
+                tableNum = 0;
+                entryNum = 0;
+
+            }
+            else if((entryOriginY + 33) > 576){
+                tableNum++;
+                entryNum = 0;
+                continue;
+            }
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX + 158, entryOriginY, new Paint());
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX + 158, entryOriginY, entryOriginX+158, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX, entryOriginY+33, entryOriginX+158, entryOriginY+33, new Paint());
+            c.drawLine(entryOriginX + 68, entryOriginY, entryOriginX + 68, entryOriginY + 33, new Paint());
+            c.drawText(bp.getString(0), entryOriginX + 5, entryOriginY + 15,text);
+            c.drawText(bp.getString(1).substring(0, 5), entryOriginX + 5, entryOriginY + 30, text);
+            c.drawText("Fasting: " + ((bp.getString(2).equals("1"))?"Yes":"No"), entryOriginX + 72, entryOriginY+15, text);
+            c.drawText("Blood Sugar: " + bp.getString(3), entryOriginX + 72, entryOriginY + 30, text);
+            bp.moveToNext();
+            entryNum++;
+        }
+        pd.finishPage(p);
+        text.setTextSize(12);
+    }
+
+    private PdfDocument.Page bsPageSetup(Calendar curr, Calendar past, int pageNum){
+        PdfDocument.Page p = pd.startPage(pi);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        text.setTextSize(24);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
+        c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
+        c.drawText("Report for ", 126, 66, text);
+        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
+                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+                + "/" + curr.get(Calendar.YEAR), 126, 94, text);
+
+        c.drawLine(396, 40, 396, 104, new Paint());
+        c.drawText("Blood Sugar", 414, 66, text);
+        c.drawText("Page " + pageNum, 414, 94, text);
+
+        c.drawLine(36, 124, 752, 124, new Paint());
+        c.drawLine(36, 128, 752, 128, new Paint());
+
+        text.setTextSize(8);
+        c.drawText("This report was generated by SC Health Plus Me", 36, 594, text);
+        text.setTextSize(12);
+        return p;
+    }
+
+    private void cholPages(Cursor bp, Calendar curr, Calendar past){
+        if(bp.getCount() == 0) return;
+        int pageNum = 1;
+        PdfDocument.Page p = cholPageSetup(curr, past, pageNum);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        int tableOriginX = 36;
+        int tableOriginY = 144;
+        int tableNum = 0;
+        int entryNum = 0;
+        bp.moveToFirst();
+        text.setTextSize(12);
+        while(!bp.isAfterLast()){
+            int entryOriginX = tableOriginX + tableNum * 194;
+            int entryOriginY = tableOriginY + entryNum * 63;
+            if((entryOriginX + 158) > 756){
+                pd.finishPage(p);
+                pageNum++;
+                p = cholPageSetup(curr, past, pageNum);
+                c = p.getCanvas();
+                tableNum = 0;
+                entryNum = 0;
+
+            }
+            else if((entryOriginY + 63) > 576){
+                tableNum++;
+                entryNum = 0;
+                continue;
+            }
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX + 158, entryOriginY, new Paint());
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX, entryOriginY + 63, new Paint());
+            c.drawLine(entryOriginX + 158, entryOriginY, entryOriginX+158, entryOriginY + 63, new Paint());
+            c.drawLine(entryOriginX, entryOriginY+63, entryOriginX+158, entryOriginY+63, new Paint());
+            c.drawLine(entryOriginX + 74, entryOriginY, entryOriginX + 74, entryOriginY + 63, new Paint());
+            c.drawText(bp.getString(0), entryOriginX + 5, entryOriginY + 15,text);
+            c.drawText(bp.getString(1).substring(0, 5), entryOriginX + 5, entryOriginY + 30, text);
+            c.drawText("Total: " + bp.getString(5), entryOriginX + 77, entryOriginY+15, text);
+            c.drawText("LDL: " + bp.getString(3), entryOriginX + 77, entryOriginY + 30, text);
+            c.drawText("HDL: " + bp.getString(2), entryOriginX + 77, entryOriginY + 45, text);
+            c.drawText("Trig: " + bp.getString(4), entryOriginX + 77, entryOriginY + 60, text);
+            bp.moveToNext();
+            entryNum++;
+        }
+        pd.finishPage(p);
+    }
+
+    private PdfDocument.Page cholPageSetup(Calendar curr, Calendar past, int pageNum){
+        PdfDocument.Page p = pd.startPage(pi);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        text.setTextSize(24);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
+        c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
+        c.drawText("Report for ", 126, 66, text);
+        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
+                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+                + "/" + curr.get(Calendar.YEAR), 126, 94, text);
+
+        c.drawLine(396, 40, 396, 104, new Paint());
+        c.drawText("Cholesterol", 414, 66, text);
+        c.drawText("Page " + pageNum, 414, 94, text);
+
+        c.drawLine(36, 124, 752, 124, new Paint());
+        c.drawLine(36, 128, 752, 128, new Paint());
+
+        text.setTextSize(8);
+        c.drawText("This report was generated by SC Health Plus Me", 36, 594, text);
+        text.setTextSize(12);
+
+        return p;
+    }
+
+    private void weightPages(Cursor bp, Calendar curr, Calendar past){
+        if(bp.getCount() == 0) return;
+        int pageNum = 1;
+        PdfDocument.Page p = weightPageSetup(curr, past, pageNum);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        int tableOriginX = 36;
+        int tableOriginY = 144;
+        int tableNum = 0;
+        int entryNum = 0;
+        bp.moveToFirst();
+        text.setTextSize(12);
+        while(!bp.isAfterLast()){
+            int entryOriginX = tableOriginX + tableNum * 194;
+            int entryOriginY = tableOriginY + entryNum * 33;
+            if((entryOriginX + 158) > 756){
+                pd.finishPage(p);
+                pageNum++;
+                p = weightPageSetup(curr, past, pageNum);
+                c = p.getCanvas();
+                tableNum = 0;
+                entryNum = 0;
+
+            }
+            else if((entryOriginY + 33) > 576){
+                tableNum++;
+                entryNum = 0;
+                continue;
+            }
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX + 158, entryOriginY, new Paint());
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX + 158, entryOriginY, entryOriginX+158, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX, entryOriginY+33, entryOriginX+158, entryOriginY+33, new Paint());
+            c.drawLine(entryOriginX + 74, entryOriginY, entryOriginX + 74, entryOriginY + 33, new Paint());
+            c.drawText(bp.getString(0), entryOriginX + 5, entryOriginY + 15,text);
+            c.drawText(bp.getString(1).substring(0, 5), entryOriginX + 5, entryOriginY + 30, text);
+            c.drawText("Weight: " + bp.getString(2), entryOriginX + 77, entryOriginY+15, text);
+            bp.moveToNext();
+            entryNum++;
+        }
+        pd.finishPage(p);
+    }
+
+    private PdfDocument.Page weightPageSetup(Calendar curr, Calendar past, int pageNum){
+        PdfDocument.Page p = pd.startPage(pi);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        text.setTextSize(24);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
+        c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
+        c.drawText("Report for ", 126, 66, text);
+        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
+                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+                + "/" + curr.get(Calendar.YEAR), 126, 94, text);
+
+        c.drawLine(396, 40, 396, 104, new Paint());
+        c.drawText("Body Weight", 414, 66, text);
+        c.drawText("Page " + pageNum, 414, 94, text);
+
+        c.drawLine(36, 124, 752, 124, new Paint());
+        c.drawLine(36, 128, 752, 128, new Paint());
+
+        text.setTextSize(8);
+        c.drawText("This report was generated by SC Health Plus Me", 36, 594, text);
+        text.setTextSize(12);
+
+        return p;
+    }
+
+    private void vaccPages(Cursor bp, Calendar curr, Calendar past){
+        if(bp.getCount() == 0) return;
+        int pageNum = 1;
+        PdfDocument.Page p = vaccPageSetup(curr, past, pageNum);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        int tableOriginX = 36;
+        int tableOriginY = 144;
+        int tableNum = 0;
+        int entryNum = 0;
+        bp.moveToFirst();
+        text.setTextSize(12);
+        while(!bp.isAfterLast()){
+            int entryOriginX = tableOriginX + tableNum * 194;
+            int entryOriginY = tableOriginY + entryNum * 33;
+            if((entryOriginX + 158) > 756){
+                pd.finishPage(p);
+                pageNum++;
+                p = vaccPageSetup(curr, past, pageNum);
+                c = p.getCanvas();
+                tableNum = 0;
+                entryNum = 0;
+
+            }
+            else if((entryOriginY + 33) > 576){
+                tableNum++;
+                entryNum = 0;
+                continue;
+            }
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX + 235, entryOriginY, new Paint());
+            c.drawLine(entryOriginX, entryOriginY, entryOriginX, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX + 235, entryOriginY, entryOriginX+235, entryOriginY + 33, new Paint());
+            c.drawLine(entryOriginX, entryOriginY+33, entryOriginX+235, entryOriginY+33, new Paint());
+            c.drawLine(entryOriginX + 84, entryOriginY, entryOriginX + 84, entryOriginY + 33, new Paint());
+            c.drawText("Date Taken:", entryOriginX + 5, entryOriginY + 15,text);
+            c.drawText(bp.getString(0), entryOriginX + 5, entryOriginY + 30, text);
+            c.drawText("Vaccine: ", entryOriginX + 87, entryOriginY+15, text);
+            c.drawText(bp.getString(4), entryOriginX + 87, entryOriginY + 30, text);
+            bp.moveToNext();
+            entryNum++;
+        }
+        pd.finishPage(p);
+    }
+
+    private PdfDocument.Page vaccPageSetup(Calendar curr, Calendar past, int pageNum){
+        PdfDocument.Page p = pd.startPage(pi);
+        Canvas c = p.getCanvas();
+        Paint text = new Paint();
+        text.setTextSize(24);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
+        c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
+        c.drawText("Report for ", 126, 66, text);
+        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
+                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+                + "/" + curr.get(Calendar.YEAR), 126, 94, text);
+
+        c.drawLine(396, 40, 396, 104, new Paint());
+        c.drawText("Lifetime Vaccinations", 414, 66, text);
+        c.drawText("Page " + pageNum, 414, 94, text);
+
+        c.drawLine(36, 124, 752, 124, new Paint());
+        c.drawLine(36, 128, 752, 128, new Paint());
+
+        text.setTextSize(8);
+        c.drawText("This report was generated by SC Health Plus Me", 36, 594, text);
+        text.setTextSize(12);
+
+        return p;
+    }
 
 }
