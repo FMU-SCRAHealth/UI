@@ -2,6 +2,7 @@ package com.fmu.pmarl.peedeehealthadvisor;
 
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -9,27 +10,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Picture;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
-import android.graphics.pdf.PdfRenderer;
-import android.icu.util.RangeValueIterator;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.print.PrintAttributes;
-import android.print.pdf.PrintedPdfDocument;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 
@@ -275,34 +267,47 @@ public class ReportsActivity extends AppCompatActivity {
     }
 
 
+
     private PdfDocument pd = new PdfDocument();
     private PdfDocument.PageInfo pi = new PdfDocument.PageInfo.Builder(792, 612, 1).create();
+
     private void exportReport(){
         pd = new PdfDocument();
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        Calendar past = Calendar.getInstance();
+        /*Calendar past = Calendar.getInstance();
         past.setTime(date);
         int diff = (cal.get(Calendar.MONTH) - 6) % 12;
         past.set(Calendar.MONTH, diff);
-        if (diff > cal.get(Calendar.MONTH)) past.set(Calendar.YEAR, cal.get(Calendar.YEAR) - 1);
+        if (diff > cal.get(Calendar.MONTH)) past.set(Calendar.YEAR, cal.get(Calendar.YEAR) - 1);*/
         Cursor c = MainActivity.myDB.readBloodPressure();
-        bpPages(c, cal, past);
+        bpPages(c, cal);
         c = MainActivity.myDB.readBloodSugar();
-        bsPages(c, cal, past);
+        bsPages(c, cal);
         c = MainActivity.myDB.readCholesterol();
-        cholPages(c, cal, past);
+        cholPages(c, cal);
         c = MainActivity.myDB.readBodyWeight();
-        weightPages(c, cal, past);
+        weightPages(c, cal);
         c = MainActivity.myDB.readVaccinationRecords();
-        vaccPages(c, cal, past);
+        vaccPages(c, cal);
 
 
         try{
             File f = new File(Environment.getExternalStorageDirectory() + "/" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH)
                     + "-" + cal.get(Calendar.YEAR) + "_Report.pdf");
             pd.writeTo(new FileOutputStream(f));
+            AlertDialog.Builder d = new AlertDialog.Builder(this);
+            d.setTitle("Success!");
+            d.setMessage("Your report is now available at\n\n" + f.getAbsolutePath() + "\n\nWrite this path down so that you can find your report later.");
+            d.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = d.create();
+            dialog.show();
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }catch(IOException f){
@@ -310,7 +315,7 @@ public class ReportsActivity extends AppCompatActivity {
         }
 
         pd.close();
-        Toast.makeText(this, "Success! Check " + Environment.getExternalStorageDirectory() + "/" + date + "_Report.pdf", Toast.LENGTH_LONG).show();
+
 
     }
 
@@ -331,17 +336,21 @@ public class ReportsActivity extends AppCompatActivity {
         finish();
     }
 
-    private void bpPages(Cursor bp, Calendar curr, Calendar past){
+    private void bpPages(Cursor bp, Calendar curr){
         if(bp.getCount() == 0) return;
         int pageNum = 1;
-        PdfDocument.Page p = bpPageSetup(curr, past, pageNum);
+        int maxPages = (int)(bp.getCount()/73)+1;
+
+        bp.moveToFirst();
+        String past = dateConversion(bp.getString(0));
+
+        PdfDocument.Page p = bpPageSetup(curr, past, pageNum, maxPages);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
         int tableOriginX = 36;
         int tableOriginY = 144;
         int tableNum = 0;
         int entryNum = 0;
-        bp.moveToFirst();
         text.setTextSize(12);
         while(!bp.isAfterLast()){
             int entryOriginX = tableOriginX + tableNum * 194;
@@ -349,7 +358,7 @@ public class ReportsActivity extends AppCompatActivity {
             if((entryOriginX + 158) > 756){
                 pd.finishPage(p);
                 pageNum++;
-                p = bpPageSetup(curr, past, pageNum);
+                p = bpPageSetup(curr, past, pageNum, maxPages);
                 c = p.getCanvas();
                 tableNum = 0;
                 entryNum = 0;
@@ -375,7 +384,7 @@ public class ReportsActivity extends AppCompatActivity {
         pd.finishPage(p);
     }
 
-    private PdfDocument.Page bpPageSetup(Calendar curr, Calendar past, int pageNum){
+    private PdfDocument.Page bpPageSetup(Calendar curr, String past, int pageNum, int maxPages){
         PdfDocument.Page p = pd.startPage(pi);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
@@ -383,13 +392,12 @@ public class ReportsActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
         c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
         c.drawText("Report for ", 126, 66, text);
-        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
-                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+        c.drawText(past+ "-" + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
                 + "/" + curr.get(Calendar.YEAR), 126, 94, text);
 
         c.drawLine(396, 40, 396, 104, new Paint());
         c.drawText("Blood Pressure", 414, 66, text);
-        c.drawText("Page " + pageNum, 414, 94, text);
+        c.drawText("Page " + pageNum + " of " + maxPages, 414, 94, text);
 
         c.drawLine(36, 124, 752, 124, new Paint());
         c.drawLine(36, 128, 752, 128, new Paint());
@@ -401,10 +409,15 @@ public class ReportsActivity extends AppCompatActivity {
         return p;
     }
 
-    private void bsPages(Cursor bp, Calendar curr, Calendar past){
+    private void bsPages(Cursor bp, Calendar curr){
         if(bp.getCount() == 0) return;
         int pageNum = 1;
-        PdfDocument.Page p = bsPageSetup(curr, past, pageNum);
+        int maxPages = (int)(bp.getCount()/73)+1;
+
+        bp.moveToFirst();
+        String past = dateConversion(bp.getString(0));
+
+        PdfDocument.Page p = bsPageSetup(curr, past, pageNum, maxPages);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
         int tableOriginX = 36;
@@ -420,7 +433,7 @@ public class ReportsActivity extends AppCompatActivity {
             if((entryOriginX + 158) > 756){
                 pd.finishPage(p);
                 pageNum++;
-                p = bsPageSetup(curr, past, pageNum);
+                p = bsPageSetup(curr, past, pageNum, maxPages);
                 c = p.getCanvas();
                 tableNum = 0;
                 entryNum = 0;
@@ -447,7 +460,7 @@ public class ReportsActivity extends AppCompatActivity {
         text.setTextSize(12);
     }
 
-    private PdfDocument.Page bsPageSetup(Calendar curr, Calendar past, int pageNum){
+    private PdfDocument.Page bsPageSetup(Calendar curr, String past, int pageNum, int maxPages){
         PdfDocument.Page p = pd.startPage(pi);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
@@ -455,13 +468,12 @@ public class ReportsActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
         c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
         c.drawText("Report for ", 126, 66, text);
-        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
-                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+        c.drawText(past+ "-" + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
                 + "/" + curr.get(Calendar.YEAR), 126, 94, text);
 
         c.drawLine(396, 40, 396, 104, new Paint());
         c.drawText("Blood Sugar", 414, 66, text);
-        c.drawText("Page " + pageNum, 414, 94, text);
+        c.drawText("Page " + pageNum + " of " + maxPages, 414, 94, text);
 
         c.drawLine(36, 124, 752, 124, new Paint());
         c.drawLine(36, 128, 752, 128, new Paint());
@@ -472,10 +484,15 @@ public class ReportsActivity extends AppCompatActivity {
         return p;
     }
 
-    private void cholPages(Cursor bp, Calendar curr, Calendar past){
+    private void cholPages(Cursor bp, Calendar curr){
         if(bp.getCount() == 0) return;
         int pageNum = 1;
-        PdfDocument.Page p = cholPageSetup(curr, past, pageNum);
+        int maxPages = (int)(bp.getCount()/29)+1;
+
+        bp.moveToFirst();
+        String past = dateConversion(bp.getString(0));
+
+        PdfDocument.Page p = cholPageSetup(curr, past, pageNum, maxPages);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
         int tableOriginX = 36;
@@ -490,7 +507,7 @@ public class ReportsActivity extends AppCompatActivity {
             if((entryOriginX + 158) > 756){
                 pd.finishPage(p);
                 pageNum++;
-                p = cholPageSetup(curr, past, pageNum);
+                p = cholPageSetup(curr, past, pageNum, maxPages);
                 c = p.getCanvas();
                 tableNum = 0;
                 entryNum = 0;
@@ -518,7 +535,7 @@ public class ReportsActivity extends AppCompatActivity {
         pd.finishPage(p);
     }
 
-    private PdfDocument.Page cholPageSetup(Calendar curr, Calendar past, int pageNum){
+    private PdfDocument.Page cholPageSetup(Calendar curr, String past, int pageNum, int maxPages){
         PdfDocument.Page p = pd.startPage(pi);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
@@ -526,13 +543,12 @@ public class ReportsActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
         c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
         c.drawText("Report for ", 126, 66, text);
-        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
-                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+        c.drawText(past+ "-" + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
                 + "/" + curr.get(Calendar.YEAR), 126, 94, text);
 
         c.drawLine(396, 40, 396, 104, new Paint());
         c.drawText("Cholesterol", 414, 66, text);
-        c.drawText("Page " + pageNum, 414, 94, text);
+        c.drawText("Page " + pageNum + " of " + maxPages, 414, 94, text);
 
         c.drawLine(36, 124, 752, 124, new Paint());
         c.drawLine(36, 128, 752, 128, new Paint());
@@ -544,10 +560,15 @@ public class ReportsActivity extends AppCompatActivity {
         return p;
     }
 
-    private void weightPages(Cursor bp, Calendar curr, Calendar past){
+    private void weightPages(Cursor bp, Calendar curr){
         if(bp.getCount() == 0) return;
         int pageNum = 1;
-        PdfDocument.Page p = weightPageSetup(curr, past, pageNum);
+        int maxPages = (int)(bp.getCount()/73)+1;
+
+        bp.moveToFirst();
+        String past = dateConversion(bp.getString(0));
+
+        PdfDocument.Page p = weightPageSetup(curr, past, pageNum, maxPages);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
         int tableOriginX = 36;
@@ -562,7 +583,7 @@ public class ReportsActivity extends AppCompatActivity {
             if((entryOriginX + 158) > 756){
                 pd.finishPage(p);
                 pageNum++;
-                p = weightPageSetup(curr, past, pageNum);
+                p = weightPageSetup(curr, past, pageNum, maxPages);
                 c = p.getCanvas();
                 tableNum = 0;
                 entryNum = 0;
@@ -587,7 +608,7 @@ public class ReportsActivity extends AppCompatActivity {
         pd.finishPage(p);
     }
 
-    private PdfDocument.Page weightPageSetup(Calendar curr, Calendar past, int pageNum){
+    private PdfDocument.Page weightPageSetup(Calendar curr, String past, int pageNum, int maxPages){
         PdfDocument.Page p = pd.startPage(pi);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
@@ -595,13 +616,12 @@ public class ReportsActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
         c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
         c.drawText("Report for ", 126, 66, text);
-        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
-                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+        c.drawText(past + "-" + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
                 + "/" + curr.get(Calendar.YEAR), 126, 94, text);
 
         c.drawLine(396, 40, 396, 104, new Paint());
         c.drawText("Body Weight", 414, 66, text);
-        c.drawText("Page " + pageNum, 414, 94, text);
+        c.drawText("Page " + pageNum + " of " + maxPages, 414, 94, text);
 
         c.drawLine(36, 124, 752, 124, new Paint());
         c.drawLine(36, 128, 752, 128, new Paint());
@@ -613,10 +633,15 @@ public class ReportsActivity extends AppCompatActivity {
         return p;
     }
 
-    private void vaccPages(Cursor bp, Calendar curr, Calendar past){
+    private void vaccPages(Cursor bp, Calendar curr){
         if(bp.getCount() == 0) return;
         int pageNum = 1;
-        PdfDocument.Page p = vaccPageSetup(curr, past, pageNum);
+        int maxPages = (int)(bp.getCount()/73)+1;
+
+        bp.moveToFirst();
+        String past = dateConversion(bp.getString(0));
+
+        PdfDocument.Page p = vaccPageSetup(curr, past, pageNum, maxPages);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
         int tableOriginX = 36;
@@ -626,12 +651,12 @@ public class ReportsActivity extends AppCompatActivity {
         bp.moveToFirst();
         text.setTextSize(12);
         while(!bp.isAfterLast()){
-            int entryOriginX = tableOriginX + tableNum * 194;
+            int entryOriginX = tableOriginX + tableNum * 271;
             int entryOriginY = tableOriginY + entryNum * 33;
             if((entryOriginX + 158) > 756){
                 pd.finishPage(p);
                 pageNum++;
-                p = vaccPageSetup(curr, past, pageNum);
+                p = vaccPageSetup(curr, past, pageNum, maxPages);
                 c = p.getCanvas();
                 tableNum = 0;
                 entryNum = 0;
@@ -657,7 +682,7 @@ public class ReportsActivity extends AppCompatActivity {
         pd.finishPage(p);
     }
 
-    private PdfDocument.Page vaccPageSetup(Calendar curr, Calendar past, int pageNum){
+    private PdfDocument.Page vaccPageSetup(Calendar curr, String past, int pageNum, int maxPages){
         PdfDocument.Page p = pd.startPage(pi);
         Canvas c = p.getCanvas();
         Paint text = new Paint();
@@ -665,13 +690,12 @@ public class ReportsActivity extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.appicon);
         c.drawBitmap(Bitmap.createScaledBitmap(bitmap, 72, 72, true), 36, 36, new Paint());
         c.drawText("Report for ", 126, 66, text);
-        c.drawText((past.get(Calendar.MONTH)+1) + "/" + past.get(Calendar.DAY_OF_MONTH) + "/" + past.get(Calendar.YEAR)+ "-"
-                + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
+        c.drawText(past + "-" + (curr.get(Calendar.MONTH)+1) + "/" + curr.get(Calendar.DAY_OF_MONTH)
                 + "/" + curr.get(Calendar.YEAR), 126, 94, text);
 
         c.drawLine(396, 40, 396, 104, new Paint());
         c.drawText("Lifetime Vaccinations", 414, 66, text);
-        c.drawText("Page " + pageNum, 414, 94, text);
+        c.drawText("Page " + pageNum + " of " + maxPages, 414, 94, text);
 
         c.drawLine(36, 124, 752, 124, new Paint());
         c.drawLine(36, 128, 752, 128, new Paint());
@@ -683,4 +707,22 @@ public class ReportsActivity extends AppCompatActivity {
         return p;
     }
 
+    private String dateConversion(String date){
+        String[] list = date.split(" ");
+        switch(list[0]){
+            case "Jan": list[0] = "1"; break;
+            case "Feb": list[0] = "2"; break;
+            case "Mar": list[0] = "3"; break;
+            case "Apr": list[0] = "4"; break;
+            case "May": list[0] = "5"; break;
+            case "Jun": list[0] = "6"; break;
+            case "Jul": list[0] = "7"; break;
+            case "Aug": list[0] = "8"; break;
+            case "Sep": list[0] = "9"; break;
+            case "Oct": list[0] = "10"; break;
+            case "Nov": list[0] = "11"; break;
+            case "Dec": list[0] = "12"; break;
+        }
+        return list[0] + "/" + list[1] + "/" + list[2];
+    }
 }
