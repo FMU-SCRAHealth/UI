@@ -292,6 +292,20 @@ public class ReportsActivity extends AppCompatActivity {
         c = MainActivity.myDB.readVaccinationRecords();
         vaccPages(c, cal);
 
+        if(pd.getPages().size() == 0){
+            AlertDialog.Builder d = new AlertDialog.Builder(this);
+            d.setTitle("Error");
+            d.setMessage("There is no stored data. Please enter data into any of the following:\n\tBlood Pressure\n\tBlood Sugar\n\tCholesterol\n\tVaccinations\n\tBody Weight");
+            d.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = d.create();
+            dialog.show();
+            return;
+        }
 
         try{
             File f = new File(Environment.getExternalStorageDirectory() + "/" + (cal.get(Calendar.MONTH)+1) + "-" + cal.get(Calendar.DAY_OF_MONTH)
@@ -310,6 +324,12 @@ public class ReportsActivity extends AppCompatActivity {
             dialog.show();
         }catch(FileNotFoundException e){
             e.printStackTrace();
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this,
+                        new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
+            exportReport();
         }catch(IOException f){
             f.printStackTrace();
         }
